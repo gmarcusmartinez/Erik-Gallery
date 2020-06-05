@@ -1,0 +1,14 @@
+.landing {
+  margin-left: 240px;
+  padding: 3rem 2rem 2rem 2rem;
+  height: 100vh;
+
+  .projects-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 50%);
+    grid-gap: 0.5rem;
+  }
+}
