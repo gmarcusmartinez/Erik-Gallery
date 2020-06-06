@@ -19,7 +19,7 @@ const Landing = () => {
 
   return (
     <div className='landing'>
-      <Sidenav focus={focus} setFocus={setFocus} />
+      <Sidenav setFocus={setFocus} />
       <div className='projects-container'>{list}</div>
     </div>
   );

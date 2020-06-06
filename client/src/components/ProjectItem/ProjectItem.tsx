@@ -17,7 +17,6 @@ const ProjectItem: React.FC<ProjectItemProps> = ({
 }) => {
   const handleMouseEnter = (_id: string) => {
     setFocus({ _id, isFocused: true });
-    console.log(_id);
   };
   const handleMouseOut = () => {
     setFocus({ _id: '', isFocused: false });
