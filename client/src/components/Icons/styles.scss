@@ -1,22 +1,14 @@
 .icons-container {
-  width: 100%;
-  display: flex;
-  margin-top: auto;
+  width: auto;
+  margin-left: auto;
+  margin-right: 0.75rem;
+  margin-top: 0;
   i {
+    margin: 0rem 0rem 0rem 2rem;
     color: #585858;
-    margin: 2rem 4rem 1rem 1rem;
     font-size: 2.8rem;
   }
-  @include respond(tablet) {
-    width: auto;
-    margin-left: auto;
-    margin-top: 0;
-    i {
-      margin: 0rem 0rem 0rem 2rem;
-    }
-  }
 }
-
 .fa-instagram {
   &:hover {
     transition: 0.25s ease-in;

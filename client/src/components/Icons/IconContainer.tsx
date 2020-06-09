@@ -7,7 +7,7 @@ const mediaIcons = [
   },
   {
     text: 'fab fa-facebook-square',
-    to: 'https://www.facebook.com/1000bodies/',
+    to: 'https://www.facebook.com/1thousandbodies/',
   },
   {
     text: 'fab fa-soundcloud',
@@ -16,8 +16,8 @@ const mediaIcons = [
 ];
 
 const icons = mediaIcons.map((i: any, index) => (
-  <a href={i.to} target='blank'>
-    <i key={index} className={i.text}></i>
+  <a href={i.to} target='blank' key={index}>
+    <i className={i.text}></i>
   </a>
 ));
 const IconContainer = () => {

@@ -1,25 +1,15 @@
 .landing {
-  margin-left: 240px;
-  padding: 0.5rem;
-  height: 100vh;
-  .projects-container {
-    height: 100%;
+  height: calc(100vh - 8rem);
+  display: flex;
+}
+.content {
+  height: 100%;
+  width: 100%;
+  margin: 1rem;
+  border: 1px solid red;
+  .landing-image {
+    object-fit: cover;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 0.8rem;
-  }
-  @include respond(laptop) {
-    .projects-container {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  @include respond(tablet) {
-    margin-left: 0;
-  }
-  @include respond(mobile) {
-    .projects-container {
-      grid-template-columns: repeat(1, 1fr);
-    }
+    height: 100%;
   }
 }

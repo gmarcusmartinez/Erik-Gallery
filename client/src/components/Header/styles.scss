@@ -1,15 +1,27 @@
 .header {
-  display: none;
+  display: flex;
+  align-items: center;
   margin: 1rem;
   &__title {
     font-size: 2.2rem;
     font-weight: 400;
     color: #585858;
     letter-spacing: 0.2rem;
+    text-decoration: none;
+    margin-left: 1rem;
+    span {
+      font-weight: 300;
+    }
+  }
+  &__menu-trigger {
+    color: #585858;
+    font-size: 2rem;
+    margin-left: 0.75rem;
+    display: none;
   }
   @include respond(tablet) {
-    display: flex;
-    align-items: center;
-    height: 4rem;
+    &__menu-trigger {
+      display: flex;
+    }
   }
 }
