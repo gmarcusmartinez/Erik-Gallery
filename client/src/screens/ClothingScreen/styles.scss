@@ -23,11 +23,33 @@
       height: 100%;
       object-fit: cover;
     }
-    @include respond(tablet) {
+  }
+
+  @include respond(tablet) {
+    .selected-item {
       padding: 0 0 0 1rem;
     }
   }
+  @include respond(mobile) {
+    display: grid;
+    grid-template-rows: 88% 12%;
+    grid-template-areas:
+      'selected'
+      'list';
+    grid-gap: 0.5rem;
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 1fr;
+    }
+    .selected-item {
+      grid-area: selected;
+      padding: 0;
+    }
+  }
 }
+
 .current {
   filter: brightness(70%) !important;
 }

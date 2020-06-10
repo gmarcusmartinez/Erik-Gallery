@@ -1,5 +1,5 @@
 .m-nav {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
   width: 100vw;
 
@@ -8,33 +8,25 @@
   left: 0;
   z-index: 2;
   &__body {
-    background-color: rgba(241, 242, 243, 0.9);
-    width: 40vw;
+    background-color: rgb(241, 242, 243);
+    width: 45vw;
     height: 100vh;
     transition: all 0.5s 0.2s;
   }
-  &__header {
-    display: flex;
-    height: 5rem;
-    position: relative;
-    align-items: center;
-    background-color: rgb(241, 242, 243);
-  }
-
-  &__links {
-    list-style: none;
-    margin: 2rem;
+  .links {
     display: flex;
     flex-direction: column;
+    margin: 0;
     a {
-      margin: 2rem 0;
+      text-decoration: none;
+      margin: 1.8rem 2rem;
       color: #585858;
       letter-spacing: 0.1rem;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       cursor: pointer;
-      text-decoration: none;
     }
   }
+
   @media screen and (min-width: 769px) {
     display: none;
   }

@@ -5,38 +5,18 @@
   top: 0;
   left: 0;
 
-  display: grid;
-  grid-template-columns: 5% 90% 5%;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'prev curr next';
-
+  display: flex;
   align-items: center;
-
-  @include respond(tablet) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 90% 10%;
-    grid-template-areas:
-      'curr curr'
-      'prev next ';
-  }
+  justify-content: space-between;
 }
-
 .fa-chevron-left {
-  grid-area: prev;
-  justify-self: flex-start;
+  margin: 0 2rem;
 }
 .fa-chevron-right {
-  grid-area: next;
-  justify-self: flex-end;
+  margin: 0 1rem;
 }
-
 .fa-chevron-left,
 .fa-chevron-right {
   font-size: 3.2rem;
-  margin: 0 2rem;
   color: rgba(255, 255, 255, 0.8);
-  @include respond(tablet) {
-    margin: 0 1rem;
-  }
 }
