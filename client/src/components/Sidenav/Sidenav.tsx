@@ -6,7 +6,7 @@ interface SidenavProps {}
 
 const Sidenav: React.FC<SidenavProps> = () => {
   let links = navlinks.map((l: any) => (
-    <Link key={l.text} to={`/${l.text}`}>
+    <Link key={l.text} to={`/${l.to}`}>
       {l.text}
     </Link>
   ));

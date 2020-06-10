@@ -1,6 +1,9 @@
 .image-slider {
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 
   display: grid;
   grid-template-columns: 5% 90% 5%;
@@ -18,16 +21,6 @@
       'prev next ';
   }
 }
-.current-image {
-  grid-area: curr;
-  justify-self: center;
-  width: 90%;
-  height: 90%;
-  object-fit: cover;
-  @include respond(tablet) {
-    width: 100%;
-  }
-}
 
 .fa-chevron-left {
   grid-area: prev;
@@ -42,7 +35,7 @@
 .fa-chevron-right {
   font-size: 3.2rem;
   margin: 0 2rem;
-  color: #aaa;
+  color: rgba(255, 255, 255, 0.8);
   @include respond(tablet) {
     margin: 0 1rem;
   }

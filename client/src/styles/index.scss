@@ -3,8 +3,8 @@
 @import './abstracts/mixins';
 @import './base/base';
 
-@import '../screens/Landing/styles';
-@import '../screens/ProjectDetail/styles';
+@import '../App/styles';
+@import '../screens/ClothingScreen/styles';
 
 @import '../components/Icons/styles';
 @import '../components/Header/styles';
