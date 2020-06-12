@@ -4,7 +4,10 @@ import Lightbox from '../../components/Lightbox/Lightbox';
 interface PrintScreenProps {}
 
 const PrintsScreen: React.FC<PrintScreenProps> = () => {
-  const [displayLightbox, setDisplayLightbox] = React.useState(false);
+  const [displayLightbox, setDisplayLightbox] = React.useState({
+    current: 0,
+    isOpen: false,
+  });
 
   let list = prints.map((p, index) => (
     <img
@@ -12,14 +15,18 @@ const PrintsScreen: React.FC<PrintScreenProps> = () => {
       src={p.small}
       alt='print'
       className='print-item'
-      onClick={() => setDisplayLightbox(true)}
+      onClick={() => setDisplayLightbox({ current: index, isOpen: true })}
     />
   ));
   return (
     <div className='prints'>
       {list}
-      {displayLightbox ? (
-        <Lightbox setDisplayLightbox={setDisplayLightbox} />
+      {displayLightbox.isOpen ? (
+        <Lightbox
+          setDisplayLightbox={setDisplayLightbox}
+          current={displayLightbox.current}
+          collection={prints}
+        />
       ) : null}
     </div>
   );
