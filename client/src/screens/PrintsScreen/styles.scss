@@ -1,0 +1,27 @@
+.prints {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 0.75rem;
+  .print-item {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  @include respond(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+  }
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: scroll;
+    .print-item {
+      width: 100%;
+      min-height: 20rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

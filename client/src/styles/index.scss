@@ -4,11 +4,13 @@
 @import './base/base';
 
 @import '../App/styles';
+@import '../screens/PrintsScreen/styles';
 @import '../screens/ClothingScreen/styles';
 
 @import '../components/Icons/styles';
 @import '../components/Header/styles';
 @import '../components/Sidenav/styles';
+@import '../components/Lightbox/styles';
 @import '../components/Mobilenav/styles';
 @import '../components/ImageSlider/styles';
 @import '../components/ProjectItem/styles';
