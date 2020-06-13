@@ -12,3 +12,15 @@
     max-height: 100%;
   }
 }
+
+.sidenav {
+  height: 90%;
+  width: 24rem;
+  padding-left: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  @include respond(tablet) {
+    display: none;
+  }
+}

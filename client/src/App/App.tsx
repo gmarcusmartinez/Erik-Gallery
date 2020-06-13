@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from '../components/Header/Header';
-import Sidenav from '../components/Sidenav/Sidenav';
+import Nav from '../components/Nav/Nav';
 import Mobilenav from '../components/Mobilenav/Mobilenav';
 import ClothingScreen from '../screens/ClothingScreen';
 import PrintsScreen from '../screens/PrintsScreen/PrintsScreen';
@@ -13,7 +13,9 @@ const App = () => {
     <>
       <Header setDisplayMobilenav={setDisplayMobilenav} />
       <div className='landing'>
-        <Sidenav />
+        <div className='sidenav'>
+          <Nav />
+        </div>
         <div className='content'>
           <Switch>
             <Route exact path='/clothing' component={ClothingScreen} />
