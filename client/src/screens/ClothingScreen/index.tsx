@@ -10,7 +10,7 @@ const ClothingScreen = () => {
       onClick={() => setSelectedItem(index)}
       className={`clothing-img ${selectedItem === index ? 'current' : ''}`}
       key={index}
-      src={i.image}
+      src={i.small}
       alt='clothing'
     />
   ));
