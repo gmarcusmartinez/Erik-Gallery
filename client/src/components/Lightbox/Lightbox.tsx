@@ -11,12 +11,15 @@ const Lightbox: React.FC<LightboxProps> = ({
   current,
   collection,
 }) => {
-  const next = () => {
+  const next = (e: any) => {
+    e.stopPropagation();
+
     current === collection.length - 1
       ? setDisplayLightbox({ current: 0, isOpen: true })
       : setDisplayLightbox({ current: current + 1, isOpen: true });
   };
-  const previous = () => {
+  const previous = (e: any) => {
+    e.stopPropagation();
     current === 0
       ? setDisplayLightbox({ current: collection.length - 1, isOpen: true })
       : setDisplayLightbox({ current: current - 1, isOpen: true });
@@ -26,10 +29,14 @@ const Lightbox: React.FC<LightboxProps> = ({
       className='lightbox'
       onClick={() => setDisplayLightbox({ current: '', isOpen: false })}
     >
-      <div className='lightbox__body' onClick={(e) => e.stopPropagation()}>
-        <i className='fas fa-chevron-left' onClick={() => previous()}></i>
-        <img src={collection[current].small} alt='print' />
-        <i className='fas fa-chevron-right' onClick={() => next()}></i>
+      <div className='lightbox__body'>
+        <i className='fas fa-chevron-left' onClick={(e) => previous(e)}></i>
+        <img
+          src={collection[current].small}
+          alt='print'
+          onClick={(e) => e.stopPropagation()}
+        />
+        <i className='fas fa-chevron-right' onClick={(e) => next(e)}></i>
       </div>
     </div>,
     document.querySelector('#lightbox')!

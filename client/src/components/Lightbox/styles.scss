@@ -14,10 +14,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 50rem;
     img {
       object-fit: cover;
-      max-width: 70%;
-      max-height: 70%;
+      width: 100%;
     }
   }
   @include respond(mobile) {

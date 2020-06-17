@@ -23,7 +23,7 @@ const ClothingScreen = () => {
         <img
           className='selected-item__img'
           alt='current-clothing'
-          src={items[selectedItem].image}
+          src={items[selectedItem].large}
         ></img>
         <ImageSlider
           items={items}

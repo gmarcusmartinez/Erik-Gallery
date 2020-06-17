@@ -10,7 +10,7 @@ const Mobilenav: React.FC<MobilenavProps> = ({ setDisplayMobilenav }) => {
   return ReactDOM.createPortal(
     <div className='m-nav' onClick={() => setDisplayMobilenav(false)}>
       <div className='m-nav__body' onClick={(e) => e.stopPropagation()}>
-        <Nav cb={setDisplayMobilenav} />
+        <Nav setDisplayMobilenav={setDisplayMobilenav} />
       </div>
     </div>,
     document.querySelector('#mobile-nav')!

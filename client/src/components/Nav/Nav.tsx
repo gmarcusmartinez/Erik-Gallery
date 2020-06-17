@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface NavProps {
-  cb?: Function;
+  setDisplayMobilenav?: Function;
 }
 
-const Nav: React.FC<NavProps> = ({ cb }) => {
+const Nav: React.FC<NavProps> = ({ setDisplayMobilenav }) => {
   const handleClick = () => {
-    if (cb) cb(false);
+    if (setDisplayMobilenav) setDisplayMobilenav(false);
     else return;
   };
   return (
@@ -23,19 +23,11 @@ const Nav: React.FC<NavProps> = ({ cb }) => {
           </Link>
         </ul>
       </li>
-
       <li>
-        Zines
-        <ul className='subnav'>
-          <Link to='/zines/1' onClick={handleClick}>
-            Zine 01
-          </Link>
-          <Link to='/zines/2' onClick={handleClick}>
-            Zine 02
-          </Link>
-        </ul>
+        <Link to='/zines' onClick={handleClick}>
+          Zines
+        </Link>
       </li>
-
       <li>
         <Link to='/clothing' onClick={handleClick}>
           Clothing

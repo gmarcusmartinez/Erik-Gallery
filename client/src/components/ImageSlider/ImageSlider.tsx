@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ImageSliderProps {
-  items: { image: string }[];
+  items: {}[];
   selectedItem: number;
   setSelectedItem: Function;
 }
