@@ -15,3 +15,8 @@
     } // 1024px
   }
 }
+
+@mixin full_wh {
+  height: 100%;
+  width: 100%;
+}

@@ -1,6 +1,7 @@
+$chevron-size: 3.2rem;
+
 .image-slider {
-  width: 100%;
-  height: 100%;
+  @include full_wh;
   position: absolute;
   top: 0;
   left: 0;
@@ -17,6 +18,6 @@
 }
 .fa-chevron-left,
 .fa-chevron-right {
-  font-size: 3.2rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: $chevron-size;
+  color: var(--color-transparent-white);
 }

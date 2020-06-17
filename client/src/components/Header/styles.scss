@@ -1,23 +1,29 @@
+$title-size: 2.2rem;
+$menu-trigger-size: 2rem;
+
 .header {
-  display: flex;
   align-items: center;
-  margin: 1rem;
+  display: flex;
+  margin: var(--margin-sm);
+
   &__title {
-    font-size: 2.2rem;
-    font-weight: 400;
-    color: #585858;
-    letter-spacing: 0.2rem;
+    color: var(--color-grey-primary);
+    font-size: $title-size;
+    font-weight: var(--font-weight-normal);
+    letter-spacing: var(--letter-spacing-md);
+    margin-left: var(--margin-sm);
     text-decoration: none;
-    margin-left: 1rem;
     span {
-      font-weight: 300;
+      font-weight: var(--font-weight-light);
     }
   }
+
   &__menu-trigger {
-    color: #585858;
-    font-size: 2rem;
+    color: var(--color-grey-primary);
     display: none;
+    font-size: $menu-trigger-size;
   }
+
   @include respond(tablet) {
     &__menu-trigger {
       display: flex;

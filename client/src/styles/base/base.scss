@@ -8,16 +8,32 @@
 
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-  @include respond(tablet) {
-    font-size: 55%;
-  }
-  @include respond(mobile) {
-    font-size: 50%;
-  }
 }
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: rgb(241, 242, 243);
   line-height: 1.6;
   max-width: 1200px;
+}
+:root {
+  --color-grey-primary: #585858;
+  --color-fb: #3b5998;
+  --color-ig: #c13584;
+  --color-sc: #ff7700;
+
+  --color-bg: rgb(241, 242, 243);
+  --color-modal-bg: rgba(0, 0, 0, 0.85);
+  --color-transparent-white: rgba(255, 255, 255, 0.8);
+
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+
+  --letter-spacing-sm: 0.1rem;
+  --letter-spacing-md: 0.2rem;
+
+  --transition-fast: 0.25s ease-in;
+  --transition-md: 0.5s ease-in;
 }

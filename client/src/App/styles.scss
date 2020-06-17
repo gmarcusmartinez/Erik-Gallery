@@ -1,11 +1,13 @@
-.landing {
+.app {
   height: calc(100vh - 8rem);
   display: flex;
 }
 .content {
   height: 100%;
   width: 100%;
-  margin: 1rem;
+  margin: var(--margin-sm);
+  display: flex;
+
   .landing-image {
     object-fit: cover;
     max-width: 100%;
@@ -14,7 +16,7 @@
 }
 
 .sidenav {
-  height: 90%;
+  height: 100%;
   width: 24rem;
   padding-left: 1rem;
 

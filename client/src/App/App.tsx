@@ -7,15 +7,17 @@ import Mobilenav from '../components/Mobilenav/Mobilenav';
 import ClothingScreen from '../screens/ClothingScreen';
 import PrintsScreen from '../screens/PrintsScreen/PrintsScreen';
 import ProjectScreen from '../screens/ProjectScreen/ProjectScreen';
+import Toggle from '../components/Toggle';
 
 const App = () => {
   const [displayMobilenav, setDisplayMobilenav] = React.useState(false);
   return (
     <>
       <Header setDisplayMobilenav={setDisplayMobilenav} />
-      <div className='landing'>
+      <div className='app'>
         <div className='sidenav'>
           <Nav />
+          <Toggle />
         </div>
         <div className='content'>
           <Switch>
@@ -25,9 +27,10 @@ const App = () => {
           </Switch>
         </div>
       </div>
-      {displayMobilenav ? (
-        <Mobilenav setDisplayMobilenav={setDisplayMobilenav} />
-      ) : null}
+      <Mobilenav
+        displayMobileNav={displayMobilenav}
+        setDisplayMobilenav={setDisplayMobilenav}
+      />
     </>
   );
 };

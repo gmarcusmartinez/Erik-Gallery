@@ -1,26 +1,28 @@
-.m-nav {
-  background-color: rgba(0, 0, 0, 0.7);
-  height: 100%;
-  width: 100vw;
+$header-spacer: 6rem;
+$m-nav-width: 30rem;
 
+.m-nav {
+  background-color: var(--color-modal-bg);
   position: fixed;
-  top: 6rem;
   left: 0;
-  z-index: 2;
+  top: $header-spacer;
+
+  z-index: 1;
   &__body {
-    background-color: rgb(241, 242, 243);
-    width: 45vw;
+    display: none;
     height: 100vh;
-    transition: all 0.5s 0.2s;
     margin-top: -1rem;
   }
-
   @media screen and (min-width: 769px) {
     display: none;
   }
-  @include respond(mobile) {
-    &__body {
-      width: 65vw;
-    }
+}
+.open {
+  @include full_wh;
+  .m-nav__body {
+    transition: 1s;
+    display: block;
+    width: $m-nav-width;
+    background-color: var(--color-bg);
   }
 }

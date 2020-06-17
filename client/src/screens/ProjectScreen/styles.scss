@@ -1,55 +1,59 @@
+$project-title-size: 2.2rem;
+$project-title-size-mobile: 1.8rem;
+
+$project-desc-size: 1.4rem;
+$project-desc-size-mobile: 1.1rem;
+
+$image-container-height: 40rem;
+$image-container-height-mobile: 50rem;
+
 .project {
-  width: 100%;
-  height: 100%;
+  @include full_wh;
   &__title {
-    font-size: 2.2rem;
-    color: #585858;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    margin-bottom: 1rem;
+    width: 100%;
+    color: var(--color-grey-primary);
+    font-size: $project-title-size;
+    font-weight: var(--font-weight-light);
+    letter-spacing: var(--letter-spacing-sm);
+    margin-bottom: var(--margin-sm);
   }
   &__description {
-    margin-top: 2rem;
-    font-size: 1.4rem;
-    letter-spacing: 0.1rem;
+    margin-top: var(--margin-md);
+    font-size: $project-desc-size;
+    letter-spacing: var(--letter-spacing-sm);
   }
   .image-container {
-    display: flex;
-    height: 40rem;
-  }
-  &__images {
+    height: $image-container-height;
     width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    grid-gap: 0.5rem;
-    .project-image {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-    }
   }
-
   .selected-image {
     display: none;
+  }
+
+  &__images {
+    @include full_wh;
+    display: grid;
+    grid-gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    .project-image {
+      @include full_wh;
+      object-fit: cover;
+    }
   }
 
   @include respond(tablet) {
     .image-container {
       display: grid;
       grid-template-columns: 15% 85%;
-      margin: 1rem;
-      height: 40rem;
     }
 
     &__images {
-      transition: 0.5s ease-out;
+      max-height: $image-container-height;
       grid-gap: 0;
-      width: 100%;
-      height: 100%;
-      .project-image {
-        filter: brightness(30%);
-      }
+    }
+
+    .project-image {
+      filter: brightness(30%);
     }
 
     .selected-image {
@@ -59,8 +63,7 @@
       height: 40rem;
       position: relative;
       &__img {
-        width: 100%;
-        height: 100%;
+        @include full_wh;
         object-fit: cover;
       }
     }
@@ -68,10 +71,14 @@
       padding: 1rem;
     }
   }
-  @include respond(mobile) {
-    .image-container {
-      height: 50rem;
 
+  @include respond(mobile) {
+    &__title {
+      margin-bottom: 0.5rem;
+      font-size: $project-title-size-mobile;
+    }
+    .image-container {
+      height: $image-container-height-mobile;
       grid-template-rows: 85% 15%;
       grid-template-columns: 1fr;
       grid-template-areas:
@@ -82,14 +89,14 @@
 
       &__images {
         grid-area: list;
-        width: 100%;
+        @include full_wh;
         display: flex;
       }
-    }
-    .selected-image {
-      grid-area: selected;
-      height: 100%;
-      padding: 0;
+      .selected-image {
+        grid-area: selected;
+        height: 100%;
+        padding: 0;
+      }
     }
   }
 }
