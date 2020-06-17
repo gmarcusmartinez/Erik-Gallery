@@ -36,9 +36,9 @@ const ProjectScreen: React.FC<ProjectScreenProps> = ({ match }) => {
       <div className='project__title'>{title}</div>
       <div className='image-container'>
         <div className='project__images'>{list}</div>
-        <div className='selected-item'>
+        <div className='selected-image'>
           <img
-            className='selected-item__img'
+            className='selected-image__img'
             alt='project'
             src={images[selectedItem].small}
           ></img>
