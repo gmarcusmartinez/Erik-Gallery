@@ -24,6 +24,7 @@ body {
   --color-modal-bg: rgba(0, 0, 0, 0.85);
   --color-transparent-white: rgba(255, 255, 255, 0.8);
 
+  --margin-xs: 0.5rem;
   --margin-sm: 1rem;
   --margin-md: 2rem;
 
@@ -33,6 +34,6 @@ body {
   --letter-spacing-sm: 0.1rem;
   --letter-spacing-md: 0.2rem;
 
-  --transition-fast: 0.25s ease-in;
-  --transition-md: 0.5s ease-in;
+  --transition-fast: 0.25s ease-in-out;
+  --transition-md: 0.5s ease-in-out;
 }

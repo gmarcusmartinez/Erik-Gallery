@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Nav from '../Nav/Nav';
+import Nav from '../Nav';
 
 interface MobilenavProps {
   displayMobileNav: boolean;
@@ -17,7 +17,9 @@ const Mobilenav: React.FC<MobilenavProps> = ({
       onClick={() => setDisplayMobilenav(false)}
     >
       <div className={`m-nav__body`} onClick={(e) => e.stopPropagation()}>
-        <Nav setDisplayMobilenav={setDisplayMobilenav} />
+        {displayMobileNav ? (
+          <Nav setDisplayMobilenav={setDisplayMobilenav} />
+        ) : null}
       </div>
     </div>,
     document.querySelector('#mobile-nav')!

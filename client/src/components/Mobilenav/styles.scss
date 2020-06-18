@@ -1,17 +1,17 @@
 $header-spacer: 6rem;
 $m-nav-width: 30rem;
+$m-nav-width-mobile: 60vw;
 
 .m-nav {
   background-color: var(--color-modal-bg);
   position: fixed;
   left: 0;
   top: $header-spacer;
-
   z-index: 1;
   &__body {
-    display: none;
-    height: 100vh;
-    margin-top: -1rem;
+    width: 0rem;
+    height: 100%;
+    margin-top: -1.1rem;
   }
   @media screen and (min-width: 769px) {
     display: none;
@@ -20,9 +20,12 @@ $m-nav-width: 30rem;
 .open {
   @include full_wh;
   .m-nav__body {
-    transition: 1s;
-    display: block;
-    width: $m-nav-width;
     background-color: var(--color-bg);
+    display: block;
+    transition: var(--transition-md);
+    width: $m-nav-width;
+    @include respond(mobile) {
+      width: $m-nav-width-mobile;
+    }
   }
 }

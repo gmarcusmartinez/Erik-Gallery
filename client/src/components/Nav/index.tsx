@@ -1,6 +1,7 @@
 import React from 'react';
-import { urls } from './urls';
 import { Link } from 'react-router-dom';
+import { urls } from './urls';
+import Toggle from '../Toggle/index';
 
 interface NavProps {
   setDisplayMobilenav?: Function;
@@ -20,20 +21,10 @@ const Nav: React.FC<NavProps> = ({ setDisplayMobilenav }) => {
   ));
 
   return (
-    <ul className='links'>
-      <li>
-        Projects
-        <ul className='subnav'>
-          <Link to='/projects/bigwall' onClick={handleClick}>
-            Big Wall Small Bricks
-          </Link>
-          <Link to='/projects/center' onClick={handleClick}>
-            When The Center Does Not Hold
-          </Link>
-        </ul>
-      </li>
-      {list}
-    </ul>
+    <>
+      <ul className='links'>{list}</ul>
+      <Toggle />
+    </>
   );
 };
 

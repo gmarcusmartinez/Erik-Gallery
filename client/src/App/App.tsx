@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Header from '../components/Header/Header';
-import Nav from '../components/Nav/Nav';
-import Mobilenav from '../components/Mobilenav/Mobilenav';
+import Nav from '../components/Nav';
+import Header from '../components/Header';
+import ZineScreen from '../screens/ZineScreen';
+import Mobilenav from '../components/Mobilenav';
+import PrintsScreen from '../screens/PrintsScreen';
+import ProjectDetail from '../screens/ProjectDetail';
 import ClothingScreen from '../screens/ClothingScreen';
-import PrintsScreen from '../screens/PrintsScreen/PrintsScreen';
-import ProjectScreen from '../screens/ProjectScreen/ProjectScreen';
-import Toggle from '../components/Toggle';
-import ZineScreen from '../screens/ZineScreen/ZineScreen';
+import ProjectsScreen from '../screens/ProjectsScreen';
 
 const App = () => {
   const [displayMobilenav, setDisplayMobilenav] = React.useState(false);
@@ -16,19 +16,20 @@ const App = () => {
     <>
       <Header setDisplayMobilenav={setDisplayMobilenav} />
       <div className='app'>
-        <div className='sidenav'>
+        <div className='side-nav'>
           <Nav />
-          <Toggle />
         </div>
         <div className='content'>
           <Switch>
             <Route exact path='/clothing' component={ClothingScreen} />
             <Route exact path='/prints' component={PrintsScreen} />
-            <Route exact path='/projects/:id' component={ProjectScreen} />
+            <Route exact path='/projects/' component={ProjectsScreen} />
+            <Route exact path='/projects/:id' component={ProjectDetail} />
             <Route exact path='/zines/' component={ZineScreen} />
           </Switch>
         </div>
       </div>
+
       <Mobilenav
         displayMobileNav={displayMobilenav}
         setDisplayMobilenav={setDisplayMobilenav}

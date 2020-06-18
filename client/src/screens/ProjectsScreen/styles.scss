@@ -1,0 +1,38 @@
+.project-list {
+  @include full_wh;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: var(--margin-sm);
+  @include respond(mobile) {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.project-item {
+  @include full_wh;
+  color: var(--color-grey-primary);
+  cursor: pointer;
+  letter-spacing: var(--letter-spacing-sm);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.project-preview {
+  margin-top: var(--margin-xs);
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  &:hover {
+    transition: var(--transition-md);
+    filter: grayscale(0%);
+  }
+  @include respond(mobile) {
+    max-height: 27rem;
+    &:active {
+      filter: grayscale(0%);
+    }
+  }
+}
