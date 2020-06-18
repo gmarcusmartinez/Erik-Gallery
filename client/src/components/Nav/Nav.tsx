@@ -1,15 +1,24 @@
 import React from 'react';
+import { urls } from './urls';
 import { Link } from 'react-router-dom';
 
 interface NavProps {
   setDisplayMobilenav?: Function;
 }
-
 const Nav: React.FC<NavProps> = ({ setDisplayMobilenav }) => {
   const handleClick = () => {
     if (setDisplayMobilenav) setDisplayMobilenav(false);
     else return;
   };
+
+  let list = urls.map((url, index) => (
+    <li key={index} style={{ textTransform: 'capitalize' }}>
+      <Link to={`/${url.to}`} onClick={handleClick}>
+        {url.text}
+      </Link>
+    </li>
+  ));
+
   return (
     <ul className='links'>
       <li>
@@ -23,21 +32,7 @@ const Nav: React.FC<NavProps> = ({ setDisplayMobilenav }) => {
           </Link>
         </ul>
       </li>
-      <li>
-        <Link to='/zines' onClick={handleClick}>
-          Zines
-        </Link>
-      </li>
-      <li>
-        <Link to='/clothing' onClick={handleClick}>
-          Clothing
-        </Link>
-      </li>
-      <li>
-        <Link to='/prints' onClick={handleClick}>
-          Prints
-        </Link>
-      </li>
+      {list}
     </ul>
   );
 };

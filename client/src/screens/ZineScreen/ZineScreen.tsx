@@ -1,33 +1,33 @@
 import React from 'react';
-import { prints } from './data';
+import { items } from './data';
 import Lightbox from '../../components/Lightbox/Lightbox';
 
-const PrintsScreen: React.FC = () => {
+const ZineScreen: React.FC = () => {
   const [displayLightbox, setDisplayLightbox] = React.useState({
     current: 0,
     isOpen: false,
   });
-
-  let list = prints.map((p, index) => (
+  let list = items.map((i, index) => (
     <img
       key={index}
-      src={p.small}
-      alt='print'
-      className='print-item'
+      src={i.small}
+      alt='zine'
+      className='zine-item'
       onClick={() => setDisplayLightbox({ current: index, isOpen: true })}
     />
   ));
   return (
-    <div className='prints'>
+    <div className='zines'>
       {list}
       {displayLightbox.isOpen ? (
         <Lightbox
           setDisplayLightbox={setDisplayLightbox}
           current={displayLightbox.current}
-          collection={prints}
+          collection={items}
         />
       ) : null}
     </div>
   );
 };
-export default PrintsScreen;
+
+export default ZineScreen;

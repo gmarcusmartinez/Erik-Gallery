@@ -1,0 +1,20 @@
+$zine-item-height: 20rem;
+.zines {
+  @include full_wh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.75rem;
+  .zine-item {
+    @include full_wh;
+    object-fit: cover;
+  }
+  @include respond(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: scroll;
+    .zine-item {
+      width: 100%;
+      height: $zine-item-height;
+      margin-bottom: var(--margin-sm);
+    }
+  }
+}
