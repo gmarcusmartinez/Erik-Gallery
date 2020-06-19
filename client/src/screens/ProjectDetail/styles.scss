@@ -9,7 +9,6 @@ $image-container-height-mobile: 50rem;
   @include full_wh;
   &__title {
     width: 100%;
-    color: var(--color-grey-primary);
     font-size: $project-title-size;
     font-weight: var(--font-weight-light);
     letter-spacing: var(--letter-spacing-sm);
@@ -71,6 +70,7 @@ $image-container-height-mobile: 50rem;
   }
 
   @include respond(mobile) {
+    margin: var(--margin-sm);
     &__title {
       margin-bottom: 0.5rem;
       font-size: $project-title-size-mobile;
@@ -83,7 +83,6 @@ $image-container-height-mobile: 50rem;
         'selected'
         'list';
       grid-gap: 0.5rem;
-      margin: 0rem;
 
       &__images {
         grid-area: list;

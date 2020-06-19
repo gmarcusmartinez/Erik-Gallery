@@ -12,17 +12,14 @@ html {
 body {
   font-family: 'Montserrat', sans-serif;
   line-height: 1.6;
-  max-width: 1200px;
 }
 :root {
-  --color-grey-primary: #585858;
   --color-fb: #3b5998;
   --color-ig: #c13584;
   --color-sc: #ff7700;
 
-  --color-bg: rgb(255, 255, 255);
-  --color-modal-bg: rgba(0, 0, 0, 0.85);
-  --color-transparent-white: rgba(255, 255, 255, 0.8);
+  --color-modal-bg: rgba(3, 3, 3, 0.85);
+  --color-transparent-white: rgba(255, 255, 255, 0.7);
 
   --margin-xs: 0.5rem;
   --margin-sm: 1rem;

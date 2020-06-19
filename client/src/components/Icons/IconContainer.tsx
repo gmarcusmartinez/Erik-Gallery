@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { ThemeContext } from '../../context/ThemeContext';
 const mediaIcons = [
   {
     text: 'fab fa-instagram',
@@ -15,12 +15,16 @@ const mediaIcons = [
   },
 ];
 
-const icons = mediaIcons.map((i: any, index) => (
-  <a href={i.to} target='blank' key={index}>
-    <i className={i.text}></i>
-  </a>
-));
 const IconContainer = () => {
+  const { theme } = React.useContext(ThemeContext);
+  const clr = theme === 'light' ? '#585858' : '#e5e5e5';
+
+  const icons = mediaIcons.map((i: any, index) => (
+    <a href={i.to} target='blank' key={index}>
+      <i className={i.text} style={{ color: clr }}></i>
+    </a>
+  ));
+
   return <div className='icons-container'>{icons}</div>;
 };
 

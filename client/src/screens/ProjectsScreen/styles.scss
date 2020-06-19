@@ -12,7 +12,6 @@
 
 .project-item {
   @include full_wh;
-  color: var(--color-grey-primary);
   cursor: pointer;
   letter-spacing: var(--letter-spacing-sm);
   text-decoration: none;
@@ -30,7 +29,9 @@
     filter: grayscale(0%);
   }
   @include respond(mobile) {
-    max-height: 27rem;
+    height: 28rem;
+    margin-bottom: var(--margin-md);
+
     &:active {
       filter: grayscale(0%);
     }

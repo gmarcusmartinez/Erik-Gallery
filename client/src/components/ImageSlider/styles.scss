@@ -10,14 +10,10 @@ $chevron-size: 3.2rem;
   align-items: center;
   justify-content: space-between;
 }
-.fa-chevron-left {
-  margin: 0 2rem;
-}
-.fa-chevron-right {
-  margin: 0 2rem;
-}
+
 .fa-chevron-left,
 .fa-chevron-right {
   font-size: $chevron-size;
   color: var(--color-transparent-white);
+  margin: 0 0.5rem;
 }

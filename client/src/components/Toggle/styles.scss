@@ -1,8 +1,7 @@
 $toggle-size: 1.2rem;
 .toggle-container {
-  margin-top: auto;
+  margin-top: var(--margin-sm);
   font-size: $toggle-size;
-  color: var(--color-grey-primary);
   letter-spacing: var(--letter-spacing-sm);
   margin-left: var(--margin-sm);
 }

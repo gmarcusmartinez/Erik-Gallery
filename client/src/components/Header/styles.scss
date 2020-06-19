@@ -5,9 +5,9 @@ $menu-trigger-size: 2rem;
   align-items: center;
   display: flex;
   margin: var(--margin-sm);
+  z-index: 2;
 
   &__title {
-    color: var(--color-grey-primary);
     font-size: $title-size;
     font-weight: var(--font-weight-normal);
     letter-spacing: var(--letter-spacing-md);
@@ -19,7 +19,6 @@ $menu-trigger-size: 2rem;
   }
 
   &__menu-trigger {
-    color: var(--color-grey-primary);
     display: none;
     font-size: $menu-trigger-size;
   }
