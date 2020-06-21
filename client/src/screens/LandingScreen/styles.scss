@@ -1,0 +1,9 @@
+.landing {
+  @include full_wh;
+  margin: var(--margin-sm);
+  img {
+    @include full_wh;
+    object-fit: cover;
+    filter: grayscale(50%);
+  }
+}

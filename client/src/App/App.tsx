@@ -6,6 +6,7 @@ import Header from '../components/Header';
 import ZineScreen from '../screens/ZineScreen';
 import Mobilenav from '../components/Mobilenav';
 import PrintsScreen from '../screens/PrintsScreen';
+import LandingScreen from '../screens/LandingScreen';
 import ProjectDetail from '../screens/ProjectDetail';
 import ClothingScreen from '../screens/ClothingScreen';
 import ProjectsScreen from '../screens/ProjectsScreen';
@@ -27,6 +28,7 @@ const App = () => {
         </div>
         <div className='content'>
           <Switch>
+            <Route exact path='/' component={LandingScreen} />
             <Route exact path='/projects/' component={ProjectsScreen} />
             <Route exact path='/projects/:id' component={ProjectDetail} />
             <Route exact path='/prints' component={PrintsScreen} />
