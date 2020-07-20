@@ -47,6 +47,7 @@ $image-container-height-mobile: 50rem;
     &__images {
       max-height: $image-container-height;
       grid-gap: 0;
+      overflow: hidden;
     }
 
     .project-image {

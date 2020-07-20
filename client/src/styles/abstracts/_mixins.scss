@@ -20,3 +20,12 @@
   height: 100%;
   width: 100%;
 }
+@mixin flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin theme_link {
+  text-decoration: none;
+  text-transform: uppercase;
+}

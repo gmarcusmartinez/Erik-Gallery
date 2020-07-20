@@ -7,6 +7,7 @@ $zine-item-height: 20rem;
   .zine-item {
     @include full_wh;
     object-fit: cover;
+    max-height: 26rem;
   }
   @include respond(mobile) {
     grid-template-columns: repeat(2, 1fr);

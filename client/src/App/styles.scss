@@ -1,36 +1,14 @@
 .app {
-  height: 100%;
-  width: 100%;
+  @include full_wh;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  transition: var(--transition-md);
 }
-.container {
-  height: 100vh;
-  max-width: 120rem;
-  display: flex;
-}
+
 .content {
-  height: calc(100% - 6em);
+  height: 95vh;
   width: 100%;
-  margin: 0 var(--margin-sm);
   display: flex;
-
-  .landing-image {
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
-  }
-}
-
-.side-nav {
-  height: 100%;
-  width: 24rem;
-  padding-left: 1rem;
-
-  display: flex;
-  flex-direction: column;
-  @include respond(tablet) {
-    display: none;
-  }
+  margin: auto;
+  margin-top: var(--margin-sm);
+  margin-bottom: var(--margin-sm);
 }

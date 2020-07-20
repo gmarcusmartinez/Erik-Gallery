@@ -1,31 +1,27 @@
-$title-size: 2.2rem;
+@import './NavLinks/styles.scss';
+$title-size: 2rem;
 $menu-trigger-size: 2rem;
+
+$header-height: 5rem;
 
 .header {
   align-items: center;
+  background-color: var(--color-overlay-bg);
+  color: var(--color-light-grey);
   display: flex;
-  margin: var(--margin-sm);
-  z-index: 2;
+  height: $header-height;
+  padding: var(--padding-sm);
 
   &__title {
+    color: var(--color-light-grey);
     font-size: $title-size;
     font-weight: var(--font-weight-normal);
     letter-spacing: var(--letter-spacing-md);
     margin-left: var(--margin-sm);
     text-decoration: none;
+    text-transform: uppercase;
     span {
       font-weight: var(--font-weight-light);
-    }
-  }
-
-  &__menu-trigger {
-    display: none;
-    font-size: $menu-trigger-size;
-  }
-
-  @include respond(tablet) {
-    &__menu-trigger {
-      display: flex;
     }
   }
 }

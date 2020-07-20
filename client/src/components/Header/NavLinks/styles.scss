@@ -1,0 +1,17 @@
+$link-font-size: 1.5rem;
+
+.links {
+  display: flex;
+  margin-left: auto;
+  a {
+    color: var(--color-light-grey);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 0 var(--margin-sm);
+    font-size: $link-font-size;
+    letter-spacing: var(--letter-spacing-md);
+  }
+  @include respond(tablet) {
+    display: none;
+  }
+}

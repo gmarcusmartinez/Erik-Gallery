@@ -1,20 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 @import './abstracts/mixins';
 @import './base/base';
 
 @import '../App/styles';
+
 @import '../screens/ZineScreen/styles';
 @import '../screens/PrintsScreen/styles';
+@import '../screens/ContactScreen/styles';
 @import '../screens/LandingScreen/styles';
 @import '../screens/ProjectDetail/styles';
 @import '../screens/ProjectsScreen/styles';
-@import '../screens/ClothingScreen/styles';
 
-@import '../components/Nav/styles';
-@import '../components/Icons/styles';
 @import '../components/Header/styles';
-@import '../components/Toggle/styles';
 @import '../components/Lightbox/styles';
 @import '../components/Mobilenav/styles';
 @import '../components/ImageSlider/styles';
+@import '../components/HamburgerIcon/styles';

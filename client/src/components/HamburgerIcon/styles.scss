@@ -1,0 +1,54 @@
+$hamburger-bg-color: transparent;
+$hamburger-height: 2rem;
+$hamburger-width: 2.2rem;
+
+$line-position: relative;
+$line-flex: none;
+$line-width: 100%;
+$line-height: 0.2rem;
+
+$line-after-top: 0.8rem;
+$line-before-top: -0.8rem;
+$line-before-position: absolute;
+
+.hamburger {
+  background-color: $hamburger-bg-color;
+  display: none;
+  height: $hamburger-height;
+  width: $hamburger-width;
+
+  .line {
+    @include flex_center;
+    background: var(--color-light-grey);
+    transition: all var(--transition-md);
+    position: $line-position;
+    flex: $line-flex;
+    width: $line-width;
+    height: $line-height;
+    &::before,
+    &::after {
+      content: '';
+      position: $line-before-position;
+      top: $line-before-top;
+      width: 100%;
+      height: $line-height;
+      background-color: inherit;
+    }
+    &::after {
+      top: $line-after-top;
+    }
+  }
+  &.checked {
+    .line {
+      transform: rotate(135deg);
+      &::before,
+      &::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+  @include respond(tablet) {
+    @include flex_center;
+  }
+}

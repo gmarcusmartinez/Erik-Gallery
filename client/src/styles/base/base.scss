@@ -8,17 +8,20 @@
 
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  height: 100%;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Libre Baskerville', serif;
   line-height: 1.6;
+  height: 100%;
 }
 :root {
-  --color-fb: #3b5998;
-  --color-ig: #c13584;
-  --color-sc: #ff7700;
+  height: 100%;
+
+  --color-light-grey: #e5e5e5;
 
   --color-modal-bg: rgba(3, 3, 3, 0.85);
+  --color-overlay-bg: rgba(3, 3, 3, 0.85);
   --color-transparent-white: rgba(255, 255, 255, 0.7);
 
   --margin-xs: 0.5rem;
@@ -30,7 +33,14 @@ body {
 
   --letter-spacing-sm: 0.1rem;
   --letter-spacing-md: 0.2rem;
+  --letter-spacing-lg: 0.4rem;
 
   --transition-fast: 0.25s ease-in-out;
-  --transition-md: 0.5s ease-in-out;
+  --transition-md: 0.4s ease;
+
+  --padding-sm: 1rem;
+  --padding-md: 2rem;
+
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
 }

@@ -1,28 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import IconContainer from '../Icons/IconContainer';
-import { ThemeContext } from '../../context/ThemeContext';
+import NavLinks from './NavLinks';
+import HamburgerIcon from 'components/HamburgerIcon';
 
-interface HeaderProps {
-  setDisplayMobilenav: Function;
+interface IProps {
+  showMobileNav: boolean;
+  setShowMobileNav: Function;
 }
-
-const Header: React.FC<HeaderProps> = ({ setDisplayMobilenav }) => {
-  const { theme } = React.useContext(ThemeContext);
-  const clr = theme === 'light' ? '#585858' : '#e5e5e5';
-
+const Header: React.FC<IProps> = ({ showMobileNav, setShowMobileNav }) => {
+  const handleClick = () => setShowMobileNav(!showMobileNav);
   return (
     <div className='header'>
-      <div
-        className='header__menu-trigger'
-        onClick={() => setDisplayMobilenav(true)}
-      >
-        <i className='fas fa-bars'></i>
-      </div>
-      <Link to='/' className='header__title' style={{ color: clr }}>
-        Erik<span>Felfalusi</span>
+      <HamburgerIcon onClick={handleClick} showMobileNav={showMobileNav} />
+      <Link to='/' className='header__title'>
+        Erik Felfalusi
       </Link>
-      <IconContainer />
+      <NavLinks />
     </div>
   );
 };

@@ -1,0 +1,19 @@
+$contact-info-margin-top: 8rem;
+$contact-info-font-size: 1.2rem;
+
+.contact-screen {
+  @include full_wh;
+  background-color: var(--color-overlay-bg);
+  text-align: center;
+  &__info {
+    margin-top: $contact-info-margin-top;
+    p,
+    a {
+      color: var(--color-light-grey);
+      margin: var(--margin-md) 0;
+      font-size: $contact-info-font-size;
+      letter-spacing: var(--letter-spacing-md);
+      text-decoration: none;
+    }
+  }
+}

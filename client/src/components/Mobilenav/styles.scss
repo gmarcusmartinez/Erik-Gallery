@@ -1,31 +1,33 @@
+@import './MobileNavLinks/styles.scss';
+
 $header-spacer: 5.5rem;
-$m-nav-width: 30rem;
-$m-nav-width-mobile: 60vw;
+$m-nav-width-mobile: 100%;
 
 .m-nav {
   background-color: var(--color-modal-bg);
   position: absolute;
   left: 0;
   top: $header-spacer;
-  z-index: 1;
 
-  &__body {
-    width: 0rem;
-    height: 100vh;
-    margin-top: -1.2rem;
-  }
+  height: 100%;
+  width: 0%;
+
   @media screen and (min-width: 769px) {
     display: none;
   }
+  transition: var(--transition-md);
 }
+
 .open {
-  @include full_wh;
-  .m-nav__body {
-    display: block;
-    transition: var(--transition-md);
-    width: $m-nav-width;
-    @include respond(mobile) {
-      width: $m-nav-width-mobile;
+  display: block;
+  width: $m-nav-width-mobile;
+  .mobile-nav-links {
+    display: flex;
+    a {
+      color: var(--color-light-grey);
     }
+  }
+  @media screen and (min-width: 769px) {
+    display: none;
   }
 }
