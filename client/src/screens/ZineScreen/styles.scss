@@ -1,16 +1,28 @@
 $zine-item-height: 20rem;
+$zine-item-max-height: 26rem;
+
+$zine-screen-max-width: 110rem;
+
+$zine-screen-display: grid;
+$zine-screen-grid-gap: 0.5rem;
+$zine-screen-grid-cols: repeat(3, 1fr);
+$mobile-zine-screen-grid-cols: repeat(2, 1fr);
+
 .zines {
   @include full_wh;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 0.75rem;
+  display: $zine-screen-display;
+  grid-gap: $zine-screen-grid-gap;
+  grid-template-columns: $zine-screen-grid-cols;
+  max-width: $zine-screen-max-width;
+  margin-bottom: var(--margin-md);
+  padding: var(--padding-sm);
   .zine-item {
     @include full_wh;
     object-fit: cover;
-    max-height: 26rem;
+    max-height: $zine-item-max-height;
   }
   @include respond(mobile) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: $mobile-zine-screen-grid-cols;
     overflow-y: scroll;
     .zine-item {
       width: 100%;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const urls = [
-  { to: 'gallery', text: 'gallery' },
+  // { to: 'gallery', text: 'gallery' },
   { to: 'prints', text: 'print work' },
   { to: 'zines', text: 'zines' },
   { to: 'sound', text: 'sound' },

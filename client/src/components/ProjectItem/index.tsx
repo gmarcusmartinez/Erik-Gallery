@@ -1,26 +1,21 @@
 import React from 'react';
-import { projects } from './data';
-import Lightbox from '../../components/Lightbox/Lightbox';
-import ImageSlider from '../../components/ImageSlider/ImageSlider';
+import Lightbox from 'components/Lightbox/Lightbox';
+import ImageSlider from 'components/ImageSlider/ImageSlider';
 
-interface ProjectScreenProps {
-  match: {
-    params: {
-      id: string;
-    };
+interface IProps {
+  project: {
+    id: string;
+    images: { small: string }[];
+    title: string;
   };
 }
 
-const ProjectScreen: React.FC<ProjectScreenProps> = ({ match }) => {
+const ProjectItem: React.FC<IProps> = ({ project }) => {
   const [selectedItem, setSelectedItem] = React.useState(0);
-  const [displayLightbox, setDisplayLightbox] = React.useState({
-    current: 0,
-    isOpen: false,
-  });
+  const defaultLbState = { current: 0, isOpen: false };
+  const [displayLightbox, setDisplayLightbox] = React.useState(defaultLbState);
 
-  const project = projects.find((p) => p.id === match.params.id);
-  const { title, images, description } = project!;
-
+  const { title, images } = project!;
   let list = images.map((i, index) => (
     <img
       className={`project-image ${selectedItem === index ? 'current' : ''}`}
@@ -49,7 +44,6 @@ const ProjectScreen: React.FC<ProjectScreenProps> = ({ match }) => {
           />
         </div>
       </div>
-      <div className='project__description'>{description}</div>
       {displayLightbox.isOpen ? (
         <Lightbox
           setDisplayLightbox={setDisplayLightbox}
@@ -61,4 +55,4 @@ const ProjectScreen: React.FC<ProjectScreenProps> = ({ match }) => {
   );
 };
 
-export default ProjectScreen;
+export default ProjectItem;

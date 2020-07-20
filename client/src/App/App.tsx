@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { landingImage } from 'screens/ProjectDetail/data';
+import { landingImage } from 'screens/GalleryScreen/data';
 import Header from 'components/Header';
 import Mobilenav from 'components/Mobilenav';
 import * as screens from 'screens';
@@ -18,7 +18,7 @@ const App = () => {
           <Route exact path='/' component={screens.LandingScreen} />
           <Route exact path='/zines/' component={screens.ZineScreen} />
           <Route exact path='/prints' component={screens.PrintsScreen} />
-          <Route exact path='/gallery/' component={screens.ProjectsScreen} />
+          <Route exact path='/sound/' component={screens.SoundScreen} />
           <Route exact path='/contact/' component={screens.ContactScreen} />
           <Route component={screens.NotFound} />
         </Switch>

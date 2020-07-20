@@ -1,23 +1,24 @@
-$project-title-size: 2.2rem;
-$project-title-size-mobile: 1.8rem;
+$project-title-font-size: 1.6rem;
+$project-title-size-mobile: 1.25rem;
 $project-desc-size: 1.4rem;
 $project-desc-size-mobile: 1.1rem;
-$image-container-height: 40rem;
-$image-container-height-mobile: 50rem;
+
+$image-container-height: 30rem;
+
+$images-desktop-display: grid;
+$images-desktop-grid-gap: 0.5rem;
+$images-mobile-grid-gap: 0.5rem;
+$images-desktop-grid-cols: repeat(auto-fit, minmax(8rem, 1fr));
 
 .project {
-  @include full_wh;
+  margin: var(--margin-md);
+  background-color: var(--color-overlay-bg);
   &__title {
-    width: 100%;
-    font-size: $project-title-size;
-    font-weight: var(--font-weight-light);
-    letter-spacing: var(--letter-spacing-sm);
+    color: var(--color-light-grey);
+    font-size: $project-title-font-size;
+    letter-spacing: var(--letter-spacing-lg);
     margin-bottom: var(--margin-sm);
-  }
-  &__description {
-    margin-top: var(--margin-md);
-    font-size: $project-desc-size;
-    letter-spacing: var(--letter-spacing-sm);
+    width: 100%;
   }
   .image-container {
     height: $image-container-height;
@@ -29,9 +30,9 @@ $image-container-height-mobile: 50rem;
 
   &__images {
     @include full_wh;
-    display: grid;
-    grid-gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    display: $images-desktop-display;
+    grid-gap: $images-desktop-grid-gap;
+    grid-template-columns: $images-desktop-grid-cols;
     .project-image {
       @include full_wh;
       object-fit: cover;
@@ -49,7 +50,6 @@ $image-container-height-mobile: 50rem;
       grid-gap: 0;
       overflow: hidden;
     }
-
     .project-image {
       filter: brightness(30%);
     }
@@ -58,15 +58,12 @@ $image-container-height-mobile: 50rem;
       display: block;
       padding: 0 0.5rem;
       width: 100%;
-      height: 40rem;
+      height: $image-container-height;
       position: relative;
       &__img {
         @include full_wh;
         object-fit: cover;
       }
-    }
-    &__description {
-      padding: 1rem;
     }
   }
 
@@ -77,17 +74,17 @@ $image-container-height-mobile: 50rem;
       font-size: $project-title-size-mobile;
     }
     .image-container {
-      height: $image-container-height-mobile;
+      height: $image-container-height;
       grid-template-rows: 85% 15%;
       grid-template-columns: 1fr;
       grid-template-areas:
         'selected'
         'list';
-      grid-gap: 0.5rem;
+      grid-gap: $images-mobile-grid-gap;
 
       &__images {
-        grid-area: list;
         @include full_wh;
+        grid-area: list;
         display: flex;
       }
       .selected-image {

@@ -1,5 +1,7 @@
 @import './NavLinks/styles.scss';
 $title-size: 2rem;
+$mobile-title-size: 1.4rem;
+
 $menu-trigger-size: 2rem;
 
 $header-height: 5rem;
@@ -22,6 +24,11 @@ $header-height: 5rem;
     text-transform: uppercase;
     span {
       font-weight: var(--font-weight-light);
+    }
+  }
+  @include respond(mobile) {
+    &__title {
+      font-size: $mobile-title-size;
     }
   }
 }

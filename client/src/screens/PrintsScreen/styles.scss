@@ -1,5 +1,6 @@
+$print-item-max-height: 26rem;
 $print-item-height-mobile: 20rem;
-$print-screen-width: 95%;
+$print-screen-max-width: 110rem;
 
 $print-screen-display: grid;
 $print-screen-grid-gap: 0.5rem;
@@ -9,14 +10,17 @@ $tablet-print-screen-grid-cols: repeat(3, 1fr);
 $mobile-print-screen-grid-cols: repeat(2, 1fr);
 
 .prints {
+  @include full_wh;
   display: $print-screen-display;
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;
+  max-width: $print-screen-max-width;
+  margin-bottom: var(--margin-md);
   padding: var(--padding-sm);
   .print-item {
     @include full_wh;
     object-fit: cover;
-    max-height: 26rem;
+    max-height: $print-item-max-height;
   }
 
   @include respond(tablet) {
