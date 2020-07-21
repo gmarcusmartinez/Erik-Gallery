@@ -1,10 +1,13 @@
 $contact-info-margin-top: 8rem;
 $contact-info-font-size: 1.2rem;
+$contact-screen-height: 100vh;
+$contact-screen-width: 100%;
 
 .contact-screen {
-  @include full_wh;
   background-color: var(--color-overlay-bg);
+  height: $contact-screen-height;
   text-align: center;
+  width: $contact-screen-width;
   &__info {
     margin-top: $contact-info-margin-top;
     p,

@@ -13,16 +13,14 @@ const App = () => {
   return (
     <div className='app' style={{ background, backgroundSize: 'cover' }}>
       <Header {...headerProps} />
-      <div className='content'>
-        <Switch>
-          <Route exact path='/' component={screens.LandingScreen} />
-          <Route exact path='/zines/' component={screens.ZineScreen} />
-          <Route exact path='/prints' component={screens.PrintsScreen} />
-          <Route exact path='/sound/' component={screens.SoundScreen} />
-          <Route exact path='/contact/' component={screens.ContactScreen} />
-          <Route component={screens.NotFound} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path='/' component={screens.LandingScreen} />
+        <Route exact path='/zines/' component={screens.ZineScreen} />
+        <Route exact path='/prints' component={screens.PrintsScreen} />
+        <Route exact path='/sound/' component={screens.SoundScreen} />
+        <Route exact path='/contact/' component={screens.ContactScreen} />
+        <Route component={screens.NotFound} />
+      </Switch>
       <Mobilenav {...headerProps} />
     </div>
   );

@@ -9,13 +9,14 @@ $m-nav-width-mobile: 100%;
   left: 0;
   top: $header-spacer;
 
-  height: 100%;
+  height: calc(100% + 3.5em);
   width: 0%;
 
   @media screen and (min-width: 769px) {
     display: none;
   }
   transition: var(--transition-md);
+  z-index: 2;
 }
 
 .open {

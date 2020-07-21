@@ -1,10 +1,12 @@
 $sound-info-margin-top: 8rem;
 $sound-info-font-size: 1.4rem;
-
+$sound-screen-height: 100vh;
+$sound-screen-width: 100%;
 .sound-screen {
-  @include full_wh;
   background-color: var(--color-overlay-bg);
+  height: $sound-screen-height;
   text-align: center;
+  width: $sound-screen-width;
   &__info {
     margin-top: $sound-info-margin-top;
     p,

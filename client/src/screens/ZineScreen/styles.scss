@@ -9,10 +9,10 @@ $zine-screen-grid-cols: repeat(3, 1fr);
 $mobile-zine-screen-grid-cols: repeat(2, 1fr);
 
 .zines {
-  @include full_wh;
   display: $zine-screen-display;
   grid-gap: $zine-screen-grid-gap;
   grid-template-columns: $zine-screen-grid-cols;
+  height: 100vh;
   max-width: $zine-screen-max-width;
   margin-bottom: var(--margin-md);
   padding: var(--padding-sm);
@@ -21,7 +21,9 @@ $mobile-zine-screen-grid-cols: repeat(2, 1fr);
     object-fit: cover;
     max-height: $zine-item-max-height;
   }
+
   @include respond(mobile) {
+    height: 100%;
     grid-template-columns: $mobile-zine-screen-grid-cols;
     overflow-y: scroll;
     .zine-item {

@@ -1,4 +1,7 @@
+$landing-screen-height: 100vh;
+$landing-screen-width: 100%;
 .landing {
-  @include full_wh;
+  height: $landing-screen-height;
   margin: var(--margin-sm);
+  width: $landing-screen-width;
 }
