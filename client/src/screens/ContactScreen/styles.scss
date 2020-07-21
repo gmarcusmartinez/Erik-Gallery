@@ -1,6 +1,7 @@
 $contact-info-margin-top: 8rem;
 $contact-info-font-size: 1.2rem;
 $contact-screen-height: 100vh;
+$contact-screen-height-mobile: calc(100vh - 5.5em);
 $contact-screen-width: 100%;
 
 .contact-screen {
@@ -18,5 +19,8 @@ $contact-screen-width: 100%;
       letter-spacing: var(--letter-spacing-md);
       text-decoration: none;
     }
+  }
+  @include respond(mobile) {
+    height: $contact-screen-height-mobile;
   }
 }

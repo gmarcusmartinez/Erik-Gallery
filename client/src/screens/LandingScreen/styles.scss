@@ -1,7 +1,12 @@
 $landing-screen-height: 100vh;
+$landing-screen-height-mobile: calc(100vh - 5.5em);
+
 $landing-screen-width: 100%;
 .landing {
   height: $landing-screen-height;
   margin: var(--margin-sm);
   width: $landing-screen-width;
+  @include respond(mobile) {
+    height: $landing-screen-height-mobile;
+  }
 }

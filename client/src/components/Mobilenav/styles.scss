@@ -9,7 +9,7 @@ $m-nav-width-mobile: 100%;
   left: 0;
   top: $header-spacer;
 
-  height: calc(100% + 3.5em);
+  height: 100%;
   width: 0%;
 
   @media screen and (min-width: 769px) {
@@ -21,6 +21,8 @@ $m-nav-width-mobile: 100%;
 
 .open {
   display: block;
+  height: 100vh;
+  overflow-y: unset;
   width: $m-nav-width-mobile;
   .mobile-nav-links {
     display: flex;

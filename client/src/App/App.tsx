@@ -11,7 +11,10 @@ const App = () => {
   const headerProps = { showMobileNav, setShowMobileNav };
   const background = `url(${landingImage}) center center`;
   return (
-    <div className='app' style={{ background, backgroundSize: 'cover' }}>
+    <div
+      className={`app ${showMobileNav ? 'lock' : ''}`}
+      style={{ background, backgroundSize: 'cover' }}
+    >
       <Header {...headerProps} />
       <Switch>
         <Route exact path='/' component={screens.LandingScreen} />
