@@ -19,7 +19,7 @@ $line-before-position: absolute;
 
   .line {
     @include flex_center;
-    background: var(--color-light-grey);
+    background: var(--color-black);
     transition: all var(--transition-md);
     position: $line-position;
     flex: $line-flex;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { landingImage } from 'screens/GalleryScreen/data';
 import Header from 'components/Header';
 import Mobilenav from 'components/Mobilenav';
 import * as screens from 'screens';
@@ -9,12 +8,8 @@ import * as screens from 'screens';
 const App = () => {
   const [showMobileNav, setShowMobileNav] = React.useState(true);
   const headerProps = { showMobileNav, setShowMobileNav };
-  const background = `url(${landingImage}) center center`;
   return (
-    <div
-      className={`app ${showMobileNav ? 'lock' : ''}`}
-      style={{ background, backgroundSize: 'cover' }}
-    >
+    <div className={`app ${showMobileNav ? 'lock' : ''}`}>
       <Header {...headerProps} />
       <Switch>
         <Route exact path='/' component={screens.LandingScreen} />

@@ -1,12 +1,30 @@
+$background-url: 'https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400';
+
 $landing-screen-height: 100vh;
 $landing-screen-height-mobile: calc(100vh - 5.5em);
 
-$landing-screen-width: 100%;
+$landing-screen-mobile-width: 100%;
+$landing-screen-tablet-width: 70%;
+$landing-screen-desktop-width: 60%;
+
 .landing {
+  background: url($background-url) center center;
+  background-size: cover;
   height: $landing-screen-height;
-  margin: var(--margin-sm);
-  width: $landing-screen-width;
+  margin: var(--margin-sm) auto;
+
   @include respond(mobile) {
     height: $landing-screen-height-mobile;
   }
+  @media (min-width: 480px) {
+    width: $landing-screen-mobile-width;
+  }
+  @media (min-width: 768px) {
+    width: $landing-screen-tablet-width;
+  }
+  @media (min-width: 1100px) {
+    width: $landing-screen-desktop-width;
+  }
+  background: url($background-url) no-repeat center center;
+  background-size: cover;
 }

@@ -1,6 +1,3 @@
-export const landingImage =
-  'https://lh3.googleusercontent.com/MNXFcWLaxwWw6v3P9DUWGr40g2O4jSbaFnRuNPtgAq28iXrSd-bixS42rDK6opJWS5AmLcRUOdkVK6rS0TkZbCDesL3uxror-kqzJtXiWPYtC_oZyMvkVFT8LNck-_HS8XK7sjjXUQ=w2400';
-
 export const projects = [
   {
     id: 'center',

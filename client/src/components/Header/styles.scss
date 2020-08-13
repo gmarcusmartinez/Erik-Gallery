@@ -7,16 +7,16 @@ $header-height: 5rem;
 
 .header {
   align-items: center;
-  background-color: var(--color-overlay-bg);
-  color: var(--color-light-grey);
   display: flex;
+  background-color: var(--color-overlay-bg);
   height: $header-height;
   padding: var(--padding-sm);
 
   &__title {
-    color: var(--color-light-grey);
+    color: var(--color-black);
     font-size: $title-size;
     font-weight: var(--font-weight-normal);
+    font-style: italic;
     letter-spacing: var(--letter-spacing-md);
     margin-left: var(--margin-sm);
     text-decoration: none;

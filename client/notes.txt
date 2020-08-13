@@ -1,0 +1,7 @@
+- invert colors black to white : opaque white overlay
+- new background image only on landing page
+- header font italic
+- change icon to cross
+- link font italic on click : active 
+
+- 
