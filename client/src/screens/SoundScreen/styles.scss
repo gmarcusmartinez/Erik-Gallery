@@ -4,16 +4,18 @@ $sound-screen-height: 100vh;
 $sound-screen-height-mobile: calc(100vh - 5.5em);
 $sound-screen-width: 100%;
 .sound-screen {
-  background-color: var(--color-overlay-bg);
+  @include bg-img;
   height: $sound-screen-height;
   text-align: center;
   width: $sound-screen-width;
   &__info {
-    margin-top: $sound-info-margin-top;
+    @include full_wh;
+    background-color: var(--color-overlay-bg);
+    padding-top: $sound-info-margin-top;
     p,
     a {
       display: block;
-      color: var(--color-light-grey);
+      color: var(--color-black);
       margin: var(--margin-md) 0;
       font-size: $sound-info-font-size;
       letter-spacing: var(--letter-spacing-lg);

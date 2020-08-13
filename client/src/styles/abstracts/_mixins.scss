@@ -1,3 +1,8 @@
+$background-url: 'https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400';
+$landing-screen-mobile-width: 100%;
+$landing-screen-tablet-width: 70%;
+$landing-screen-desktop-width: 60%;
+
 @mixin respond($breakpoint) {
   @if $breakpoint == mobile {
     @media (max-width: 31.25em) {
@@ -28,4 +33,17 @@
 @mixin theme_link {
   text-decoration: none;
   text-transform: uppercase;
+}
+
+@mixin bg-img {
+  background: url($background-url) no-repeat center center;
+  background-size: cover;
+  width: $landing-screen-mobile-width;
+
+  @media (min-width: 768px) {
+    width: $landing-screen-tablet-width;
+  }
+  @media (min-width: 1100px) {
+    width: $landing-screen-desktop-width;
+  }
 }

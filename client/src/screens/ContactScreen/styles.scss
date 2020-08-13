@@ -5,12 +5,17 @@ $contact-screen-height-mobile: calc(100vh - 5.5em);
 $contact-screen-width: 100%;
 
 .contact-screen {
-  background-color: var(--color-overlay-bg);
+  @include bg-img;
   height: $contact-screen-height;
+  margin: auto;
+  position: relative;
   text-align: center;
   width: $contact-screen-width;
+
   &__info {
-    margin-top: $contact-info-margin-top;
+    @include full_wh;
+    background-color: var(--color-overlay-bg);
+    padding-top: $contact-info-margin-top;
     p,
     a {
       color: var(--color-black);
