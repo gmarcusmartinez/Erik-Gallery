@@ -11,7 +11,7 @@ $header-height: 5rem;
   align-self: start;
   background-color: var(--color-overlay-bg);
   height: $header-height;
-  padding: var(--padding-sm);
+  padding: 1rem 1rem 0 1rem;
   width: 98%;
 
   &__title {
@@ -22,6 +22,7 @@ $header-height: 5rem;
     letter-spacing: var(--letter-spacing-md);
     text-decoration: none;
     text-transform: uppercase;
+    z-index: 3;
     span {
       font-weight: var(--font-weight-light);
     }

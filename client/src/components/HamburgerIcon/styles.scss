@@ -17,6 +17,7 @@ $line-before-position: absolute;
   height: $hamburger-height;
   margin-right: var(--margin-sm);
   width: $hamburger-width;
+  z-index: 3;
 
   .line {
     @include flex_center;

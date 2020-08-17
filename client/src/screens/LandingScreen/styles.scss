@@ -4,7 +4,7 @@ $landing-screen-height-mobile: calc(100vh - 5.5em);
 .landing {
   @include bg-img;
   height: $landing-screen-height;
-  margin: var(--margin-sm) auto;
+  margin: 0 auto;
 
   @include respond(mobile) {
     height: $landing-screen-height-mobile;

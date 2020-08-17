@@ -8,5 +8,6 @@
   align-items: center;
 }
 .lock {
-  height: calc(100vh + 5em);
+  overflow-y: unset;
+  -webkit-overflow-scrolling: unset;
 }
