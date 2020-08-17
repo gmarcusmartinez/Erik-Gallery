@@ -49,4 +49,48 @@ export const prints = [
     small:
       'https://lh3.googleusercontent.com/MXG5xwK7pgq_ESaetK12IL7GfTWdhpzoFfKwuge0uWzTRgpwbLDRMMXoHUUZJzwWul1h0WMfroryKCXyu0HXumYH4urKZRFpHQqpzRPUIyMpP8cJSiPXiZAPr3qg5akmMNyF2PZzUw=w2400',
   },
+  {
+    small:
+      'https://lh3.googleusercontent.com/ZWe7ktcDu_Qm8l3TmxktvlcXRQ7eUbDXUqYuEW-fmQxH47gJ4s-WUvuVFwUq48WiJUVdG-wI6dXn0EdrQ22dULs0Uof6rw6FH2Jni6uWOWy3dfaIm1-pCWHzJrcaVyA-tuIsnmHTiw=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/pIr2Ms4U9YwjJE5uzQyvk9_3qweaety92q7PD37OlFCYPqIbVWnoC95tArwqSpeZnGFIiryTyw2MAteVPDlIFWkuIuEeovzTnjFqHvkViMgMt6etxvBBkBlLAo92i551AKgHstNp5A=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/vWuv2PKSVul9T2-FG8wqwBvjKWQP5ROrXZXmkZCit8KrG7O0Rc3nmLHHSPzTgq9Yc20giY0wlDsdoddG195gZZkqkEvvHMnXLuepTa_VzpOWDzhEts9I5OfActpNIp-6_RckVfWVTg=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/8U2bxA-m9ilOTt0EdEFl3Cn_sElPwT3NfE67ese3DfDDryfLZryVBC9mUanSM4k_TTskP-1Qbrx1umChRp4_CRe31vuTY708MbQuFcWL-orwp_tMfgXxo1anfw1ZZWAXMFfVPFnApA=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/_adSWCYPL7ZQZh3AZ0La8M8MxikUi091Qce-aTU4OcEBY5QS50p_nfCnzklHFimKAMoprECgPn-t0J_w56i3tE5yF3uyVjMFDmGteCknUqmpJZY3bRruXXqPjnYg3w7DAu3VPzG5Fw=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/PoxIl8lyq_0mlBJ5cdBN6GYKzrmN1dcXHbwQXOixJcOxmkB5RQiNsdvRCR2QLjPZJAdy5IszjIm2Vk7IxaFLGNhhEO56DRmdnzyGnyZEi14-B0M92neggtKIxaYy4ukLmYPYgzzovA=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/GoMFge9WDKxAiEyJuy_dzAD2tOSfuLse1ybFOLPJEEvc26CT_98Kvot-DUiWdSDvDTsrY9OjM0hq-evDBLEr3WmHWmv429IyKfj_samDkzPWi4mJAA6jROxvbo5-PyAls-f_yvD8GQ=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/SZj7OjHDOa5EEywinZna4SUeOQ95IuFIO5_8NmXg8Hvfifiehqs15u7nwhf-yLIdsQuK7y_kmCHBAP7pQeAtFLMa_fiM0ump-iWF_56wuQhlv2J0nqxu2gblIkOcbCE1gsYVCF5nDw=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/-WDj1jyQlnIdwrJ-I_wW6mfifLlxllmzaYyOICOtm15dL9xodyXefMZKwf5AUerrBn7DuB91U3AlrzZOnuyGt0VrAplHDJi_jS_CzcEVmvwAa9Ggn2-z5faOv1VfMYilp-Sh4ON-Yw=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/pQyAHXhAAADVbnQeo1b8cpYca7D0P7OIBuzH4cDR3gWOubXZqJ2EyEVGjfOSLCq5TV6t9sfe9gqIci8rjZzOhB2zljAgVcGWPLiRfs9y1YmLp0r3DuJ4ujT5xdUe14bEjLWRtbN7FA=w2400',
+  },
+  {
+    small:
+      'https://lh3.googleusercontent.com/t9RFa4eFAS0Pjj8dJDJ8zQX6f7qkZdhpOvXbNN_dgaIBlsKCExuQn-w0_kkS8at37mkfIyb8EqXsLBKmU-g7UvdeOKaedhETt4v1cRrwJeCFiOPE7trwNEol6gK6e3maZm-_0gP4EA=w2400',
+  },
 ];

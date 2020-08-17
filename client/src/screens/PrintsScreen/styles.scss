@@ -1,3 +1,4 @@
+$print-item-min-height: 18rem;
 $print-item-max-height: 26rem;
 $print-item-height-mobile: 20rem;
 $print-screen-max-width: 110rem;
@@ -13,13 +14,14 @@ $mobile-print-screen-grid-cols: repeat(2, 1fr);
   display: $print-screen-display;
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;
-  height: 100vh;
   max-width: $print-screen-max-width;
   margin-bottom: var(--margin-md);
   padding: var(--padding-sm);
+  overflow-y: scroll;
   .print-item {
     @include full_wh;
     object-fit: cover;
+    min-height: $print-item-min-height;
     max-height: $print-item-max-height;
   }
 
@@ -29,8 +31,6 @@ $mobile-print-screen-grid-cols: repeat(2, 1fr);
 
   @include respond(mobile) {
     grid-template-columns: $mobile-print-screen-grid-cols;
-    height: 100%;
-    overflow-y: scroll;
     .print-item {
       width: 100%;
       height: $print-item-height-mobile;

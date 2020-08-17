@@ -15,6 +15,7 @@ $line-before-position: absolute;
   background-color: $hamburger-bg-color;
   display: none;
   height: $hamburger-height;
+  margin-right: var(--margin-sm);
   width: $hamburger-width;
 
   .line {
