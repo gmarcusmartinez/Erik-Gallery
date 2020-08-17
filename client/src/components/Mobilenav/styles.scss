@@ -1,10 +1,10 @@
 @import './MobileNavLinks/styles.scss';
 
-$header-spacer: 6.75rem;
+$header-spacer: 5.5rem;
 $m-nav-width-mobile: 100%;
 
 .m-nav {
-  background-color: var(--color-modal-bg);
+  background-color: var(--color-overlay-bg);
   position: absolute;
   left: 0;
   top: $header-spacer;
