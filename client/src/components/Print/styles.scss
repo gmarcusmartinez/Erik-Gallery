@@ -1,0 +1,17 @@
+$print-item-min-height: 18rem;
+$print-item-max-height: 50rem;
+
+$print-item-height-mobile: 50rem;
+
+.print-item {
+  min-height: $print-item-min-height;
+  max-height: $print-item-max-height;
+  width: 100%;
+}
+
+@include respond(mobile) {
+  .print-item {
+    object-fit: cover;
+    height: $print-item-height-mobile;
+  }
+}
