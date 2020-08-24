@@ -1,5 +1,4 @@
-$print-screen-display: grid;
-$print-screen-grid-gap: 0.5rem;
+$print-screen-grid-gap: 1rem;
 $print-screen-max-width: 110rem;
 
 $print-screen-grid-cols: repeat(4, 1fr);
@@ -7,13 +6,15 @@ $tablet-print-screen-grid-cols: repeat(3, 1fr);
 $mobile-print-screen-grid-cols: repeat(1, 1fr);
 
 .prints {
-  display: $print-screen-display;
+  display: grid;
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;
   max-width: $print-screen-max-width;
+  margin-top: 5rem;
   margin-bottom: var(--margin-md);
   overflow-y: scroll;
   padding: var(--padding-sm);
+  width: 100%;
 
   @include respond(tablet) {
     grid-template-columns: $tablet-print-screen-grid-cols;

@@ -4,9 +4,28 @@ $print-item-max-height: 50rem;
 $print-item-height-mobile: 50rem;
 
 .print-item {
-  min-height: $print-item-min-height;
-  max-height: $print-item-max-height;
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  &__img {
+    width: 100%;
+    height: 70%;
+    background-size: cover;
+    background-position: center;
+  }
+  &__description {
+    padding: var(--padding-sm);
+    text-align: center;
+    font-size: 1.5rem;
+    letter-spacing: var(letter-spacing-sm);
+    color: #666;
+  }
+  &__size {
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: var(letter-spacing-sm);
+    color: #666;
+  }
 }
 
 @include respond(mobile) {

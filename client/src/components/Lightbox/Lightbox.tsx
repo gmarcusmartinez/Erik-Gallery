@@ -18,12 +18,15 @@ const Lightbox: React.FC<LightboxProps> = ({
       ? setDisplayLightbox({ current: 0, isOpen: true })
       : setDisplayLightbox({ current: current + 1, isOpen: true });
   };
+
   const previous = (e: any) => {
     e.stopPropagation();
+
     current === 0
       ? setDisplayLightbox({ current: collection.length - 1, isOpen: true })
       : setDisplayLightbox({ current: current - 1, isOpen: true });
   };
+
   return ReactDOM.createPortal(
     <div
       className='lightbox'

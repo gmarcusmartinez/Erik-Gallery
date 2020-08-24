@@ -1,6 +1,6 @@
 import React from 'react';
 import { prints } from './data';
-import Lightbox from '../../components/Lightbox/Lightbox';
+import Lightbox from 'components/Lightbox/Lightbox';
 import Print from 'components/Print';
 
 const PrintsScreen: React.FC = () => {
