@@ -6,11 +6,9 @@ $contact-screen-width: 100%;
 
 .contact-screen {
   @include bg-img;
-  height: $contact-screen-height;
   margin: auto;
   position: relative;
   text-align: center;
-  width: $contact-screen-width;
 
   &__info {
     @include full_wh;
@@ -24,8 +22,5 @@ $contact-screen-width: 100%;
       letter-spacing: var(--letter-spacing-md);
       text-decoration: none;
     }
-  }
-  @include respond(mobile) {
-    height: $contact-screen-height-mobile;
   }
 }

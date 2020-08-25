@@ -1,13 +1,9 @@
 $sound-info-margin-top: 8rem;
 $sound-info-font-size: 1.4rem;
-$sound-screen-height: 100vh;
-$sound-screen-height-mobile: calc(100vh - 5.5em);
-$sound-screen-width: 100%;
+
 .sound-screen {
   @include bg-img;
-  height: $sound-screen-height;
   text-align: center;
-  width: $sound-screen-width;
   &__info {
     @include full_wh;
     background-color: var(--color-overlay-bg);
@@ -21,8 +17,5 @@ $sound-screen-width: 100%;
       letter-spacing: var(--letter-spacing-lg);
       text-decoration: none;
     }
-  }
-  @include respond(mobile) {
-    height: $sound-screen-height-mobile;
   }
 }

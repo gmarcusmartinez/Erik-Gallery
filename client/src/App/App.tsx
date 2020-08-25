@@ -6,7 +6,7 @@ import Mobilenav from 'components/Mobilenav';
 import * as screens from 'screens';
 
 const App = () => {
-  const [showMobileNav, setShowMobileNav] = React.useState(true);
+  const [showMobileNav, setShowMobileNav] = React.useState(false);
   const headerProps = { showMobileNav, setShowMobileNav };
   return (
     <div className={`app ${showMobileNav ? 'lock' : ''}`}>

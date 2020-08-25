@@ -10,7 +10,12 @@ const PrintsScreen: React.FC = () => {
   });
 
   let list = prints.map((p, index) => (
-    <Print p={p} index={index} setDisplayLightbox={setDisplayLightbox} />
+    <Print
+      key={p.id}
+      p={p}
+      index={index}
+      setDisplayLightbox={setDisplayLightbox}
+    />
   ));
 
   const renderLightbox = () =>
