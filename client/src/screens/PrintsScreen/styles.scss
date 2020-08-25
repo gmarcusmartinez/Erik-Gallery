@@ -1,9 +1,9 @@
 $print-screen-grid-gap: 1rem;
 $print-screen-max-width: 110rem;
+$print-screen-max-width-tablet: 76rem;
 
 $print-screen-grid-cols: repeat(4, 1fr);
 $tablet-print-screen-grid-cols: repeat(3, 1fr);
-$mobile-print-screen-grid-cols: repeat(1, 1fr);
 
 .prints {
   display: grid;
@@ -13,14 +13,21 @@ $mobile-print-screen-grid-cols: repeat(1, 1fr);
   margin-top: 5rem;
   margin-bottom: var(--margin-md);
   overflow-y: scroll;
-  padding: var(--padding-sm);
+  overflow-x: hidden;
   width: 100%;
 
   @include respond(tablet) {
     grid-template-columns: $tablet-print-screen-grid-cols;
+    max-width: $print-screen-max-width-tablet;
+    margin: auto;
+    width: 90%;
   }
 
   @include respond(mobile) {
-    grid-template-columns: $mobile-print-screen-grid-cols;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin: auto;
+    width: 80%;
   }
 }

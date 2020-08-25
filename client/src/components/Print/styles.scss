@@ -1,7 +1,7 @@
-$print-item-min-height: 18rem;
-$print-item-max-height: 50rem;
-
-$print-item-height-mobile: 50rem;
+$pi-description-font-size: 1.5rem;
+$pi-size-font-size: 1.4rem;
+$pi-text-align: center;
+$pi-color: #666;
 
 .print-item {
   display: flex;
@@ -9,28 +9,27 @@ $print-item-height-mobile: 50rem;
   height: 65vh;
   &__img {
     width: 100%;
-    height: 70%;
+    height: 75%;
     background-size: cover;
     background-position: center;
   }
   &__description {
     padding: var(--padding-sm);
-    text-align: center;
-    font-size: 1.5rem;
+    text-align: $pi-text-align;
+    font-size: $pi-description-font-size;
     letter-spacing: var(letter-spacing-sm);
-    color: #666;
+    color: $pi-color;
   }
   &__size {
-    text-align: center;
-    font-size: 1.4rem;
+    text-align: $pi-text-align;
+    font-size: $pi-size-font-size;
     letter-spacing: var(letter-spacing-sm);
-    color: #666;
+    color: $pi-color;
   }
-}
-
-@include respond(mobile) {
-  .print-item {
-    object-fit: cover;
-    height: $print-item-height-mobile;
+  @include respond(tablet) {
+    height: 55vh;
+  }
+  @include respond(mobile) {
+    height: 85vh;
   }
 }

@@ -18,7 +18,16 @@ $lightbox-body-max-width: 50rem;
     max-width: $lightbox-body-max-width;
     img {
       object-fit: cover;
-      width: 100%;
+      max-width: 90%;
+      max-height: 90%;
+    }
+  }
+  @include respond(tablet) {
+    &__body {
+      img {
+        max-width: 80%;
+        max-height: 80%;
+      }
     }
   }
   @include respond(mobile) {
@@ -28,10 +37,6 @@ $lightbox-body-max-width: 50rem;
       }
       .fa-chevron-right {
         margin: 0 var(--margin-sm);
-      }
-      img {
-        max-width: 80%;
-        max-height: 80%;
       }
     }
   }
