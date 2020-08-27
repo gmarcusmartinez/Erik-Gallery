@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContactScreen = () => {
+const ContactScreen: React.FC = () => {
   return (
     <div className='contact-screen'>
       <div className='contact-screen__info'>

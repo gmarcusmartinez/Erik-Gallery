@@ -1,34 +1,53 @@
-$zine-item-height: 20rem;
-$zine-item-max-height: 26rem;
-
 $zine-screen-max-width: 110rem;
 
-$zine-screen-display: grid;
-$zine-screen-grid-gap: 0.5rem;
-$zine-screen-grid-cols: repeat(3, 1fr);
-$mobile-zine-screen-grid-cols: repeat(2, 1fr);
-
 .zines {
-  display: $zine-screen-display;
-  grid-gap: $zine-screen-grid-gap;
-  grid-template-columns: $zine-screen-grid-cols;
   height: 100vh;
-  max-width: $zine-screen-max-width;
-  margin-bottom: var(--margin-md);
-  padding: var(--padding-sm);
-  .zine-item {
-    @include full_wh;
-    object-fit: cover;
-    max-height: $zine-item-max-height;
+  width: 100%;
+  margin-top: var(--margin-md);
+  &__content {
+    max-width: 110rem;
+    margin: auto;
   }
-
-  @include respond(mobile) {
-    height: 100%;
-    grid-template-columns: $mobile-zine-screen-grid-cols;
-    overflow-y: scroll;
-    .zine-item {
+  &__flipbook {
+    display: flex;
+    height: 12rem;
+    width: 90%;
+    border: 1px solid red;
+    overflow: hidden;
+  }
+  @include respond(tablet) {
+    &__content {
+      max-width: 54rem;
+    }
+    &__flipbook {
+      display: flex;
+      height: 10rem;
       width: 100%;
-      height: $zine-item-height;
+      border: 1px solid red;
     }
   }
+  @include respond(mobile) {
+    &__content {
+      max-width: 34rem;
+    }
+    &__flipbook {
+      display: flex;
+      height: 8rem;
+      width: 100%;
+      border: 1px solid red;
+    }
+  }
+}
+.selected-item {
+  width: 90%;
+  height: 35rem;
+  border: 1px solid red;
+}
+.zine-img {
+  max-width: 100%;
+  height: 100%;
+  filter: brightness(30%);
+}
+.current {
+  filter: brightness(90%);
 }

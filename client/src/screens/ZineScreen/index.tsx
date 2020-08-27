@@ -1,31 +1,33 @@
 import React from 'react';
 import { items } from './data';
-import Lightbox from '../../components/Lightbox/Lightbox';
+import Flipbook from 'components/Flipbook';
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
 
 const ZineScreen: React.FC = () => {
-  const [displayLightbox, setDisplayLightbox] = React.useState({
-    current: 0,
-    isOpen: false,
-  });
+  const [selectedItem, setSelectedItem] = React.useState(0);
+
   let list = items.map((i, index) => (
     <img
+      onClick={() => setSelectedItem(index)}
+      className={`zine-img ${selectedItem === index ? 'current' : ''}`}
       key={index}
       src={i.small}
       alt='zine'
-      className='zine-item'
-      onClick={() => setDisplayLightbox({ current: index, isOpen: true })}
     />
   ));
   return (
     <div className='zines'>
-      {list}
-      {displayLightbox.isOpen ? (
-        <Lightbox
-          setDisplayLightbox={setDisplayLightbox}
-          current={displayLightbox.current}
-          collection={items}
-        />
-      ) : null}
+      <div className='zines__content'>
+        <div className='selected-item'>
+          {/* <img
+            src={items[selectedItem].small}
+            alt='zine'
+            className='selected-item_img'
+          /> */}
+        </div>
+        {/* <div className='zines__flipbook'>{list}</div> */}
+      </div>
     </div>
   );
 };
