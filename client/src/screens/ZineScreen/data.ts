@@ -1,4 +1,4 @@
-export const items = [
+export const zine = [
   {
     id: 1,
     small:
@@ -15,18 +15,22 @@ export const items = [
       'https://lh3.googleusercontent.com/MMvF2Nedsg8vVfzKP_IIHxj6nosci3E-VMWoaEamgvHpxiv7PAVrZMNzq-LG8AgQQLTZ4Ad3T14z6G8Nlm5uq7Fm7J7UOUC-uV1CW6K1yfui2Jw8KobvvpHDNm9fnFX3m3BMMAY-zA=w2400',
   },
   {
+    id: 4,
     small:
       'https://lh3.googleusercontent.com/cQSNaXRakARC32zoMlj3poe-NDMMaIyctZ6NeQBjxZtaVNqW-In7inQOLkoCdoUjhaSkso_6gGLcuI8MmNEWvnAUVHcAKEIacwEXIhXwwvOvbzNL-Mc5J4EHQchC_pekHRVLP1CX6g=w2400',
   },
   {
+    id: 5,
     small:
       'https://lh3.googleusercontent.com/jtK2ekIHn6gQlpW7AinRGpOXWUupB1f_0HUTdc1kTHbIxrGN46tCxn5yAWin8uFN_117q4km_ReqF8aXRkeEzzhh9_yqY2-T2ZsXsfuqkQyRQEmUJsFvsKWEvY2KP2c74wTJaEAjAA=w2400',
   },
   {
+    id: 6,
     small:
       'https://lh3.googleusercontent.com/c3og3kSRTAhj7XHxqyJC6oEnHcFtkIlmQFMkrp_XwbAGgrwFUoFnJXkbKA6gg2K8k0SESoGM2rHtlPAcHQoKk5CNE-iZJ2MvZ3C615yzoUJNc0EAjRDSwL8p6Kix5aLVPXXsy3gm5A=w2400',
   },
   {
+    id: 7,
     small:
       'https://lh3.googleusercontent.com/l3JMUR8AFCviLKUCH_wiHzExad2rjhzmHUtB3AYv7S4F3xiqOe6B_vFLyLSXND4vl7UsOGj0JG0rpX9pQrdSdqNygu6UeQXOuvZoWmGrVQQ31lJpsjKjUUbUPddIU4rkhxGmk7Jn8A=w2400',
   },

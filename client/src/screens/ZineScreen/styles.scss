@@ -4,50 +4,16 @@ $zine-screen-max-width: 110rem;
   height: 100vh;
   width: 100%;
   margin-top: var(--margin-md);
+  display: flex;
+  justify-content: center;
   &__content {
-    max-width: 110rem;
-    margin: auto;
-  }
-  &__flipbook {
-    display: flex;
-    height: 12rem;
     width: 90%;
-    border: 1px solid red;
-    overflow: hidden;
-  }
-  @include respond(tablet) {
-    &__content {
-      max-width: 54rem;
-    }
-    &__flipbook {
-      display: flex;
-      height: 10rem;
-      width: 100%;
-      border: 1px solid red;
-    }
+    max-width: $zine-screen-max-width;
+    height: 90%;
   }
   @include respond(mobile) {
     &__content {
-      max-width: 34rem;
-    }
-    &__flipbook {
-      display: flex;
-      height: 8rem;
-      width: 100%;
-      border: 1px solid red;
+      width: 98%;
     }
   }
-}
-.selected-item {
-  width: 90%;
-  height: 35rem;
-  border: 1px solid red;
-}
-.zine-img {
-  max-width: 100%;
-  height: 100%;
-  filter: brightness(30%);
-}
-.current {
-  filter: brightness(90%);
 }

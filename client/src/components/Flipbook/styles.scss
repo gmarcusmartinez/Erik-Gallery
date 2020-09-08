@@ -1,0 +1,27 @@
+.flipbook {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__selected-page {
+    height: 85%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+  }
+  &__slider {
+    height: 15%;
+    border: 1px solid red;
+    overflow: hidden;
+  }
+}
+
+.zine-img {
+  max-width: 100%;
+  height: 100%;
+  filter: brightness(30%);
+}
+.current {
+  filter: brightness(90%);
+}

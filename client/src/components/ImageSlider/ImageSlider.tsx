@@ -24,8 +24,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
   return (
     <div className='image-slider'>
-      <i className='fas fa-chevron-left' onClick={() => previous()}></i>
-      <i className='fas fa-chevron-right' onClick={() => next()}></i>
+      <div>
+        <i className='fas fa-chevron-left' onClick={() => previous()}></i>
+      </div>
+      <div>
+        <i className='fas fa-chevron-right' onClick={() => next()}></i>
+      </div>
     </div>
   );
 };
