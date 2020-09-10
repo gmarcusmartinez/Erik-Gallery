@@ -6,7 +6,8 @@ interface IProps {
 }
 
 const Flipbook: React.FC<IProps> = ({ zine }) => {
-  const [selectedItem, setSelectedItem] = React.useState(1);
+  const [selectedItem, setSelectedItem] = React.useState(0);
+  const imageSliderProps = { selectedItem, setSelectedItem, items: zine };
 
   // let list = zine.map((i, index) => (
   //   <img
@@ -17,7 +18,6 @@ const Flipbook: React.FC<IProps> = ({ zine }) => {
   //     alt='zine'
   //   />
   // ));
-  const imageSliderProps = { selectedItem, setSelectedItem, items: zine };
   return (
     <div className='flipbook'>
       <div

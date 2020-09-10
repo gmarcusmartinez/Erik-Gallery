@@ -12,6 +12,7 @@ $zine-screen-max-width: 110rem;
     height: 90%;
   }
   @include respond(mobile) {
+    margin-top: 0;
     &__content {
       width: 98%;
     }

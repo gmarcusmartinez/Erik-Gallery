@@ -15,6 +15,12 @@
     border: 1px solid red;
     overflow: hidden;
   }
+  @include respond(mobile) {
+    margin-top: 4rem;
+    &__selected-page {
+      height: 45%;
+    }
+  }
 }
 
 .zine-img {
