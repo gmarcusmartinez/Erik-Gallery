@@ -57,20 +57,15 @@ export const zine = [
   {
     id: 12,
     small:
-      'https://lh3.googleusercontent.com/bYKKXNUgpWe1bZ4b4U0Cm96T4pPsIZm9FDXNUZZLe_rb8hoYD2IHwevWotmGCJCcawT00pdvbfVjoQMdJ4QGQiLNThlomiB3wr6yNB8W5a30U8MW5PZhYShZ2x6zsWTHQPi5wyi9LA=w2400',
+      'https://lh3.googleusercontent.com/-JIUISZFwxNq4tmu61quBgsRrzTXzSTxCFG1q7D2g10vb4bCG9nhUCuWsUET03W9d0oLwtFuQam57Azub4wXt4pO30vm4u39DBh1p6O1y1yme2hYaJPWDfEliRvYxIRLlLSXMBa8tA=w2400',
   },
   {
     id: 13,
     small:
-      'https://lh3.googleusercontent.com/-JIUISZFwxNq4tmu61quBgsRrzTXzSTxCFG1q7D2g10vb4bCG9nhUCuWsUET03W9d0oLwtFuQam57Azub4wXt4pO30vm4u39DBh1p6O1y1yme2hYaJPWDfEliRvYxIRLlLSXMBa8tA=w2400',
-  },
-  {
-    id: 14,
-    small:
       'https://lh3.googleusercontent.com/ncPP4PQZ88FNyc_AGmCJXm5kyQ4Hyu2py-YFj-ByBxJVelfMqoX9L0sI1Kz9h7B5Y7SIF7XfVQGpikE0N7vo10Y84h8oaknXh91hUb2xWmXEEridM7d5gEq9-93PlrLv6nCsZYnQuA=w2400',
   },
   {
-    id: 15,
+    id: 14,
     small:
       'https://lh3.googleusercontent.com/I1JKyvmi2wVIBv7rByw5k9VEkItwIvyYcCyaWgttMn4HAoij5Yx6BA2Xk3A2oNV4IPWx1jKcjQsTNO25qXByWWNB_kPPmbzGRAFXgc5MBvCNuVtcBdUcQA5_ph4Zdg5mLRcg5W3bgg=w2400',
   },

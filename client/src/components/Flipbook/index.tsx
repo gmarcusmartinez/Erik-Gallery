@@ -9,15 +9,15 @@ const Flipbook: React.FC<IProps> = ({ zine }) => {
   const [selectedItem, setSelectedItem] = React.useState(0);
   const imageSliderProps = { selectedItem, setSelectedItem, items: zine };
 
-  // let list = zine.map((i, index) => (
-  //   <img
-  //     onClick={() => setSelectedItem(index)}
-  //     className={`zine-img ${selectedItem === index ? 'current' : ''}`}
-  //     key={index}
-  //     src={i.small}
-  //     alt='zine'
-  //   />
-  // ));
+  let list = zine.map((page, index) => (
+    <img
+      onClick={() => setSelectedItem(index)}
+      className={`zine-img ${selectedItem === index ? 'current' : ''}`}
+      key={index}
+      src={page.small}
+      alt='zine'
+    />
+  ));
   return (
     <div className='flipbook'>
       <div
@@ -26,7 +26,9 @@ const Flipbook: React.FC<IProps> = ({ zine }) => {
       >
         <ImageSlider {...imageSliderProps} />
       </div>
-      <div className='flipbook__slider'>Slider</div>
+      <div className='flipbook__slider'>
+        <div className='flipbook__slider-wrapper'>{list}</div>
+      </div>
     </div>
   );
 };
