@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavLinks from './NavLinks';
 import HamburgerIcon from 'components/HamburgerIcon';
 
 interface IProps {
@@ -15,7 +14,6 @@ const Header: React.FC<IProps> = ({ showMobileNav, setShowMobileNav }) => {
       <Link to='/' className='header__title'>
         Erik Felfalusi
       </Link>
-      <NavLinks />
     </div>
   );
 };

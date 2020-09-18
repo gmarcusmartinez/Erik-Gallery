@@ -10,7 +10,7 @@ $tablet-print-screen-grid-cols: repeat(3, 1fr);
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;
   max-width: $print-screen-max-width;
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: var(--margin-md);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -26,7 +26,6 @@ $tablet-print-screen-grid-cols: repeat(3, 1fr);
   @include respond(mobile) {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
     margin: auto;
     width: 80%;
   }

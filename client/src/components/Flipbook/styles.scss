@@ -13,7 +13,7 @@
   &__slider {
     position: relative;
     height: 8rem;
-    width: 95%;
+    width: 90%;
     overflow: scroll;
     margin: 1rem auto;
     @include respond(mobile) {

@@ -11,14 +11,16 @@ const App = () => {
   return (
     <div className={`app ${showMobileNav ? 'lock' : ''}`}>
       <Header {...headerProps} />
-      <Switch>
-        <Route exact path='/' component={screens.LandingScreen} />
-        <Route exact path='/zines/' component={screens.ZineScreen} />
-        <Route exact path='/prints' component={screens.PrintsScreen} />
-        <Route exact path='/sound/' component={screens.SoundScreen} />
-        <Route exact path='/contact/' component={screens.ContactScreen} />
-        <Route component={screens.NotFound} />
-      </Switch>
+      <div className='content'>
+        <Switch>
+          <Route exact path='/' component={screens.LandingScreen} />
+          <Route exact path='/zines/' component={screens.ZineScreen} />
+          <Route exact path='/prints' component={screens.PrintsScreen} />
+          <Route exact path='/sound/' component={screens.SoundScreen} />
+          <Route exact path='/contact/' component={screens.ContactScreen} />
+          <Route component={screens.NotFound} />
+        </Switch>
+      </div>
       <Mobilenav {...headerProps} />
     </div>
   );

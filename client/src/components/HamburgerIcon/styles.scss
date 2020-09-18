@@ -12,10 +12,11 @@ $line-before-top: -0.8rem;
 $line-before-position: absolute;
 
 .hamburger {
+  @include flex_center;
   background-color: $hamburger-bg-color;
-  display: none;
   height: $hamburger-height;
   margin-right: var(--margin-sm);
+  margin-left: var(--margin-sm);
   width: $hamburger-width;
   z-index: 3;
 
@@ -49,8 +50,5 @@ $line-before-position: absolute;
         transform: rotate(90deg);
       }
     }
-  }
-  @include respond(tablet) {
-    @include flex_center;
   }
 }
