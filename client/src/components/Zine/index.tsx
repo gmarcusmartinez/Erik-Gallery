@@ -8,6 +8,7 @@ interface IProps {
 const Zine: React.FC<IProps> = ({ zine }) => {
   const [selectedItem, setSelectedItem] = React.useState(0);
   const imageSliderProps = { selectedItem, setSelectedItem, items: zine };
+  console.log(selectedItem);
   return (
     <>
       <div className='zine'>
@@ -20,6 +21,7 @@ const Zine: React.FC<IProps> = ({ zine }) => {
       <div className='indicator-container'>
         {zine.map((_, i) => (
           <div
+            key={i}
             className={`indicator ${selectedItem === i ? 'current' : null}`}
           ></div>
         ))}

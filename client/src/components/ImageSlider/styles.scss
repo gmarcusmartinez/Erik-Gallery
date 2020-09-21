@@ -3,19 +3,31 @@ $chevron-size: 3.2rem;
 .image-slider {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
   margin: 2rem 1rem;
 
   > div {
-    background-color: rgba(0, 0, 0, 0.2);
-    height: 50px;
-    width: 50px;
+    background-color: var(--color-transparent-white);
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    height: 5rem;
+    width: 20rem;
+
     display: flex;
     justify-content: center;
     align-items: center;
     &:active {
-      background-color: rgba(0, 0, 0, 0.6);
+      i {
+        color: var(--color-transparent-white);
+      }
+      background-color: #666;
+    }
+  }
+  @include respond(mobile) {
+    justify-content: space-between;
+    > div {
+      width: 48%;
     }
   }
 }
@@ -23,6 +35,9 @@ $chevron-size: 3.2rem;
 .fa-chevron-left,
 .fa-chevron-right {
   font-size: $chevron-size;
-  color: var(--color-transparent-white);
+  color: rgba(0, 0, 0, 0.2);
   margin: 0 var(--margin-xs);
+  &:hover {
+    color: var(--color-transparent-white);
+  }
 }

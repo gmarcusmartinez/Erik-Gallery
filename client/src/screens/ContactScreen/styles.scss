@@ -23,4 +23,7 @@ $contact-screen-width: 100%;
       text-decoration: none;
     }
   }
+  @include respond(mobile) {
+    margin-top: 8rem;
+  }
 }

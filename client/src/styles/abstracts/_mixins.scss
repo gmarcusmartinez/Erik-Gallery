@@ -47,7 +47,7 @@ $landing-screen-desktop-width: 60%;
 
   @include respond(mobile) {
     margin-top: 0;
-    height: 50rem;
-    width: 34rem;
+    height: 60rem;
+    width: 90%;
   }
 }
