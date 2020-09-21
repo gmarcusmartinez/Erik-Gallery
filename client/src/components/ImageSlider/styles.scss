@@ -1,14 +1,11 @@
 $chevron-size: 3.2rem;
 
 .image-slider {
-  @include full_wh;
-  position: absolute;
-  top: 0;
-  left: 0;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  margin: 2rem 1rem;
 
   > div {
     background-color: rgba(0, 0, 0, 0.2);

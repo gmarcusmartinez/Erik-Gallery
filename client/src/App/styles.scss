@@ -11,8 +11,3 @@
   overflow-y: unset;
   -webkit-overflow-scrolling: unset;
 }
-.content {
-  @include respond(mobile) {
-    margin-top: 5rem;
-  }
-}
