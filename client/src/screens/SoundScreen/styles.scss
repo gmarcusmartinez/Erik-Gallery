@@ -4,10 +4,12 @@ $sound-info-font-size: 1.4rem;
 .sound-screen {
   @include bg-img;
   text-align: center;
+
   &__info {
     @include full_wh;
     background-color: var(--color-overlay-bg);
     padding-top: $sound-info-margin-top;
+    margin: auto;
     p,
     a {
       display: block;
@@ -19,6 +21,6 @@ $sound-info-font-size: 1.4rem;
     }
   }
   @include respond(mobile) {
-    margin-top: 8rem;
+    margin-top: 4.5rem;
   }
 }

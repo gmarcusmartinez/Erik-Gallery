@@ -7,15 +7,17 @@ interface IProps {
 
 const Zine: React.FC<IProps> = ({ zine }) => {
   const [selectedItem, setSelectedItem] = React.useState(0);
+
   const imageSliderProps = { selectedItem, setSelectedItem, items: zine };
-  console.log(selectedItem);
   return (
     <>
       <div className='zine'>
         <div
           className={`zine__page`}
           style={{ backgroundImage: `url(${zine[selectedItem].small})` }}
-        ></div>
+        >
+          <ImageSlider {...imageSliderProps} />
+        </div>
       </div>
 
       <div className='indicator-container'>
@@ -26,8 +28,6 @@ const Zine: React.FC<IProps> = ({ zine }) => {
           ></div>
         ))}
       </div>
-
-      <ImageSlider {...imageSliderProps} />
     </>
   );
 };

@@ -6,7 +6,6 @@ $contact-screen-width: 100%;
 
 .contact-screen {
   @include bg-img;
-  margin: auto;
   position: relative;
   text-align: center;
 
@@ -14,6 +13,7 @@ $contact-screen-width: 100%;
     @include full_wh;
     background-color: var(--color-overlay-bg);
     padding-top: $contact-info-margin-top;
+    margin: auto;
     p,
     a {
       color: var(--color-black);
@@ -24,6 +24,6 @@ $contact-screen-width: 100%;
     }
   }
   @include respond(mobile) {
-    margin-top: 8rem;
+    margin-top: 4.5rem;
   }
 }

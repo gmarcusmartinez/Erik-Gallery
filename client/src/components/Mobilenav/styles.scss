@@ -8,6 +8,7 @@ $m-nav-width-mobile: 100%;
   position: absolute;
   left: 0;
   top: 0;
+  margin-top: $header-spacer;
 
   height: 100%;
   width: 0%;
@@ -20,6 +21,7 @@ $m-nav-width-mobile: 100%;
   display: block;
   position: fixed;
   width: $m-nav-width-mobile;
+
   .mobile-nav-links {
     display: flex;
     a {

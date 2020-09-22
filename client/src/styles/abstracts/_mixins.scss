@@ -41,13 +41,13 @@ $landing-screen-desktop-width: 60%;
   background-size: cover;
 
   margin: auto;
-  margin-top: 5rem;
+  margin-top: -1rem;
   height: 65rem;
   width: 50rem;
 
   @include respond(mobile) {
     margin-top: 0;
-    height: 60rem;
-    width: 90%;
+    height: 52rem;
+    width: 88%;
   }
 }

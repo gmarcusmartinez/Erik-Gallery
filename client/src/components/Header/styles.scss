@@ -13,6 +13,7 @@ $header-height: 5rem;
   height: $header-height;
   padding: 1rem 1rem 0 1rem;
   width: 98%;
+  z-index: 20;
 
   &__title {
     color: var(--color-black);
