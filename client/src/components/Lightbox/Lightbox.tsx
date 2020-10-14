@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 interface LightboxProps {
   setDisplayLightbox: Function;
   current: number;
-  collection: { small: string }[];
+  collection: { image: string }[];
 }
 const Lightbox: React.FC<LightboxProps> = ({
   setDisplayLightbox,
@@ -29,20 +29,20 @@ const Lightbox: React.FC<LightboxProps> = ({
 
   return ReactDOM.createPortal(
     <div
-      className='lightbox'
-      onClick={() => setDisplayLightbox({ current: '', isOpen: false })}
+      className="lightbox"
+      onClick={() => setDisplayLightbox({ current: "", isOpen: false })}
     >
-      <div className='lightbox__body'>
-        <i className='fas fa-chevron-left' onClick={(e) => previous(e)}></i>
+      <div className="lightbox__body">
+        <i className="fas fa-chevron-left" onClick={(e) => previous(e)}></i>
         <img
-          src={collection[current].small}
-          alt='print'
+          src={collection[current].image}
+          alt="print"
           onClick={(e) => e.stopPropagation()}
         />
-        <i className='fas fa-chevron-right' onClick={(e) => next(e)}></i>
+        <i className="fas fa-chevron-right" onClick={(e) => next(e)}></i>
       </div>
     </div>,
-    document.querySelector('#lightbox')!
+    document.querySelector("#lightbox")!
   );
 };
 

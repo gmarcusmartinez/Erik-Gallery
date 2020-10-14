@@ -1,9 +1,0 @@
-.gallery-screen {
-  @include full_wh;
-  align-self: center;
-  padding: var(--padding-sm);
-  .projects {
-    @include full_wh;
-    max-width: 120rem;
-  }
-}
