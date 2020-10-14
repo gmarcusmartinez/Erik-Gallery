@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev server/index.ts"
+    "dev": "ts-node-dev index.ts",
+    "seed-d": "ts-node-dev  seeder.ts -d ",
+    "seed-i": "ts-node-dev  seeder.ts -i "
   },
   "author": "",
   "license": "ISC",
