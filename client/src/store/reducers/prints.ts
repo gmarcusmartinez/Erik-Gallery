@@ -3,7 +3,7 @@ import { PrintActionTypes } from "store/actions/types";
 
 const initialState = {
   loading: true,
-  prints: [],
+  items: [],
 };
 
 export const prints = (state = initialState, action: AnyAction) => {
@@ -19,7 +19,7 @@ export const prints = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
-        prints: payload,
+        items: payload,
       };
     default:
       return state;

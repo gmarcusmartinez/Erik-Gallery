@@ -6,17 +6,14 @@ interface IProps {
     description: string;
     size: string;
   };
-  index: number;
-  setDisplayLightbox: Function;
 }
 
-const Print: React.FC<IProps> = ({ print, index, setDisplayLightbox }) => {
+const Print: React.FC<IProps> = ({ print }) => {
   return (
     <div className="print-item">
       <div
         className="print-item__img"
         style={{ backgroundImage: `url(${print.image})` }}
-        onClick={() => setDisplayLightbox({ current: index, isOpen: true })}
       ></div>
 
       <p className="print-item__description">{print.description}</p>

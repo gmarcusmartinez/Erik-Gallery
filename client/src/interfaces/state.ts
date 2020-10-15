@@ -1,8 +1,10 @@
 import { IPrint } from "interfaces";
 
+export interface IPrintsState {
+  loading: boolean;
+  items: IPrint[];
+}
+
 export interface IState {
-  prints: {
-    loading: boolean;
-    prints: IPrint[];
-  };
+  prints: IPrintsState;
 }
