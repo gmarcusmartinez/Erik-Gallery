@@ -1,11 +1,11 @@
 import React from "react";
 
-const headerBlocks = ["", "Item", "Quantity", "Price", ""];
-const headers = headerBlocks.map((hb, i) => (
-  <div className="header" key={i}>
-    {hb}
-  </div>
-));
+// const headerBlocks = ["", "Item", "Quantity", "Price", ""];
+// const headers = headerBlocks.map((hb, i) => (
+//   <div className="header" key={i}>
+//     {hb}
+//   </div>
+// ));
 
 const CartScreen = () => {
   return (

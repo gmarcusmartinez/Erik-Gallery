@@ -1,25 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { createStructuredSelector } from "reselect";
+import { selectCartHidden } from "store/selectors/cart";
+
 import HamburgerIcon from "components/HamburgerIcon";
 import CartIcon from "components/CartIcon";
 import CartDropDown from "components/CartDropDown";
 
 interface IProps {
-  showMobileNav: boolean;
-  setShowMobileNav: Function;
+  hidden: boolean;
 }
-const Header: React.FC<IProps> = ({ showMobileNav, setShowMobileNav }) => {
-  const handleClick = () => setShowMobileNav(!showMobileNav);
+const Header: React.FC<IProps> = ({ hidden }) => {
   return (
     <div className="header">
-      <HamburgerIcon onClick={handleClick} showMobileNav={showMobileNav} />
+      <HamburgerIcon />
       <Link to="/" className="header__title">
         Erik Felfalusi
       </Link>
       <CartIcon />
-      <CartDropDown />
+      {hidden ? null : <CartDropDown />}
     </div>
   );
 };
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  hidden: selectCartHidden,
+});
+
+export default connect(mapStateToProps, {})(Header);

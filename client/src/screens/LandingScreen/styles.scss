@@ -1,15 +1,12 @@
-$landing-screen-height: 100vh;
 $landing-screen-height-mobile: calc(100vh - 5.5em);
 
-.landing {
-  height: $landing-screen-height;
-  width: 100%;
+.landing-screen {
+  @include bg-img;
+  &.bg-img {
+    @include full_wh;
+  }
 
   @include respond(mobile) {
     height: $landing-screen-height-mobile;
-    margin-top: 4.5rem;
-  }
-  .bg-img {
-    @include bg-img;
   }
 }

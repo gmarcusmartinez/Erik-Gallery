@@ -13,7 +13,11 @@ const PrintsScreen: React.FC<IProps> = ({ fetchPrintsStart }) => {
     fetchPrintsStart();
   }, [fetchPrintsStart]);
 
-  return <Route component={PrintsScreenContainer} />;
+  return (
+    <div className="print-screen">
+      <Route component={PrintsScreenContainer} />;
+    </div>
+  );
 };
 
 export default connect(null, { fetchPrintsStart })(PrintsScreen);

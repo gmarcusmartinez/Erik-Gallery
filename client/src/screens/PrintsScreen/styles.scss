@@ -5,12 +5,14 @@ $print-screen-max-width-tablet: 76rem;
 $print-screen-grid-cols: repeat(4, 1fr);
 $tablet-print-screen-grid-cols: repeat(3, 1fr);
 
+.print-screen {
+  margin-top: var(--margin-md);
+}
 .print-list {
   display: grid;
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;
   max-width: $print-screen-max-width;
-  margin-top: 3rem;
   margin-bottom: var(--margin-md);
   overflow-y: scroll;
   overflow-x: hidden;
@@ -27,7 +29,6 @@ $tablet-print-screen-grid-cols: repeat(3, 1fr);
     display: flex;
     flex-direction: column;
     margin: auto;
-    margin-top: 8rem;
     width: 80%;
   }
 }

@@ -6,11 +6,9 @@ import Mobilenav from "components/Mobilenav";
 import * as screens from "screens";
 
 const App = () => {
-  const [showMobileNav, setShowMobileNav] = React.useState(false);
-  const headerProps = { showMobileNav, setShowMobileNav };
   return (
-    <div className={`app ${showMobileNav ? "lock" : ""}`}>
-      <Header {...headerProps} />
+    <div className="app">
+      <Header />
       <div className="main">
         <Switch>
           <Route exact path="/" component={screens.LandingScreen} />
@@ -22,7 +20,7 @@ const App = () => {
           <Route component={screens.NotFound} />
         </Switch>
       </div>
-      <Mobilenav {...headerProps} />
+      <Mobilenav />
     </div>
   );
 };

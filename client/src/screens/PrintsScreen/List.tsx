@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const PrintList: React.FC<IProps> = ({ items }) => {
-  let printItems = items.map((p) => <Print key={p._id} print={p} />);
+  let printItems = items.map((p) => <Print key={p._id} item={p} />);
   return <div className="print-list">{printItems}</div>;
 };
 

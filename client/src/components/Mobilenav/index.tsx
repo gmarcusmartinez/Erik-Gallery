@@ -1,15 +1,21 @@
-import React from 'react';
-import MobileNavLinks from './MobileNavLinks';
+import React from "react";
+import { connect } from "react-redux";
+import { IState } from "interfaces/state";
+import MobileNavLinks from "./MobileNavLinks";
+
 interface IProps {
-  showMobileNav: boolean;
-  setShowMobileNav: Function;
+  open: boolean;
 }
-const Mobilenav: React.FC<IProps> = ({ showMobileNav, setShowMobileNav }) => {
+const Mobilenav: React.FC<IProps> = ({ open }) => {
   return (
-    <div className={`m-nav ${showMobileNav ? 'open' : ''}`}>
-      <MobileNavLinks setShowMobileNav={setShowMobileNav} />
+    <div className={`m-nav ${open ? "open" : ""}`}>
+      <MobileNavLinks />
     </div>
   );
 };
 
-export default Mobilenav;
+const mapStateToProps = (state: IState) => ({
+  open: state.nav.open,
+});
+
+export default connect(mapStateToProps, {})(Mobilenav);

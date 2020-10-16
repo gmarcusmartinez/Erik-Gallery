@@ -1,12 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import CustomButton from "components/CustomButton";
 import { IPrint } from "interfaces";
+import { addItem } from "store/actions/cart";
 
 interface IProps {
-  print: IPrint;
+  item: IPrint;
+  addItem: Function;
 }
 
-const PrintItem: React.FC<IProps> = ({ print }) => {
-  const { image, description, size } = print;
+const PrintItem: React.FC<IProps> = ({ item, addItem }) => {
+  const { image, description, size } = item;
   return (
     <div className="print-item">
       <div
@@ -16,8 +21,11 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
 
       <p className="print-item__description">{description}</p>
       <p className="print-item__size">{size}</p>
+      <CustomButton margin="1rem 0" onClick={() => addItem(item)}>
+        Add To Cart
+      </CustomButton>
     </div>
   );
 };
 
-export default PrintItem;
+export default connect(null, { addItem })(PrintItem);

@@ -1,18 +1,18 @@
 .cart-dropdown {
   position: absolute;
-  width: 240px;
-  height: 340px;
+  width: 24rem;
+  height: 34rem;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  border: 1px solid #999;
+  padding: var(--padding-md);
+  border: 0.1rem solid var(--color-light-grey);
   background-color: white;
   top: 6rem;
   right: 3rem;
   z-index: 5;
 
   .cart-items {
-    height: 240px;
+    height: auto;
     display: flex;
     flex-direction: column;
     overflow: scroll;
@@ -21,4 +21,24 @@
   button {
     margin-top: auto;
   }
+}
+.checkout-redirect {
+  height: 4rem;
+  color: var(--color-grey);
+  letter-spacing: var(--letter-spacing-md);
+  text-decoration: none;
+  border: 0.1rem solid var(--color-gray);
+  margin-top: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-message {
+  color: var(--color-grey);
+  font-size: 1.2rem;
+  letter-spacing: var(--letter-spacing-md);
+  margin: auto;
+  text-transform: uppercase;
 }

@@ -7,4 +7,7 @@ export interface IPrintsState {
 
 export interface IState {
   prints: IPrintsState;
+  nav: {
+    open: boolean;
+  };
 }

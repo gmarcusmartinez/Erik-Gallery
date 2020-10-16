@@ -10,12 +10,14 @@ html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
 }
 body {
-  font-family: 'Libre Baskerville', serif;
+  font-family: "Libre Baskerville", serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
 :root {
+  --color-grey: #999;
   --color-light-grey: #e5e5e5;
+  --color-dark-grey: #666;
   --color-black: #000;
 
   --color-modal-bg: rgba(0, 0, 0, 0.9);

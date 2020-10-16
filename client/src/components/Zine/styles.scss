@@ -30,7 +30,7 @@
 
     transition: background-color 0.5s ease-in;
     &.current {
-      background-color: #666;
+      background-color: var(--color-gray);
     }
   }
 }
