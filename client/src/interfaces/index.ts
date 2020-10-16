@@ -6,3 +6,7 @@ export interface IPrint {
   price: number;
   size: string;
 }
+
+export interface ICartItem extends IPrint {
+  quantity: number;
+}

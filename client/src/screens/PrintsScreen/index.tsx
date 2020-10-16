@@ -1,13 +1,11 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-
-import { IPrintsState } from "interfaces/state";
+import PrintsScreenContainer from "./Container";
 import { fetchPrintsStart } from "store/actions/prints/fetchPrints";
-import PrintList from "./List";
 
 interface IProps {
   fetchPrintsStart: Function;
-  prints: IPrintsState;
 }
 
 const PrintsScreen: React.FC<IProps> = ({ fetchPrintsStart }) => {
@@ -15,11 +13,7 @@ const PrintsScreen: React.FC<IProps> = ({ fetchPrintsStart }) => {
     fetchPrintsStart();
   }, [fetchPrintsStart]);
 
-  return (
-    <div>
-      <PrintList />
-    </div>
-  );
+  return <Route component={PrintsScreenContainer} />;
 };
 
 export default connect(null, { fetchPrintsStart })(PrintsScreen);

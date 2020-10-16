@@ -1,15 +1,17 @@
-@import './NavLinks/styles.scss';
+@import "./NavLinks/styles.scss";
 $title-size: 2rem;
-$mobile-title-size: 1.6rem;
+$cart-link-size: 1.4rem;
+$mobile-title-size: 1.8rem;
 
 $menu-trigger-size: 2rem;
 $header-height: 5rem;
 
 .header {
+  position: fixed;
   align-items: center;
   display: flex;
   align-self: start;
-  background-color: #fff;
+  background-color: var(--color-overlay-bg);
   height: $header-height;
   padding: 1rem 1rem 0 1rem;
   width: 98%;
@@ -28,6 +30,16 @@ $header-height: 5rem;
       font-weight: var(--font-weight-light);
     }
   }
+  &__cart-link {
+    color: #333;
+    font-size: $cart-link-size;
+    letter-spacing: var(--letter-spacing-md);
+    margin-left: auto;
+    margin-right: var(--margin-md);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
   @include respond(mobile) {
     position: fixed;
     &__title {

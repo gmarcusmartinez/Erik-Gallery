@@ -5,7 +5,7 @@ $print-screen-max-width-tablet: 76rem;
 $print-screen-grid-cols: repeat(4, 1fr);
 $tablet-print-screen-grid-cols: repeat(3, 1fr);
 
-.prints {
+.print-list {
   display: grid;
   grid-gap: $print-screen-grid-gap;
   grid-template-columns: $print-screen-grid-cols;

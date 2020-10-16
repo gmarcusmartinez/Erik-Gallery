@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { IPrint } from "interfaces";
-import Print from "components/Print";
+import Print from "components/PrintItem";
 import { selectAllPrints } from "store/selectors/prints";
 
 interface IProps {
@@ -12,7 +12,7 @@ interface IProps {
 
 const PrintList: React.FC<IProps> = ({ items }) => {
   let printItems = items.map((p) => <Print key={p._id} print={p} />);
-  return <div className="prints">{printItems}</div>;
+  return <div className="print-list">{printItems}</div>;
 };
 
 const mapStateToProps = createStructuredSelector({
