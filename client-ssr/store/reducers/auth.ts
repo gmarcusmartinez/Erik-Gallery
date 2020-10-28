@@ -1,26 +1,25 @@
 import { AnyAction } from "redux";
-import { PrintActionTypes } from "store/actions/types";
+import { AuthActionTypes } from "store/actions/types";
 
 const initialState = {
-  loading: true,
-  items: [],
+  loading: false,
 };
 
-export const prints = (state = initialState, action: AnyAction) => {
+export const auth = (state = initialState, action: AnyAction) => {
   const { type, payload } = action;
-
   switch (type) {
-    case PrintActionTypes.FETCH_PRINTS_REQUEST:
+    case AuthActionTypes.USER_LOGIN_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case PrintActionTypes.FETCH_PRINTS_SUCCESS:
+    case AuthActionTypes.USER_LOGIN_SUCCESS:
+    case AuthActionTypes.USER_LOGIN_FAILURE:
       return {
         ...state,
         loading: false,
-        items: payload,
       };
+
     default:
       return state;
   }

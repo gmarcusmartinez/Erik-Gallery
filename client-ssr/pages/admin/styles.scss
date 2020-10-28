@@ -1,0 +1,78 @@
+.admin-screen {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin-form {
+  height: 36rem;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 8rem;
+  width: 28rem;
+
+  display: grid;
+  grid-template-rows: 30% 20% 20% 30%;
+
+  &__title {
+    align-self: center;
+    color: #666;
+    font-size: 1.8rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-left: 10px;
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    color: #666;
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-lg);
+    padding: var(--padding-sm);
+    outline: none;
+    text-transform: uppercase;
+    text-align: start;
+    width: 100%;
+
+    &:active {
+      color: #333;
+      transform: translateY(3px);
+    }
+  }
+}
+
+.auth-input {
+  align-self: flex-start;
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.1rem solid #666;
+  color: #666;
+  font-size: 1.4rem;
+  justify-self: center;
+  letter-spacing: var(--letter-spacing-lg);
+  outline: none;
+
+  height: 4rem;
+  width: calc(100% - 20px);
+
+  transition: var(--transition-fast);
+  &:focus {
+    border-bottom: 0.2rem solid #666;
+  }
+  &::placeholder {
+    color: #666;
+  }
+}
+// .input-error {
+//   color: var(--color-red);
+//   font-size: 1.4rem;
+//   letter-spacing: var(--letter-spacing-sm);
+//   padding-left: calc(5% + 0.6rem);
+//   text-align: center;
+// }
