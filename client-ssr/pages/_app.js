@@ -1,18 +1,21 @@
-import Navigation from "../components/Navigation";
-import { wrapper } from "../store";
-import { END } from "redux-saga";
+import Navigation from "components/Navigation";
+import { Provider } from "react-redux";
+import { useStore } from "store";
 import "../styles/main.global.scss";
 
 const EmptyLayout = ({ children }) => <>{children}</>;
 
 const AppComponent = ({ Component, pageProps }) => {
+  const store = useStore(pageProps.initialReduxState);
   const Layout = Component.Layout || EmptyLayout;
 
   return (
-    <Layout>
-      <Navigation />
-      <Component {...pageProps} />
-    </Layout>
+    <Provider store={store}>
+      <Layout>
+        <Navigation />
+        <Component {...pageProps} />
+      </Layout>
+    </Provider>
   );
 };
 
@@ -21,12 +24,7 @@ AppComponent.getInitialProps = async ({ Component, ctx }) => {
     ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
   };
 
-  if (ctx.req) {
-    ctx.store.dispatch(END);
-    await ctx.store.sagaTask.toPromise();
-  }
-
   return { pageProps };
 };
 
-export default wrapper.withRedux(AppComponent);
+export default AppComponent;

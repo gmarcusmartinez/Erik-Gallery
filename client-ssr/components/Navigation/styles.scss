@@ -9,6 +9,8 @@
 
   display: flex;
   align-items: center;
+
+  z-index: 3;
   &__title {
     color: var(--color-black);
     font-weight: var(--font-weight-normal);
@@ -48,7 +50,7 @@
 }
 
 .mobile-navigation {
-  height: 100vh;
+  height: 90vh;
   width: 100%;
 
   position: absolute;
@@ -70,20 +72,24 @@
     transform: translateX(-100%);
   }
   &__link {
-    height: 20%;
+    height: 18vh;
     overflow: hidden;
     background-color: var(--color-overlay-bg);
+    text-transform: uppercase;
 
     a {
       color: #000;
       display: block;
-      letter-spacing: var(--letter-spacing-lg);
-      position: relative;
       font-size: 1.4rem;
-      top: 45%;
+      letter-spacing: var(--letter-spacing-lg);
+      line-height: 18vh;
+      position: relative;
+
+      height: 100%;
+      width: 100%;
+
       text-align: center;
       text-decoration: none;
-      text-transform: uppercase;
     }
   }
 }

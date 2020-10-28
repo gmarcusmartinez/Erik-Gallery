@@ -1,6 +1,3 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { connect } from "react-redux";
 import PrintsScreenContainer from "./Container";
 import { fetchPrintsStart } from "store/actions/prints/fetchPrints";
 
@@ -19,5 +16,3 @@ const PrintsScreen: React.FC<IProps> = ({ fetchPrintsStart }) => {
     </div>
   );
 };
-
-export default connect(null, { fetchPrintsStart })(PrintsScreen);

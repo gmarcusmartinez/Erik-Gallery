@@ -1,7 +1,16 @@
-import React from "react";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchPrints } from "store/actions/prints/fetchPrints";
 
-const Prints = () => {
-  return <div></div>;
+const Prints = ({ fetchPrints }) => {
+  useEffect(() => {
+    fetchPrints();
+  }, []);
+  return <div className="prints"></div>;
 };
 
-export default Prints;
+const mapStateToProps = (state) => ({
+  prints: state.prints,
+});
+
+export default connect(mapStateToProps, { fetchPrints })(Prints);

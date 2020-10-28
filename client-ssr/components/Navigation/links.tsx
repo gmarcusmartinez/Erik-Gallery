@@ -5,6 +5,7 @@ const links = [
   { href: "zines", text: "zines" },
   { href: "sound", text: "sound" },
   { href: "contact", text: "contact" },
+  { href: "cart", text: "cart" },
 ];
 
 export const renderLinks = (bool, cb) => {

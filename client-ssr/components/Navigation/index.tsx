@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import { renderLinks } from "./links";
 import { toggleNav } from "../../store/actions/nav/toggleNav";
 import CartIcon from "../CartIcon";
+import CartDropDown from "components/CartDropDown";
 
-const Navigation = ({ isOpen, toggleNav }) => {
+const Navigation = ({ isOpen, toggleNav, hidden }) => {
   return (
     <>
       <div className="header">
@@ -14,6 +15,7 @@ const Navigation = ({ isOpen, toggleNav }) => {
           <a className="header__title">Erik Felfalusi</a>
         </Link>
         <CartIcon />
+        {hidden ? null : <CartDropDown />}
       </div>
       <ul className={`mobile-navigation ${isOpen ? "open" : "closed"}`}>
         {renderLinks(isOpen, toggleNav)}
@@ -23,6 +25,7 @@ const Navigation = ({ isOpen, toggleNav }) => {
 };
 
 const mapStateToProps = (state) => ({
+  hidden: state.cart.hidden,
   isOpen: state.nav.isOpen,
 });
 

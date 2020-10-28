@@ -1,11 +1,13 @@
+import { connect } from "react-redux";
 import ShoppingIcon from "../../assets/shopping-bag.svg";
+import { toggleCartHidden } from "store/actions/cart";
 
-const CartIcon = () => {
+const CartIcon = ({ toggleCartHidden }) => {
   return (
-    <div className="cart-icon">
+    <div className="cart-icon" onClick={() => toggleCartHidden()}>
       <ShoppingIcon className="shopping-icon" />
     </div>
   );
 };
 
-export default CartIcon;
+export default connect(null, { toggleCartHidden })(CartIcon);
