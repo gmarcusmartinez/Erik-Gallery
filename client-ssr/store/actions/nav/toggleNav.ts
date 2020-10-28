@@ -1,8 +1,8 @@
-import { TOGGLE_NAV } from "store/actions/types";
+import { NavActionTypes } from "store/actions/types";
 
 export const toggleNav = (bool) => (dispatch) => {
   dispatch({
-    type: TOGGLE_NAV,
+    type: NavActionTypes.TOGGLE_NAV,
     payload: bool,
   });
 };

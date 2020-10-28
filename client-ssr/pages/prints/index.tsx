@@ -1,27 +1,29 @@
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchPrints } from "store/actions/prints/fetchPrints";
-import Print from "components/PrintItem";
 
-const Prints = ({ fetchPrints, prints, isOpen }) => {
+import { fetchPrintsStart } from "store/actions/prints/fetchPrints";
+import PrintsContainer from "./Container";
+// import { createStructuredSelector } from "reselect";
+// import { selectAllPrints } from "store/selectors/prints";
+
+interface IProps {
+  fetchPrintsStart: Function;
+  isOpen: boolean;
+}
+const Prints: React.FC<IProps> = ({ fetchPrintsStart, isOpen }) => {
   useEffect(() => {
-    fetchPrints();
+    fetchPrintsStart();
   }, []);
-
-  const printsList = prints
-    ? prints.map((p) => <Print key={p._id} item={p} />)
-    : null;
 
   return (
     <div className={`prints-screen ${isOpen ? "lock" : ""}`}>
-      <div className="prints-container">{printsList}</div>
+      <PrintsContainer />
     </div>
   );
 };
 
-const mapStateToProps = (state) => ({
-  prints: state.prints.items,
-  isOpen: state.nav.isOpen,
-});
+// const mapStateToProps = (state) => ({
+//   isOpen: state.nav.isOpen,
+// });
 
-export default connect(mapStateToProps, { fetchPrints })(Prints);
+export default connect(null, { fetchPrintsStart })(Prints);

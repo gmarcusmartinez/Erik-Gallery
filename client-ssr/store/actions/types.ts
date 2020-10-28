@@ -1,5 +1,8 @@
-export const TOGGLE_NAV = "TOGGLE_NAV";
-export const TOGGLE_MODAL = "TOGGLE_MODAL";
+export enum AuthActionTypes {
+  USER_LOGIN_REQUEST = "USER_LOGIN_REQUEST",
+  USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS",
+  USER_LOGIN_FAILURE = "USER_LOGIN_FAILURE",
+}
 
 export enum PrintActionTypes {
   FETCH_PRINTS_START = "FETCH_PRINTS_START",
@@ -12,5 +15,5 @@ export enum CartActionTypes {
   TOGGLE_CART_HIDDEN = "TOGGLE_CART_HIDDEN",
 }
 export enum NavActionTypes {
-  TOGGLE_NAV_OPEN = "TOGGLE_NAV_OPEN",
+  TOGGLE_NAV = "TOGGLE_NAV",
 }

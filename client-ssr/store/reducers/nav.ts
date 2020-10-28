@@ -1,4 +1,4 @@
-import { TOGGLE_NAV } from "../actions/types";
+import { NavActionTypes } from "../actions/types";
 
 const initialState = {
   isOpen: false,
@@ -7,7 +7,7 @@ const initialState = {
 export const nav = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case TOGGLE_NAV:
+    case NavActionTypes.TOGGLE_NAV:
       return {
         isOpen: payload,
       };
