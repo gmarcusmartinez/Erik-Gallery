@@ -5,13 +5,12 @@
   display: flex;
   flex-direction: column;
   padding: var(--padding-md);
-  border: 0.1rem solid var(--color-grey);
+  border: 0.1rem solid var(--color-light-grey);
   background-color: white;
   top: 6rem;
   right: 2rem;
   z-index: 2;
 
-  animation: fadein 1s;
   .cart-items {
     height: auto;
     display: flex;
@@ -43,13 +42,4 @@
   letter-spacing: var(--letter-spacing-md);
   margin: auto;
   text-transform: uppercase;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }

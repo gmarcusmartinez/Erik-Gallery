@@ -1,0 +1,30 @@
+.prints-screen {
+  height: 90vh;
+  width: 100vw;
+  margin-top: 10vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include respond(tablet) {
+    height: 90vh;
+  }
+}
+.prints-container {
+  height: 90vh;
+  width: 100%;
+  @include respond(tablet) {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    width: 57rem;
+  }
+  @include respond(desktop) {
+    width: 85rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.lock {
+  overflow-x: hidden;
+}
