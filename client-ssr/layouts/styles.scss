@@ -1,0 +1,20 @@
+$background-url: "../public/background.jpg";
+
+.main-layout {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-image {
+  height: 90%;
+  width: 100vw;
+  background: url($background-url) no-repeat center center;
+}

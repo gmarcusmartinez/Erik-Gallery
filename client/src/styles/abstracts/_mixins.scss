@@ -1,7 +1,4 @@
-$background-url: 'https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400';
-$landing-screen-mobile-width: 100%;
-$landing-screen-tablet-width: 70%;
-$landing-screen-desktop-width: 60%;
+$background-url: "public/background.jpg";
 
 @mixin respond($breakpoint) {
   @if $breakpoint == mobile {
