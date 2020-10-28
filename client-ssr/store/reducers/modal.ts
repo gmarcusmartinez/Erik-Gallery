@@ -1,16 +1,24 @@
-import { TOGGLE_MODAL } from "../actions/types";
+import { AnyAction } from "redux";
+import { CartActionTypes } from "store/actions/types";
+import { addItemToCart } from "utils";
 
 const initialState = {
-  displayModal: false,
+  hidden: true,
+  cartItems: [],
 };
 
-export const modal = (state = initialState, action) => {
+export const cart = (state = initialState, action: AnyAction) => {
   const { type, payload } = action;
-
   switch (type) {
-    case TOGGLE_MODAL:
+    case CartActionTypes.TOGGLE_CART_HIDDEN:
       return {
-        displayModal: payload,
+        ...state,
+        hidden: !state.hidden,
+      };
+    case CartActionTypes.ADD_ITEM_TO_CART:
+      return {
+        ...state,
+        cartItems: addItemToCart(state.cartItems, payload),
       };
     default:
       return state;
