@@ -4,7 +4,7 @@ import keys from "../config/keys";
 import { PasswordManager } from "../services/PasswordManager";
 
 interface UserAttrs {
-  userName: string;
+  email: string;
   password: string;
 }
 
@@ -13,25 +13,21 @@ interface UserModel extends mongoose.Model<UserDoc> {
 }
 
 export interface UserDoc extends mongoose.Document {
-  userName: string;
+  email: string;
   password: string;
-  photo: string;
   getSignedJwtToken(): string;
 }
 
 const userSchema = new mongoose.Schema(
   {
-    userName: {
+    email: {
       type: String,
       required: true,
       unique: true,
     },
     password: {
       type: String,
-    },
-    photo: {
-      type: String,
-      default: "",
+      required: true,
     },
     role: {
       type: String,
@@ -64,8 +60,8 @@ userSchema.pre("save", async function (done) {
 });
 
 userSchema.methods.getSignedJwtToken = function () {
-  const { _id, userName } = this;
-  return jwt.sign({ _id, userName }, keys.jwtSecret, {
+  const { _id, email, role } = this;
+  return jwt.sign({ _id, email, role }, keys.jwtSecret, {
     expiresIn: keys.jwtExpire,
   });
 };

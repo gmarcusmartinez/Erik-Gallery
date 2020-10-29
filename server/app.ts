@@ -20,8 +20,8 @@ app.use(
   })
 );
 
-app.use("/api/prints", printRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/prints", printRouter);
 
 app.all("*", async () => {
   throw new NotFoundError();

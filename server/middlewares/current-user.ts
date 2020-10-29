@@ -3,14 +3,15 @@ import { Request, Response, NextFunction } from "express";
 import keys from "../config/keys";
 
 interface UserPayload {
-  userName: string;
   _id: string;
+  email: string;
+  role: string;
 }
 
 declare global {
   namespace Express {
     interface Request {
-      currentUser: UserPayload;
+      currentUser?: UserPayload;
     }
   }
 }
