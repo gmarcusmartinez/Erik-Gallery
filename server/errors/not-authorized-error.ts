@@ -1,9 +1,10 @@
-import { CustomError } from './custom-error';
+import { CustomError } from "./custom-error";
+
 export class NotAuthorizedError extends CustomError {
   statusCode = 400;
-  reason = 'Not Authorized';
+  reason = "Not Authorized";
   constructor() {
-    super('Invalid request parameters.');
+    super("Invalid request parameters.");
     Object.setPrototypeOf(this, NotAuthorizedError.prototype);
   }
   serializeErrors() {

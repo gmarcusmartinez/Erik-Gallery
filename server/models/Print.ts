@@ -5,7 +5,7 @@ interface PrintDoc extends mongoose.Document {
   image: string;
   size: string;
   price: number;
-  countInStock: number;
+  inStock: number;
 }
 
 interface PrintAttrs {
@@ -13,7 +13,7 @@ interface PrintAttrs {
   image: string;
   size: string;
   price: number;
-  countInStock: number;
+  inStock: number;
 }
 
 interface PrintModel extends mongoose.Model<PrintDoc> {
@@ -37,8 +37,8 @@ const printSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  countInStock: {
-    type: String,
+  inStock: {
+    type: Boolean,
     required: true,
   },
 });

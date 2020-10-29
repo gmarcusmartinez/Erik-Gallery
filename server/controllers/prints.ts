@@ -6,3 +6,10 @@ export const getPrints = asyncHandler(async (req: Request, res: Response) => {
   const prints = await Print.find({});
   res.status(200).json(prints);
 });
+
+export const createPrint = asyncHandler(async (req: Request, res: Response) => {
+  const { description, image, size, price, inStock } = req.body;
+  const print = Print.build({ description, image, size, price, inStock });
+  await print.save();
+  res.status(200).json(print);
+});
