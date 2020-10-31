@@ -1,12 +1,15 @@
 .dash-print-item {
-  height: 6rem;
+  height: 8rem;
   margin-left: 5%;
-  width: 90%;
+  width: 80%;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   @include respond(tablet) {
     grid-template-columns: repeat(7, 1fr);
+    height: 6rem;
+    margin-left: 5%;
+    width: 90%;
   }
 
   div {
@@ -27,11 +30,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+  .delete {
+    color: red;
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }
-.delete {
-  color: red;
-  font-size: 2rem;
-}
+
 .edit {
   font-size: 1.6rem;
 }

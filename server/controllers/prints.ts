@@ -13,3 +13,11 @@ export const createPrint = asyncHandler(async (req: Request, res: Response) => {
   await print.save();
   res.status(200).json(print);
 });
+
+export const deletePrint = asyncHandler(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const print = await Print.findById(id);
+  print?.remove();
+
+  res.status(200).json(print);
+});

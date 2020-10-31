@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
-import { fetchPrintsStart } from "store/actions/prints/fetchPrints";
+import { fetchPrintsStart } from "store/actions/prints";
 import PrintsContainer from "./Container";
 
 interface IProps {

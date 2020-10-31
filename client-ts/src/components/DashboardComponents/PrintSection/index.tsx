@@ -1,19 +1,21 @@
 import PrintItem from "components/DashboardComponents/PrintItem";
+import { IPrint } from "interfaces";
 import React from "react";
 import { connect } from "react-redux";
-import { fetchPrintsStart } from "store/actions/prints/fetchPrints";
+import { fetchPrintsStart } from "store/actions/prints";
 
 interface IProps {
   fetchPrintsStart: Function;
-  prints: any[];
+  items: any;
 }
 
-const PrintSection: React.FC<IProps> = ({ fetchPrintsStart, prints }) => {
+const PrintSection: React.FC<IProps> = ({ fetchPrintsStart, items }) => {
   React.useEffect(() => {
     fetchPrintsStart();
   }, [fetchPrintsStart]);
 
-  const printItems = prints && prints.map((p) => <PrintItem print={p} />);
+  const printItems =
+    items && items.map((p: IPrint) => <PrintItem key={p._id} print={p} />);
 
   return (
     <div className="prints-section">
@@ -23,13 +25,15 @@ const PrintSection: React.FC<IProps> = ({ fetchPrintsStart, prints }) => {
         <div className="tablet-header">Size</div>
         <div className="tablet-header">Price</div>
         <div className="tablet-header">In Stock</div>
-        <div>&#9998;</div>
-        <div style={{ fontSize: "2rem" }}>&times;</div>
+        <div>Edit</div>
+        <div>Delete</div>
       </div>
       {printItems}
     </div>
   );
 };
 
-const mapStateToProps = (state: any) => ({ prints: state.prints.items });
+const mapStateToProps = (state: any) => ({
+  items: Object.values(state.prints.items),
+});
 export default connect(mapStateToProps, { fetchPrintsStart })(PrintSection);

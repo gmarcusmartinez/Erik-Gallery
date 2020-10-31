@@ -2,9 +2,8 @@ import { createSelector } from "reselect";
 
 const selectPrints = (state: any) => state.prints;
 
-export const selectAllPrints = createSelector(
-  [selectPrints],
-  (prints) => prints.items
+export const selectAllPrints = createSelector([selectPrints], (prints) =>
+  Object.values(prints.items)
 );
 
 export const selectIsPrintsLoading = createSelector(
