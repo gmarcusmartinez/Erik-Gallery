@@ -1,42 +1,53 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
-import MainLayout from "layouts/MainLayout";
+import { createStructuredSelector } from "reselect";
+
+import { selectErrors } from "store/selectors/auth";
 import { login } from "store/actions/auth/login";
+import MainLayout from "layouts/MainLayout";
+import AuthInput from "components/AuthInput";
 
-const AdminLogin = () => {
+const AdminLogin = ({ errors, login }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const { email, password } = formData;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData);
+    await login(formData);
     setFormData({ email: "", password: "" });
   };
 
-  const { email, password } = formData;
+  const setError = (field) =>
+    errors ? errors.find((err) => err.field === field) : null;
+
+  const invalidCredentialsError =
+    errors && errors[0].message === "Invalid Credentials"
+      ? errors[0].message
+      : null;
+
   return (
     <div className="admin-screen">
       <form className="admin-form" onSubmit={handleSubmit}>
         <h2 className="admin-form__title">Admin</h2>
-        <input
+        <div className="input-error">{invalidCredentialsError}</div>
+        <AuthInput
           placeholder="Email"
           type="text"
-          className="auth-input"
           name="email"
           value={email}
           onChange={handleChange}
+          error={setError("email")}
         />
-        <input
+        <AuthInput
           placeholder="Password"
           type="password"
-          className="auth-input"
           name="password"
           value={password}
           onChange={handleChange}
+          error={setError("password")}
         />
         <button type="submit" className="admin-form__btn">
           Submit
@@ -45,6 +56,7 @@ const AdminLogin = () => {
     </div>
   );
 };
-AdminLogin.Layout = MainLayout;
 
-export default connect()(AdminLogin);
+AdminLogin.Layout = MainLayout;
+const mapStateToProps = createStructuredSelector({ errors: selectErrors });
+export default connect(mapStateToProps, { login })(AdminLogin);

@@ -1,0 +1,43 @@
+.dash-print-item {
+  height: 6rem;
+  margin-left: 5%;
+  width: 90%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @include respond(tablet) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+
+  div {
+    color: var(--color-dark-grey);
+    letter-spacing: 0.1rem;
+    line-height: 6rem;
+    text-align: center;
+  }
+  &__img {
+    height: 95%;
+    margin-top: 2.5%;
+    justify-self: center;
+    background-size: cover;
+    background-position: center;
+  }
+  &__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+.delete {
+  color: red;
+  font-size: 2rem;
+}
+.edit {
+  font-size: 1.6rem;
+}
+.tablet-field {
+  display: none;
+  @include respond(tablet) {
+    display: unset;
+  }
+}

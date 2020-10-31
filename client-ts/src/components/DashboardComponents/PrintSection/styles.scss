@@ -1,0 +1,28 @@
+.prints-section-headers {
+  border: 0.1rem solid var(--color-light-grey);
+  font-size: 1.2rem;
+  height: 4rem;
+  margin-left: 5%;
+  width: 90%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  @include respond(tablet) {
+    grid-template-columns: repeat(7, 1fr);
+  }
+  div {
+    color: var(--color-dark-grey);
+    letter-spacing: 0.1rem;
+    line-height: 4rem;
+    text-align: center;
+    &:not(:last-child) {
+      border-right: 0.1rem solid var(--color-light-grey);
+    }
+  }
+  .tablet-header {
+    display: none;
+    @include respond(tablet) {
+      display: unset;
+    }
+  }
+}

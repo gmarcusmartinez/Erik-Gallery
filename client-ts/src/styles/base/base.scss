@@ -1,0 +1,47 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  min-height: 100vh;
+}
+body {
+  font-family: "Libre Baskerville", serif;
+  line-height: 1.6;
+  height: 100%;
+}
+#root {
+  height: 100vh;
+
+  --color-grey: #999;
+  --color-light-grey: #e5e5e5;
+  --color-dark-grey: #666;
+  --color-black: #000;
+
+  --color-modal-bg: rgba(0, 0, 0, 0.9);
+  --color-overlay-bg: rgba(255, 255, 255, 0.7);
+  --color-transparent-white: rgba(255, 255, 255, 0.8);
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+
+  --letter-spacing-sm: 0.1rem;
+  --letter-spacing-md: 0.2rem;
+  --letter-spacing-lg: 0.4rem;
+
+  --transition-fast: 0.25s ease-in-out;
+  --transition-md: 0.4s ease;
+
+  --padding-xs: 0.5rem;
+  --padding-sm: 1rem;
+  --padding-md: 2rem;
+
+  --margin-xs: 0.5rem;
+  --margin-sm: 1rem;
+  --margin-md: 2rem;
+}

@@ -24,8 +24,11 @@ export const currentUser = (
   if (!req.session?.jwt) {
     return next();
   }
+
+  const key = keys.jwtSecret!;
+
   try {
-    const payload = jwt.verify(req.session.jwt, keys.jwtSecret!) as UserPayload;
+    const payload = jwt.verify(req.session.jwt, key) as UserPayload;
     req.currentUser = payload;
   } catch (err) {}
   next();
