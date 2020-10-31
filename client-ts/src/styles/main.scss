@@ -10,11 +10,15 @@
 @import "../components/AuthInput/styles.scss";
 // @import "../components/CartDropDown/styles.scss";
 // @import "../components/CartIcon/styles.scss";
+
+@import "../components/Modal/styles.scss";
 @import "../components/Navigation/styles.scss";
 @import "../components/PrintItem/styles.scss";
 
-@import "../components/DashboardComponents/PrintSection/styles.scss";
+@import "../components/DashboardComponents/PrintAdd/styles.scss";
+@import "../components/DashboardComponents/PrintDelete/styles.scss";
 @import "../components/DashboardComponents/PrintItem/styles.scss";
+@import "../components/DashboardComponents/PrintSection/styles.scss";
 
 @import "../screens/Admin/styles.scss";
 @import "../screens/Contact/styles.scss";

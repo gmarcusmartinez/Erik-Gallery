@@ -1,6 +1,6 @@
 .dash-print-item {
   height: 8rem;
-  margin-left: 5%;
+  margin-left: 2rem;
   width: 80%;
 
   display: grid;
@@ -8,7 +8,6 @@
   @include respond(tablet) {
     grid-template-columns: repeat(7, 1fr);
     height: 6rem;
-    margin-left: 5%;
     width: 90%;
   }
 

@@ -15,7 +15,8 @@ body {
   line-height: 1.6;
   height: 100%;
 }
-#root {
+#root,
+#modal {
   height: 100vh;
 
   --color-grey: #999;

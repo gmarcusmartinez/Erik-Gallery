@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { deletePrintsStart } from "store/actions/prints";
+import { toggleModal } from "store/actions/modal/toggleModal";
 
 interface IProps {
   print: any;
-  deletePrintsStart: Function;
+  toggleModal: Function;
 }
 
-const PrintItem: React.FC<IProps> = ({ print, deletePrintsStart }) => {
+const PrintItem: React.FC<IProps> = ({ print, toggleModal }) => {
   return (
     <div className="dash-print-item">
       <img className="dash-print-item__img" src={print.image} alt="print" />
@@ -24,12 +24,15 @@ const PrintItem: React.FC<IProps> = ({ print, deletePrintsStart }) => {
       <div className="dash-print-item__text edit">&#9998;</div>
       <div
         className="dash-print-item__text delete"
-        onClick={() => deletePrintsStart(print._id)}
+        onClick={() => toggleModal(true, "DELETE_PRINT", print._id)}
       >
         &times;
       </div>
     </div>
   );
 };
+const mapStateToProps = (state: any) => ({
+  displayModal: state.modal.displayModal,
+});
 
-export default connect(null, { deletePrintsStart })(PrintItem);
+export default connect(mapStateToProps, { toggleModal })(PrintItem);

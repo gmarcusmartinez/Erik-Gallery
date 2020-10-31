@@ -1,0 +1,24 @@
+.print-delete {
+  color: var(--color-grey);
+  text-align: center;
+
+  &__title {
+    letter-spacing: var(--letter-spacing-md);
+    margin-bottom: var(--margin-md);
+  }
+  &__btn {
+    background-color: transparent;
+    color: red;
+
+    border: 1px solid red;
+    height: 4rem;
+    letter-spacing: var(--letter-spacing-md);
+    outline: none;
+    text-transform: uppercase;
+    width: 32rem;
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+}

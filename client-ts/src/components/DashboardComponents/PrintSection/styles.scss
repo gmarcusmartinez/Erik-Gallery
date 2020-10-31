@@ -2,18 +2,18 @@
   border: 0.1rem solid var(--color-light-grey);
   font-size: 1.2rem;
   height: 4rem;
-  margin-left: 5%;
+  margin-left: 2rem;
+  margin-bottom: var(--margin-sm);
   width: 80%;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   @include respond(tablet) {
-    margin-left: 5%;
     width: 90%;
     grid-template-columns: repeat(7, 1fr);
   }
   div {
-    color: var(--color-dark-grey);
+    color: var(--color-grey);
     letter-spacing: 0.1rem;
     line-height: 4rem;
     text-align: center;
@@ -27,4 +27,21 @@
       display: unset;
     }
   }
+}
+
+.add-print-btn {
+  border: 0.1rem solid #9dd49d;
+  border-radius: 0.4rem;
+  background-color: #9dd49d;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  height: 1.8rem;
+  letter-spacing: var(--letter-spacing-md);
+  margin-left: var(--margin-md);
+  margin-top: var(--margin-md);
+  padding: var(--padding-sm);
+  text-align: center;
+  text-transform: uppercase;
+  width: 10rem;
 }

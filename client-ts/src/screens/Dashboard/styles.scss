@@ -1,6 +1,7 @@
 .dashboard-screen {
   height: 100%;
   width: 100%;
+  max-width: 100rem;
 
   display: flex;
   flex-direction: column;
@@ -9,7 +10,7 @@
   .prints-title {
     color: var(--color-grey);
     letter-spacing: var(--letter-spacing-lg);
-    margin-left: 5%;
+    margin-left: 2rem;
     margin-bottom: var(--margin-xs);
     text-transform: uppercase;
   }

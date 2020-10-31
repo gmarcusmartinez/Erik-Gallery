@@ -27,3 +27,7 @@ export enum CartActionTypes {
 export enum NavActionTypes {
   TOGGLE_NAV = "TOGGLE_NAV",
 }
+
+export enum ModalActionTypes {
+  TOGGLE_MODAL = "TOGGLE_MODAL",
+}

@@ -1,0 +1,66 @@
+.modal {
+  background-color: rgba(255, 255, 255, 0.9);
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+
+  &__body {
+    margin-top: 16rem;
+    width: 34rem;
+    height: min-content;
+  }
+
+  &.open {
+    transition: all 0.3s;
+    transform: translateX(0);
+    animation: fadein 1s;
+  }
+  &.closed {
+    transition: all 0.3s;
+    transform: translateX(-100%);
+  }
+
+  &__close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    z-index: 2;
+
+    animation: fadein 1s;
+  }
+  &__bar {
+    width: 3rem;
+    height: 0.2rem;
+    background-color: #000;
+    margin: 0.8rem 0;
+
+    transition: 0.25s;
+    transition-delay: 0.5s;
+
+    &:nth-of-type(1).cross {
+      transform: rotate(-45deg) translate(-7px, 8px);
+    }
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+    &:nth-of-type(3).cross {
+      transform: rotate(45deg) translate(-7px, -8px);
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
