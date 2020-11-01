@@ -4,12 +4,11 @@
   height: 4rem;
   margin-left: 2rem;
   margin-bottom: var(--margin-sm);
-  width: 80%;
+  width: 90%;
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   @include respond(tablet) {
-    width: 90%;
     grid-template-columns: repeat(7, 1fr);
   }
   div {
@@ -31,17 +30,20 @@
 
 .add-print-btn {
   border: 0.1rem solid #9dd49d;
-  border-radius: 0.4rem;
-  background-color: #9dd49d;
-  color: #fff;
+  border-radius: 0.2rem;
+  color: #9dd49d;
   cursor: pointer;
   font-size: 1.2rem;
   height: 1.8rem;
   letter-spacing: var(--letter-spacing-md);
   margin-left: var(--margin-md);
   margin-top: var(--margin-md);
+  outline: none;
   padding: var(--padding-sm);
   text-align: center;
   text-transform: uppercase;
   width: 10rem;
+  &:active {
+    transform: translateY(-2px);
+  }
 }

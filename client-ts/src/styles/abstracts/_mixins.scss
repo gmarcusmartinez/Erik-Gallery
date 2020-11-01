@@ -25,3 +25,20 @@
   text-decoration: none;
   text-transform: uppercase;
 }
+
+@mixin formEl {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.1rem solid var(--color-dark-grey);
+  color: var(--color-grey);
+  font-size: 1.4rem;
+  height: 4rem;
+  line-height: 1.6rem;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+    border-bottom: 0.2rem solid var(--color-dark-grey);
+    transition: var(--transition-fast);
+  }
+}

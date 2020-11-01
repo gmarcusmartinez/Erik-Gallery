@@ -24,10 +24,10 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
         </Link>
         <CartIcon />
         {/* {hidden ? null : <CartDropDown />} */}
+        <ul className={`mobile-navigation ${isOpen ? "open" : "closed"}`}>
+          {renderLinks(isOpen, toggleNav, isAdmin)}
+        </ul>
       </div>
-      <ul className={`mobile-navigation ${isOpen ? "open" : "closed"}`}>
-        {renderLinks(isOpen, toggleNav, isAdmin)}
-      </ul>
     </>
   );
 };

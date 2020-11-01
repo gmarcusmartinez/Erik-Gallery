@@ -4,8 +4,10 @@ import "express-async-errors";
 import cookieSession from "cookie-session";
 import cors from "cors";
 
-import { printRouter } from "./routes/prints";
 import { authRouter } from "./routes/auth";
+import { printRouter } from "./routes/prints";
+import { uploadRouter } from "./routes/upload";
+
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
 
@@ -17,6 +19,7 @@ app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/prints", printRouter);
+app.use("/api/upload", uploadRouter);
 
 app.all("*", () => {
   throw new NotFoundError();

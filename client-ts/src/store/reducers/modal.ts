@@ -4,7 +4,7 @@ import { ModalActionTypes } from "../actions/types";
 const initialState = {
   bool: false,
   component: null,
-  id: "",
+  data: null,
 };
 
 export const modal = (state = initialState, action: AnyAction) => {
@@ -14,7 +14,7 @@ export const modal = (state = initialState, action: AnyAction) => {
       return {
         displayModal: payload.bool,
         component: payload.component,
-        id: payload.id,
+        data: payload.data,
       };
     default:
       return state;

@@ -20,6 +20,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/cors": "^2.8.8",
+    "@types/uuid": "^8.3.0",
+    "aws-sdk": "^2.783.0",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
@@ -29,7 +31,8 @@
     "mongodb-memory-server": "^6.5.2",
     "mongoose": "^5.9.13",
     "ts-node-dev": "^1.0.0-pre.44",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "@types/cookie-session": "^2.0.41",

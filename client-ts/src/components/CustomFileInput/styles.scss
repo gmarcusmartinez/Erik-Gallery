@@ -1,0 +1,22 @@
+.custom-file-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.custom-file-input {
+  cursor: pointer;
+  height: 4rem;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+.file-input-label {
+  font-size: 1.4em;
+  color: var(--color-dark-grey);
+  letter-spacing: var(--letter-spacing-md);
+  display: inline-block;
+}

@@ -4,12 +4,12 @@ interface IProps {
   placeholder: string;
   name: string;
   value: string;
-  type: string;
+  type?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   error: { message: string };
 }
 
-const AuthInput: React.FC<IProps> = ({
+const CustomInput: React.FC<IProps> = ({
   placeholder,
   name,
   value,
@@ -32,4 +32,4 @@ const AuthInput: React.FC<IProps> = ({
   );
 };
 
-export default AuthInput;
+export default CustomInput;

@@ -11,11 +11,12 @@ export const prints = (state = initialState, action: AnyAction) => {
   const { type, payload } = action;
 
   switch (type) {
+    case PrintActionTypes.CREATE_PRINT_SUCCESS:
+      return { ...state, items: { ...state.items, [payload._id]: payload } };
+
     case PrintActionTypes.FETCH_PRINTS_REQUEST:
-      return {
-        ...state,
-        loading: true,
-      };
+      return { ...state, loading: true };
+
     case PrintActionTypes.FETCH_PRINTS_SUCCESS:
       return {
         ...state,
@@ -31,10 +32,7 @@ export const prints = (state = initialState, action: AnyAction) => {
     case PrintActionTypes.DELETE_PRINT_SUCCESS:
       const newItems: any = { ...state.items };
       delete newItems[payload];
-      return {
-        ...state,
-        items: newItems,
-      };
+      return { ...state, items: newItems };
 
     default:
       return state;

@@ -21,7 +21,7 @@ const Modal: React.FC<IProps> = ({
   return ReactDOM.createPortal(
     <div className={className}>
       {renderModalCloseBtn(displayModal, toggleModal)}
-      <div className="modal__body">{renderForm(component, id)}</div>
+      <div className="modal__body">{renderForm(component)}</div>
     </div>,
     document.querySelector("#modal")!
   );

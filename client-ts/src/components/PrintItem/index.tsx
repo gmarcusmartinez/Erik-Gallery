@@ -7,7 +7,7 @@ interface IProps {
 
 const PrintItem: React.FC<IProps> = ({ item }) => {
   const { image, description, size } = item;
-  const backgroundImage = `url(${image})`;
+  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${image})`;
 
   return (
     <div className="print-item">

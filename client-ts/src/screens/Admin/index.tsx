@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import AuthInput from "components/AuthInput";
+import CustomInput from "components/CustomInput";
 import MainLayout from "layouts/MainLayout";
 
 import { createStructuredSelector } from "reselect";
@@ -41,7 +41,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
         <form className="admin-form" onSubmit={handleSubmit}>
           <h2 className="admin-form__title">Admin</h2>
           <div className="input-error">{invalidCredentialsError}</div>
-          <AuthInput
+          <CustomInput
             placeholder="Email"
             type="text"
             name="email"
@@ -49,7 +49,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
             onChange={handleChange}
             error={setError("email")}
           />
-          <AuthInput
+          <CustomInput
             placeholder="Password"
             type="password"
             name="password"

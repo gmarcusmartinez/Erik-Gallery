@@ -31,7 +31,7 @@ const PrintSection: React.FC<IProps> = ({
         <div>Image</div>
         <div className="tablet-header">Desc</div>
         <div className="tablet-header">Size</div>
-        <div className="tablet-header">Price</div>
+        <div>Price</div>
         <div className="tablet-header">In Stock</div>
         <div>Edit</div>
         <div>Delete</div>

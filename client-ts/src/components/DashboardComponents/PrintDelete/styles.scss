@@ -6,11 +6,19 @@
     letter-spacing: var(--letter-spacing-md);
     margin-bottom: var(--margin-md);
   }
+  &__image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 32rem;
+    margin-bottom: 2rem;
+  }
   &__btn {
     background-color: transparent;
     color: red;
 
-    border: 1px solid red;
+    border: none;
     height: 4rem;
     letter-spacing: var(--letter-spacing-md);
     outline: none;
