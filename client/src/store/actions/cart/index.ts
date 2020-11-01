@@ -1,4 +1,4 @@
-import { ICartItem } from "interfaces";
+import { ICartItem } from "../../../interfaces";
 import { CartActionTypes } from "../types";
 
 export const addItem = (item: ICartItem) => ({

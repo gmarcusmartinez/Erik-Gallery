@@ -8,8 +8,8 @@
   border: 0.1rem solid var(--color-light-grey);
   background-color: white;
   top: 6rem;
-  right: 3rem;
-  z-index: 5;
+  right: 2rem;
+  z-index: 2;
 
   .cart-items {
     height: auto;
@@ -22,6 +22,7 @@
     margin-top: auto;
   }
 }
+
 .checkout-redirect {
   height: 4rem;
   color: var(--color-grey);
