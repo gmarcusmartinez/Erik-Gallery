@@ -1,5 +1,5 @@
 export const formDefaultState = {
-  description: "test",
+  description: "",
   size: "(35 x 50cm)",
   price: "0.00",
   inStock: "true",

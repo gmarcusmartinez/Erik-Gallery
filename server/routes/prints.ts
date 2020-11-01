@@ -3,6 +3,7 @@ import { createPrint, deletePrint, getPrints } from "../controllers/prints";
 import { currentUser } from "../middlewares/current-user";
 import { isAdmin } from "../middlewares/is-admin";
 import { requireAuth } from "../middlewares/require-auth";
+// import { advancedResults } from "../middlewares/advancedResults";
 
 const router = Router();
 

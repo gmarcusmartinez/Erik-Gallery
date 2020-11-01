@@ -1,18 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import CustomInput from "components/CustomInput";
-import CustomSelect from "components/CustomSelect";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import CustomFileInput from "components/CustomFileInput";
+import { createStructuredSelector } from "reselect";
+
+import { Text, Select, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/index";
+import { selectPrintsErrors } from "store/selectors/prints";
 import { formDefaultState, inStockOptions } from "./helpers";
+import { IError } from "interfaces";
 
 interface IProps {
-  toggleModal: Function;
-  errors: any[];
+  errors: IError[];
   createPrint: Function;
 }
-const PrintAdd: React.FC<IProps> = ({ toggleModal, errors, createPrint }) => {
+const PrintAdd: React.FC<IProps> = ({ errors, createPrint }) => {
   const [formData, setFormData] = React.useState(formDefaultState);
   const { description, size, price, inStock } = formData;
 
@@ -34,28 +34,28 @@ const PrintAdd: React.FC<IProps> = ({ toggleModal, errors, createPrint }) => {
   return (
     <form className="print-add" onSubmit={handleSubmit}>
       <h3 className="print-add__title">Add Print</h3>
-      <CustomInput
+      <Text
         placeholder="Description"
         name="description"
         value={description}
         onChange={handleChange}
         error={setError("description")}
       />
-      <CustomInput
+      <Text
         placeholder="Size"
         name="size"
         value={size}
         onChange={handleChange}
         error={setError("size")}
       />
-      <CustomInput
+      <Text
         placeholder="Price"
         name="price"
         value={price}
         onChange={handleChange}
         error={setError("price")}
       />
-      <CustomSelect
+      <Select
         label="In Stock"
         value={inStock}
         name="inStock"
@@ -63,18 +63,18 @@ const PrintAdd: React.FC<IProps> = ({ toggleModal, errors, createPrint }) => {
         renderOptions={renderOptions}
         options={inStockOptions}
       />
-      <CustomFileInput onChange={handleFileChange} />
+      <File onChange={handleFileChange} />
       <button type="submit" className="print-add__btn">
         Submit
       </button>
     </form>
   );
 };
-const mapStateToProps = (state: any) => ({
-  errors: state.prints.errors,
+const mapStateToProps = createStructuredSelector({
+  errors: selectPrintsErrors,
 });
 
-export default connect(mapStateToProps, { toggleModal, createPrint })(PrintAdd);
+export default connect(mapStateToProps, { createPrint })(PrintAdd);
 
 function renderOptions(arr: any[]) {
   return arr.map((el) => <option key={el}>{el}</option>);

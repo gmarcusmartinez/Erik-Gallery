@@ -13,5 +13,5 @@ export const selectModalData = createSelector(
 );
 export const selectModalComponent = createSelector(
   [selectModal],
-  (modal) => modal.data
+  (modal) => modal.component
 );

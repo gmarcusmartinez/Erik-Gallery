@@ -28,6 +28,7 @@
     color: #999;
   }
   &__btn {
+    display: none;
     background-color: var(--color-transparent-white);
     border: 0.1rem solid var(--color-light-grey);
     color: #999;
@@ -54,11 +55,11 @@
   display: none;
   opacity: 0;
 
-  @include respond(tablet) {
-    display: block;
-    position: absolute;
-    bottom: 2rem;
-  }
+  // @include respond(tablet) {
+  //   display: block;
+  //   position: absolute;
+  //   bottom: 2rem;
+  // }
 }
 
 .mobile {

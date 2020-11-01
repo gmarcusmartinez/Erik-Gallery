@@ -1,13 +1,20 @@
 import axios from "axios";
+import { IPrint } from "interfaces";
 import { PrintActionTypes } from "store/actions/types";
 
 export const fetchPrintsStart = () => ({
   type: PrintActionTypes.FETCH_PRINTS_REQUEST,
 });
 
-export const fetchPrintsSuccess = (prints: any) => ({
+// interface fetchPrintsDataResponse {
+//   data: IPrint[];
+//   pagination: { next: {}; prev: {} };
+//   count: number;
+// }
+
+export const fetchPrintsSuccess = (items: IPrint[]) => ({
   type: PrintActionTypes.FETCH_PRINTS_SUCCESS,
-  payload: prints,
+  payload: items,
 });
 
 export const fetchPrintsFailure = (errors: any) => ({

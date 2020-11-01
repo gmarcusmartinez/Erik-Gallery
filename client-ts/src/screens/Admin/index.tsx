@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import CustomInput from "components/CustomInput";
+import { Text } from "components/CustomInputs";
 import MainLayout from "layouts/MainLayout";
 import { IError } from "interfaces";
 
@@ -39,7 +39,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
         <form className="admin-form" onSubmit={handleSubmit}>
           <h2 className="admin-form__title">Admin</h2>
           <div className="input-error">{invalidCredentialsError}</div>
-          <CustomInput
+          <Text
             placeholder="Email"
             type="text"
             name="email"
@@ -47,7 +47,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
             onChange={handleChange}
             error={setError("email")}
           />
-          <CustomInput
+          <Text
             placeholder="Password"
             type="password"
             name="password"

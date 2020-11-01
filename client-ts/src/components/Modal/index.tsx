@@ -1,10 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
 import ReactDOM from "react-dom";
-import { renderForm } from "./modalActions";
-import { toggleModal } from "store/actions/modal/toggleModal";
+import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+
+import { toggleModal } from "store/actions/modal/toggleModal";
 import { selectModalComponent, selectModalIsOpen } from "store/selectors/modal";
+import { renderForm } from "./modalActions";
+import { renderModalCloseBtn } from "./ModalCloseBtn";
 
 interface IProps {
   toggleModal: Function;
@@ -29,11 +31,3 @@ const mapStateToProps = createStructuredSelector({
 });
 
 export default connect(mapStateToProps, { toggleModal })(Modal);
-
-const renderModalCloseBtn = (bool: boolean, cb: Function) => (
-  <div className="modal__close-btn" onClick={() => cb(false)}>
-    <div className={`modal__bar ${bool ? "cross" : ""}`}></div>
-    <div className={`modal__bar ${bool ? "cross" : ""}`}></div>
-    <div className={`modal__bar ${bool ? "cross" : ""}`}></div>
-  </div>
-);

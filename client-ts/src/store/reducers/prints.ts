@@ -4,6 +4,7 @@ import { IPrint } from "interfaces/index";
 
 const initialState = {
   loading: true,
+  pagination: null,
   items: {},
 };
 
@@ -21,6 +22,7 @@ export const prints = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         loading: false,
+        pagination: payload.pagination,
         items: {
           ...payload.reduce((newState: any, print: IPrint) => {
             newState[print._id] = print;
