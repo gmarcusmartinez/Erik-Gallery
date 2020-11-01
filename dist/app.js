@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 var path_1 = __importDefault(require("path"));
 var express_1 = __importDefault(require("express"));
-require("colors");
 require("express-async-errors");
 var cookie_session_1 = __importDefault(require("cookie-session"));
 var cors_1 = __importDefault(require("cors"));

@@ -1,6 +1,5 @@
 import path from "path";
 import express from "express";
-import "colors";
 import "express-async-errors";
 import cookieSession from "cookie-session";
 import cors from "cors";

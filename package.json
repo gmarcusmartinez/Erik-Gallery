@@ -43,7 +43,6 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.16",
     "@types/supertest": "^2.0.9",
-    "colors": "^1.4.0",
     "supertest": "^4.0.2",
     "ts-jest": "^25.5.1"
   }
