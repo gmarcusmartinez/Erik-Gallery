@@ -3,19 +3,15 @@ import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import { renderForm } from "./modalActions";
 import { toggleModal } from "store/actions/modal/toggleModal";
+import { createStructuredSelector } from "reselect";
+import { selectModalComponent, selectModalIsOpen } from "store/selectors/modal";
 
 interface IProps {
   toggleModal: Function;
   displayModal: boolean;
   component: string;
-  id: string;
 }
-const Modal: React.FC<IProps> = ({
-  toggleModal,
-  displayModal,
-  component,
-  id,
-}) => {
+const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
   const className = `modal ${displayModal ? "open" : "closed"}`;
 
   return ReactDOM.createPortal(
@@ -27,10 +23,9 @@ const Modal: React.FC<IProps> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  displayModal: state.modal.displayModal,
-  component: state.modal.component,
-  id: state.modal.id,
+const mapStateToProps = createStructuredSelector({
+  displayModal: selectModalIsOpen,
+  component: selectModalComponent,
 });
 
 export default connect(mapStateToProps, { toggleModal })(Modal);

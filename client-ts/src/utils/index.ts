@@ -19,7 +19,6 @@ export const removeItemFromCart = (
   return decreaseItemCount(cartItems, itemToRemove);
 };
 
-// Helper functions for addItemToCart and removeItemFromCart
 const findCartItem = (cartItems: ICartItem[], item: ICartItem) =>
   cartItems.find(({ _id }) => _id === item._id);
 
@@ -41,7 +40,6 @@ const clearItemFromCart = (cartItems: ICartItem[], itemToRemove: ICartItem) =>
 export const calculateTotal = (cartItems: ICartItem[]) =>
   cartItems.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
 
-// Functions to be called in Product Reducer
 export const sortItems = (items: ICartItem[], order: string) =>
   order === "ascending"
     ? [...items.sort((a, b) => a.price - b.price)]

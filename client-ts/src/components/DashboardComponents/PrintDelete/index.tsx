@@ -1,25 +1,23 @@
-import React from "react";
+import React, { FC } from "react";
 import { connect } from "react-redux";
-import { deletePrintsStart } from "store/actions/prints/index";
-import { toggleModal } from "store/actions/modal/toggleModal";
+import { createStructuredSelector } from "reselect";
 import { IPrint } from "interfaces";
+import { toggleModal } from "store/actions/modal/toggleModal";
+import { deletePrintsStart } from "store/actions/prints/index";
+import { selectModalData } from "store/selectors/modal";
 
 interface IProps {
   data: IPrint;
   deletePrintsStart: Function;
   toggleModal: Function;
 }
-
-const PrintDelete: React.FC<IProps> = ({
-  deletePrintsStart,
-  toggleModal,
-  data,
-}) => {
+const PrintDelete: FC<IProps> = ({ data, deletePrintsStart, toggleModal }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     deletePrintsStart(data._id);
     toggleModal(false, null);
   };
+
   const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${data.image}`;
 
   return (
@@ -35,9 +33,7 @@ const PrintDelete: React.FC<IProps> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  data: state.modal.data,
-});
+const mapStateToProps = createStructuredSelector({ data: selectModalData });
 export default connect(mapStateToProps, { deletePrintsStart, toggleModal })(
   PrintDelete
 );

@@ -2,7 +2,7 @@ import { AnyAction } from "redux";
 import { ModalActionTypes } from "../actions/types";
 
 const initialState = {
-  bool: false,
+  displayModal: false,
   component: null,
   data: null,
 };

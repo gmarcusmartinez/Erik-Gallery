@@ -1,9 +1,11 @@
-import PrintItem from "components/DashboardComponents/PrintItem";
-import { IPrint } from "interfaces";
 import React from "react";
 import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { IPrint } from "interfaces";
+import PrintItem from "components/DashboardComponents/PrintItem";
 import { fetchPrintsStart } from "store/actions/prints";
 import { toggleModal } from "store/actions/modal/toggleModal";
+import { selectAllPrints } from "store/selectors/prints";
 
 interface IProps {
   fetchPrintsStart: Function;
@@ -44,10 +46,7 @@ const PrintSection: React.FC<IProps> = ({
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  items: Object.values(state.prints.items),
-});
-
+const mapStateToProps = createStructuredSelector({ items: selectAllPrints });
 export default connect(mapStateToProps, { fetchPrintsStart, toggleModal })(
   PrintSection
 );

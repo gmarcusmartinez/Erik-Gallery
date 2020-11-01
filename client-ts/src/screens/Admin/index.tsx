@@ -2,20 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import CustomInput from "components/CustomInput";
 import MainLayout from "layouts/MainLayout";
+import { IError } from "interfaces";
 
 import { createStructuredSelector } from "reselect";
-import { selectErrors } from "store/selectors/auth";
+import { selectAuthErrors } from "store/selectors/auth";
 import { loginStart } from "store/actions/auth/login";
 
 interface IProps {
   loginStart: Function;
-  errors: any[];
+  errors: IError[];
 }
 const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
-  const [formData, setFormData] = React.useState({
-    email: "testuser@gmail.com",
-    password: "password",
-  });
+  const [formData, setFormData] = React.useState({ email: "", password: "" });
   const { email, password } = formData;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -65,5 +63,5 @@ const AdminLogin: React.FC<IProps> = ({ errors, loginStart }) => {
     </MainLayout>
   );
 };
-const mapStateToProps = createStructuredSelector({ errors: selectErrors });
+const mapStateToProps = createStructuredSelector({ errors: selectAuthErrors });
 export default connect(mapStateToProps, { loginStart })(AdminLogin);

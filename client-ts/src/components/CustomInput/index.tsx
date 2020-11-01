@@ -1,4 +1,5 @@
 import React, { ChangeEvent } from "react";
+import { IError } from "interfaces";
 
 interface IProps {
   placeholder: string;
@@ -6,7 +7,7 @@ interface IProps {
   value: string;
   type?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  error: { message: string };
+  error: IError | null | undefined;
 }
 
 const CustomInput: React.FC<IProps> = ({

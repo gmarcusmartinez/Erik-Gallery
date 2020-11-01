@@ -1,13 +1,14 @@
 import { IPrint } from "interfaces";
 
-export interface IPrintsState {
+interface IPrintsState {
   loading: boolean;
   items: IPrint[];
 }
+
 interface IModalState {
-  bool: false;
-  component: null;
-  data: null;
+  displayModal: boolean;
+  component: string;
+  data: IPrint;
 }
 
 export interface IState {
