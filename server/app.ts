@@ -1,3 +1,4 @@
+import path from "path";
 import express from "express";
 import "colors";
 import "express-async-errors";
@@ -20,6 +21,11 @@ app.use(cookieSession({ signed: false, secure: false }));
 app.use("/api/auth", authRouter);
 app.use("/api/prints", printRouter);
 app.use("/api/upload", uploadRouter);
+
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname)));
+}
 
 app.all("*", () => {
   throw new NotFoundError();
