@@ -1,5 +1,1 @@
-config/dev.ts
-node_modules/
-.env
-
-dist/client
+node_modules
