@@ -1,4 +1,5 @@
 import auth from "api/auth";
+import history from "core/history";
 import { AuthActionTypes } from "../types";
 
 interface ILoginFormData {
@@ -12,7 +13,9 @@ export const login = (formData: ILoginFormData) => async (dispatch: any) => {
     dispatch({ type: AuthActionTypes.USER_LOGIN_REQUEST });
     const { data } = await auth.post("/login", formData, config);
 
-    dispatch({ type: AuthActionTypes.USER_LOGIN_SUCCESS, payload: data });
+    dispatch({ type: AuthActionTypes.USER_LOGIN_SUCCESS });
+    dispatch({ type: AuthActionTypes.GET_CURRENT_USER, payload: data });
+    history.push("/dashboard");
   } catch (e) {
     const errorResponse = e.response.data.errors;
     dispatch({
