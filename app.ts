@@ -6,6 +6,9 @@ import cors from "cors";
 
 import { authRouter } from "./routes/auth";
 
+import { NotFoundError } from "./errors/not-found-error";
+import { errorHandler } from "./middlewares/error-handler";
+
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -21,4 +24,9 @@ if (process.env.NODE_ENV === "production") {
   );
 }
 
+app.all("*", () => {
+  throw new NotFoundError();
+});
+
+app.use(errorHandler);
 export { app };
