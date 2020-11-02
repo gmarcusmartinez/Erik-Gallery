@@ -1,0 +1,21 @@
+$background-url: "https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400";
+
+.main-layout {
+  height: 100vh;
+  width: 100%;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-image {
+  height: 90%;
+  width: 90%;
+  background: url($background-url) no-repeat center center;
+  margin-top: 2rem;
+}
