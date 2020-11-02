@@ -3,7 +3,6 @@ import express from "express";
 import "express-async-errors";
 import cookieSession from "cookie-session";
 import cors from "cors";
-import dotenv from "dotenv";
 
 import { authRouter } from "./routes/auth";
 import { printRouter } from "./routes/prints";
@@ -12,7 +11,6 @@ import { uploadRouter } from "./routes/upload";
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
 
-dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
