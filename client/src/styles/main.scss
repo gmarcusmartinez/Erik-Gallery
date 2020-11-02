@@ -7,9 +7,9 @@
 
 @import "../layouts/styles.scss";
 
-// @import "../components/CustomInputs/Text/styles.scss";
-// @import "../components/CustomInputs/Select/styles.scss";
-// @import "../components/CustomInputs/File/styles.scss";
+@import "../components/CustomInputs/Text/styles.scss";
+@import "../components/CustomInputs/Select/styles.scss";
+@import "../components/CustomInputs/File/styles.scss";
 
 // @import "../components/Modal/styles.scss";
 @import "../components/Navigation/styles.scss";
@@ -20,9 +20,9 @@
 // @import "../components/DashboardComponents/PrintItem/styles.scss";
 // @import "../components/DashboardComponents/PrintSection/styles.scss";
 
-// @import "../screens/Admin/styles.scss";
+@import "../screens/Admin/styles.scss";
 @import "../screens/Contact/styles.scss";
 // @import "../screens/Dashboard/styles.scss";
-// @import "../screens/Logout/styles.scss";
+@import "../screens/Logout/styles.scss";
 @import "../screens/Prints/styles.scss";
 @import "../screens/Sound/styles.scss";

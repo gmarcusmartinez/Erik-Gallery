@@ -19,9 +19,9 @@ var app = express_1.default();
 exports.app = app;
 app.use(express_1.default.json());
 app.use(cors_1.default());
+app.use(cookie_session_1.default({ signed: false, secure: false }));
 app.use("/api/auth", auth_1.authRouter);
 app.use("/api/prints", prints_1.printRouter);
-app.use(cookie_session_1.default({ signed: false, secure: false }));
 var __dirname = path_1.default.resolve();
 if (process.env.NODE_ENV === "production") {
     app.use(express_1.default.static(path_1.default.join(__dirname, "client/build")));

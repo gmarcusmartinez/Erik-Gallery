@@ -36,18 +36,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.getCurrentUser = void 0;
-var async_1 = require("../middlewares/async");
+exports.signout = exports.login = exports.register = exports.getCurrentUser = void 0;
 var User_1 = require("../models/User");
 var bad_request_error_1 = require("../errors/bad-request-error");
-// export const getCurrentUser = asyncHandler(
-//     async (req: Request, res: Response) => {
-//       res.send(req.currentUser);
-//     }
-//   );
-exports.getCurrentUser = function (req, res) {
-    res.send("hi there");
-};
+var async_1 = require("../middlewares/async");
+var PasswordManager_1 = require("../services/PasswordManager");
+exports.getCurrentUser = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var currentUser;
+    return __generator(this, function (_a) {
+        currentUser = req.currentUser || null;
+        res.send(currentUser);
+        return [2 /*return*/];
+    });
+}); });
 exports.register = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, email, password, existingUser, user, token;
     return __generator(this, function (_b) {
@@ -66,9 +67,36 @@ exports.register = async_1.asyncHandler(function (req, res) { return __awaiter(v
             case 2:
                 _b.sent();
                 token = user.getSignedJwtToken();
-                // req.session = { jwt: token };
-                res.status(200).send(token);
+                req.session = { jwt: token };
+                res.status(200).send({});
                 return [2 /*return*/];
         }
     });
 }); });
+exports.login = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, email, password, user, passwordsMatch, token;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _a = req.body, email = _a.email, password = _a.password;
+                return [4 /*yield*/, User_1.User.findOne({ email: email })];
+            case 1:
+                user = _b.sent();
+                if (!user)
+                    throw new bad_request_error_1.BadRequestError("Invalid credentials");
+                return [4 /*yield*/, PasswordManager_1.PasswordManager.compare(user.password, password)];
+            case 2:
+                passwordsMatch = _b.sent();
+                if (!passwordsMatch)
+                    throw new bad_request_error_1.BadRequestError("Invalid Credentials");
+                token = user.getSignedJwtToken();
+                req.session = { jwt: token };
+                res.status(200).send(user);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.signout = function (req, res) {
+    req.session = null;
+    res.send({});
+};

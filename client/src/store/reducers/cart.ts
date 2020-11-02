@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const cart = (state = initialState, action: AnyAction) => {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
     // case CartActionTypes.TOGGLE_CART_HIDDEN:
     //   return {

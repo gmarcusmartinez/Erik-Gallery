@@ -16,11 +16,10 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/prints", printRouter);
-
-app.use(cookieSession({ signed: false, secure: false }));
 
 const __dirname = path.resolve();
 

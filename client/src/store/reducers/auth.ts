@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-// import { AuthActionTypes } from "../../store/actions/types";
+import { AuthActionTypes } from "../../store/actions/types";
 
 const initialState = {
   loading: false,
@@ -16,14 +16,13 @@ export const auth = (state = initialState, action: AnyAction) => {
     //     loading: true,
     //   };
 
-    // case AuthActionTypes.GET_CURRENT_USER:
-    // case AuthActionTypes.USER_LOGIN_SUCCESS:
-    // case AuthActionTypes.USER_LOGOUT_SUCCESS:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     currentUser: payload,
-    //   };
+    case AuthActionTypes.GET_CURRENT_USER:
+    case AuthActionTypes.USER_LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        currentUser: payload,
+      };
     // case AuthActionTypes.USER_LOGIN_FAILURE:
     //   return {
     //     ...state,

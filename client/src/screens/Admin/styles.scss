@@ -1,0 +1,48 @@
+.admin-screen {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.admin-form {
+  height: 36rem;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 8rem;
+  width: 28rem;
+
+  display: grid;
+  grid-template-rows: 15% 10% 20% 20% 35%;
+
+  &__title {
+    align-self: center;
+    color: #666;
+    font-size: 1.8rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-left: 10px;
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    color: #666;
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: var(--letter-spacing-lg);
+    padding: var(--padding-sm);
+    outline: none;
+    text-transform: uppercase;
+    text-align: start;
+    width: 100%;
+
+    &:active {
+      color: #333;
+      transform: translateY(3px);
+    }
+  }
+}
