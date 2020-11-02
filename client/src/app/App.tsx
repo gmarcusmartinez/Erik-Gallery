@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import * as screens from "../screens";
+import * as screens from "screens";
+import { fetchPrints } from "store/actions/prints/fetchPrints";
 
-function App() {
+interface IProps {
+  fetchPrints: Function;
+}
+
+const App: React.FC<IProps> = ({ fetchPrints }) => {
+  useEffect(() => {
+    fetchPrints();
+  }, [fetchPrints]);
+
   return (
     <>
       <Switch>
@@ -16,6 +26,6 @@ function App() {
       </Switch>
     </>
   );
-}
+};
 
-export default App;
+export default connect(null, { fetchPrints })(App);
