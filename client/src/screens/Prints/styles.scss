@@ -1,0 +1,71 @@
+.prints-screen {
+  width: 100vw;
+  margin-top: 10vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond(tablet) {
+    height: 90vh;
+  }
+}
+
+.prints-container {
+  height: 90vh;
+  width: 100%;
+  @include respond(tablet) {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    width: 57rem;
+  }
+  @include respond(desktop) {
+    width: 85rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.loading-print-card {
+  display: grid;
+  grid-template-rows: 80% 12% 8%;
+  gap: 0.5rem;
+
+  margin: auto;
+  margin-bottom: var(--margin-sm);
+
+  height: 100%;
+  width: 80%;
+  @include respond(tablet) {
+    height: 38rem;
+    width: 28rem;
+  }
+}
+
+.shine {
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeholderShimmer;
+  animation-timing-function: linear;
+}
+
+@keyframes placeholderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}

@@ -1,26 +1,18 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import React from "react";
 import { Route, Switch } from "react-router-dom";
 import * as screens from "screens";
-import { fetchPrints } from "store/actions/prints/fetchPrints";
+import Navigation from "components/Navigation";
 
-interface IProps {
-  fetchPrints: Function;
-}
-
-const App: React.FC<IProps> = ({ fetchPrints }) => {
-  useEffect(() => {
-    fetchPrints();
-  }, [fetchPrints]);
-
+const App = () => {
   return (
     <>
+      <Navigation />
       <Switch>
         <Route exact path="/" component={screens.LandingScreen} />
-        {/* <Route exact path="/admin/" component={screens.AdminScreen} />
         <Route exact path="/contact/" component={screens.ContactScreen} />
         <Route exact path="/sound/" component={screens.SoundScreen} />
         <Route exact path="/prints" component={screens.PrintsScreen} />
+        {/* <Route exact path="/admin/" component={screens.AdminScreen} />
         <Route exact path="/signout" component={screens.LogoutScreen} />
         <Route component={screens.DashboardScreen} /> */}
       </Switch>
@@ -28,4 +20,4 @@ const App: React.FC<IProps> = ({ fetchPrints }) => {
   );
 };
 
-export default connect(null, { fetchPrints })(App);
+export default App;
