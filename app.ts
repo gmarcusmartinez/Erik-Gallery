@@ -5,6 +5,7 @@ import cookieSession from "cookie-session";
 import cors from "cors";
 
 import { authRouter } from "./routes/auth";
+import { printRouter } from "./routes/prints";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/auth", authRouter);
+app.use("/api/prints", printRouter);
 
 app.use(cookieSession({ signed: false, secure: false }));
 

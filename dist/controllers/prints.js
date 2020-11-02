@@ -36,12 +36,48 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPrints = void 0;
+exports.deletePrint = exports.createPrint = exports.getPrints = void 0;
 var async_1 = require("../middlewares/async");
+var Print_1 = require("../models/Print");
 exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prints;
     return __generator(this, function (_a) {
-        // const prints = await Print.find({});
-        res.status(200).json({ this: "will be the print route" });
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Print_1.Print.find({})];
+            case 1:
+                prints = _a.sent();
+                res.status(200).json(prints);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, description, image, size, price, inStock, print;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _a = req.body, description = _a.description, image = _a.image, size = _a.size, price = _a.price, inStock = _a.inStock;
+                print = Print_1.Print.build({ description: description, image: image, size: size, price: price, inStock: inStock });
+                return [4 /*yield*/, print.save()];
+            case 1:
+                _b.sent();
+                res.status(200).json(print);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var id, print;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                id = req.params.id;
+                return [4 /*yield*/, Print_1.Print.findById(id)];
+            case 1:
+                print = _a.sent();
+                print === null || print === void 0 ? void 0 : print.remove();
+                res.status(200).json(print);
+                return [2 /*return*/];
+        }
     });
 }); });

@@ -35,40 +35,67 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.getCurrentUser = void 0;
-var async_1 = require("../middlewares/async");
-var User_1 = require("../models/User");
-var bad_request_error_1 = require("../errors/bad-request-error");
-// export const getCurrentUser = asyncHandler(
-//     async (req: Request, res: Response) => {
-//       res.send(req.currentUser);
-//     }
-//   );
-exports.getCurrentUser = function (req, res) {
-    res.send("hi there");
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-exports.register = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, email, password, existingUser, user, token;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _a = req.body, email = _a.email, password = _a.password;
-                return [4 /*yield*/, User_1.User.findOne({ email: email })];
-            case 1:
-                existingUser = _b.sent();
-                if (existingUser)
-                    throw new bad_request_error_1.BadRequestError("Email in use.");
-                if (!email || !password)
-                    throw new bad_request_error_1.BadRequestError("Please provide all required fields.");
-                user = User_1.User.build({ email: email, password: password });
-                return [4 /*yield*/, user.save()];
-            case 2:
-                _b.sent();
-                token = user.getSignedJwtToken();
-                // req.session = { jwt: token };
-                res.status(200).send(token);
-                return [2 /*return*/];
-        }
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.User = void 0;
+var jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
+var mongoose_1 = __importDefault(require("mongoose"));
+var keys_1 = __importDefault(require("../config/keys"));
+var PasswordManager_1 = require("../services/PasswordManager");
+var userSchema = new mongoose_1.default.Schema({
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+    },
+    role: {
+        type: String,
+        enum: ["user"],
+        default: "user",
+    },
+}, {
+    toJSON: {
+        transform: function (doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+            delete ret.password;
+            delete ret.__v;
+        },
+    },
+});
+userSchema.statics.build = function (attrs) {
+    return new User(attrs);
+};
+userSchema.pre("save", function (done) {
+    return __awaiter(this, void 0, void 0, function () {
+        var hashed;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    if (!this.isModified("password")) return [3 /*break*/, 2];
+                    return [4 /*yield*/, PasswordManager_1.PasswordManager.toHash(this.get("password"))];
+                case 1:
+                    hashed = _a.sent();
+                    this.set("password", hashed);
+                    _a.label = 2;
+                case 2:
+                    done();
+                    return [2 /*return*/];
+            }
+        });
     });
-}); });
+});
+userSchema.methods.getSignedJwtToken = function () {
+    var _a = this, _id = _a._id, email = _a.email, role = _a.role;
+    return jsonwebtoken_1.default.sign({ _id: _id, email: email, role: role }, keys_1.default.jwtSecret, {
+        expiresIn: keys_1.default.jwtExpire,
+    });
+};
+var User = mongoose_1.default.model("User", userSchema);
+exports.User = User;

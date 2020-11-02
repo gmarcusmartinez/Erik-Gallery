@@ -36,39 +36,43 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.register = exports.getCurrentUser = void 0;
-var async_1 = require("../middlewares/async");
-var User_1 = require("../models/User");
-var bad_request_error_1 = require("../errors/bad-request-error");
-// export const getCurrentUser = asyncHandler(
-//     async (req: Request, res: Response) => {
-//       res.send(req.currentUser);
-//     }
-//   );
-exports.getCurrentUser = function (req, res) {
-    res.send("hi there");
-};
-exports.register = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, email, password, existingUser, user, token;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                _a = req.body, email = _a.email, password = _a.password;
-                return [4 /*yield*/, User_1.User.findOne({ email: email })];
-            case 1:
-                existingUser = _b.sent();
-                if (existingUser)
-                    throw new bad_request_error_1.BadRequestError("Email in use.");
-                if (!email || !password)
-                    throw new bad_request_error_1.BadRequestError("Please provide all required fields.");
-                user = User_1.User.build({ email: email, password: password });
-                return [4 /*yield*/, user.save()];
-            case 2:
-                _b.sent();
-                token = user.getSignedJwtToken();
-                // req.session = { jwt: token };
-                res.status(200).send(token);
-                return [2 /*return*/];
-        }
-    });
-}); });
+exports.PasswordManager = void 0;
+var crypto_1 = require("crypto");
+var util_1 = require("util");
+var scryptAsync = util_1.promisify(crypto_1.scrypt);
+var PasswordManager = /** @class */ (function () {
+    function PasswordManager() {
+    }
+    PasswordManager.toHash = function (password) {
+        return __awaiter(this, void 0, void 0, function () {
+            var salt, buf;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        salt = crypto_1.randomBytes(8).toString("hex");
+                        return [4 /*yield*/, scryptAsync(password, salt, 64)];
+                    case 1:
+                        buf = (_a.sent());
+                        return [2 /*return*/, buf.toString("hex") + "." + salt];
+                }
+            });
+        });
+    };
+    PasswordManager.compare = function (storedPassword, suppliedPassword) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, hashedPassword, salt, buf;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = storedPassword.split("."), hashedPassword = _a[0], salt = _a[1];
+                        return [4 /*yield*/, scryptAsync(suppliedPassword, salt, 64)];
+                    case 1:
+                        buf = (_b.sent());
+                        return [2 /*return*/, buf.toString("hex") === hashedPassword];
+                }
+            });
+        });
+    };
+    return PasswordManager;
+}());
+exports.PasswordManager = PasswordManager;
