@@ -24,7 +24,7 @@ const App: React.FC<IProps> = ({ getCurrentUser }) => {
         <Route exact path="/sound/" component={screens.SoundScreen} />
         <Route exact path="/prints" component={screens.PrintsScreen} />
         <Route exact path="/signout" component={screens.LogoutScreen} />
-        {/* <Route component={screens.DashboardScreen} /> */}
+        <Route component={screens.DashboardScreen} />
       </Switch>
     </>
   );

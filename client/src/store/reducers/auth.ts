@@ -22,12 +22,8 @@ export const auth = (state = initialState, action: AnyAction) => {
         loading: false,
         currentUser: payload,
       };
-    // case AuthActionTypes.USER_LOGIN_FAILURE:
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     errors: payload,
-    //   };
+    case AuthActionTypes.USER_LOGIN_FAILURE:
+      return { ...state, loading: false, errors: payload };
 
     default:
       return state;
