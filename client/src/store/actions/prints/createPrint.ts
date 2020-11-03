@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PrintActionTypes } from "store/actions/types";
+import { ModalActionTypes, PrintActionTypes } from "store/actions/types";
 
 export const createPrint = (formData: any) => async (dispatch: any) => {
   const { description, size, price, inStock } = formData;
@@ -25,6 +25,8 @@ export const createPrint = (formData: any) => async (dispatch: any) => {
       config
     );
     dispatch({ type: PrintActionTypes.CREATE_PRINT_SUCCESS, payload: data });
+    const successPayload = { displayModal: false };
+    dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: successPayload });
   } catch (err) {
     dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE });
   }

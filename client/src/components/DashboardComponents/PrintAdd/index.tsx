@@ -4,15 +4,18 @@ import { createStructuredSelector } from "reselect";
 
 import { Text, Select, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/createPrint";
-import { selectPrintsErrors } from "store/selectors/prints";
+
 import { formDefaultState, inStockOptions } from "./helpers";
 import { IError } from "interfaces";
+import { printErrors, printLoading } from "store/selectors/prints";
+import Spinner from "components/Spinner";
 
 interface IProps {
   errors: IError[];
   createPrint: Function;
+  loading: boolean;
 }
-const PrintAdd: React.FC<IProps> = ({ errors, createPrint }) => {
+const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
   const [formData, setFormData] = React.useState(formDefaultState);
   const { description, size, price, inStock } = formData;
 
@@ -25,12 +28,15 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createPrint(formData);
+    try {
+      createPrint(formData);
+    } catch (e) {}
   };
 
   const setError = (field: string) =>
     errors ? errors.find((err) => err.field === field) : null;
 
+  if (loading) return <Spinner message="Uploading Print BB" />;
   return (
     <form className="print-add" onSubmit={handleSubmit}>
       <h3 className="print-add__title">Add Print</h3>
@@ -70,8 +76,10 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint }) => {
     </form>
   );
 };
+
 const mapStateToProps = createStructuredSelector({
-  errors: selectPrintsErrors,
+  errors: printErrors,
+  loading: printLoading,
 });
 
 export default connect(mapStateToProps, { createPrint })(PrintAdd);

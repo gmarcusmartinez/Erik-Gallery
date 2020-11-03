@@ -15,6 +15,7 @@ export const prints = (state = initialState, action: AnyAction) => {
     case PrintActionTypes.CREATE_PRINT_SUCCESS:
       return { ...state, items: { ...state.items, [payload._id]: payload } };
 
+    case PrintActionTypes.CREATE_PRINT_REQUEST:
     case PrintActionTypes.FETCH_PRINTS_REQUEST:
       return { ...state, loading: true };
 

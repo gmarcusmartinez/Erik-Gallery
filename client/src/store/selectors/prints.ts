@@ -6,12 +6,12 @@ export const selectAllPrints = createSelector([selectPrints], (prints) =>
   Object.values(prints.items)
 );
 
-export const selectIsPrintsLoading = createSelector(
+export const printLoading = createSelector(
   [selectPrints],
   (prints) => prints.loading
 );
 
-export const selectPrintsErrors = createSelector(
+export const printErrors = createSelector(
   [selectPrints],
   (prints) => prints.errors
 );
