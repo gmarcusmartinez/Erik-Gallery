@@ -5,7 +5,6 @@ const Dashboard = () => {
   return (
     <>
       <div className="dashboard-screen">
-        <h2 className="prints-title">Prints</h2>
         <PrintSection />
       </div>
       <Modal />

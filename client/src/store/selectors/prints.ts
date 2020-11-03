@@ -16,6 +16,11 @@ export const printErrors = createSelector(
   (prints) => prints.errors
 );
 
+export const selectedItem = createSelector(
+  [selectPrints],
+  (prints) => prints.selectedItem
+);
+
 export const selectIsPrintsLoaded = createSelector(
   [selectPrints],
   (prints) => !!prints.items

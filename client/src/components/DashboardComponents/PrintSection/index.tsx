@@ -6,11 +6,13 @@ import PrintItem from "components/DashboardComponents/PrintItem";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { selectAllPrints } from "store/selectors/prints";
+import { renderHeaders } from "./helpers";
+import ToggleDisplayPrints from "./ToggleDisplayPrints";
 
 interface IProps {
   fetchPrints: Function;
   toggleModal: Function;
-  items: any;
+  items?: any[];
 }
 
 const PrintSection: React.FC<IProps> = ({
@@ -18,7 +20,8 @@ const PrintSection: React.FC<IProps> = ({
   items,
   toggleModal,
 }) => {
-  const renderPrintForm = () => toggleModal(true, "ADD_PRINT", null);
+  const [displayPrints, setDisplayPrints] = React.useState(false);
+  const renderAddPrintForm = () => toggleModal(true, "ADD_PRINT", null);
 
   React.useEffect(() => {
     fetchPrints();
@@ -29,18 +32,17 @@ const PrintSection: React.FC<IProps> = ({
 
   return (
     <div className="prints-section">
-      <div className="prints-section-headers">
-        <div>Image</div>
-        <div className="tablet-header">Desc</div>
-        <div className="tablet-header">Size</div>
-        <div>Price</div>
-        <div className="tablet-header">In Stock</div>
-        <div>Edit</div>
-        <div>Delete</div>
+      <div className="prints-section__actions">
+        <ToggleDisplayPrints bool={displayPrints} toggle={setDisplayPrints} />
+
+        <div className="add-print-btn" onClick={renderAddPrintForm}>
+          Add Print
+        </div>
       </div>
-      {printItems}
-      <div className="add-print-btn" onClick={renderPrintForm}>
-        Add Print
+
+      <div className={`dash-prints ${displayPrints ? "show" : ""}`}>
+        <div className="dash-prints__headers">{renderHeaders()}</div>
+        {printItems}
       </div>
     </div>
   );

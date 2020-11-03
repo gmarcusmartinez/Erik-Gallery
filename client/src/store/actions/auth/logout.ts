@@ -1,4 +1,6 @@
-import auth from "../../../api/auth";
+import auth from "api/auth";
+import history from "core/history";
+
 import { AuthActionTypes } from "../types";
 
 export const logout = () => async (dispatch: any) => {
@@ -7,6 +9,7 @@ export const logout = () => async (dispatch: any) => {
     const { data } = await auth.post("/signout");
 
     dispatch({ type: AuthActionTypes.USER_LOGOUT_SUCCESS, payload: data });
+    history.push("/");
   } catch (e) {
     const errorResponse = e.response.data.errors;
     dispatch({

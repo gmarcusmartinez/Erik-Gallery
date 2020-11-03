@@ -36,22 +36,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePrint = exports.createPrint = exports.getPrints = void 0;
+exports.remove = exports.update = exports.create = exports.get = exports.getAll = void 0;
+var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Print_1 = require("../models/Print");
-exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var prints;
+exports.getAll = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        res.status(200).json(res.advancedResults);
+        return [2 /*return*/];
+    });
+}); });
+exports.get = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var print;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Print_1.Print.find({})];
+            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
             case 1:
-                prints = _a.sent();
-                res.status(200).json(prints);
+                print = _a.sent();
+                if (!print)
+                    throw new bad_request_error_1.BadRequestError("Print not found.");
+                res.status(200).json(print);
                 return [2 /*return*/];
         }
     });
 }); });
-exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.create = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, description, image, size, price, inStock, print;
     return __generator(this, function (_b) {
         switch (_b.label) {
@@ -66,7 +75,25 @@ exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaite
         }
     });
 }); });
-exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.update = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var print, opts;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
+            case 1:
+                print = _a.sent();
+                if (!print)
+                    throw new bad_request_error_1.BadRequestError("Print Not Found.");
+                opts = { new: true, runValidators: true };
+                return [4 /*yield*/, Print_1.Print.findByIdAndUpdate(req.params.id, req.body, opts)];
+            case 2:
+                print = _a.sent();
+                res.status(200).json(print);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.remove = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var id, print;
     return __generator(this, function (_a) {
         switch (_a.label) {

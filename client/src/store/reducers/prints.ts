@@ -4,8 +4,10 @@ import { IPrint } from "interfaces";
 
 const initialState = {
   loading: true,
+  count: null,
   pagination: null,
   items: {},
+  selectedItem: null,
 };
 
 export const prints = (state = initialState, action: AnyAction) => {
@@ -17,15 +19,20 @@ export const prints = (state = initialState, action: AnyAction) => {
 
     case PrintActionTypes.CREATE_PRINT_REQUEST:
     case PrintActionTypes.FETCH_PRINTS_REQUEST:
+    case PrintActionTypes.FETCH_PRINT_REQUEST:
       return { ...state, loading: true };
+
+    case PrintActionTypes.FETCH_PRINT_SUCCESS:
+      return { ...state, loading: false, selectedItem: payload };
 
     case PrintActionTypes.FETCH_PRINTS_SUCCESS:
       return {
         ...state,
         loading: false,
+        count: payload.count,
         pagination: payload.pagination,
         items: {
-          ...payload.reduce((newState: any, print: IPrint) => {
+          ...payload.data.reduce((newState: any, print: IPrint) => {
             newState[print._id] = print;
             return newState;
           }, {}),

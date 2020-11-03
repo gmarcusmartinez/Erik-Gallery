@@ -38,9 +38,9 @@ const clearItemFromCart = (cartItems: ICartItem[], itemToRemove: ICartItem) =>
   cartItems.filter(({ _id }) => _id !== itemToRemove._id);
 
 export const calculateTotal = (cartItems: ICartItem[]) =>
-  cartItems.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+  cartItems.reduce((acc, curr) => acc + curr.quantity * +curr.price, 0);
 
 export const sortItems = (items: ICartItem[], order: string) =>
   order === "ascending"
-    ? [...items.sort((a, b) => a.price - b.price)]
-    : [...items.sort((a, b) => b.price - a.price)];
+    ? [...items.sort((a, b) => +a.price - +b.price)]
+    : [...items.sort((a, b) => +b.price - +a.price)];

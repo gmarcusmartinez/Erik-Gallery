@@ -1,6 +1,6 @@
-export const formDefaultState = {
+export const blankFormState = {
   description: "",
-  size: "(35 x 50cm)",
+  size: "(0 x 0cm)",
   price: "0.00",
   inStock: "true",
   image: null,

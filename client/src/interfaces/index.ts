@@ -9,7 +9,7 @@ export interface IPrint {
   inStock: boolean;
   description: string;
   image: string;
-  price: number;
+  price: string;
   size: string;
 }
 export interface IError {

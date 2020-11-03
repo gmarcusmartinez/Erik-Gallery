@@ -18,10 +18,11 @@ export const advancedResults = (model: any) => async (
   query = model.find(JSON.parse(queryStr));
 
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 6;
+  const limit = +req.query.limit || 20;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const total = await model.countDocuments();
+
   query = query.skip(startIndex).limit(limit);
 
   const results = await query;
@@ -43,7 +44,7 @@ export const advancedResults = (model: any) => async (
 
   res.advancedResults = {
     success: true,
-    count: results.length,
+    count: total,
     pagination,
     data: results,
   };

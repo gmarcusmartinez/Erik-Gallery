@@ -6,12 +6,4 @@
   display: flex;
   flex-direction: column;
   margin-top: 8rem;
-
-  .prints-title {
-    color: var(--color-grey);
-    letter-spacing: var(--letter-spacing-lg);
-    margin-left: 2rem;
-    margin-bottom: var(--margin-xs);
-    text-transform: uppercase;
-  }
 }

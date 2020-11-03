@@ -60,7 +60,7 @@ exports.advancedResults = function (model) { return function (req, res, next) { 
                 queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, function (match) { return "$" + match; });
                 query = model.find(JSON.parse(queryStr));
                 page = +req.query.page || 1;
-                limit = +req.query.limit || 6;
+                limit = +req.query.limit || 20;
                 startIndex = (page - 1) * limit;
                 endIndex = page * limit;
                 return [4 /*yield*/, model.countDocuments()];
@@ -85,7 +85,7 @@ exports.advancedResults = function (model) { return function (req, res, next) { 
                 }
                 res.advancedResults = {
                     success: true,
-                    count: results.length,
+                    count: total,
                     pagination: pagination,
                     data: results,
                 };

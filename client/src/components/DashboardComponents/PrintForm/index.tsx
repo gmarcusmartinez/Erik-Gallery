@@ -4,19 +4,33 @@ import { createStructuredSelector } from "reselect";
 
 import { Text, Select, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/createPrint";
+import { blankFormState, inStockOptions } from "./helpers";
 
-import { formDefaultState, inStockOptions } from "./helpers";
-import { IError } from "interfaces";
-import { printErrors, printLoading } from "store/selectors/prints";
+import { IError, IPrint } from "interfaces";
+import {
+  printErrors,
+  printLoading,
+  selectedItem,
+} from "store/selectors/prints";
 import Spinner from "components/Spinner";
 
 interface IProps {
   errors: IError[];
   createPrint: Function;
   loading: boolean;
+  formTitle: string;
+  selectedItem?: any;
 }
-const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
-  const [formData, setFormData] = React.useState(formDefaultState);
+const PrintForm: React.FC<IProps> = ({
+  errors,
+  createPrint,
+  loading,
+  formTitle,
+  selectedItem,
+}) => {
+  const defaultFormState = formTitle === "Edit" ? selectedItem : blankFormState;
+
+  const [formData, setFormData] = React.useState(defaultFormState);
   const { description, size, price, inStock } = formData;
 
   const handleChange = (
@@ -28,8 +42,11 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const request = () =>
+      formTitle === "Edit" ? console.log(formData) : createPrint(formData);
     try {
-      createPrint(formData);
+      request();
     } catch (e) {}
   };
 
@@ -39,7 +56,7 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
   if (loading) return <Spinner message="Uploading Print BB" />;
   return (
     <form className="print-add" onSubmit={handleSubmit}>
-      <h3 className="print-add__title">Add Print</h3>
+      <h3 className="print-add__title">{formTitle} Print</h3>
       <Text
         placeholder="Description"
         name="description"
@@ -61,14 +78,14 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
         onChange={handleChange}
         error={setError("price")}
       />
-      <Select
+      {/* <Select
         label="In Stock"
         value={inStock}
         name="inStock"
         onChange={handleChange}
         renderOptions={renderOptions}
         options={inStockOptions}
-      />
+      /> */}
       <File onChange={handleFileChange} />
       <button type="submit" className="print-add__btn">
         Submit
@@ -80,9 +97,10 @@ const PrintAdd: React.FC<IProps> = ({ errors, createPrint, loading }) => {
 const mapStateToProps = createStructuredSelector({
   errors: printErrors,
   loading: printLoading,
+  selectedItem,
 });
 
-export default connect(mapStateToProps, { createPrint })(PrintAdd);
+export default connect(mapStateToProps, { createPrint })(PrintForm);
 
 function renderOptions(arr: any[]) {
   return arr.map((el) => <option key={el}>{el}</option>);
