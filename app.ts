@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 
 import { authRouter } from "./routes/auth";
 import { printRouter } from "./routes/prints";
+import { uploadRouter } from "./routes/upload";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
@@ -20,6 +21,7 @@ app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/prints", printRouter);
+app.use("/api/uploads", uploadRouter);
 
 const __dirname = path.resolve();
 

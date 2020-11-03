@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.uploadRouter = void 0;
+var express_1 = require("express");
+var upload_1 = require("../controllers/upload");
+var current_user_1 = require("../middlewares/current-user");
+var is_admin_1 = require("../middlewares/is-admin");
+var require_auth_1 = require("../middlewares/require-auth");
+var router = express_1.Router();
+exports.uploadRouter = router;
+router.route("/").get(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, upload_1.createUpload);

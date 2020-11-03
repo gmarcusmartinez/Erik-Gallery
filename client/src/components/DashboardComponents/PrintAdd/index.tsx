@@ -3,16 +3,16 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { Text, Select, File } from "components/CustomInputs";
-// import { createPrint } from "store/actions/prints";
+import { createPrint } from "store/actions/prints/createPrint";
 import { selectPrintsErrors } from "store/selectors/prints";
 import { formDefaultState, inStockOptions } from "./helpers";
 import { IError } from "interfaces";
 
 interface IProps {
   errors: IError[];
-  // createPrint: Function;
+  createPrint: Function;
 }
-const PrintAdd: React.FC<IProps> = ({ errors }) => {
+const PrintAdd: React.FC<IProps> = ({ errors, createPrint }) => {
   const [formData, setFormData] = React.useState(formDefaultState);
   const { description, size, price, inStock } = formData;
 
@@ -25,7 +25,7 @@ const PrintAdd: React.FC<IProps> = ({ errors }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // createPrint(formData);
+    createPrint(formData);
   };
 
   const setError = (field: string) =>
@@ -74,7 +74,7 @@ const mapStateToProps = createStructuredSelector({
   errors: selectPrintsErrors,
 });
 
-export default connect(mapStateToProps, {})(PrintAdd);
+export default connect(mapStateToProps, { createPrint })(PrintAdd);
 
 function renderOptions(arr: any[]) {
   return arr.map((el) => <option key={el}>{el}</option>);
