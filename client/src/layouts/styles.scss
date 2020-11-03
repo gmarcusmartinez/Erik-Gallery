@@ -1,19 +1,8 @@
-$background-url: "https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400";
-
 .main-layout {
-  height: 100%;
-  width: calc(100% - 4rem);
-  margin-top: 6.4rem;
-  padding: 0 2rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.bg-image {
-  height: 80vh;
-  width: 100%;
+  height: 95vh;
   background-size: contain;
-  background: url($background-url) no-repeat center;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  margin-top: 2rem;
 }

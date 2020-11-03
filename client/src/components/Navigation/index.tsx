@@ -20,7 +20,7 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
       <div className="header">
         <MenuBars bool={isOpen} cb={toggleNav} />
         <Link to="/" className="header__title">
-          Erik Felfalusi
+          Erik Felfalusa
         </Link>
         {/* <CartIcon /> */}
         {/* {hidden ? null : <CartDropDown />} */}
