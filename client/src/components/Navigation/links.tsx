@@ -19,8 +19,9 @@ const adminLinks = [
 interface IProps {
   isOpen: boolean;
   currentUser: { role: string };
+  toggleNav: Function;
 }
-const Links: React.FC<IProps> = ({ isOpen, currentUser }) => {
+const Links: React.FC<IProps> = ({ isOpen, currentUser, toggleNav }) => {
   let isAdmin = currentUser && currentUser.role === "admin" ? true : false;
   const navOpen = `${isOpen ? "open" : "closed"}`;
   const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
