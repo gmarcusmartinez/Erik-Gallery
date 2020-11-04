@@ -26,9 +26,8 @@ const Links: React.FC<IProps> = ({ isOpen, currentUser, toggleNav }) => {
   const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
 
   React.useEffect(() => {
-    disableBodyScroll(document.querySelector(".mobile-navigation")!);
-    return () =>
-      enableBodyScroll(document.querySelector(".mobile-navigation")!);
+    disableBodyScroll(document.querySelector(".main-content")!);
+    return () => enableBodyScroll(document.querySelector(".main-content")!);
   }, []);
 
   return (
