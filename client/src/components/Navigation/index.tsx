@@ -1,26 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { renderLinks } from "./links";
+import Links from "./links";
 import { toggleNav } from "store/actions/nav/toggleNav";
 
 interface IProps {
   isOpen: boolean;
   toggleNav: Function;
-  currentUser: { role: string };
 }
 
-const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
-  let isAdmin = null;
-  if (currentUser && currentUser.role === "admin") isAdmin = true;
-
-  if (isOpen) document.getElementById("root")!.classList.add("lock");
-  if (!isOpen) document.getElementById("root")!.classList.remove("lock");
-
-  const mobilNavClass = `${isOpen ? "open" : "closed"} ${
-    isAdmin ? "admin-layout" : ""
-  }`;
-
+const Navigation: React.FC<IProps> = ({ isOpen, toggleNav }) => {
   return (
     <>
       <div className="header">
@@ -28,18 +17,13 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
         <Link to="/" className="header__title">
           <span onClick={() => toggleNav(false)}>Erik Felfalusi</span>
         </Link>
-        <ul className={`mobile-navigation  ${mobilNavClass}`}>
-          {renderLinks(isOpen, toggleNav, isAdmin)}
-        </ul>
+        {isOpen && <Links />}
       </div>
     </>
   );
 };
-
 const mapStateToProps = (state: any) => ({
-  hidden: state.cart.hidden,
   isOpen: state.nav.isOpen,
-  currentUser: state.auth.currentUser,
 });
 
 export default connect(mapStateToProps, { toggleNav })(Navigation);

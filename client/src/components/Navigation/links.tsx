@@ -1,5 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { useLockBodyScroll } from "hooks/useLockBodyScroll";
+import { toggleNav } from "store/actions/nav/toggleNav";
 
 const guestLinks = [
   { to: "prints", text: "print work" },
@@ -13,11 +16,29 @@ const adminLinks = [
   { to: "", text: "" },
 ];
 
-export const renderLinks = (
-  bool: boolean,
-  cb: Function,
-  isAdmin: boolean | null
-) => {
+interface IProps {
+  isOpen: boolean;
+  currentUser: { role: string };
+}
+const Links: React.FC<IProps> = ({ isOpen, currentUser }) => {
+  let isAdmin = currentUser && currentUser.role === "admin" ? true : false;
+  const navOpen = `${isOpen ? "open" : "closed"}`;
+  const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
+  useLockBodyScroll();
+  return (
+    <ul className={`mobile-navigation ${navOpen} ${adminLinks}`}>
+      {renderLinks(isOpen, toggleNav, isAdmin)}
+    </ul>
+  );
+};
+
+const mapStateToProps = (state: any) => ({
+  isOpen: state.nav.isOpen,
+  currentUser: state.auth.currentUser,
+});
+export default connect(mapStateToProps, { toggleNav })(Links);
+
+function renderLinks(bool: boolean, cb: Function, isAdmin: boolean | null) {
   const direction = bool ? "slide-in" : "slide-out";
   const className = `mobile-navigation__link ${direction}`;
 
@@ -30,4 +51,4 @@ export const renderLinks = (
     </li>
   ));
   return linkEls;
-};
+}

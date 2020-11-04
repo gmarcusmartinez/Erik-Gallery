@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { Text, Select, File } from "components/CustomInputs";
+import { Text, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/createPrint";
-import { blankFormState, inStockOptions } from "./helpers";
+import { blankFormState } from "./helpers";
 
-import { IError, IPrint } from "interfaces";
+import { IError } from "interfaces";
 import {
   printErrors,
   printLoading,
@@ -31,7 +31,7 @@ const PrintForm: React.FC<IProps> = ({
   const defaultFormState = formTitle === "Edit" ? selectedItem : blankFormState;
 
   const [formData, setFormData] = React.useState(defaultFormState);
-  const { description, size, price, inStock } = formData;
+  const { description, size, price } = formData;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -102,6 +102,6 @@ const mapStateToProps = createStructuredSelector({
 
 export default connect(mapStateToProps, { createPrint })(PrintForm);
 
-function renderOptions(arr: any[]) {
-  return arr.map((el) => <option key={el}>{el}</option>);
-}
+// function renderOptions(arr: any[]) {
+//   return arr.map((el) => <option key={el}>{el}</option>);
+// }

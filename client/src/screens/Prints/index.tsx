@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import InfiniteScroll from "react-infinite-scroll-component";
-
 import { fetchPrints } from "store/actions/prints/fetchPrints";
 import PrintsContainer from "./Container";
-import PrintsLoading from "./Loading";
 
 interface IProps {
   fetchPrints: Function;
