@@ -2,7 +2,7 @@
   &__actions {
     display: flex;
     align-items: center;
-    width: 100%;
+    max-width: 120rem;
     color: var(--color-grey);
     .display-prints-trigger {
       font-size: 1.2rem;
