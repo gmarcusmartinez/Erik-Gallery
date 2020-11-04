@@ -3,7 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -48,8 +48,8 @@ body {
 }
 .main-content {
   margin-top: 10vh;
-  height: 90vh;
 }
+
 .lock {
   overflow: hidden !important;
 }
