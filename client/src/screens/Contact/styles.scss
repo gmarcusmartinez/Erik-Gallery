@@ -1,16 +1,16 @@
 .contact-screen {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  height: 90vh;
+  width: 100%;
+  background-color: var(--color-overlay-bg);
   &__info {
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    height: 90vh;
-    width: 100%;
-    background-color: var(--color-overlay-bg);
-
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+    margin-top: 10rem;
+
     p,
     a {
       color: var(--color-black);
