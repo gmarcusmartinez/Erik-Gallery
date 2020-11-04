@@ -65,7 +65,7 @@
   &.admin-layout {
     grid-template-rows: repeat(6, 13vh) 12vh;
     a {
-      line-height: 13vh;
+      line-height: 12vh;
     }
   }
 
@@ -98,6 +98,9 @@
       text-align: center;
       text-decoration: none;
     }
+    &:last-of-type {
+      padding-bottom: 20rem;
+    }
   }
 }
 .mobile-padding {
@@ -122,9 +125,6 @@
 .slide-in-5 {
   animation: slide-in 0.4s linear 0.6s both;
 }
-.slide-in-6 {
-  animation: slide-in 0.4s linear 0.6s both;
-}
 
 .slide-out-0 {
   animation: slide-out 0.3s linear 0.6s both;
@@ -142,8 +142,5 @@
   animation: slide-out 0.3s linear 0.2s both;
 }
 .slide-out-5 {
-  animation: slide-out 0.3s linear 0.1s both;
-}
-.slide-out-6 {
   animation: slide-out 0.3s linear 0.1s both;
 }

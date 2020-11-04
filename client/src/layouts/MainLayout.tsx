@@ -1,5 +1,5 @@
 import React from "react";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { disableBodyScroll } from "body-scroll-lock";
 
 const MainLayout: React.FC = ({ children }) => {
   const backgroundImage = `url(https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400)`;

@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { toggleNav } from "store/actions/nav/toggleNav";
-import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const guestLinks = [
   { to: "prints", text: "print work" },
@@ -13,7 +13,6 @@ const guestLinks = [
 const adminLinks = [
   { to: "dashboard", text: "dashboard" },
   { to: "signout", text: "signout" },
-  { to: "", text: "" },
 ];
 
 interface IProps {
@@ -28,7 +27,8 @@ const Links: React.FC<IProps> = ({ isOpen, currentUser, toggleNav }) => {
 
   React.useEffect(() => {
     disableBodyScroll(document.querySelector(".mobile-navigation")!);
-    return () => clearAllBodyScrollLocks();
+    return () =>
+      enableBodyScroll(document.querySelector(".mobile-navigation")!);
   }, []);
 
   return (
