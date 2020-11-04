@@ -1,7 +1,12 @@
 import React from "react";
 import MainLayout from "../../layouts/MainLayout";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 const Contact = () => {
+  React.useEffect(() => {
+    disableBodyScroll(document.querySelector(".contact-screen")!);
+    return () => clearAllBodyScrollLocks();
+  }, []);
   return (
     <MainLayout>
       <div className="contact-screen">

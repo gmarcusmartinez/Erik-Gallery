@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { useLockBodyScroll } from "hooks/useLockBodyScroll";
 import { toggleNav } from "store/actions/nav/toggleNav";
+import { disableBodyScroll, clearAllBodyScrollLocks } from "body-scroll-lock";
 
 const guestLinks = [
   { to: "prints", text: "print work" },
@@ -24,7 +24,12 @@ const Links: React.FC<IProps> = ({ isOpen, currentUser }) => {
   let isAdmin = currentUser && currentUser.role === "admin" ? true : false;
   const navOpen = `${isOpen ? "open" : "closed"}`;
   const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
-  useLockBodyScroll();
+
+  React.useEffect(() => {
+    disableBodyScroll(document.querySelector(".mobile-navigation")!);
+    return () => clearAllBodyScrollLocks();
+  }, []);
+
   return (
     <ul className={`mobile-navigation ${navOpen} ${adminLinks}`}>
       {renderLinks(isOpen, toggleNav, isAdmin)}
@@ -36,6 +41,7 @@ const mapStateToProps = (state: any) => ({
   isOpen: state.nav.isOpen,
   currentUser: state.auth.currentUser,
 });
+
 export default connect(mapStateToProps, { toggleNav })(Links);
 
 function renderLinks(bool: boolean, cb: Function, isAdmin: boolean | null) {

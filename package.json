@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/body-scroll-lock": "^2.6.1",
     "aws-sdk": "^2.783.0",
     "cookie-session": "^1.4.0",
     "cors": "^2.8.5",
