@@ -18,7 +18,7 @@ const Prints: React.FC<IProps> = ({ fetchPrints, isOpen, count }) => {
   }, [fetchPrints]);
 
   return (
-    <div className={`prints-screen ${isOpen ? "lock" : ""}`}>
+    <div className="prints-screen">
       <PrintsContainer />
     </div>
   );

@@ -1,4 +1,5 @@
 .prints-screen {
+  height: 100%;
   width: 100vw;
 
   display: flex;
@@ -11,6 +12,8 @@
 }
 
 .prints-container {
+  margin-top: 5vh;
+
   height: 90vh;
   width: 100%;
   @include respond(tablet) {
