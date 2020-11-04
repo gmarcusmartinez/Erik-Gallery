@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { renderLinks } from "./links";
 import { toggleNav } from "store/actions/nav/toggleNav";
-// import CartIcon from "../CartIcon";
-// import CartDropDown from "components/CartDropDown";
 
 interface IProps {
   isOpen: boolean;
@@ -16,6 +14,10 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
   let isAdmin = null;
   if (currentUser && currentUser.role === "admin") isAdmin = true;
 
+  const mobilNavClass = `${isOpen ? "open" : "closed"} ${
+    isAdmin ? "admin-layout" : ""
+  }`;
+
   return (
     <>
       <div className="header">
@@ -23,9 +25,7 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
         <Link to="/" className="header__title">
           <span onClick={() => toggleNav(false)}>Erik Felfalusi</span>
         </Link>
-        {/* <CartIcon /> */}
-        {/* {hidden ? null : <CartDropDown />} */}
-        <ul className={`mobile-navigation ${isOpen ? "open" : "closed"}`}>
+        <ul className={`mobile-navigation  ${mobilNavClass}`}>
           {renderLinks(isOpen, toggleNav, isAdmin)}
         </ul>
       </div>

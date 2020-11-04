@@ -10,6 +10,7 @@ const guestLinks = [
 const adminLinks = [
   { to: "dashboard", text: "dashboard" },
   { to: "signout", text: "signout" },
+  { to: "", text: "" },
 ];
 
 export const renderLinks = (
@@ -25,9 +26,7 @@ export const renderLinks = (
 
   const linkEls = links.map((l, i) => (
     <li key={i} className={`${className}-${i}`} onClick={() => cb(false)}>
-      <div>
-        <Link to={l.to}>{l.text}</Link>
-      </div>
+      <Link to={l.to}>{l.text}</Link>
     </li>
   ));
   return linkEls;

@@ -46,7 +46,9 @@ body {
   --margin-sm: 1rem;
   --margin-md: 2rem;
 }
-
+.main-content {
+  height: 90vh;
+}
 .lock {
   overflow: hidden !important;
 }

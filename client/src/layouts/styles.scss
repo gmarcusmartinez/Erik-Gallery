@@ -1,7 +1,9 @@
-.main-bg {
-  margin-top: 5vh;
+.main-layout {
   height: 90vh;
+}
+.main-bg {
   background-size: contain;
-  background-position: center;
+  background-position: center -2rem;
   background-repeat: no-repeat;
+  height: 100%;
 }
