@@ -25,7 +25,9 @@ export const renderLinks = (
 
   const linkEls = links.map((l, i) => (
     <li key={i} className={`${className}-${i}`} onClick={() => cb(false)}>
-      <Link to={l.to}>{l.text}</Link>
+      <div>
+        <Link to={l.to}>{l.text}</Link>
+      </div>
     </li>
   ));
   return linkEls;

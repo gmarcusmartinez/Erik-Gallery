@@ -51,8 +51,8 @@
 
 .mobile-navigation {
   width: 100%;
-
-  position: absolute;
+  height: 90vh;
+  position: fixed;
   top: 10vh;
   left: 0;
 
@@ -73,13 +73,14 @@
   &__link {
     background-color: var(--color-overlay-bg);
     text-transform: uppercase;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     a {
       color: #000;
       display: block;
       font-size: 1.4rem;
       letter-spacing: var(--letter-spacing-lg);
-      line-height: 10rem;
       height: 100%;
       width: 100%;
 
