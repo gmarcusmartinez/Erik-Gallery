@@ -16,9 +16,6 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
   let isAdmin = null;
   if (currentUser && currentUser.role === "admin") isAdmin = true;
 
-  if (isOpen) document.body.classList.add("overflowHidden");
-  if (!isOpen) document.body.classList.remove("overflowHidden");
-
   return (
     <>
       <div className="header">

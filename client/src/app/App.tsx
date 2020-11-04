@@ -9,9 +9,10 @@ import { PRoute } from "components/ProtectedRoute";
 interface IProps {
   getCurrentUser: Function;
   currentUser: { role: string };
+  isOpen: boolean;
 }
 
-const App: React.FC<IProps> = ({ getCurrentUser, currentUser }) => {
+const App: React.FC<IProps> = ({ getCurrentUser, currentUser, isOpen }) => {
   React.useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser]);
@@ -19,7 +20,7 @@ const App: React.FC<IProps> = ({ getCurrentUser, currentUser }) => {
   return (
     <>
       <Navigation />
-      <div className="main-content">
+      <div className={`main-content ${isOpen ? "lock" : ""}`}>
         <Switch>
           <Route exact path="/" component={screens.LandingScreen} />
           <Route exact path="/admin/" component={screens.AdminScreen} />
@@ -40,6 +41,7 @@ const App: React.FC<IProps> = ({ getCurrentUser, currentUser }) => {
 
 const mapStateToProps = (state: any) => ({
   currentUser: state.auth.currentUser,
+  isOpen: state.nav.isOpen,
 });
+
 export default connect(mapStateToProps, { getCurrentUser })(App);
-// <Route exact path='/zines/' component={screens.ZineScreen} />
