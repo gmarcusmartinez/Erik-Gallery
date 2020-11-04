@@ -9,10 +9,9 @@ import { PRoute } from "components/ProtectedRoute";
 interface IProps {
   getCurrentUser: Function;
   currentUser: { role: string };
-  isOpen: boolean;
 }
 
-const App: React.FC<IProps> = ({ getCurrentUser, currentUser, isOpen }) => {
+const App: React.FC<IProps> = ({ getCurrentUser, currentUser }) => {
   React.useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser]);
@@ -20,28 +19,25 @@ const App: React.FC<IProps> = ({ getCurrentUser, currentUser, isOpen }) => {
   return (
     <>
       <Navigation />
-      <div className={`main-content ${isOpen ? "lock" : ""}`}>
-        <Switch>
-          <Route exact path="/" component={screens.LandingScreen} />
-          <Route exact path="/admin/" component={screens.AdminScreen} />
-          <Route exact path="/contact/" component={screens.ContactScreen} />
-          <Route exact path="/sound/" component={screens.SoundScreen} />
-          <Route exact path="/prints" component={screens.PrintsScreen} />
-          <Route exact path="/signout" component={screens.LogoutScreen} />
-          <PRoute
-            path="/dashboard"
-            currentUser={currentUser}
-            component={screens.Dashboard}
-          />
-        </Switch>
-      </div>
+      <Switch>
+        <Route exact path="/" component={screens.LandingScreen} />
+        <Route exact path="/admin/" component={screens.AdminScreen} />
+        <Route exact path="/contact/" component={screens.ContactScreen} />
+        <Route exact path="/sound/" component={screens.SoundScreen} />
+        <Route exact path="/prints" component={screens.PrintsScreen} />
+        <Route exact path="/signout" component={screens.LogoutScreen} />
+        <PRoute
+          path="/dashboard"
+          currentUser={currentUser}
+          component={screens.Dashboard}
+        />
+      </Switch>
     </>
   );
 };
 
 const mapStateToProps = (state: any) => ({
   currentUser: state.auth.currentUser,
-  isOpen: state.nav.isOpen,
 });
 
 export default connect(mapStateToProps, { getCurrentUser })(App);

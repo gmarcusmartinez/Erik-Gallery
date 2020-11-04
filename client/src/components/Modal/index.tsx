@@ -19,8 +19,8 @@ interface IProps {
 const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
   const className = `modal ${displayModal ? "open" : "closed"}`;
 
-  if (displayModal) document.body.classList.add("overflowHidden");
-  if (!displayModal) document.body.classList.remove("overflowHidden");
+  if (displayModal) document.getElementById("root")!.classList.add("lock");
+  if (!displayModal) document.getElementById("root")!.classList.remove("lock");
 
   return ReactDOM.createPortal(
     <div className={className}>

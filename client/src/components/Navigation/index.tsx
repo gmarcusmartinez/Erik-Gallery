@@ -14,6 +14,9 @@ const Navigation: React.FC<IProps> = ({ isOpen, toggleNav, currentUser }) => {
   let isAdmin = null;
   if (currentUser && currentUser.role === "admin") isAdmin = true;
 
+  if (isOpen) document.getElementById("root")!.classList.add("lock");
+  if (!isOpen) document.getElementById("root")!.classList.remove("lock");
+
   const mobilNavClass = `${isOpen ? "open" : "closed"} ${
     isAdmin ? "admin-layout" : ""
   }`;
