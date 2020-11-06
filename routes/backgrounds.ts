@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { createBackground } from "../controllers/backgrounds";
 import * as bgControllers from "../controllers/backgrounds";
 import { currentUser } from "../middlewares/current-user";
 import { isAdmin } from "../middlewares/is-admin";
@@ -9,8 +8,7 @@ import { createBackgroundValidation } from "../validation/background";
 
 const router = Router();
 
-// router.route("/").get(printControllers.getPrints);
-// router.route("/:id").get(printControllers.getPrint);
+router.route("/").get(bgControllers.getBackgrounds);
 
 router
   .route("/")
@@ -23,18 +21,18 @@ router
     bgControllers.createBackground
   );
 
-// router
-//   .route("/:id")
-//   .put(
-//     currentUser,
-//     requireAuth,
-//     isAdmin,
-//     createPrintValidation,
-//     validateRequest,
-//     printControllers.updatePrint
-//   );
-// router
-//   .route("/:id")
-//   .delete(currentUser, requireAuth, isAdmin, printControllers.deletePrint);
+router
+  .route("/:id")
+  .put(
+    currentUser,
+    requireAuth,
+    isAdmin,
+    validateRequest,
+    bgControllers.setActive
+  );
+
+router
+  .route("/:id")
+  .delete(currentUser, requireAuth, isAdmin, bgControllers.deleteBackground);
 
 export { router as backgroundRouter };
