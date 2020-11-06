@@ -6,6 +6,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 
 import { authRouter } from "./routes/auth";
+import { backgroundRouter } from "./routes/backgrounds";
 import { printRouter } from "./routes/prints";
 import { uploadRouter } from "./routes/upload";
 import { orderRouter } from "./routes/orders";
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
+app.use("/api/backgrounds", backgroundRouter);
 app.use("/api/prints", printRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/uploads", uploadRouter);
