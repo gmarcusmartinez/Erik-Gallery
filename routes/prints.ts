@@ -1,18 +1,39 @@
 import { Router } from "express";
-import { get, getAll, create, update, remove } from "../controllers/prints";
+import * as printControllers from "../controllers/prints";
 import { currentUser } from "../middlewares/current-user";
 import { isAdmin } from "../middlewares/is-admin";
 import { requireAuth } from "../middlewares/require-auth";
-import { advancedResults } from "../middlewares/advancedResults";
-import { Print } from "../models/Print";
+import { validateRequest } from "../middlewares/validate-request";
+import { createPrintValidation } from "../validation/print";
 
 const router = Router();
 
-router.route("/").get(advancedResults(Print), getAll);
-router.route("/").post(currentUser, requireAuth, isAdmin, create);
+router.route("/").get(printControllers.getPrints);
+router.route("/:id").get(printControllers.getPrint);
 
-router.route("/:id").get(get);
-router.route("/:id").put(currentUser, requireAuth, isAdmin, update);
-router.route("/:id").delete(currentUser, requireAuth, isAdmin, remove);
+router
+  .route("/")
+  .post(
+    currentUser,
+    requireAuth,
+    isAdmin,
+    createPrintValidation,
+    validateRequest,
+    printControllers.createPrint
+  );
+
+router
+  .route("/:id")
+  .put(
+    currentUser,
+    requireAuth,
+    isAdmin,
+    createPrintValidation,
+    validateRequest,
+    printControllers.updatePrint
+  );
+router
+  .route("/:id")
+  .delete(currentUser, requireAuth, isAdmin, printControllers.deletePrint);
 
 export { router as printRouter };

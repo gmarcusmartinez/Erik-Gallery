@@ -1,8 +1,7 @@
 export const blankFormState = {
   description: "",
-  size: "(0 x 0cm)",
+  size: "(35 x 50 cm)",
   price: "0.00",
-  inStock: "true",
-  image: null,
+  quantityInStock: 0,
+  mainImage: null,
 };
-export const inStockOptions = ["true", "false"];

@@ -13,6 +13,7 @@ var dotenv_1 = __importDefault(require("dotenv"));
 var auth_1 = require("./routes/auth");
 var prints_1 = require("./routes/prints");
 var upload_1 = require("./routes/upload");
+var orders_1 = require("./routes/orders");
 var not_found_error_1 = require("./errors/not-found-error");
 var error_handler_1 = require("./middlewares/error-handler");
 dotenv_1.default.config();
@@ -23,6 +24,7 @@ app.use(cors_1.default());
 app.use(cookie_session_1.default({ signed: false, secure: false }));
 app.use("/api/auth", auth_1.authRouter);
 app.use("/api/prints", prints_1.printRouter);
+app.use("/api/orders", orders_1.orderRouter);
 app.use("/api/uploads", upload_1.uploadRouter);
 var __dirname = path_1.default.resolve();
 if (process.env.NODE_ENV === "production") {

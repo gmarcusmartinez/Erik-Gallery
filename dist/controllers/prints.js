@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,21 +47,27 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.remove = exports.update = exports.create = exports.get = exports.getAll = void 0;
+exports.deletePrint = exports.updatePrint = exports.createPrint = exports.getPrint = exports.getPrints = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
-var Print_1 = require("../models/Print");
-exports.getAll = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+var Product_1 = require("../models/Product");
+exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prints;
     return __generator(this, function (_a) {
-        res.status(200).json(res.advancedResults);
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Product_1.Product.find({ type: Product_1.ProductType.Print })];
+            case 1:
+                prints = _a.sent();
+                res.status(200).json(prints);
+                return [2 /*return*/];
+        }
     });
 }); });
-exports.get = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.getPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var print;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
+            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
             case 1:
                 print = _a.sent();
                 if (!print)
@@ -60,32 +77,31 @@ exports.get = async_1.asyncHandler(function (req, res) { return __awaiter(void 0
         }
     });
 }); });
-exports.create = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, description, image, size, price, inStock, print;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var print;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
-                _a = req.body, description = _a.description, image = _a.image, size = _a.size, price = _a.price, inStock = _a.inStock;
-                print = Print_1.Print.build({ description: description, image: image, size: size, price: price, inStock: inStock });
+                print = Product_1.Product.build(__assign(__assign({}, req.body), { type: Product_1.ProductType.Print }));
                 return [4 /*yield*/, print.save()];
             case 1:
-                _b.sent();
+                _a.sent();
                 res.status(200).json(print);
                 return [2 /*return*/];
         }
     });
 }); });
-exports.update = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.updatePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var print, opts;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
+            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
             case 1:
                 print = _a.sent();
                 if (!print)
                     throw new bad_request_error_1.BadRequestError("Print Not Found.");
                 opts = { new: true, runValidators: true };
-                return [4 /*yield*/, Print_1.Print.findByIdAndUpdate(req.params.id, req.body, opts)];
+                return [4 /*yield*/, Product_1.Product.findByIdAndUpdate(req.params.id, req.body, opts)];
             case 2:
                 print = _a.sent();
                 res.status(200).json(print);
@@ -93,13 +109,11 @@ exports.update = async_1.asyncHandler(function (req, res) { return __awaiter(voi
         }
     });
 }); });
-exports.remove = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, print;
+exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var print;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                id = req.params.id;
-                return [4 /*yield*/, Print_1.Print.findById(id)];
+            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
             case 1:
                 print = _a.sent();
                 print === null || print === void 0 ? void 0 : print.remove();

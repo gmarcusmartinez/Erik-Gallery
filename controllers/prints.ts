@@ -1,37 +1,36 @@
 import { Request, Response } from "express";
 import { BadRequestError } from "../errors/bad-request-error";
 import { asyncHandler } from "../middlewares/async";
-import { Print } from "../models/Print";
+import { Product, ProductType } from "../models/Product";
 
-export const getAll = asyncHandler(async (req: Request, res: any) => {
-  res.status(200).json(res.advancedResults);
+export const getPrints = asyncHandler(async (req: Request, res: any) => {
+  const prints = await Product.find({ type: ProductType.Print });
+  res.status(200).json(prints);
 });
 
-export const get = asyncHandler(async (req: Request, res: any) => {
-  const print = await Print.findById(req.params.id);
+export const getPrint = asyncHandler(async (req: Request, res: any) => {
+  const print = await Product.findById(req.params.id);
   if (!print) throw new BadRequestError("Print not found.");
   res.status(200).json(print);
 });
 
-export const create = asyncHandler(async (req: Request, res: Response) => {
-  const { description, image, size, price, inStock } = req.body;
-  const print = Print.build({ description, image, size, price, inStock });
+export const createPrint = asyncHandler(async (req: Request, res: Response) => {
+  const print = Product.build({ ...req.body, type: ProductType.Print });
   await print.save();
   res.status(200).json(print);
 });
 
-export const update = asyncHandler(async (req: Request, res: Response) => {
-  let print = await Print.findById(req.params.id);
+export const updatePrint = asyncHandler(async (req: Request, res: Response) => {
+  let print = await Product.findById(req.params.id);
   if (!print) throw new BadRequestError("Print Not Found.");
 
   const opts = { new: true, runValidators: true };
-  print = await Print.findByIdAndUpdate(req.params.id, req.body, opts);
+  print = await Product.findByIdAndUpdate(req.params.id, req.body, opts);
   res.status(200).json(print);
 });
 
-export const remove = asyncHandler(async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const print = await Print.findById(id);
+export const deletePrint = asyncHandler(async (req: Request, res: Response) => {
+  const print = await Product.findById(req.params.id);
   print?.remove();
   res.status(200).json(print);
 });

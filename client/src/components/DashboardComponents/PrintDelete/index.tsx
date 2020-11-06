@@ -18,7 +18,7 @@ const PrintDelete: FC<IProps> = ({ data, deletePrint, toggleModal }) => {
     toggleModal(false, null);
   };
 
-  const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${data.image}`;
+  const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${data.mainImage}`;
 
   return (
     <div className="print-delete">

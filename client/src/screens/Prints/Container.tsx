@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { printLoading } from "store/selectors/prints";
+import { loading } from "store/selectors/prints";
 
 import PrintsList from "./List";
 import PrintsLoading from "./Loading";
@@ -18,7 +18,7 @@ const PrintsContainer: React.FC<IProps> = ({ isLoading }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  isLoading: printLoading,
+  isLoading: loading,
 });
 
 export default connect(mapStateToProps, {})(PrintsContainer);

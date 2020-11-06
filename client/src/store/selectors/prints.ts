@@ -5,15 +5,11 @@ const selectPrints = (state: any) => state.prints;
 export const selectAllPrints = createSelector([selectPrints], (prints) =>
   Object.values(prints.items)
 );
+export const errors = createSelector([selectPrints], (prints) => prints.errors);
 
-export const printLoading = createSelector(
+export const loading = createSelector(
   [selectPrints],
   (prints) => prints.loading
-);
-
-export const printErrors = createSelector(
-  [selectPrints],
-  (prints) => prints.errors
 );
 
 export const selectedItem = createSelector(

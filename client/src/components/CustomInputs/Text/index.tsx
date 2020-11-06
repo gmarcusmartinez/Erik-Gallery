@@ -2,7 +2,7 @@ import React, { ChangeEvent } from "react";
 import { IError } from "../../../interfaces";
 
 interface IProps {
-  placeholder: string;
+  label: string;
   name: string;
   value: string;
   type?: string;
@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const CustomInput: React.FC<IProps> = ({
-  placeholder,
+  label,
   name,
   value,
   type,
@@ -19,11 +19,10 @@ const CustomInput: React.FC<IProps> = ({
   error,
 }) => {
   return (
-    <div>
+    <div className="text-input">
+      <label>{label}</label>
       <input
-        placeholder={placeholder}
         type={type ? type : "text"}
-        className="auth-input"
         name={name}
         value={value}
         onChange={onChange}

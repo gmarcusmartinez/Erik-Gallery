@@ -18,8 +18,8 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
     toggleModal(true, "EDIT_PRINT", printToUpdate);
   };
 
-  const { description, price, size, inStock } = print;
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${print.image})`;
+  const { description, price, size, quantityInStock } = print;
+  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${print.mainImage})`;
 
   return (
     <div className="dash-print-item">
@@ -36,7 +36,7 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
       <div className="dash-print-item__text">{description}</div>
       <div className="dash-print-item__text">{size}</div>
       <div className="dash-print-item__text">{price}</div>
-      <div className="dash-print-item__text">{inStock ? "√" : "-"}</div>
+      <div className="dash-print-item__text">{quantityInStock}</div>
       <div className="dash-print-item__text edit" onClick={toggleEdit}>
         &#9998;
       </div>

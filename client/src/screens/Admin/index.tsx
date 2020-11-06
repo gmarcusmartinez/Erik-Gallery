@@ -40,7 +40,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, login }) => {
           <h2 className="admin-form__title">Admin</h2>
           <div className="input-error">{invalidCredentialsError}</div>
           <Text
-            placeholder="Email"
+            label="Email"
             type="text"
             name="email"
             value={email}
@@ -48,7 +48,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, login }) => {
             error={setError("email")}
           />
           <Text
-            placeholder="Password"
+            label="Password"
             type="password"
             name="password"
             value={password}

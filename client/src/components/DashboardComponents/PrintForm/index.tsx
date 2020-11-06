@@ -2,16 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
+import { blankFormState } from "./helpers";
 import { Text, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/createPrint";
-import { blankFormState } from "./helpers";
-
+import { updatePrint } from "store/actions/prints/updatePrint";
+import { errors, loading, selectedItem } from "store/selectors/prints";
 import { IError } from "interfaces";
-import {
-  printErrors,
-  printLoading,
-  selectedItem,
-} from "store/selectors/prints";
 import Spinner from "components/Spinner";
 
 interface IProps {
@@ -20,31 +16,36 @@ interface IProps {
   loading: boolean;
   formTitle: string;
   selectedItem?: any;
+  updatePrint: Function;
 }
+
 const PrintForm: React.FC<IProps> = ({
   errors,
   createPrint,
   loading,
   formTitle,
   selectedItem,
+  updatePrint,
 }) => {
   const defaultFormState = formTitle === "Edit" ? selectedItem : blankFormState;
-
   const [formData, setFormData] = React.useState(defaultFormState);
-  const { description, size, price } = formData;
+  const [imageData, setImageData] = React.useState(null);
+  const { description, size, price, quantityInStock } = formData;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleFileChange = (e: React.ChangeEvent<any>) =>
-    setFormData({ ...formData, image: e.target.files[0] });
+    setImageData(e.target.files[0]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const request = () =>
-      formTitle === "Edit" ? console.log(formData) : createPrint(formData);
+      formTitle === "Edit"
+        ? updatePrint(formData, selectedItem._id, imageData)
+        : createPrint(formData, imageData);
     try {
       request();
     } catch (e) {}
@@ -58,34 +59,34 @@ const PrintForm: React.FC<IProps> = ({
     <form className="print-add" onSubmit={handleSubmit}>
       <h3 className="print-add__title">{formTitle} Print</h3>
       <Text
-        placeholder="Description"
+        label="Description"
         name="description"
         value={description}
         onChange={handleChange}
         error={setError("description")}
       />
       <Text
-        placeholder="Size"
+        label="Size"
         name="size"
         value={size}
         onChange={handleChange}
         error={setError("size")}
       />
       <Text
-        placeholder="Price"
+        label="Price"
         name="price"
         value={price}
         onChange={handleChange}
         error={setError("price")}
       />
-      {/* <Select
-        label="In Stock"
-        value={inStock}
-        name="inStock"
+      <Text
+        label="Quantity In Stock"
+        name="quantityInStock"
+        value={quantityInStock}
         onChange={handleChange}
-        renderOptions={renderOptions}
-        options={inStockOptions}
-      /> */}
+        error={setError("quantityInStock")}
+      />
+
       <File onChange={handleFileChange} />
       <button type="submit" className="print-add__btn">
         Submit
@@ -95,13 +96,11 @@ const PrintForm: React.FC<IProps> = ({
 };
 
 const mapStateToProps = createStructuredSelector({
-  errors: printErrors,
-  loading: printLoading,
+  errors,
+  loading,
   selectedItem,
 });
 
-export default connect(mapStateToProps, { createPrint })(PrintForm);
-
-// function renderOptions(arr: any[]) {
-//   return arr.map((el) => <option key={el}>{el}</option>);
-// }
+export default connect(mapStateToProps, { createPrint, updatePrint })(
+  PrintForm
+);

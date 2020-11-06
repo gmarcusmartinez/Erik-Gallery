@@ -6,11 +6,11 @@ export interface IUser {
 
 export interface IPrint {
   _id: string;
-  inStock: boolean;
+  mainImage: string;
   description: string;
-  image: string;
-  price: string;
   size: string;
+  price: string;
+  quantityInStock: number;
 }
 export interface IError {
   message: string;
