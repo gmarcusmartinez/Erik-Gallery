@@ -1,10 +1,15 @@
+import { IError } from "interfaces";
 import React from "react";
 
 interface IProps {
   onChange: any;
+  error: IError | null | undefined;
+  label: string;
 }
 
-const CustomFileInput: React.FC<IProps> = ({ onChange }) => {
+const CustomFileInput: React.FC<IProps> = ({ onChange, error, label }) => {
+  const labelClass = label === "Image Selected" ? "success" : "";
+
   return (
     <div className="custom-file-input-wrapper">
       <input
@@ -13,7 +18,8 @@ const CustomFileInput: React.FC<IProps> = ({ onChange }) => {
         accept="image/*"
         onChange={onChange}
       />
-      <label className="file-input-label">Chose an Image</label>
+      <label className={`file-input-label ${labelClass}`}>{label}</label>
+      {error && <div className="input-error">{error.message}</div>}
     </div>
   );
 };

@@ -6,6 +6,12 @@ export const createPrint = (formData: any, imageData: any) => async (
 ) => {
   const config = { headers: { "Content-Type": "application/json" } };
 
+  if (!imageData) {
+    const errors = [{ message: "Please select an image", field: "image" }];
+    dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });
+    return;
+  }
+
   try {
     dispatch({ type: PrintActionTypes.CREATE_PRINT_REQUEST });
     const ContentType = imageData.type;
@@ -20,10 +26,12 @@ export const createPrint = (formData: any, imageData: any) => async (
     );
 
     dispatch({ type: PrintActionTypes.CREATE_PRINT_SUCCESS, payload: data });
-    const successPayload = { displayModal: false };
 
+    const successPayload = { displayModal: false };
     dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: successPayload });
   } catch (err) {
-    dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE });
+    const errors = err.response.data.errors || err.message;
+    dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });
+    return;
   }
 };

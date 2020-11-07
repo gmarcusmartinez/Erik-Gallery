@@ -27,7 +27,6 @@ export const updatePrint = (
       const success = { displayModal: false };
       dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: success });
     } else {
-      console.log("no image");
       dispatch({ type: PrintActionTypes.UPDATE_PRINT_REQUEST });
       const { data } = await axios.put(`/api/prints/${id}`, formData, config);
       dispatch({ type: PrintActionTypes.UPDATE_PRINT_SUCCESS, payload: data });
@@ -36,6 +35,8 @@ export const updatePrint = (
       dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: success });
     }
   } catch (err) {
-    dispatch({ type: PrintActionTypes.UPDATE_PRINT_FAILURE });
+    const errors = err.response.data.errors || err.message;
+    dispatch({ type: PrintActionTypes.UPDATE_PRINT_FAILURE, payload: errors });
+    return;
   }
 };

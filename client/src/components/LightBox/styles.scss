@@ -1,0 +1,19 @@
+.lightbox {
+  background-color: var(--color-modal-bg);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -2,28 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { blankFormState } from "./helpers";
 import { Text, File } from "components/CustomInputs";
 import { createPrint } from "store/actions/prints/createPrint";
 import { updatePrint } from "store/actions/prints/updatePrint";
 import { errors, loading, selectedItem } from "store/selectors/prints";
 import { IError } from "interfaces";
 import Spinner from "components/Spinner";
+import { blankFormState } from "./helpers";
 
 interface IProps {
-  errors: IError[];
   createPrint: Function;
-  loading: boolean;
+  errors: IError[];
   formTitle: string;
+  loading: boolean;
   selectedItem?: any;
   updatePrint: Function;
 }
 
 const PrintForm: React.FC<IProps> = ({
-  errors,
   createPrint,
-  loading,
+  errors,
   formTitle,
+  loading,
   selectedItem,
   updatePrint,
 }) => {
@@ -41,14 +41,12 @@ const PrintForm: React.FC<IProps> = ({
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const request = () =>
+    const request = () => {
       formTitle === "Edit"
         ? updatePrint(formData, selectedItem._id, imageData)
         : createPrint(formData, imageData);
-    try {
-      request();
-    } catch (e) {}
+    };
+    request();
   };
 
   const setError = (field: string) =>
@@ -86,8 +84,12 @@ const PrintForm: React.FC<IProps> = ({
         onChange={handleChange}
         error={setError("quantityInStock")}
       />
+      <File
+        onChange={handleFileChange}
+        error={setError("image")}
+        label={imageData ? "Image Selected" : "Choose an Image"}
+      />
 
-      <File onChange={handleFileChange} />
       <button type="submit" className="print-add__btn">
         Submit
       </button>
