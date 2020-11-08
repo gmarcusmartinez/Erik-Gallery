@@ -1,6 +1,7 @@
 import React from "react";
-import PrintDelete from "../../components/DashboardComponents/PrintDelete";
-import PrintForm from "../DashboardComponents/PrintForm";
+import PrintDelete from "components/DashboardComponents/PrintDelete";
+import PrintForm from "components/DashboardComponents/PrintForm";
+import BackgroundForm from "components/DashboardComponents/BackgroundForm";
 
 export const renderForm = (component: string) => {
   switch (component) {
@@ -10,7 +11,8 @@ export const renderForm = (component: string) => {
       return <PrintForm formTitle="Add" />;
     case "EDIT_PRINT":
       return <PrintForm formTitle="Edit" />;
-
+    case "ADD_BG":
+      return <BackgroundForm />;
     default:
       return null;
   }

@@ -3,11 +3,8 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { toggleModal } from "../../store/actions/modal/toggleModal";
-import {
-  selectModalComponent,
-  selectModalIsOpen,
-} from "../../store/selectors/modal";
+import { toggleModal } from "store/actions/modal/toggleModal";
+import { selectModalComponent, selectModalIsOpen } from "store/selectors/modal";
 import { renderForm } from "./modalActions";
 import { renderModalCloseBtn } from "./ModalCloseBtn";
 

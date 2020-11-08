@@ -29,4 +29,7 @@
   letter-spacing: var(--letter-spacing-sm);
   text-align: start;
   margin-top: var(--margin-sm);
+  &.success {
+    display: none;
+  }
 }

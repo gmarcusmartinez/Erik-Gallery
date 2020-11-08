@@ -11,21 +11,6 @@
   }
 }
 
-@mixin full_wh {
-  height: 100%;
-  width: 100%;
-}
-
-@mixin flex_center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-@mixin theme_link {
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
 @mixin formEl {
   background-color: transparent;
   border: none;
@@ -40,5 +25,38 @@
     outline: none;
     border-bottom: 0.2rem solid var(--color-dark-grey);
     transition: var(--transition-fast);
+  }
+}
+
+@mixin default-form {
+  font-family: "Montserrat", sans-serif;
+  height: 48rem;
+  width: 28rem;
+  margin: auto;
+  &__title {
+    color: var(--color-dark-grey);
+    align-self: center;
+    font-size: 1.65rem;
+    margin-bottom: 2rem;
+    letter-spacing: var(--letter-spacing-md);
+  }
+  &__btn {
+    background-color: transparent;
+    border: none;
+    border-radius: 0.4rem;
+    color: var(--color-grey);
+    cursor: pointer;
+    height: 4rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-lg);
+    outline: none;
+    text-transform: uppercase;
+    text-align: start;
+    width: 100%;
+    &:active {
+      color: #333;
+      transform: translateY(3px);
+    }
   }
 }

@@ -2,18 +2,33 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import Section from "components/DashboardComponents/Section";
 import Modal from "components/Modal";
-import { printHeaders } from "./headers";
+import { backgroundHeaders, printHeaders } from "./headers";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
+import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
 import { IPrint } from "interfaces";
 
 interface IProps {
+  fetchBackgrounds: Function;
   fetchPrints: Function;
+  backgrounds: any[];
   prints: IPrint[];
 }
-const Dashboard: FC<IProps> = ({ fetchPrints, prints }) => {
+const Dashboard: FC<IProps> = ({
+  fetchBackgrounds,
+  fetchPrints,
+  backgrounds,
+  prints,
+}) => {
   return (
     <>
       <div className="dashboard-screen">
+        <Section
+          sectionTitle="Backgrounds"
+          formName="ADD_BG"
+          headers={backgroundHeaders}
+          fetchResource={fetchBackgrounds}
+          items={backgrounds}
+        />
         <Section
           sectionTitle="Prints"
           formName="ADD_PRINT"
@@ -28,5 +43,8 @@ const Dashboard: FC<IProps> = ({ fetchPrints, prints }) => {
 };
 const mapStateToProps = (state: any) => ({
   prints: state.prints.items,
+  backgrounds: state.backgrounds.items,
 });
-export default connect(mapStateToProps, { fetchPrints })(Dashboard);
+export default connect(mapStateToProps, { fetchPrints, fetchBackgrounds })(
+  Dashboard
+);

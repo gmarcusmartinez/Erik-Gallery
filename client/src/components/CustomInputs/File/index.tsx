@@ -19,7 +19,9 @@ const CustomFileInput: React.FC<IProps> = ({ onChange, error, label }) => {
         onChange={onChange}
       />
       <label className={`file-input-label ${labelClass}`}>{label}</label>
-      {error && <div className="input-error">{error.message}</div>}
+      {error && (
+        <div className={`input-error ${labelClass}`}>{error.message}</div>
+      )}
     </div>
   );
 };
