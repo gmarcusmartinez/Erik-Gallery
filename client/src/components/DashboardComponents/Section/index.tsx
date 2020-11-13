@@ -4,6 +4,7 @@ import ToggleDisplayResource from "./ToggleDisplayResource";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { IPrint } from "interfaces";
 import PrintItem from "components/DashboardComponents/PrintItem";
+import BackgroundItem from "../BackgroundItem";
 
 interface IProps {
   sectionTitle: string;
@@ -21,7 +22,7 @@ const Section: FC<IProps> = ({
   items,
   toggleModal,
 }) => {
-  const [displayResources, setDisplayReources] = React.useState(false);
+  const [displayResources, setDisplayResources] = React.useState(false);
   const renderAddForm = () => toggleModal(true, formName, null);
 
   React.useEffect(() => {
@@ -35,7 +36,7 @@ const Section: FC<IProps> = ({
       <div className="resource-section__actions">
         <ToggleDisplayResource
           bool={displayResources}
-          toggle={setDisplayReources}
+          toggle={setDisplayResources}
           title={sectionTitle}
         />
         <div className="add-resource-btn" onClick={renderAddForm}>
@@ -60,5 +61,10 @@ function renderHeaders(headers: { text: string }[]) {
 function renderDashItem(sectionTitle: string, items: any[]) {
   if (sectionTitle === "Prints") {
     return items && items.map((i) => <PrintItem key={i._id} print={i} />);
+  }
+  if (sectionTitle === "Backgrounds") {
+    return (
+      items && items.map((i) => <BackgroundItem key={i._id} background={i} />)
+    );
   }
 }

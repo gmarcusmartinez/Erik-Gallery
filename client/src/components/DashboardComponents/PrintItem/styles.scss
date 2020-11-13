@@ -18,14 +18,14 @@
   }
   @include respond(tablet) {
     display: grid;
-    grid-template-columns: 20% 25% 15% 10% 10% 10% 10%;
+    grid-template-columns: 10% 35% 15% 10% 10% 10% 10%;
 
     height: 6rem;
-    width: 90%;
+    width: 100%;
 
     div {
       color: var(--color-dark-grey);
-      letter-spacing: 0.1rem;
+      letter-spacing: var(--letter-spacing-sm);
       line-height: 6rem;
       text-align: center;
     }

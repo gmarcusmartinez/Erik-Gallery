@@ -10,21 +10,19 @@ const initialState = {
 export const backgrounds = (state = initialState, action: AnyAction) => {
   const { type, payload } = action;
   switch (type) {
-    // case PrintActionTypes.CREATE_PRINT_SUCCESS:
-    //   return {
-    //     ...state,
-    //     items: [payload, ...state.items],
-    //     loading: false,
-    //     errors: null,
-    //   };
+    case BackgroundActionTypes.CREATE_BACKGROUND_SUCCESS:
+      return {
+        ...state,
+        items: [payload, ...state.items],
+        loading: false,
+        errors: null,
+      };
 
     // case PrintActionTypes.UPDATE_PRINT_SUCCESS:
     //   const oldItems = state.items.filter(({ _id }) => _id !== payload._id);
     //   return { ...state, items: [payload, ...oldItems], errors: null };
 
-    // case PrintActionTypes.CREATE_PRINT_REQUEST:
-    // case PrintActionTypes.FETCH_PRINT_REQUEST:
-    // case PrintActionTypes.UPDATE_PRINT_REQUEST:
+    case BackgroundActionTypes.CREATE_BACKGROUND_REQUEST:
     case BackgroundActionTypes.FETCH_BACKGROUND_REQUEST:
       return { ...state, loading: true };
 
@@ -38,8 +36,8 @@ export const backgrounds = (state = initialState, action: AnyAction) => {
     //   const newItems = state.items.filter(({ _id }) => _id !== payload);
     //   return { ...state, items: newItems };
 
+    case BackgroundActionTypes.CREATE_BACKGROUND_FAILURE:
     case BackgroundActionTypes.FETCH_BACKGROUND_FAILURE:
-      // case PrintActionTypes.UPDATE_PRINT_FAILURE:
       return { ...state, errors: payload, loading: false };
 
     default:

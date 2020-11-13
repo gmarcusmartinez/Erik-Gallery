@@ -2,6 +2,7 @@ node_modules
 
 dev.ts
 dev.js
+_.txt
 
 .env
 /node_modules
