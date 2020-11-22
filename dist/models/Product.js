@@ -40,5 +40,9 @@ var productSchema = new mongoose_1.default.Schema({
 productSchema.statics.build = function (attrs) {
     return new Product(attrs);
 };
+productSchema.methods.createSubDoc = function () {
+    var _a = this, _id = _a._id, title = _a.title, mainImage = _a.mainImage, price = _a.price;
+    return { _id: _id, title: title, mainImage: mainImage, price: price };
+};
 var Product = mongoose_1.default.model("Product", productSchema);
 exports.Product = Product;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as screens from "screens";
@@ -11,7 +11,7 @@ interface IProps {
   currentUser: { role: string };
 }
 
-const App: React.FC<IProps> = ({ getCurrentUser, currentUser }) => {
+const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
   React.useEffect(() => {
     getCurrentUser();
   }, [getCurrentUser]);

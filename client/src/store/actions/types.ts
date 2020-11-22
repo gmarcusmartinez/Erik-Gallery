@@ -41,6 +41,9 @@ export enum ModalActionTypes {
 export enum NavActionTypes {
   TOGGLE_NAV = "TOGGLE_NAV",
 }
+export enum PageActionTypes {
+  SCROLL_TO_TOP = "SCROLL_TO_TOP",
+}
 
 export enum PrintActionTypes {
   CREATE_PRINT_REQUEST = "CREATE_PRINT_REQUEST",

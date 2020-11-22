@@ -22,9 +22,9 @@ var orderSchema = new mongoose_1.default.Schema({
     expiresAt: {
         type: mongoose_1.default.Schema.Types.Date,
     },
-    print: {
+    product: {
         type: mongoose_1.default.Schema.Types.ObjectId,
-        ref: "Print",
+        ref: "Product",
     },
 }, {
     toJSON: {

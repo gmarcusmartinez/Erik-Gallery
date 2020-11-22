@@ -2,6 +2,13 @@ import React from "react";
 import MainLayout from "../../layouts/MainLayout";
 
 const Sound = () => {
+  React.useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <MainLayout>
       <div className="sound-screen">
