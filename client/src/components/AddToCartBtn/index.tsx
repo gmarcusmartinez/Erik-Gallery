@@ -14,7 +14,7 @@ const AddToCartBtn: React.FC<IProps> = ({ breakpoint, quantityInStock }) => {
       className={`add-to-cart-btn ${btnBreakpoint}`}
       disabled={!quantityInStock}
     >
-      {text}
+      <span>{text}</span>
     </button>
   );
 };

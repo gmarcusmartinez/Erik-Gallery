@@ -7,12 +7,15 @@
   font-size: 1.1rem;
   height: 5rem;
   letter-spacing: var(--letter-spacing-lg);
-  line-height: 5rem;
   margin: 1rem auto;
   outline: none;
   text-transform: uppercase;
-  text-align: center;
   width: 85%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
   &:active {
     background-color: var(--color-medium-grey);
