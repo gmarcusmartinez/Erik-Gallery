@@ -6,8 +6,8 @@ const MainLayout: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
-    disableBodyScroll(document.querySelector(".main-layout")!);
-    return () => enableBodyScroll(document.querySelector(".main-layout")!);
+    disableBodyScroll(document.querySelector(".main-content")!);
+    return () => enableBodyScroll(document.querySelector(".main-content")!);
   }, []);
 
   return (
