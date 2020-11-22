@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Links from "./links";
 import { toggleNav } from "store/actions/nav/toggleNav";
+import MenuBars from "./MenuBars";
 
 interface IProps {
   isOpen: boolean;
@@ -27,18 +28,3 @@ const mapStateToProps = (state: any) => ({
 });
 
 export default connect(mapStateToProps, { toggleNav })(Navigation);
-
-interface MenuBarsProps {
-  bool: boolean;
-  cb: Function;
-}
-
-const MenuBars: React.FC<MenuBarsProps> = ({ bool, cb }) => {
-  return (
-    <div className="menu-bars" onClick={() => cb(!bool)}>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
-    </div>
-  );
-};

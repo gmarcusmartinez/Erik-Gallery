@@ -9,7 +9,6 @@ export const printHeaders = [
 ];
 export const backgroundHeaders = [
   { id: 8, text: "Image" },
-  { id: 9, text: "Active" },
   { id: 10, text: "Set Active" },
   { id: 11, text: "Delete" },
 ];

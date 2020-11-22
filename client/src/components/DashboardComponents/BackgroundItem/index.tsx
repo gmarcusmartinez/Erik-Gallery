@@ -18,6 +18,13 @@ const BackgroundItem: React.FC<IProps> = ({ background }) => {
           </button>
         </div>
       </div>
+
+      <div className="dash-print-item__text edit" onClick={() => {}}>
+        <input type="radio" />
+      </div>
+      <div className="dash-print-item__text delete" onClick={() => {}}>
+        &times;
+      </div>
     </div>
   );
 };

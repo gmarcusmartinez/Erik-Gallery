@@ -4,15 +4,12 @@ export enum ProductType {
   Print = "print",
 }
 
-interface ProductDoc extends mongoose.Document {
+export interface ProductSubDoc {
+  _id: string;
   title: string;
-  description: string;
   mainImage: string;
-  images: string[];
-  type: ProductType;
-  size: string;
   price: number;
-  inStock: number;
+  quantity: number;
 }
 
 interface ProductAttrs {
@@ -23,7 +20,19 @@ interface ProductAttrs {
   type: ProductType;
   size: string;
   price: number;
-  inStock: number;
+  quantityInStock: number;
+}
+
+interface ProductDoc extends mongoose.Document {
+  title: string;
+  description: string;
+  mainImage: string;
+  images: string[];
+  type: ProductType;
+  size: string;
+  price: number;
+  quantityInStock: number;
+  createSubDoc(): ProductSubDoc;
 }
 
 interface ProductModel extends mongoose.Model<ProductDoc> {
@@ -61,6 +70,11 @@ const productSchema = new mongoose.Schema({
 
 productSchema.statics.build = (attrs: ProductAttrs) => {
   return new Product(attrs);
+};
+
+productSchema.methods.createSubDoc = function () {
+  const { _id, title, mainImage, price } = this;
+  return { _id, title, mainImage, price };
 };
 
 const Product = mongoose.model<ProductDoc, ProductModel>(

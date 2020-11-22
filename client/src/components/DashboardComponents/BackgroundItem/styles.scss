@@ -13,7 +13,44 @@
     height: 100%;
     width: 100%;
   }
+  @include respond(tablet) {
+    display: grid;
+    grid-template-columns: 10% 35% 15%;
+
+    height: 6rem;
+    width: 100%;
+
+    div {
+      color: var(--color-dark-grey);
+      letter-spacing: var(--letter-spacing-sm);
+      line-height: 6rem;
+      text-align: center;
+    }
+    &__img {
+      background-size: contain;
+      height: 95%;
+      margin-top: 2.5%;
+      justify-self: center;
+    }
+    &__text {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .delete {
+      color: red;
+      align-self: center;
+      cursor: pointer;
+      font-size: 2rem;
+    }
+    .edit {
+      justify-self: center;
+      cursor: pointer;
+    }
+  }
 }
+
 .mobile-bg-item__btns {
   display: block;
   position: absolute;

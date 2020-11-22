@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ProductSubDoc } from "./Product";
 
 export enum OrderStatus {
   Created = "created",
@@ -8,15 +9,15 @@ export enum OrderStatus {
 }
 
 interface OrderAttrs {
-  userId: string;
   status: OrderStatus;
   expiresAt: Date;
+  product: ProductSubDoc;
 }
 
 interface OrderDoc extends mongoose.Document {
-  userId: string;
   status: OrderStatus;
   expiresAt: Date;
+  product: ProductSubDoc;
 }
 
 interface OrderModel extends mongoose.Model<OrderDoc> {
@@ -34,9 +35,9 @@ const orderSchema = new mongoose.Schema(
     expiresAt: {
       type: mongoose.Schema.Types.Date,
     },
-    print: {
+    product: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Print",
+      ref: "Product",
     },
   },
   {
