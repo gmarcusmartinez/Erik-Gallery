@@ -1,19 +1,73 @@
 .lightbox {
-  background-color: var(--color-modal-bg);
+  background-color: rgba(0, 0, 0, 0.9);
+
+  height: 100vh;
+  width: 100vw;
 
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 6;
 
-  &__body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  &.lb-open {
+    transition: all 0.3s;
+    transform: translateX(0);
+    animation: fadein 1s;
+  }
+  &.lb-closed {
+    transition: all 0.3s;
+    transform: translateX(-100%);
+  }
+
+  &__image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 80vh;
+    width: 90%;
+    margin: auto;
+  }
+
+  &__close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    z-index: 2;
+
+    animation: fadein 1s;
+  }
+  &__bar {
+    width: 3rem;
+    height: 0.2rem;
+    background-color: #fff;
+    margin: 0.8rem 0;
+
+    transition: 0.25s;
+    transition-delay: 0.5s;
+
+    &:nth-of-type(1).cross {
+      transform: rotate(-45deg) translate(-7px, 8px);
+    }
+    &:nth-of-type(2) {
+      opacity: 0;
+    }
+    &:nth-of-type(3).cross {
+      transform: rotate(45deg) translate(-7px, -8px);
+    }
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

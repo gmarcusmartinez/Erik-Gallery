@@ -1,17 +1,21 @@
+import React, { FC } from "react";
 import AddToCartBtn from "components/AddToCartBtn";
-import React from "react";
-import { IPrint } from "../../interfaces";
+import { connect } from "react-redux";
+import { IPrint } from "interfaces";
+import { toggleLightbox } from "store/actions/lightbox/toggleLightbox";
 
 interface IProps {
   item: IPrint;
+  toggleLightbox: Function;
 }
 
-const PrintItem: React.FC<IProps> = ({ item }) => {
+const PrintItem: FC<IProps> = ({ item, toggleLightbox }) => {
   const { mainImage, description, size, quantityInStock } = item;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
+  const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
 
   return (
-    <div className="print-item">
+    <div className="print-item" onClick={handleToggleLightbox}>
       <div className="print-item__img" style={{ backgroundImage }}>
         <AddToCartBtn
           breakpoint="btn-tablet"
@@ -25,4 +29,4 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
   );
 };
 
-export default PrintItem;
+export default connect(null, { toggleLightbox })(PrintItem);

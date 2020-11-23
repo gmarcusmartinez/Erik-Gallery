@@ -41,8 +41,8 @@ export enum ModalActionTypes {
 export enum NavActionTypes {
   TOGGLE_NAV = "TOGGLE_NAV",
 }
-export enum PageActionTypes {
-  SCROLL_TO_TOP = "SCROLL_TO_TOP",
+export enum LightboxActionTypes {
+  SET_DISPLAY_LIGHTBOX = "SET_DISPLAY_LIGHTBOX",
 }
 
 export enum PrintActionTypes {

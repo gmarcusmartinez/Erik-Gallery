@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  ModalActionTypes,
-  BackgroundActionTypes,
-  UploadActionTypes,
-} from "store/actions/types";
+import { ModalActionTypes, BackgroundActionTypes } from "store/actions/types";
 
 export const createBackground = (imageData: any) => async (dispatch: any) => {
   if (!imageData) {

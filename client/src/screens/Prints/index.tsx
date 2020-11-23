@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
+import LightBox from "components/LightBox";
 import PrintsContainer from "./Container";
 
 interface IProps {
@@ -17,6 +18,7 @@ const Prints: React.FC<IProps> = ({ fetchPrints, isOpen, count }) => {
   return (
     <div className="prints-screen">
       <PrintsContainer />
+      <LightBox />
     </div>
   );
 };
