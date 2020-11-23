@@ -1,19 +1,24 @@
 import React, { useEffect } from "react";
+import { RouteComponentProps } from "react-router";
 import { connect } from "react-redux";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
 import LightBox from "components/LightBox";
 import PrintsContainer from "./Container";
 
-interface IProps {
-  fetchPrints: Function;
-  isOpen: boolean;
-  count: number;
+interface MatchParams {
+  page: string;
 }
 
-const Prints: React.FC<IProps> = ({ fetchPrints, isOpen, count }) => {
+interface IProps extends RouteComponentProps<MatchParams> {
+  fetchPrints: Function;
+}
+
+const Prints: React.FC<IProps> = ({ fetchPrints, match }) => {
+  const page = +match.params.page || 1;
+
   useEffect(() => {
-    fetchPrints();
-  }, [fetchPrints]);
+    fetchPrints(page);
+  }, [fetchPrints, page]);
 
   return (
     <div className="prints-screen">
@@ -23,9 +28,4 @@ const Prints: React.FC<IProps> = ({ fetchPrints, isOpen, count }) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  count: state.prints.count,
-  isOpen: state.nav.isOpen,
-});
-
-export default connect(mapStateToProps, { fetchPrints })(Prints);
+export default connect(null, { fetchPrints })(Prints);

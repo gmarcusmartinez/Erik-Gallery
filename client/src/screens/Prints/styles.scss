@@ -1,15 +1,14 @@
 .prints-screen {
   height: 100%;
   width: 100%;
-
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .prints-container {
   margin-top: 2vh;
-
   height: 90vh;
   width: 100%;
   @include respond(tablet) {

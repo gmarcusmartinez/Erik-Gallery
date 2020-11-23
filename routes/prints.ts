@@ -5,10 +5,15 @@ import { isAdmin } from "../middlewares/is-admin";
 import { requireAuth } from "../middlewares/require-auth";
 import { validateRequest } from "../middlewares/validate-request";
 import { createPrintValidation } from "../validation/print";
+import { advancedResults } from "../middlewares/advanced-results";
+import { Product, ProductType } from "../models/Product";
 
 const router = Router();
 
-router.route("/").get(printControllers.getPrints);
+router
+  .route("/")
+  .get(advancedResults(Product, ProductType.Print), printControllers.getPrints);
+
 router.route("/:id").get(printControllers.getPrint);
 
 router

@@ -25,7 +25,10 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           <Route exact path="/admin/" component={screens.AdminScreen} />
           <Route exact path="/contact/" component={screens.ContactScreen} />
           <Route exact path="/sound/" component={screens.SoundScreen} />
-          <Route exact path="/prints" component={screens.PrintsScreen} />
+
+          <Route exact path="/prints/" component={screens.PrintsScreen} />
+          <Route exact path="/prints/:page" component={screens.PrintsScreen} />
+
           <Route exact path="/signout" component={screens.LogoutScreen} />
           <PRoute
             path="/dashboard"

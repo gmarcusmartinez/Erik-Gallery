@@ -4,8 +4,7 @@ import { asyncHandler } from "../middlewares/async";
 import { Product, ProductType } from "../models/Product";
 
 export const getPrints = asyncHandler(async (req: Request, res: any) => {
-  const prints = await Product.find({ type: ProductType.Print });
-  res.status(200).json(prints);
+  res.status(200).json(res.advancedResults);
 });
 
 export const getPrint = asyncHandler(async (req: Request, res: any) => {

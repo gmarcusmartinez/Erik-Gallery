@@ -3,9 +3,9 @@ import { PrintActionTypes } from "../../store/actions/types";
 
 const initialState = {
   loading: true,
-  count: null,
-  pagination: null,
   items: [],
+  page: 1,
+  pages: null,
   selectedItem: null,
   errors: null,
 };
@@ -35,7 +35,13 @@ export const prints = (state = initialState, action: AnyAction) => {
       return { ...state, loading: false, selectedItem: payload, errors: null };
 
     case PrintActionTypes.FETCH_PRINTS_SUCCESS:
-      return { ...state, loading: false, items: payload };
+      return {
+        ...state,
+        loading: false,
+        items: payload.data,
+        page: payload.page,
+        pages: payload.pages,
+      };
 
     case PrintActionTypes.DELETE_PRINT_SUCCESS:
       const newItems = state.items.filter(({ _id }) => _id !== payload);

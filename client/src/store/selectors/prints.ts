@@ -11,6 +11,10 @@ export const loading = createSelector(
   [selectPrints],
   (prints) => prints.loading
 );
+export const printsPages = createSelector(
+  [selectPrints],
+  (prints) => prints.pages
+);
 
 export const selectedItem = createSelector(
   [selectPrints],
