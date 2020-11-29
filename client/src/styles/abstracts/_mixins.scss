@@ -21,10 +21,10 @@
   line-height: 1.6rem;
   width: 100%;
 
+  transition: var(--transition-fast);
   &:focus {
     outline: none;
     border-bottom: 0.2rem solid var(--color-dark-grey);
-    transition: var(--transition-fast);
   }
 }
 

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 export enum ProductType {
   Print = "print",
+  Zine = "zine",
 }
 
 export interface ProductSubDoc {
@@ -21,6 +22,7 @@ interface ProductAttrs {
   size: string;
   price: number;
   quantityInStock: number;
+  isPublished: boolean;
 }
 
 interface ProductDoc extends mongoose.Document {
@@ -32,6 +34,7 @@ interface ProductDoc extends mongoose.Document {
   size: string;
   price: number;
   quantityInStock: number;
+  isPublished: boolean;
   createSubDoc(): ProductSubDoc;
 }
 
@@ -65,6 +68,10 @@ const productSchema = new mongoose.Schema({
   quantityInStock: {
     type: Number,
     required: true,
+  },
+  isPublished: {
+    type: Boolean,
+    default: false,
   },
 });
 

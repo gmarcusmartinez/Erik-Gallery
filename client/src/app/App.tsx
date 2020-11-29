@@ -5,6 +5,7 @@ import * as screens from "screens";
 import Navigation from "components/Navigation";
 import { getCurrentUser } from "store/actions/auth";
 import { PRoute } from "components/ProtectedRoute";
+import Modal from "components/Modal";
 
 interface IProps {
   getCurrentUser: Function;
@@ -17,7 +18,7 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
   }, [getCurrentUser]);
 
   return (
-    <>
+    <div className="app">
       <Navigation />
       <div className="main-content">
         <Switch>
@@ -37,7 +38,8 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           />
         </Switch>
       </div>
-    </>
+      <Modal />
+    </div>
   );
 };
 

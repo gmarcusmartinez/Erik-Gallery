@@ -3,6 +3,7 @@
   color: var(--color-dark-grey);
   min-height: 6rem;
   max-width: 120rem;
+  margin: 0 auto;
   &:not(:first-child) {
     border-bottom: 0.1rem solid var(--color-dark-grey);
   }

@@ -1,25 +1,21 @@
 .custom-select {
-  width: calc(100% - 20px);
-  margin: 1rem 0;
+  color: var(--color-dark-grey);
+  font-size: 1.4rem;
+  margin: 1rem 2.5%;
+  width: 95%;
 
   label {
-    color: #666;
-    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
     letter-spacing: var(--letter-spacing-md);
   }
-  input {
-    @include formEl;
-    margin-top: 0.25rem;
-    padding: 0.5rem;
-    outline: none;
-    font-size: 1.7rem;
-    letter-spacing: var(--letter-spacing-md);
-  }
+
   select {
-    @include formEl;
-    color: var(--color-dark-grey);
-    letter-spacing: var(--letter-spacing-md);
-    text-transform: capitalize;
-    -moz-appearance: inherit;
+    background-color: transparent;
+    border: none;
+    border-bottom: 0.1rem solid var(--color-grey);
+    height: 4rem;
+    line-height: 1.6rem;
+    outline: none;
+    width: 100%;
   }
 }

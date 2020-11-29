@@ -1,6 +1,7 @@
 .modal {
   background-color: rgba(255, 255, 255, 0.9);
   height: 100vh;
+  overflow: scroll;
   width: 100vw;
 
   position: fixed;
@@ -12,8 +13,7 @@
 
   &__body {
     margin-top: 10vh;
-    height: min-content;
-    width: 34rem;
+    width: 90vw;
   }
 
   &.open {
@@ -21,6 +21,7 @@
     transform: translateX(0);
     animation: fadein 1s;
   }
+
   &.closed {
     transition: all 0.3s;
     transform: translateX(-100%);
@@ -52,6 +53,11 @@
     }
     &:nth-of-type(3).cross {
       transform: rotate(45deg) translate(-7px, -8px);
+    }
+  }
+  @include respond(tablet) {
+    &__body {
+      width: 80vw;
     }
   }
 }

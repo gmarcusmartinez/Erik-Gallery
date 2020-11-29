@@ -53,6 +53,9 @@
       font-size: 1.6rem;
     }
   }
+  @include respond(desktop) {
+    font-size: 1.1rem;
+  }
 }
 
 .mobile-dash-print__btns {

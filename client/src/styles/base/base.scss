@@ -8,17 +8,22 @@
 
 html {
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
-  min-height: 100vh;
 }
 body {
   font-family: "Libre Baskerville", serif;
   line-height: 1.6;
+}
+
+html,
+body,
+#root,
+#app,
+.main-content {
   height: 100%;
 }
+
 #root,
 #modal {
-  height: 100%;
-
   --color-grey: #999;
   --color-light-grey: #e5e5e5;
   --color-medium-grey: #666;
@@ -46,9 +51,7 @@ body {
   --margin-xs: 0.5rem;
   --margin-sm: 1rem;
   --margin-md: 2rem;
-  --margin-lg: 4rem;
 }
 .main-content {
   margin-top: 10vh;
-  height: 90vh;
 }

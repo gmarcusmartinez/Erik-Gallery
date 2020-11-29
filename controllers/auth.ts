@@ -44,7 +44,7 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).send(user);
 });
 
-export const signout = (req: Request, res: Response) => {
+export const logout = (req: Request, res: Response) => {
   req.session = null;
   res.send({});
 };

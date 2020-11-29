@@ -6,7 +6,7 @@ import { AuthActionTypes } from "../types";
 export const logout = () => async (dispatch: any) => {
   try {
     dispatch({ type: AuthActionTypes.USER_LOGOUT_REQUEST });
-    const { data } = await auth.post("/signout");
+    const { data } = await auth.post("/logout");
 
     dispatch({ type: AuthActionTypes.USER_LOGOUT_SUCCESS, payload: data });
     history.push("/");

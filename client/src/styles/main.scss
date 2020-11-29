@@ -11,17 +11,19 @@
 @import "../components/CustomInputs/Select/styles.scss";
 @import "../components/CustomInputs/File/styles.scss";
 
-@import "../components/AddToCartBtn/styles.scss";
 @import "../components/LightBox/styles.scss";
 @import "../components/Modal/styles.scss";
 @import "../components/Navigation/styles.scss";
 @import "../components/Pagination/styles.scss";
+@import "../components/PrintDetail/styles.scss";
 @import "../components/PrintItem/styles.scss";
 @import "../components/Spinner/styles.scss";
+@import "../components/ViewProductBtn/styles.scss";
 
-@import "../components/DashboardComponents/BackgroundForm/styles.scss";
+@import "../components/DashboardComponents/Forms/BackgroundForm/styles.scss";
+@import "../components/DashboardComponents/Forms/PrintForm/styles.scss";
+
 @import "../components/DashboardComponents/BackgroundItem/styles.scss";
-@import "../components/DashboardComponents/PrintForm/styles.scss";
 @import "../components/DashboardComponents/PrintDelete/styles.scss";
 @import "../components/DashboardComponents/PrintItem/styles.scss";
 @import "../components/DashboardComponents/Section/styles.scss";

@@ -5,14 +5,14 @@ import { toggleNav } from "store/actions/nav/toggleNav";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const guestLinks = [
-  { to: "prints", text: "print work" },
-  { to: "zines", text: "zines" },
-  { to: "sound", text: "sound" },
-  { to: "contact", text: "contact" },
+  { to: "/prints", text: "print work" },
+  { to: "/zines", text: "zines" },
+  { to: "/sound", text: "sound" },
+  { to: "/contact", text: "contact" },
 ];
 const adminLinks = [
-  { to: "dashboard", text: "dashboard" },
-  { to: "signout", text: "signout" },
+  { to: "/dashboard", text: "dashboard" },
+  { to: "/signout", text: "signout" },
 ];
 
 interface IProps {

@@ -8,9 +8,10 @@ import dotenv from "dotenv";
 import { authRouter } from "./routes/auth";
 import { backgroundRouter } from "./routes/backgrounds";
 import { cartRouter } from "./routes/cart";
+import { orderRouter } from "./routes/orders";
 import { printRouter } from "./routes/prints";
 import { uploadRouter } from "./routes/upload";
-import { orderRouter } from "./routes/orders";
+import { zineRouter } from "./routes/zines";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
@@ -25,9 +26,10 @@ app.use(cookieSession({ signed: false, secure: false }));
 app.use("/api/auth", authRouter);
 app.use("/api/backgrounds", backgroundRouter);
 app.use("/api/cart", cartRouter);
-app.use("/api/prints", printRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/prints", printRouter);
 app.use("/api/uploads", uploadRouter);
+app.use("/api/zines", zineRouter);
 
 const __dirname = path.resolve();
 

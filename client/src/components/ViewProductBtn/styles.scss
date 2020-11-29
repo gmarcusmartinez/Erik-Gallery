@@ -1,7 +1,7 @@
-.add-to-cart-btn {
-  background-color: var(--color-dark-grey);
-  border: none;
-  color: #fff;
+.view-product-btn {
+  background-color: #fff;
+  border: 0.1rem solid var(--color-light-grey);
+  color: var(--color-dark-grey);
   cursor: pointer;
   font-family: inherit;
   font-size: 1.1rem;
@@ -18,7 +18,8 @@
   text-align: center;
 
   &:active {
-    background-color: var(--color-medium-grey);
+    background-color: var(--color-dark-grey);
+    color: #fff;
     transform: translate(2px, 2px);
   }
   &.btn-tablet {
@@ -36,7 +37,6 @@
     }
   }
 }
-.add-to-cart-btn:disabled {
-  background-color: var(--color-medium-grey);
+.view-product-btn:disabled {
   cursor: unset;
 }

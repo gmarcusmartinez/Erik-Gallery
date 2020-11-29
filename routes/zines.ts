@@ -1,10 +1,10 @@
 import { Router } from "express";
-import * as printControllers from "../controllers/prints";
+import * as zineControllers from "../controllers/zines";
 import { currentUser } from "../middlewares/current-user";
 import { isAdmin } from "../middlewares/is-admin";
 import { requireAuth } from "../middlewares/require-auth";
 import { validateRequest } from "../middlewares/validate-request";
-import { createPrintValidation } from "../validation/print";
+import { createZineValidation } from "../validation/zine";
 import { advancedResults } from "../middlewares/advanced-results";
 import { Product, ProductType } from "../models/Product";
 
@@ -12,18 +12,19 @@ const router = Router();
 
 router
   .route("/")
-  .get(advancedResults(Product, ProductType.Print), printControllers.getPrints);
+  .get(advancedResults(Product, ProductType.Zine), zineControllers.getZines);
 
-router.route("/:id").get(printControllers.getPrint);
+router.route("/:id").get(zineControllers.getZine);
+
 router
   .route("/")
   .post(
     currentUser,
     requireAuth,
     isAdmin,
-    createPrintValidation,
+    createZineValidation,
     validateRequest,
-    printControllers.createPrint
+    zineControllers.createZine
   );
 
 router
@@ -32,12 +33,12 @@ router
     currentUser,
     requireAuth,
     isAdmin,
-    createPrintValidation,
+    createZineValidation,
     validateRequest,
-    printControllers.updatePrint
+    zineControllers.updateZine
   );
 router
   .route("/:id")
-  .delete(currentUser, requireAuth, isAdmin, printControllers.deletePrint);
+  .delete(currentUser, requireAuth, isAdmin, zineControllers.deleteZine);
 
-export { router as printRouter };
+export { router as zineRouter };

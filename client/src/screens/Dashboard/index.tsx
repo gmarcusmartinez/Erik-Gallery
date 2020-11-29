@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import Section from "components/DashboardComponents/Section";
-import Modal from "components/Modal";
 import { backgroundHeaders, printHeaders } from "./headers";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
 import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
@@ -37,7 +36,6 @@ const Dashboard: FC<IProps> = ({
           items={prints}
         />
       </div>
-      <Modal />
     </>
   );
 };

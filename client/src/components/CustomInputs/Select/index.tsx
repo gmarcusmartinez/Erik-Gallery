@@ -1,22 +1,23 @@
-import React, { ChangeEvent } from "react";
+import React, { FC, ChangeEvent } from "react";
 
 interface IProps {
-  name: string;
+  name?: string;
   label: string;
-  value: string;
-  options: {}[];
-  renderOptions: Function;
-  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
+  value?: string;
+  options: any[];
+  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const CustomSelect: React.FC<IProps> = ({
+const CustomSelect: FC<IProps> = ({
   name,
   label,
   value,
   options,
-  renderOptions,
   onChange,
 }) => {
+  const renderOptions = (opts: any[]) =>
+    opts.map((opt, i) => <option key={i}>{opt}</option>);
+
   return (
     <div className="custom-select">
       <label>{label}</label>

@@ -6,6 +6,7 @@ import { Product } from "../models/Product";
 
 export const createCart = asyncHandler(async (req: Request, res: Response) => {
   let cart;
+
   if (!req.session?.cartId) {
     cart = await Cart.build({ items: [] });
     req.session!.cartId = cart.id;

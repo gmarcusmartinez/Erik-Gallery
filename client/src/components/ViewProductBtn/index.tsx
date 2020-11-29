@@ -3,17 +3,25 @@ import React from "react";
 interface IProps {
   breakpoint?: string;
   quantityInStock: number;
+  toggleViewPrint: Function;
 }
 
-const AddToCartBtn: React.FC<IProps> = ({ breakpoint, quantityInStock }) => {
-  const text = quantityInStock ? "Add to Cart" : "Sold Out";
+const ViewProductBtn: React.FC<IProps> = ({
+  breakpoint,
+  quantityInStock,
+  toggleViewPrint,
+}) => {
+  const text = quantityInStock ? "View Product" : "Sold Out";
   const btnBreakpoint = breakpoint ? breakpoint : "";
+
   const handleClick = (e: any) => {
     e.stopPropagation();
+    toggleViewPrint();
   };
+
   return (
     <button
-      className={`add-to-cart-btn ${btnBreakpoint}`}
+      className={`view-product-btn ${btnBreakpoint}`}
       disabled={!quantityInStock}
       onClick={handleClick}
     >
@@ -22,4 +30,4 @@ const AddToCartBtn: React.FC<IProps> = ({ breakpoint, quantityInStock }) => {
   );
 };
 
-export default AddToCartBtn;
+export default ViewProductBtn;
