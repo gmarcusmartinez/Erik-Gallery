@@ -11,6 +11,10 @@ export const selectCartIsOpen = createSelector(
   [selectCart],
   (cart) => cart.isOpen
 );
+export const selectCartIsEmpty = createSelector(
+  [selectCart],
+  (cart) => cart.cartItems.length === 0
+);
 
 export const selectCartItemsCount = createSelector(
   [selectCartItems],

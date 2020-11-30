@@ -1,6 +1,8 @@
 .print-delete {
   color: var(--color-grey);
+  margin: 2rem auto;
   text-align: center;
+  width: 34rem;
 
   &__title {
     letter-spacing: var(--letter-spacing-md);

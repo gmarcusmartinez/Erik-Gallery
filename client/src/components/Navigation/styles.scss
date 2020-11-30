@@ -1,6 +1,7 @@
 .header {
   background-color: var(--color-overlay-bg);
   height: 10vh;
+  padding: 2rem;
   width: 100%;
 
   display: flex;
@@ -21,6 +22,12 @@
     text-decoration: none;
     text-transform: uppercase;
   }
+  &__cart-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: var(--letter-spacing-md);
+    margin-left: auto;
+    text-transform: uppercase;
+  }
   @include respond(tablet) {
     font-size: 1.8rem;
   }
@@ -28,7 +35,6 @@
 
 .menu-bars {
   cursor: pointer;
-  margin-left: 2rem;
 }
 
 .bar {

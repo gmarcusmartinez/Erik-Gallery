@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Links from "./links";
@@ -7,15 +7,22 @@ import MenuBars from "./MenuBars";
 import CartDropDown from "components/CartComponents/CartDropdown";
 import { selectNavIsOpen } from "store/selectors/nav";
 import { createStructuredSelector } from "reselect";
-import { selectCartIsOpen } from "store/selectors/cart";
+import { selectCartIsOpen, selectCartIsEmpty } from "store/selectors/cart";
+import CartIcon from "components/CartComponents/CartIcon";
 
 interface IProps {
   isOpen: boolean;
   cartOpen: boolean;
+  cartIsEmpty: boolean;
   toggleNav: Function;
 }
 
-const Navigation: React.FC<IProps> = ({ isOpen, cartOpen, toggleNav }) => {
+const Navigation: FC<IProps> = ({
+  cartIsEmpty,
+  isOpen,
+  cartOpen,
+  toggleNav,
+}) => {
   return (
     <>
       <div className="header">
@@ -23,6 +30,7 @@ const Navigation: React.FC<IProps> = ({ isOpen, cartOpen, toggleNav }) => {
         <Link to="/" className="header__title">
           <span onClick={() => toggleNav(false)}>Erik Felfalusi</span>
         </Link>
+        {!cartIsEmpty && <CartIcon />}
         {cartOpen && <CartDropDown />}
         {isOpen && <Links />}
       </div>
@@ -33,6 +41,7 @@ const Navigation: React.FC<IProps> = ({ isOpen, cartOpen, toggleNav }) => {
 const mapStateToProps = createStructuredSelector({
   isOpen: selectNavIsOpen,
   cartOpen: selectCartIsOpen,
+  cartIsEmpty: selectCartIsEmpty,
 });
 
 export default connect(mapStateToProps, { toggleNav })(Navigation);

@@ -3,7 +3,7 @@ import { CartActionTypes } from "store/actions/types";
 import { addItemToCart } from "utils";
 
 const initialState = {
-  isOpen: true,
+  isOpen: false,
   cartItems: [],
 };
 
