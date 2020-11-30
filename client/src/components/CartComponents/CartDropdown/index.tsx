@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 
 import { ICartItem } from "interfaces";
@@ -31,7 +31,9 @@ const CartDropDown: React.FC<IProps> = ({ toggleCart, cartItems }) => {
     <div className="cart-dropdown">
       <div className="cart-dropdown__headers">{headers}</div>
       <div className="cart-items">{cartItems.length ? list : emptyMsg}</div>
-      {/* <CustomButton onClick={handleRedirect}>Go to Checkout</CustomButton> */}
+      <Link to="/checkout" className="cart-dropdown__btn">
+        Go To Checkout
+      </Link>
     </div>
   );
 };

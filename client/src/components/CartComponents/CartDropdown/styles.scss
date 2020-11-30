@@ -21,6 +21,29 @@
     letter-spacing: var(--letter-spacing-md);
     margin-bottom: var(--margin-sm);
   }
+  &__btn {
+    border: 0.1rem solid var(--color-light-grey);
+    color: var(--color-grey);
+    font-family: "Open Sans Condensed";
+    font-size: 1.4rem;
+    height: 4rem;
+    line-height: 4rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-top: auto;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: var(--transition-fast);
+    &:hover,
+    &:active {
+      background-color: var(--color-dark-grey);
+      border: 0.1rem solid var(--color-dark-grey);
+      color: #fff;
+    }
+    &:active {
+      transform: translate(2px, 2px);
+    }
+  }
 
   .cart-items {
     height: auto;

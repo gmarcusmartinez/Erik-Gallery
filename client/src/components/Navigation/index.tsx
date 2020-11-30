@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import Links from "./links";
-import { toggleNav } from "store/actions/nav/toggleNav";
+import { createStructuredSelector } from "reselect";
+import Links from "./Links";
 import MenuBars from "./MenuBars";
 import CartDropDown from "components/CartComponents/CartDropdown";
-import { selectNavIsOpen } from "store/selectors/nav";
-import { createStructuredSelector } from "reselect";
-import { selectCartIsOpen, selectCartIsEmpty } from "store/selectors/cart";
 import CartIcon from "components/CartComponents/CartIcon";
+import { toggleNav } from "store/actions/nav/toggleNav";
+import { selectNavIsOpen } from "store/selectors/nav";
+import { selectCartIsOpen, selectCartIsEmpty } from "store/selectors/cart";
 
 interface IProps {
   isOpen: boolean;
@@ -23,12 +23,17 @@ const Navigation: FC<IProps> = ({
   cartOpen,
   toggleNav,
 }) => {
+  const handleClick = () => {
+    window.scroll({ top: 0, left: 0, behavior: "smooth" });
+    toggleNav(false);
+  };
+
   return (
     <>
       <div className="header">
         <MenuBars bool={isOpen} cb={toggleNav} />
         <Link to="/" className="header__title">
-          <span onClick={() => toggleNav(false)}>Erik Felfalusi</span>
+          <span onClick={handleClick}>Erik Felfalusi</span>
         </Link>
         {!cartIsEmpty && <CartIcon />}
         {cartOpen && <CartDropDown />}
