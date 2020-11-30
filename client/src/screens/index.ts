@@ -5,3 +5,4 @@ export { default as PrintsScreen } from "./Prints";
 export { default as SoundScreen } from "./Sound";
 export { default as LogoutScreen } from "./Logout";
 export { default as Dashboard } from "./Dashboard";
+export { default as CheckoutScreen } from "./Checkout";

@@ -23,14 +23,14 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
       <div className="main-content">
         <Switch>
           <Route exact path="/" component={screens.LandingScreen} />
-          <Route exact path="/admin/" component={screens.AdminScreen} />
-          <Route exact path="/contact/" component={screens.ContactScreen} />
-          <Route exact path="/sound/" component={screens.SoundScreen} />
-
+          <Route exact path="/admin" component={screens.AdminScreen} />
+          <Route exact path="/contact" component={screens.ContactScreen} />
+          <Route exact path="/sound" component={screens.SoundScreen} />
+          <Route exact path="/checkout" component={screens.CheckoutScreen} />
           <Route exact path="/prints/" component={screens.PrintsScreen} />
           <Route exact path="/prints/:page" component={screens.PrintsScreen} />
-
           <Route exact path="/signout" component={screens.LogoutScreen} />
+
           <PRoute
             path="/dashboard"
             currentUser={currentUser}

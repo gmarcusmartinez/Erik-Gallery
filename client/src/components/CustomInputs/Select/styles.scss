@@ -14,10 +14,14 @@
     line-height: 1.6rem;
     margin-top: var(--margin-xs);
     outline: none;
-
+    padding: 0.5rem;
     width: 100%;
     > option {
       color: var(--color-dark-grey);
     }
+
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
   }
 }

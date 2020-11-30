@@ -1,0 +1,29 @@
+.checkout-item {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  align-items: center;
+  font-size: 1.2rem;
+  height: 12vh;
+  letter-spacing: var(--letter-spacing-sm);
+  text-align: center;
+  margin: 0.5rem 0;
+
+  &__img {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 100%;
+    width: 100%;
+  }
+
+  &__price {
+    font-size: 1.2rem;
+  }
+  &__delete {
+    color: red;
+    cursor: pointer;
+    font-size: 3rem;
+  }
+}

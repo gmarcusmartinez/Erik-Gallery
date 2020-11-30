@@ -5,13 +5,16 @@ import { Router } from "react-router-dom";
 
 import "./styles/main.scss";
 import App from "./app/App";
-import store from "./store";
+import { store, persistor } from "./store";
 import history from "./core/history";
+import { PersistGate } from "redux-persist/integration/react";
 
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <App />
+      <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>
     </Router>
   </Provider>,
   document.getElementById("root")
