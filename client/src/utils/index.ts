@@ -2,9 +2,9 @@ import { ICartItem } from "../interfaces";
 
 export const addItemToCart = (cartItems: ICartItem[], itemToAdd: ICartItem) => {
   const existingCartItem = findCartItem(cartItems, itemToAdd);
+  if (existingCartItem) return setItemQty(cartItems, itemToAdd);
 
-  if (existingCartItem) return increaseItemCount(cartItems, itemToAdd);
-  return [...cartItems, { ...itemToAdd, quantity: 1 }];
+  return [...cartItems, { ...itemToAdd }];
 };
 
 export const removeItemFromCart = (
@@ -22,9 +22,11 @@ export const removeItemFromCart = (
 const findCartItem = (cartItems: ICartItem[], item: ICartItem) =>
   cartItems.find(({ _id }) => _id === item._id);
 
-const increaseItemCount = (cartItems: ICartItem[], itemToAdd: ICartItem) =>
+const setItemQty = (cartItems: ICartItem[], itemToAdd: ICartItem) =>
   cartItems.map((item) =>
-    item._id === itemToAdd._id ? { ...item, quantity: item.quantity + 1 } : item
+    item._id === itemToAdd._id
+      ? { ...item, quantity: itemToAdd.quantity }
+      : item
   );
 
 const decreaseItemCount = (cartItems: ICartItem[], itemToRemove: ICartItem) =>

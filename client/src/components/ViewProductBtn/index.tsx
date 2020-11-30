@@ -25,7 +25,7 @@ const ViewProductBtn: React.FC<IProps> = ({
       disabled={!quantityInStock}
       onClick={handleClick}
     >
-      <span>{text}</span>
+      {text}
     </button>
   );
 };

@@ -39,4 +39,9 @@
 }
 .view-product-btn:disabled {
   cursor: unset;
+  &:active {
+    background-color: unset;
+    color: unset;
+    transform: unset;
+  }
 }

@@ -5,19 +5,30 @@ import { IPrint } from "interfaces";
 
 import { toggleLightbox } from "store/actions/lightbox/toggleLightbox";
 import { toggleModal } from "store/actions/modal/toggleModal";
+import { toggleCart } from "store/actions/cart";
 
 interface IProps {
   item: IPrint;
   toggleLightbox: Function;
   toggleModal: Function;
+  toggleCart: Function;
 }
 
-const PrintItem: FC<IProps> = ({ item, toggleLightbox, toggleModal }) => {
+const PrintItem: FC<IProps> = ({
+  item,
+  toggleCart,
+  toggleLightbox,
+  toggleModal,
+}) => {
   const { mainImage, description, size, quantityInStock } = item;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
 
   const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
-  const toggleViewPrint = async () => toggleModal(true, "VIEW_PRINT", item);
+
+  const toggleViewPrint = () => {
+    toggleCart(false);
+    toggleModal(true, "VIEW_PRINT", item);
+  };
 
   return (
     <div className="print-item" onClick={handleToggleLightbox}>
@@ -38,4 +49,6 @@ const PrintItem: FC<IProps> = ({ item, toggleLightbox, toggleModal }) => {
   );
 };
 
-export default connect(null, { toggleLightbox, toggleModal })(PrintItem);
+export default connect(null, { toggleCart, toggleLightbox, toggleModal })(
+  PrintItem
+);

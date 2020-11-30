@@ -1,0 +1,26 @@
+.cart-item {
+  height: 8rem;
+  font-size: 1.35rem;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: var(--letter-spacing-md);
+  margin-bottom: var(--margin-sm);
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  &__img {
+    justify-self: center;
+    background-size: cover;
+    background-position: center;
+    width: 90%;
+  }
+  &__qty {
+    margin-top: 25%;
+  }
+  &__price {
+    margin-top: 25%;
+  }
+  &__total {
+    margin-top: 25%;
+  }
+}

@@ -15,7 +15,6 @@ interface IProps {
 }
 const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
   const className = `modal ${displayModal ? "open" : "closed"}`;
-
   return ReactDOM.createPortal(
     <div className={className}>
       {renderModalCloseBtn(displayModal, toggleModal)}

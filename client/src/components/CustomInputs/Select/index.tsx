@@ -1,11 +1,11 @@
 import React, { FC, ChangeEvent } from "react";
 
 interface IProps {
-  name?: string;
+  name: string;
   label: string;
-  value?: string;
+  value: string | number;
   options: any[];
-  onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const CustomSelect: FC<IProps> = ({
@@ -21,6 +21,7 @@ const CustomSelect: FC<IProps> = ({
   return (
     <div className="custom-select">
       <label>{label}</label>
+
       <select value={value} name={name} onChange={onChange}>
         {renderOptions(options)}
       </select>
