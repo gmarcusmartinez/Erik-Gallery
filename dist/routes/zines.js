@@ -19,28 +19,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.printRouter = void 0;
+exports.zineRouter = void 0;
 var express_1 = require("express");
-var printControllers = __importStar(require("../controllers/prints"));
+var zineControllers = __importStar(require("../controllers/zines"));
 var current_user_1 = require("../middlewares/current-user");
 var is_admin_1 = require("../middlewares/is-admin");
 var require_auth_1 = require("../middlewares/require-auth");
 var validate_request_1 = require("../middlewares/validate-request");
-var print_1 = require("../validation/print");
+var zine_1 = require("../validation/zine");
 var advanced_results_1 = require("../middlewares/advanced-results");
 var Product_1 = require("../models/Product");
 var router = express_1.Router();
-exports.printRouter = router;
+exports.zineRouter = router;
 router
     .route("/")
-    .get(advanced_results_1.advancedResults(Product_1.Product, Product_1.ProductType.Print), printControllers.getPrints);
-router.route("/:id").get(printControllers.getPrint);
+    .get(advanced_results_1.advancedResults(Product_1.Product, Product_1.ProductType.Zine), zineControllers.getZines);
+router.route("/:id").get(zineControllers.getZine);
 router
     .route("/")
-    .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.createPrint);
+    .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, zine_1.createZineValidation, validate_request_1.validateRequest, zineControllers.createZine);
 router
     .route("/:id")
-    .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.updatePrint);
+    .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, zine_1.createZineValidation, validate_request_1.validateRequest, zineControllers.updateZine);
 router
     .route("/:id")
-    .delete(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, printControllers.deletePrint);
+    .delete(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, zineControllers.deleteZine);

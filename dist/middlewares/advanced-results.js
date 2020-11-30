@@ -47,72 +47,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePrint = exports.updatePrint = exports.createPrint = exports.getPrint = exports.getPrints = void 0;
-var bad_request_error_1 = require("../errors/bad-request-error");
-var async_1 = require("../middlewares/async");
-var Product_1 = require("../models/Product");
-exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        res.status(200).json(res.advancedResults);
-        return [2 /*return*/];
-    });
-}); });
-exports.getPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var print;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
-            case 1:
-                print = _a.sent();
-                if (!print)
-                    throw new bad_request_error_1.BadRequestError("Print not found.");
-                res.status(200).json(print);
-                return [2 /*return*/];
-        }
-    });
-}); });
-exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var print;
+exports.advancedResults = void 0;
+exports.advancedResults = function (model, type) { return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+    var query, requestQuery, removeFields, queryStr, limit, page, skip, count, data, pages;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                print = Product_1.Product.build(__assign(__assign({}, req.body), { type: Product_1.ProductType.Print }));
-                return [4 /*yield*/, print.save()];
+                requestQuery = __assign({}, req.query);
+                removeFields = ["page"];
+                removeFields.forEach(function (param) { return delete requestQuery[param]; });
+                queryStr = JSON.stringify(requestQuery);
+                queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, function (match) { return "$" + match; });
+                query = model.find(JSON.parse(queryStr));
+                limit = 6;
+                page = Number(req.query.page) || 1;
+                skip = limit * (page - 1);
+                return [4 /*yield*/, model.countDocuments({ type: type })];
             case 1:
-                _a.sent();
-                res.status(200).json(print);
-                return [2 /*return*/];
-        }
-    });
-}); });
-exports.updatePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var print, opts;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
-            case 1:
-                print = _a.sent();
-                if (!print)
-                    throw new bad_request_error_1.BadRequestError("Print Not Found.");
-                opts = { new: true, runValidators: true };
-                return [4 /*yield*/, Product_1.Product.findByIdAndUpdate(req.params.id, req.body, opts)];
+                count = _a.sent();
+                return [4 /*yield*/, model.find({ type: type }).limit(limit).skip(skip)];
             case 2:
-                print = _a.sent();
-                res.status(200).json(print);
+                data = _a.sent();
+                pages = Math.ceil(count / limit);
+                res.advancedResults = { page: page, pages: pages, data: data };
+                next();
                 return [2 /*return*/];
         }
     });
-}); });
-exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var print;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
-            case 1:
-                print = _a.sent();
-                print === null || print === void 0 ? void 0 : print.remove();
-                res.status(200).json(print);
-                return [2 /*return*/];
-        }
-    });
-}); });
+}); }; };

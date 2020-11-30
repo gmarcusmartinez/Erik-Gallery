@@ -8,6 +8,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var ProductType;
 (function (ProductType) {
     ProductType["Print"] = "print";
+    ProductType["Zine"] = "zine";
 })(ProductType = exports.ProductType || (exports.ProductType = {}));
 var productSchema = new mongoose_1.default.Schema({
     title: {
@@ -35,6 +36,10 @@ var productSchema = new mongoose_1.default.Schema({
     quantityInStock: {
         type: Number,
         required: true,
+    },
+    isPublished: {
+        type: Boolean,
+        default: false,
     },
 });
 productSchema.statics.build = function (attrs) {
