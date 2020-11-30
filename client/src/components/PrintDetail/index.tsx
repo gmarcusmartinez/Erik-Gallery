@@ -39,7 +39,11 @@ const PrintDetail: FC<IProps> = ({
 
   React.useEffect(() => {
     disableBodyScroll(document.querySelector(".main-content")!);
-    return () => enableBodyScroll(document.querySelector(".main-content")!);
+    enableBodyScroll(document.querySelector(".print-detail")!);
+
+    return () => {
+      enableBodyScroll(document.querySelector(".main-content")!);
+    };
   }, []);
 
   return (
@@ -55,6 +59,7 @@ const PrintDetail: FC<IProps> = ({
           value={qty}
           onChange={handleChange}
           options={options}
+          elHeight="15%"
         />
 
         <div

@@ -18,7 +18,7 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
   }, [getCurrentUser]);
 
   return (
-    <div className="app">
+    <>
       <Navigation />
       <div className="main-content">
         <Switch>
@@ -39,7 +39,7 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
         </Switch>
       </div>
       <Modal />
-    </div>
+    </>
   );
 };
 

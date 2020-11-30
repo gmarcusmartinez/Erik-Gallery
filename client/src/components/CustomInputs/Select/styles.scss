@@ -1,19 +1,20 @@
 .custom-select {
   color: var(--color-dark-grey);
-  font-size: 1.4rem;
   margin: 1rem 2.5%;
   width: 95%;
 
   label {
+    font-size: 1.2rem;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: var(--letter-spacing-md);
+    margin-bottom: 0.5rem;
   }
 
   select {
     background-color: transparent;
     border: none;
     border-bottom: 0.1rem solid var(--color-grey);
-    height: 4rem;
+    font-size: 1.6rem;
     line-height: 1.6rem;
     outline: none;
     width: 100%;
