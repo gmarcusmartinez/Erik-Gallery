@@ -5,7 +5,6 @@
   flex-direction: column;
   height: 100%;
   letter-spacing: var(--letter-spacing-sm);
-  margin: 1rem auto;
   max-width: 90rem;
   width: 100%;
 
@@ -13,23 +12,25 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 60%;
+    height: 60vh;
+    margin-top: 10%;
+    margin-bottom: 1rem;
   }
   &__info {
     font-size: 1.2rem;
-    height: 40%;
+    height: 40vh;
     margin: 0 auto;
     width: 100%;
   }
 
   &__description {
-    margin: 0.5rem auto;
-    text-align: center;
+    display: none;
+    letter-spacing: 0.2rem;
     text-transform: capitalize;
     width: 100%;
   }
   &__size {
-    text-align: center;
+    display: none;
   }
   &__btn {
     background-color: transparent;
@@ -38,9 +39,9 @@
     cursor: pointer;
     font-family: inherit;
     font-size: 1.1rem;
-    height: 15%;
+    height: 3.5rem;
     letter-spacing: var(--letter-spacing-lg);
-    margin: 2rem auto 0 auto;
+    margin-top: var(--margin-sm);
     outline: none;
     text-transform: uppercase;
 
@@ -48,15 +49,20 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
+    transition: var(--transition-fast);
+    &:hover,
     &:active {
       background-color: var(--color-dark-grey);
       color: #fff;
-      transform: translate(3px, 3px);
+    }
+    &:active {
+      transform: translate(2px, 2px);
     }
   }
   @media (min-width: 600px) {
     flex-direction: unset;
+    align-items: center;
+
     height: 100%;
     margin-top: unset;
     &__img {
@@ -64,7 +70,7 @@
       background-position: center;
       background-repeat: no-repeat;
 
-      height: 90%;
+      height: 80%;
       width: 50%;
     }
     &__info {
@@ -72,9 +78,13 @@
       font-size: 1.4rem;
       height: min-content;
       flex-direction: column;
-      margin-top: 15%;
       padding: 2rem;
       width: 50%;
+    }
+    &__description,
+    &__size {
+      display: block;
+      margin-bottom: var(--margin-sm);
     }
     &__btn {
       height: 4rem;
@@ -82,12 +92,7 @@
     }
   }
   @media (min-width: 1000px) {
-    align-items: unset;
-    &__img {
-      align-self: center;
-    }
     &__info {
-      margin-top: 5%;
       max-width: 45rem;
     }
   }

@@ -57,7 +57,6 @@ const PrintDetail: FC<IProps> = ({
           value={qty}
           onChange={handleChange}
           options={options}
-          elHeight="15%"
         />
 
         <div

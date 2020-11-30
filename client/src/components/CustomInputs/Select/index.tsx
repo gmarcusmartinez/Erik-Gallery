@@ -1,7 +1,6 @@
 import React, { FC, ChangeEvent } from "react";
 
 interface IProps {
-  elHeight?: string;
   label: string;
   name: string;
   value: string | number;
@@ -10,19 +9,17 @@ interface IProps {
 }
 
 const CustomSelect: FC<IProps> = ({
-  elHeight,
   label,
   name,
   value,
   options,
   onChange,
 }) => {
-  const height = elHeight ? elHeight : "4rem";
   const renderOptions = (opts: any[]) =>
     opts.map((opt, i) => <option key={i}>{opt}</option>);
 
   return (
-    <div className="custom-select" style={{ height }}>
+    <div className="custom-select">
       <label>{label}</label>
 
       <select value={value} name={name} onChange={onChange}>
