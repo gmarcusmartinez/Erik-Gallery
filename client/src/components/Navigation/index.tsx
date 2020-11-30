@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import Links from "./Links";
+import Links from "components/Navigation/links";
 import MenuBars from "./MenuBars";
 import CartDropDown from "components/CartComponents/CartDropdown";
 import CartIcon from "components/CartComponents/CartIcon";
