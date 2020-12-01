@@ -4,8 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import * as screens from "screens";
 import Navigation from "components/Navigation";
 import { getCurrentUser } from "store/actions/auth";
-import { PRoute } from "components/ProtectedRoute";
-import Modal from "components/Modal";
+import { PRoute } from "components/CommonComponents/ProtectedRoute";
+import Modal from "components/CommonComponents/Modal";
 
 interface IProps {
   getCurrentUser: Function;
@@ -25,10 +25,11 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           <Route exact path="/" component={screens.LandingScreen} />
           <Route exact path="/admin" component={screens.AdminScreen} />
           <Route exact path="/contact" component={screens.ContactScreen} />
-          <Route exact path="/sound" component={screens.SoundScreen} />
           <Route exact path="/checkout" component={screens.CheckoutScreen} />
           <Route exact path="/prints/" component={screens.PrintsScreen} />
           <Route exact path="/prints/:page" component={screens.PrintsScreen} />
+          <Route exact path="/shipping" component={screens.ShippingScreen} />
+          <Route exact path="/sound" component={screens.SoundScreen} />
           <Route exact path="/signout" component={screens.LogoutScreen} />
 
           <PRoute

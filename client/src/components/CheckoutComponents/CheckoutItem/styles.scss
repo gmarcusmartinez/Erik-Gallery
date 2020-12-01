@@ -5,7 +5,7 @@
   align-items: center;
   color: var(--color-grey);
   font-size: 1.2rem;
-  height: 12vh;
+  height: 14vh;
   letter-spacing: var(--letter-spacing-md);
   text-align: center;
   margin: 0.5rem 0;
@@ -40,6 +40,6 @@
     );
   }
   @media (min-width: 600px) {
-    height: 14vh;
+    height: 16vh;
   }
 }

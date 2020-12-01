@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { Text, File } from "components/CustomInputs";
-import Spinner from "components/Spinner";
+import Spinner from "components/CommonComponents/Spinner";
 import { IError } from "interfaces";
 import { createPrint } from "store/actions/prints/createPrint";
 import { updatePrint } from "store/actions/prints/updatePrint";

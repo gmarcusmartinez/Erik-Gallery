@@ -46,3 +46,9 @@ export const sortItems = (items: ICartItem[], order: string) =>
   order === "ascending"
     ? [...items.sort((a, b) => +a.price - +b.price)]
     : [...items.sort((a, b) => +b.price - +a.price)];
+
+export const mapQuantityToOptions = (n: number) => {
+  const opts = [];
+  for (let i = 1; i <= n; i++) opts.push(i);
+  return opts;
+};

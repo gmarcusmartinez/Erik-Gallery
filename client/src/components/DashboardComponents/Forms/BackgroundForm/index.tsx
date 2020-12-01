@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { File } from "components/CustomInputs";
-import Spinner from "components/Spinner";
+import Spinner from "components/CommonComponents/Spinner";
 import { IError } from "interfaces";
 import { createBackground } from "store/actions/backgrounds/createBackground";
 import { errors, loading } from "store/selectors/backgrounds";

@@ -11,19 +11,21 @@
 @import "../components/CartComponents/CartIcon/styles.scss";
 @import "../components/CartComponents/CartItem/styles.scss";
 
+@import "../components/CheckoutComponents/CheckoutItem/styles.scss";
+
+@import "../components/CommonComponents/Lightbox/styles.scss";
+@import "../components/CommonComponents/Modal/styles.scss";
+@import "../components/CommonComponents/Spinner/styles.scss";
+@import "../components/CommonComponents/ViewProductBtn/styles.scss";
+@import "../components/CommonComponents/Pagination/styles.scss";
+
 @import "../components/CustomInputs/Text/styles.scss";
 @import "../components/CustomInputs/Select/styles.scss";
 @import "../components/CustomInputs/File/styles.scss";
 
-@import "../components/CheckoutItem/styles.scss";
-@import "../components/LightBox/styles.scss";
-@import "../components/Modal/styles.scss";
 @import "../components/Navigation/styles.scss";
-@import "../components/Pagination/styles.scss";
 @import "../components/PrintDetail/styles.scss";
 @import "../components/PrintItem/styles.scss";
-@import "../components/Spinner/styles.scss";
-@import "../components/ViewProductBtn/styles.scss";
 
 @import "../components/DashboardComponents/Forms/BackgroundForm/styles.scss";
 @import "../components/DashboardComponents/Forms/PrintForm/styles.scss";
@@ -39,4 +41,5 @@
 @import "../screens/Dashboard/styles.scss";
 @import "../screens/Logout/styles.scss";
 @import "../screens/Prints/styles.scss";
+@import "../screens/Shipping/styles.scss";
 @import "../screens/Sound/styles.scss";

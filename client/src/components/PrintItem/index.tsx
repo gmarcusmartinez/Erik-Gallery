@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import ViewProductBtn from "components/ViewProductBtn";
+import ViewProductBtn from "components/CommonComponents/ViewProductBtn";
 import { connect } from "react-redux";
 import { IPrint } from "interfaces";
 

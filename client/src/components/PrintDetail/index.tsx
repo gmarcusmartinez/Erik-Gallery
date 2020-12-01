@@ -1,26 +1,18 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { IPrint } from "interfaces";
 import { selectModalData } from "store/selectors/modal";
 import { Select } from "components/CustomInputs";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import { addItemToCart, toggleCart } from "store/actions/cart";
+import { addItemToCart } from "store/actions/cart";
+import { mapQuantityToOptions } from "utils";
 
 interface IProps {
   addItemToCart: Function;
   print: IPrint;
-  toggleCart: Function;
-  toggleModal: Function;
 }
 
-const PrintDetail: FC<IProps> = ({
-  print,
-  toggleCart,
-  toggleModal,
-  addItemToCart,
-}) => {
+const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
   const { mainImage, description, size, quantityInStock } = print;
   const [qty, setQty] = React.useState(1);
 
@@ -31,18 +23,9 @@ const PrintDetail: FC<IProps> = ({
     setQty(+e.target.value);
 
   const handleAddToCart = (item: IPrint, qty: Number) => {
-    toggleModal(false, "", null);
     const cartItem = { ...item, quantity: qty };
     addItemToCart(cartItem);
-    toggleCart(true);
   };
-
-  React.useEffect(() => {
-    disableBodyScroll(document.querySelector(".main-content")!);
-    return () => {
-      enableBodyScroll(document.querySelector(".main-content")!);
-    };
-  }, []);
 
   return (
     <div className="print-detail">
@@ -71,15 +54,4 @@ const PrintDetail: FC<IProps> = ({
 };
 
 const mapStateToProps = createStructuredSelector({ print: selectModalData });
-
-export default connect(mapStateToProps, {
-  toggleCart,
-  toggleModal,
-  addItemToCart,
-})(PrintDetail);
-
-function mapQuantityToOptions(n: number) {
-  const opts = [];
-  for (let i = 1; i <= n; i++) opts.push(i);
-  return opts;
-}
+export default connect(mapStateToProps, { addItemToCart })(PrintDetail);

@@ -18,21 +18,23 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   const navOpen = `${isOpen ? "open" : "closed"}`;
   const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
 
-  const history = useHistory();
-  const scrollable = ["prints", "dashboard"];
-
   const closeModalAndNav = () => {
     toggleModal(false, "", null);
     toggleNav(false);
   };
 
+  const history = useHistory();
+  const scrollable = ["prints", "dashboard", "checkout"].includes(
+    history.location.pathname.split("/")[1]
+  );
+
   React.useEffect(() => {
     disableBodyScroll(document.querySelector(".main-content")!);
     return () => {
-      if (scrollable.includes(history.location.pathname.split("/")[1]))
+      if (scrollable)
         enableBodyScroll(document.querySelector(".main-content")!);
     };
-  }, []);
+  }, [scrollable]);
 
   return (
     <ul className={`mobile-navigation ${navOpen} ${adminLinks}`}>

@@ -7,7 +7,7 @@ interface IProps {
   value: string;
   type?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  error: IError | null | undefined;
+  error?: IError | null | undefined;
 }
 
 const CustomInput: React.FC<IProps> = ({
@@ -20,13 +20,13 @@ const CustomInput: React.FC<IProps> = ({
 }) => {
   return (
     <div className="text-input">
-      <label>{label}</label>
       <input
         type={type ? type : "text"}
         name={name}
         value={value}
         onChange={onChange}
       />
+      <label className="text-input__label">{label}</label>
       {error && <div className="input-error">{error.message}</div>}
     </div>
   );

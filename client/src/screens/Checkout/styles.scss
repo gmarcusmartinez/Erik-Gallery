@@ -24,8 +24,41 @@
     font-size: 1.4rem;
     letter-spacing: var(--letter-spacing-md);
     margin-top: var(--margin-sm);
-    width: 35vw;
-    text-align: center;
+    margin-left: var(--margin-md);
+    text-align: start;
     text-transform: uppercase;
+  }
+  &__proceed-to-checkout {
+    border: 0.1rem solid var(--color-dark-grey);
+    color: var(--color-dark-grey);
+    font-family: "Open Sans Condensed";
+    font-size: 1.4rem;
+    height: 4rem;
+    line-height: 4rem;
+    margin: var(--margin-md);
+    letter-spacing: var(--letter-spacing-md);
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 80vw;
+
+    transition: var(--transition-fast);
+    &:hover,
+    &:active {
+      background-color: var(--color-dark-grey);
+      border: 0.1rem solid var(--color-dark-grey);
+      color: #fff;
+    }
+    &:active {
+      transform: translate(2px, 2px);
+    }
+  }
+}
+
+@include respond(tablet) {
+  .checkout {
+    &__proceed-to-checkout {
+      width: 35rem;
+    }
   }
 }

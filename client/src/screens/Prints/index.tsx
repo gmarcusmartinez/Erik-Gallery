@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { RouteComponentProps } from "react-router";
 import { connect } from "react-redux";
-import { fetchPrints } from "store/actions/prints/fetchPrints";
-import LightBox from "components/LightBox";
-import PrintsContainer from "./Container";
-import Pagination from "components/Pagination";
 import { createStructuredSelector } from "reselect";
+import LightBox from "components/CommonComponents/LightBox";
+import Pagination from "components/CommonComponents/Pagination";
+import PrintsContainer from "screens/Prints/Container";
+import { fetchPrints } from "store/actions/prints/fetchPrints";
 import { printsPages } from "store/selectors/prints";
 
 interface MatchParams {
