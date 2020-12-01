@@ -4,6 +4,7 @@ import { defaultFormState, textInputs } from "./text-inputs";
 
 const ShippingScreen = () => {
   const [formData, setFormData] = React.useState<any>(defaultFormState);
+  const disabled = Object.values(formData).some((value) => value === "");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -12,7 +13,6 @@ const ShippingScreen = () => {
     e.preventDefault();
     console.log(formData);
   };
-
   return (
     <div className="shipping-screen">
       <form className="shipping-form" onSubmit={handleSubmit}>
@@ -26,7 +26,11 @@ const ShippingScreen = () => {
             onChange={handleChange}
           />
         ))}
-        <button type="submit" className="shipping-form__btn">
+        <button
+          disabled={disabled}
+          type="submit"
+          className="shipping-form__btn"
+        >
           Proceed to Payment
         </button>
       </form>
