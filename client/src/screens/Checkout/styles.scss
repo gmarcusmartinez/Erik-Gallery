@@ -4,18 +4,28 @@
   margin: 0 auto;
   height: 90vh;
   width: 90vw;
+  max-width: 70rem;
 
   &__headers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
-    margin-top: var(--margin-md);
+    margin: var(--margin-md) 0;
     text-align: center;
   }
   &__header {
-    color: var(--color-dark-grey);
+    color: var(--color-grey);
     font-size: 1.2rem;
     letter-spacing: var(--letter-spacing-md);
+    text-transform: uppercase;
+  }
+  &__total {
+    color: var(--color-grey);
+    font-size: 1.4rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-top: var(--margin-sm);
+    width: 35vw;
+    text-align: center;
     text-transform: uppercase;
   }
 }

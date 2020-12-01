@@ -3,9 +3,10 @@
   grid-template-columns: repeat(4, 1fr);
 
   align-items: center;
+  color: var(--color-grey);
   font-size: 1.2rem;
   height: 12vh;
-  letter-spacing: var(--letter-spacing-sm);
+  letter-spacing: var(--letter-spacing-md);
   text-align: center;
   margin: 0.5rem 0;
 
@@ -25,5 +26,20 @@
     color: red;
     cursor: pointer;
     font-size: 3rem;
+  }
+  &__border {
+    border: 0;
+    height: 0.1rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgb(153, 153, 153),
+      rgba(0, 0, 0, 0)
+    );
+  }
+  @media (min-width: 600px) {
+    height: 14vh;
   }
 }

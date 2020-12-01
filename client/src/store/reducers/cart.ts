@@ -1,3 +1,4 @@
+import { ICartItem } from "interfaces";
 import { AnyAction } from "redux";
 import { CartActionTypes } from "store/actions/types";
 import { addItemToCart } from "utils";
@@ -17,6 +18,13 @@ export const cart = (state = initialState, action: AnyAction) => {
       return {
         ...state,
         cartItems: addItemToCart(state.cartItems, payload),
+      };
+    case CartActionTypes.CLEAR_ITEM_FROM_CART:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (c: ICartItem) => c._id !== payload._id
+        ),
       };
     default:
       return state;

@@ -15,10 +15,6 @@ const CartItem: React.FC<IProps> = ({ item }) => {
       <div className="cart-item__qty">{quantity}</div>
       <div className="cart-item__price">{price}</div>
       <div className="cart-item__total">{quantity * +price} &#8364; </div>
-
-      {/* <span className="price">
-          {quantity} x ${price}
-        </span> */}
     </div>
   );
 };

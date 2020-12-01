@@ -11,7 +11,7 @@ const renderLinks = (bool: boolean, cb: Function, isAdmin: boolean | null) => {
 
   const handleClick = () => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
-    cb(false);
+    cb();
   };
 
   const linkEls = links.map((l, i) => (

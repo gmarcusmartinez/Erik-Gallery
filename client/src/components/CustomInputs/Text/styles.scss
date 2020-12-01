@@ -1,26 +1,23 @@
 .text-input {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
+  &__label {
+    color: var(--color-dark-grey);
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+  }
   input {
-    align-self: flex-start;
     background-color: transparent;
     border: none;
-    border-bottom: 0.1rem solid #666;
-    color: #666;
-    font-size: 1.6rem;
-    justify-self: center;
-    letter-spacing: var(--letter-spacing-lg);
+    border-bottom: 0.1rem solid var(--color-grey);
+    border-radius: 0;
+    color: var(--color-dark-grey);
+    height: 40px;
+    letter-spacing: 2px;
     outline: none;
-
-    height: 4rem;
-    width: calc(100% - 20px);
-
-    transition: var(--transition-fast);
     &:focus {
-      border-bottom: 0.2rem solid #666;
-    }
-    label {
-      color: #333;
+      animation: input-focus 0.25s linear both;
     }
   }
   .input-error {
@@ -29,5 +26,16 @@
     letter-spacing: var(--letter-spacing-sm);
     text-align: start;
     margin-top: var(--margin-sm);
+  }
+}
+
+@keyframes input-focus {
+  0% {
+    border-bottom: 2px solid var(--color-dark-grey);
+    width: 0%;
+  }
+  100% {
+    border-bottom: 2px solid var(--color-dark-grey);
+    width: 100%;
   }
 }
