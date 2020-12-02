@@ -8,6 +8,7 @@ interface IProps {
   type?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   error?: IError | null | undefined;
+  required?: boolean;
 }
 
 const CustomInput: React.FC<IProps> = ({
@@ -17,7 +18,10 @@ const CustomInput: React.FC<IProps> = ({
   type,
   onChange,
   error,
+  required,
 }) => {
+  const isRequired = required ? <span className="is-required">*</span> : null;
+
   return (
     <div className="text-input">
       <input
@@ -26,7 +30,11 @@ const CustomInput: React.FC<IProps> = ({
         value={value}
         onChange={onChange}
       />
-      <label className="text-input__label">{label}</label>
+      <label className="text-input__label">
+        {label}
+        {isRequired}
+      </label>
+
       {error && <div className="input-error">{error.message}</div>}
     </div>
   );

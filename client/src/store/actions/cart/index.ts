@@ -1,4 +1,4 @@
-import { ICartItem } from "interfaces";
+import { ICartItem, IShippingInfo } from "interfaces";
 import { CartActionTypes, ModalActionTypes } from "../types";
 
 export const addItemToCart = (item: ICartItem) => async (dispatch: any) => {
@@ -21,4 +21,9 @@ export const toggleCart = (bool: boolean) => ({
 export const clearItemFromCart = (item: ICartItem) => ({
   type: CartActionTypes.CLEAR_ITEM_FROM_CART,
   payload: item,
+});
+
+export const updateShippingInfo = (data: IShippingInfo) => ({
+  type: CartActionTypes.UPDATE_SHIPPING_IFNO,
+  payload: data,
 });

@@ -24,7 +24,7 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   };
 
   const history = useHistory();
-  const scrollable = ["prints", "dashboard", "checkout"].includes(
+  const scrollable = ["prints", "dashboard", "checkout", "shipping"].includes(
     history.location.pathname.split("/")[1]
   );
 

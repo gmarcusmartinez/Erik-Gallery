@@ -20,3 +20,12 @@ export interface IError {
 export interface ICartItem extends IPrint {
   quantity: number;
 }
+export interface IShippingInfo {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  country: string;
+  city: string;
+  postalCode: string;
+}

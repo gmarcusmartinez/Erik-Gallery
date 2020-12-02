@@ -6,6 +6,7 @@ import { addItemToCart } from "utils";
 const initialState = {
   isOpen: false,
   cartItems: [],
+  shippingInfo: {},
 };
 
 export const cart = (state = initialState, action: AnyAction) => {
@@ -26,6 +27,8 @@ export const cart = (state = initialState, action: AnyAction) => {
           (c: ICartItem) => c._id !== payload._id
         ),
       };
+    case CartActionTypes.UPDATE_SHIPPING_IFNO:
+      return { ...state, shippingInfo: payload };
     default:
       return state;
   }

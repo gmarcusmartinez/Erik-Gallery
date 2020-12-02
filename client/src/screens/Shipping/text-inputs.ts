@@ -1,16 +1,46 @@
 export const defaultFormState = {
+  email: "",
+  firstName: "",
+  lastName: "",
+  address: "",
   country: "",
   city: "",
   postalCode: "",
-  address: "",
+};
+export const testFormState = {
+  email: "test@test.com",
+  firstName: "Marcus",
+  lastName: "Martinez",
+  address: "195 Surf St",
+  country: "United States",
+  city: "Pacfica",
+  postalCode: "12345",
 };
 
 export const textInputs = [
   {
-    label: "Country",
-    name: "country",
-    value: "country",
-    errorField: "country",
+    label: "Email",
+    name: "email",
+    value: "email",
+    errorField: "email",
+  },
+  {
+    label: "First Name",
+    name: "firstName",
+    value: "firstName",
+    errorField: "firstName",
+  },
+  {
+    label: "Last Name",
+    name: "lastName",
+    value: "lastName",
+    errorField: "lastName",
+  },
+  {
+    label: "Address",
+    name: "address",
+    value: "address",
+    errorField: "address",
   },
   {
     label: "City",
@@ -19,16 +49,16 @@ export const textInputs = [
     errorField: "city",
   },
   {
+    label: "Country",
+    name: "country",
+    value: "country",
+    errorField: "country",
+  },
+  {
     label: "Postal Code",
     name: "postalCode",
     value: "postalCode",
     errorField: "postalCode",
-  },
-  {
-    label: "Address",
-    name: "address",
-    value: "address",
-    errorField: "address",
   },
 ];
 

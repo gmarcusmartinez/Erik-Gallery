@@ -29,8 +29,9 @@
     text-transform: uppercase;
   }
   &__proceed-to-checkout {
+    background-color: #000;
     border: 0.1rem solid var(--color-dark-grey);
-    color: var(--color-dark-grey);
+    color: #fff;
     font-family: "Open Sans Condensed";
     font-size: 1.4rem;
     height: 4rem;
@@ -45,9 +46,9 @@
     transition: var(--transition-fast);
     &:hover,
     &:active {
-      background-color: var(--color-dark-grey);
+      background-color: #fff;
       border: 0.1rem solid var(--color-dark-grey);
-      color: #fff;
+      color: var(--color-dark-grey);
     }
     &:active {
       transform: translate(2px, 2px);
