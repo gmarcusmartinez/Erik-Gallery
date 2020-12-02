@@ -12,12 +12,14 @@
 @import "../components/CartComponents/CartItem/styles.scss";
 
 @import "../components/CheckoutComponents/CheckoutItem/styles.scss";
+@import "../components/CheckoutComponents/CheckoutSteps/styles.scss";
 
 @import "../components/CommonComponents/LightBox/styles.scss";
 @import "../components/CommonComponents/Modal/styles.scss";
 @import "../components/CommonComponents/Spinner/styles.scss";
 @import "../components/CommonComponents/ViewProductBtn/styles.scss";
 @import "../components/CommonComponents/Pagination/styles.scss";
+@import "../components/CommonComponents/PayPalIcon/styles.scss";
 
 @import "../components/CustomInputs/Text/styles.scss";
 @import "../components/CustomInputs/Select/styles.scss";
@@ -40,6 +42,7 @@
 @import "../screens/Contact/styles.scss";
 @import "../screens/Dashboard/styles.scss";
 @import "../screens/Logout/styles.scss";
+@import "../screens/Payment/styles.scss";
 @import "../screens/Prints/styles.scss";
 @import "../screens/Shipping/styles.scss";
 @import "../screens/Sound/styles.scss";

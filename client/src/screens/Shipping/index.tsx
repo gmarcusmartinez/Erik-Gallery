@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Text } from "components/CustomInputs";
-import { defaultFormState, textInputs, testFormState } from "./text-inputs";
+import { textInputs, testFormState } from "./text-inputs";
 import { updateShippingInfo } from "store/actions/cart";
 import { useHistory } from "react-router-dom";
+import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
 interface IProps {
   updateShippingInfo: Function;
 }
@@ -23,6 +24,7 @@ const ShippingScreen: React.FC<IProps> = ({ updateShippingInfo }) => {
   };
   return (
     <div className="shipping-screen">
+      <CheckoutSteps shipping />
       <form className="shipping-form" onSubmit={handleSubmit}>
         <h3 className="shipping-form__title">Shipping Address</h3>
         {textInputs.map((t, i) => (

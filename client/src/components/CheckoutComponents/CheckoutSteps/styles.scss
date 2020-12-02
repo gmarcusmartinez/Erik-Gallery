@@ -1,0 +1,15 @@
+.checkout-steps {
+  display: flex;
+  justify-content: space-around;
+  letter-spacing: var(--letter-spacing-sm);
+  margin: 1rem;
+  text-align: center;
+  width: 100%;
+  &__link {
+    color: var(--color-dark-grey);
+    text-decoration: none;
+  }
+  &__span {
+    color: var(--color-light-grey);
+  }
+}

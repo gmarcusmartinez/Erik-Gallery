@@ -1,6 +1,7 @@
 export { default as AdminScreen } from "./Admin";
 export { default as ContactScreen } from "./Contact";
 export { default as LandingScreen } from "./Landing";
+export { default as PaymentScreen } from "./Payment";
 export { default as PrintsScreen } from "./Prints";
 export { default as ShippingScreen } from "./Shipping";
 export { default as SoundScreen } from "./Sound";
