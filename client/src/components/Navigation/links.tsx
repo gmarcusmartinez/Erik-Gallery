@@ -2,9 +2,10 @@ import React, { FC } from "react";
 import { useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { toggleNav } from "store/actions/nav/toggleNav";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import renderLinks from "./RenderLinks";
 import { toggleModal } from "store/actions/modal/toggleModal";
+import setScrollLock from "utils/set-scroll-lock";
+import { disableBodyScroll } from "body-scroll-lock";
 
 interface IProps {
   isOpen: boolean;
@@ -24,17 +25,14 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   };
 
   const history = useHistory();
-  const scrollable = ["prints", "dashboard", "checkout", "shipping"].includes(
-    history.location.pathname.split("/")[1]
-  );
+  const path = history.location.pathname.split("/")[1];
 
   React.useEffect(() => {
     disableBodyScroll(document.querySelector(".main-content")!);
     return () => {
-      if (scrollable)
-        enableBodyScroll(document.querySelector(".main-content")!);
+      setScrollLock(path);
     };
-  }, [scrollable]);
+  }, [path]);
 
   return (
     <ul className={`mobile-navigation ${navOpen} ${adminLinks}`}>

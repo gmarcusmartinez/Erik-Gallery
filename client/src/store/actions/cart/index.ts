@@ -24,6 +24,11 @@ export const clearItemFromCart = (item: ICartItem) => ({
 });
 
 export const updateShippingInfo = (data: IShippingInfo) => ({
-  type: CartActionTypes.UPDATE_SHIPPING_IFNO,
+  type: CartActionTypes.UPDATE_SHIPPING_INFO,
+  payload: data,
+});
+
+export const updatePaymentMethod = (data: string) => ({
+  type: CartActionTypes.UPDATE_PAYMENT_METHOD,
   payload: data,
 });

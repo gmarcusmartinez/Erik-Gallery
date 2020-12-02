@@ -13,8 +13,10 @@ interface IProps {
 
 const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
   const headers = ["Item", "Quantity", "Price", "Remove"];
+
   const renderHeaders = headers.map((h, i) => (
     <div key={i} className="checkout__header">
+      {" "}
       {h}
     </div>
   ));
@@ -33,7 +35,7 @@ const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
       <hr className="checkout-item__border"></hr>
       {list}
       <div className="checkout__total">
-        <span>total: ${total}</span>
+        <span>total: {total}&#8364;</span>
       </div>
       {renderProceedToCheckoutBtn(!!cartItems.length)}
     </div>

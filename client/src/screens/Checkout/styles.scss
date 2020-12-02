@@ -29,6 +29,7 @@
     text-transform: uppercase;
   }
   &__proceed-to-checkout {
+    align-self: center;
     background-color: #000;
     border: 0.1rem solid var(--color-dark-grey);
     color: #fff;
@@ -36,7 +37,7 @@
     font-size: 1.4rem;
     height: 4rem;
     line-height: 4rem;
-    margin: var(--margin-md);
+    margin: var(--margin-md) 0;
     letter-spacing: var(--letter-spacing-md);
     text-align: center;
     text-decoration: none;

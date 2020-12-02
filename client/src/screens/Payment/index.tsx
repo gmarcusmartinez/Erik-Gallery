@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { connect } from "react-redux";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
 import { createStructuredSelector } from "reselect";
@@ -6,26 +6,31 @@ import { selectShippingInfo } from "store/selectors/cart";
 import { IShippingInfo } from "interfaces";
 import { useHistory } from "react-router-dom";
 import PayPalIcon from "components/CommonComponents/PayPalIcon";
+import { updatePaymentMethod } from "store/actions/cart";
 
 interface IProps {
   shippingInfo: IShippingInfo;
+  updatePaymentMethod: Function;
 }
 
-const PaymentScreen: React.FC<IProps> = ({ shippingInfo }) => {
+const PaymentScreen: FC<IProps> = ({ shippingInfo, updatePaymentMethod }) => {
   const [paymentMethod, setPaymentMethod] = React.useState("");
   const history = useHistory();
-  if (!shippingInfo) history.push("/shipping");
+  const disabled = paymentMethod === "";
+
+  React.useEffect(() => {
+    if (!shippingInfo) history.push("/shipping");
+  }, [history, shippingInfo]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target);
     setPaymentMethod(e.target.value);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    history.push("/review");
+    updatePaymentMethod(paymentMethod);
+    history.push("/review-order");
   };
-  const disabled = paymentMethod === "";
 
   return (
     <div className="payment-screen">
@@ -51,4 +56,4 @@ const PaymentScreen: React.FC<IProps> = ({ shippingInfo }) => {
 const mapStateToProps = createStructuredSelector({
   shippingInfo: selectShippingInfo,
 });
-export default connect(mapStateToProps, {})(PaymentScreen);
+export default connect(mapStateToProps, { updatePaymentMethod })(PaymentScreen);

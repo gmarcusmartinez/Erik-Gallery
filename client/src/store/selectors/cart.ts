@@ -19,7 +19,12 @@ export const selectCartIsEmpty = createSelector(
 
 export const selectShippingInfo = createSelector(
   [selectCart],
-  (shippingInfo) => shippingInfo
+  (cart) => cart.shippingInfo
+);
+
+export const selectPaymentMethod = createSelector(
+  [selectCart],
+  (cart) => cart.paymentMethod
 );
 
 export const selectCartItemsCount = createSelector(

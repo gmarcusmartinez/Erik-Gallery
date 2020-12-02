@@ -12,7 +12,6 @@ export const deletePrint = (id: string) => async (dispatch: any) => {
     });
   } catch (e) {
     const errorResponse = e;
-    console.log(errorResponse);
 
     dispatch({
       type: PrintActionTypes.DELETE_PRINT_FAILURE,

@@ -1,13 +1,7 @@
 import React from "react";
 import MainLayout from "../../layouts/MainLayout";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const Sound = () => {
-  React.useEffect(() => {
-    disableBodyScroll(document.querySelector(".main-content")!);
-    return () => enableBodyScroll(document.querySelector(".main-content")!);
-  }, []);
-
   return (
     <MainLayout>
       <div className="sound-screen">

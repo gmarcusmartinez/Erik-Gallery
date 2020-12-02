@@ -1,16 +1,22 @@
-import React from "react";
+import React, { FC } from "react";
 import { connect } from "react-redux";
 import { Text } from "components/CustomInputs";
-import { textInputs, testFormState } from "./text-inputs";
+import { textInputs, blankFormState } from "./text-inputs";
 import { updateShippingInfo } from "store/actions/cart";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
+import { selectShippingInfo } from "store/selectors/cart";
+import { IShippingInfo } from "interfaces";
+import { createStructuredSelector } from "reselect";
+
 interface IProps {
   updateShippingInfo: Function;
+  shippingInfo?: IShippingInfo;
 }
 
-const ShippingScreen: React.FC<IProps> = ({ updateShippingInfo }) => {
-  const [formData, setFormData] = React.useState<any>(testFormState);
+const ShippingScreen: FC<IProps> = ({ updateShippingInfo, shippingInfo }) => {
+  const defaultFormState = shippingInfo ? shippingInfo : blankFormState;
+  const [formData, setFormData] = React.useState<any>(defaultFormState);
   const disabled = Object.values(formData).some((value) => value === "");
   const history = useHistory();
 
@@ -22,6 +28,7 @@ const ShippingScreen: React.FC<IProps> = ({ updateShippingInfo }) => {
     updateShippingInfo(formData);
     history.push("/payment");
   };
+
   return (
     <div className="shipping-screen">
       <CheckoutSteps shipping />
@@ -48,5 +55,7 @@ const ShippingScreen: React.FC<IProps> = ({ updateShippingInfo }) => {
     </div>
   );
 };
-
-export default connect(null, { updateShippingInfo })(ShippingScreen);
+const mapStateToProps = createStructuredSelector({
+  shippingInfo: selectShippingInfo,
+});
+export default connect(mapStateToProps, { updateShippingInfo })(ShippingScreen);

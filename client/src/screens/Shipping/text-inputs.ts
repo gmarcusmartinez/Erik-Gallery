@@ -1,4 +1,4 @@
-export const defaultFormState = {
+export const blankFormState = {
   email: "",
   firstName: "",
   lastName: "",

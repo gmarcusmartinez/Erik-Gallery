@@ -1,11 +1,12 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
 import * as screens from "screens";
 import Navigation from "components/Navigation";
 import { getCurrentUser } from "store/actions/auth";
 import { PRoute } from "components/CommonComponents/ProtectedRoute";
 import Modal from "components/CommonComponents/Modal";
+import setScrollLock from "utils/set-scroll-lock";
 
 interface IProps {
   getCurrentUser: Function;
@@ -17,21 +18,30 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
     getCurrentUser();
   }, [getCurrentUser]);
 
+  const history = useHistory();
+  useRouteMatch();
+  const path = history.location.pathname.split("/")[1];
+
+  React.useEffect(() => {
+    setScrollLock(path);
+  }, [path]);
+
   return (
     <>
       <Navigation />
       <div className="main-content">
         <Switch>
           <Route exact path="/" component={screens.LandingScreen} />
-          <Route exact path="/admin" component={screens.AdminScreen} />
-          <Route exact path="/contact" component={screens.ContactScreen} />
-          <Route exact path="/checkout" component={screens.CheckoutScreen} />
-          <Route exact path="/payment/" component={screens.PaymentScreen} />
+          <Route path="/admin" component={screens.AdminScreen} />
+          <Route path="/contact" component={screens.ContactScreen} />
+          <Route path="/checkout" component={screens.CheckoutScreen} />
+          <Route path="/payment/" component={screens.PaymentScreen} />
           <Route exact path="/prints/" component={screens.PrintsScreen} />
           <Route exact path="/prints/:page" component={screens.PrintsScreen} />
-          <Route exact path="/shipping" component={screens.ShippingScreen} />
-          <Route exact path="/sound" component={screens.SoundScreen} />
-          <Route exact path="/signout" component={screens.LogoutScreen} />
+          <Route path="/review-order" component={screens.ReviewOrderScreen} />
+          <Route path="/shipping" component={screens.ShippingScreen} />
+          <Route path="/sound" component={screens.SoundScreen} />
+          <Route path="/signout" component={screens.LogoutScreen} />
 
           <PRoute
             path="/dashboard"

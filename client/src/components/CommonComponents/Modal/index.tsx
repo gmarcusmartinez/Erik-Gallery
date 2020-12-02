@@ -1,10 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { selectModalComponent, selectModalIsOpen } from "store/selectors/modal";
 import { renderForm } from "./modalActions";
@@ -17,19 +14,6 @@ interface IProps {
 }
 const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
   const className = `modal ${displayModal ? "open" : "closed"}`;
-
-  const history = useHistory();
-  const scrollable = ["prints", "dashboard", "checkout"].includes(
-    history.location.pathname.split("/")[1]
-  );
-
-  React.useEffect(() => {
-    disableBodyScroll(document.querySelector(".main-content")!);
-    return () => {
-      if (scrollable)
-        enableBodyScroll(document.querySelector(".main-content")!);
-    };
-  }, [scrollable]);
 
   return ReactDOM.createPortal(
     <div className={className}>
