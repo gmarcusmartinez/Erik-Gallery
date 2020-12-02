@@ -30,6 +30,9 @@
     padding: 1.2rem;
     outline: none;
 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
     &:focus {
       animation: input-focus 0.25s linear both;
       border-left: 1px solid var(--color-dark-grey);
