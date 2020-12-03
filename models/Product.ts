@@ -8,6 +8,7 @@ export enum ProductType {
 export interface ProductSubDoc {
   _id: string;
   title: string;
+  description: string;
   mainImage: string;
   price: number;
   quantity: number;
@@ -51,6 +52,7 @@ const productSchema = new mongoose.Schema({
   },
   mainImage: {
     type: String,
+    required: true,
   },
   images: [String],
   size: {
@@ -62,7 +64,7 @@ const productSchema = new mongoose.Schema({
     enum: Object.values(ProductType),
   },
   price: {
-    type: String,
+    type: Number,
     required: true,
   },
   quantityInStock: {
@@ -80,8 +82,8 @@ productSchema.statics.build = (attrs: ProductAttrs) => {
 };
 
 productSchema.methods.createSubDoc = function () {
-  const { _id, title, mainImage, price } = this;
-  return { _id, title, mainImage, price };
+  const { _id, title, description, mainImage, price } = this;
+  return { _id, title, description, mainImage, price };
 };
 
 const Product = mongoose.model<ProductDoc, ProductModel>(

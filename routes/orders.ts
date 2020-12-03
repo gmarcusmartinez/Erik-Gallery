@@ -1,11 +1,9 @@
 import { Router } from "express";
-// import { validateRequest } from "../middlewares/validate-request";
-import { currentUser } from "../middlewares/current-user";
-import { requireAuth } from "../middlewares/require-auth";
-import { isAdmin } from "../middlewares/is-admin";
-// import { createOrder } from "../controllers/orders";
+import { validateRequest } from "../middlewares/validate-request";
+import { createOrder } from "../controllers/orders";
+import { createOrderValidation } from "../validation/order";
 
 const router = Router();
-// router.route("/").post(currentUser, requireAuth, isAdmin, createOrder);
+router.route("/").post(createOrderValidation, validateRequest, createOrder);
 
 export { router as orderRouter };
