@@ -14,10 +14,13 @@
 
     &:hover,
     &:active {
-      border-bottom: 0.2rem solid var(--color-light-grey);
+      border-bottom: 0.2rem solid var(--color-dark-grey);
     }
   }
   &__span {
     color: var(--color-light-grey);
   }
+}
+.selected-checkout-step-link {
+  border-bottom: 0.2rem solid var(--color-light-grey);
 }

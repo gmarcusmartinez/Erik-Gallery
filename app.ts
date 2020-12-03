@@ -24,10 +24,10 @@ app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/orders", orderRouter);
+app.use("/api/uploads", uploadRouter);
 
 app.use("/api/backgrounds", backgroundRouter);
 app.use("/api/prints", printRouter);
-app.use("/api/uploads", uploadRouter);
 app.use("/api/zines", zineRouter);
 
 const __dirname = path.resolve();

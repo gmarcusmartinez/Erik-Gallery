@@ -1,11 +1,10 @@
 .checkout {
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  height: 90vh;
-  width: 90vw;
-  max-width: 70rem;
-
+  @include checkout-step-page;
+  &__details {
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 45rem;
+  }
   &__headers {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -28,32 +27,10 @@
     text-align: start;
     text-transform: uppercase;
   }
-  &__proceed-to-checkout {
-    align-self: start;
-    background-color: #000;
-    border: 0.1rem solid var(--color-dark-grey);
-    color: #fff;
-    font-family: "Open Sans Condensed";
-    font-size: 1.4rem;
-    height: 4rem;
-    line-height: 4rem;
-    margin: var(--margin-md);
-    letter-spacing: var(--letter-spacing-md);
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    width: 100%;
-    max-width: 40rem;
-
-    transition: var(--transition-fast);
-    &:hover,
-    &:active {
-      background-color: #fff;
-      border: 0.1rem solid var(--color-dark-grey);
-      color: var(--color-dark-grey);
-    }
-    &:active {
-      transform: translate(2px, 2px);
+  &__btn {
+    @include checkout-step-page-btn;
+    @include respond(tablet) {
+      margin-left: 2rem;
     }
   }
 }

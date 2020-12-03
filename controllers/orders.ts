@@ -20,10 +20,14 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   if (products.length !== orderItems.length)
     throw new BadRequestError(soldOutmsg);
 
-  await products.forEach((product) => {
-    product.quantityInStock--;
-    product.save();
-  });
+  // await products.forEach((product) => {
+  //   const qty = orderItems.find(
+  //     (o: ProductSubDoc) => o._id === product._id.toString()
+  //   ).quantity;
+
+  //   product.quantityInStock -= qty;
+  //   product.save();
+  // });
 
   const order = Order.build(req.body);
 

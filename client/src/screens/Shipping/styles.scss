@@ -1,57 +1,15 @@
 .shipping-screen {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 90vw;
-  max-width: 45rem;
-  padding-bottom: 2rem;
+  @include checkout-step-page;
 }
 .shipping-form {
-  margin: 4rem auto;
-  width: 90%;
+  margin: 1rem auto;
+  width: 100%;
+  max-width: 45rem;
+
   &__title {
-    color: var(--color-grey);
-    align-self: center;
-    font-size: 1.4rem;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    margin-bottom: 2rem;
-    letter-spacing: var(--letter-spacing-md);
-    text-transform: uppercase;
-    text-align: start;
+    @include checkout-step-page-title;
   }
   &__btn {
-    background-color: var(--color-dark-grey);
-    border: 0.1rem solid var(--color-dark-grey);
-    color: #fff;
-    font-family: "Open Sans Condensed";
-    font-size: 1.4rem;
-    height: 4rem;
-    letter-spacing: var(--letter-spacing-md);
-    line-height: 4rem;
-    margin-top: 2rem;
-    outline: none;
-    text-align: center;
-    text-transform: uppercase;
-    width: 100%;
-
-    transition: var(--transition-fast);
-    &:hover,
-    &:active {
-      background-color: #fff;
-      border: 0.1rem solid var(--color-dark-grey);
-      color: var(--color-dark-grey);
-    }
-    &:active {
-      transform: translate(2px, 2px);
-    }
-    &:disabled {
-      background-color: transparent;
-      border: 0.1rem solid var(--color-light-grey);
-      color: var(--color-light-grey);
-      &:hover {
-        background-color: transparent;
-      }
-    }
+    @include checkout-step-page-btn;
   }
 }

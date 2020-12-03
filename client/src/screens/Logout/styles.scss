@@ -1,16 +1,3 @@
 .logout-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
-  background-color: var(--color-overlay-bg);
-  font-size: 1.4rem;
-  letter-spacing: var(--letter-spacing-md);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  @include main-layout;
 }

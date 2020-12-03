@@ -1,28 +1,21 @@
 .review-order {
-  display: flex;
-  flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
-  margin: auto;
-  width: 90vw;
-  max-width: 65rem;
-  padding-bottom: 2rem;
+  @include checkout-step-page;
+
+  &__details {
+    margin: 1rem 0;
+    width: 100%;
+  }
 
   &__title {
-    color: var(--color-dark-grey);
-    font-size: 1.4rem;
-    font-weight: 400;
-    letter-spacing: var(--letter-spacing-md);
-    margin-top: var(--margin-sm);
-    text-align: start;
-    text-transform: uppercase;
+    @include checkout-step-page-title;
   }
+
   &__section {
     color: var(--color-grey);
     font-size: 1.2rem;
     letter-spacing: var(--letter-spacing-sm);
     line-height: 1.8;
-    margin-top: var(--margin-sm);
-    margin-bottom: var(--margin-sm);
+    margin: var(--margin-sm);
     text-align: start;
     text-transform: uppercase;
 
@@ -82,40 +75,7 @@
     }
   }
   &__btn {
-    background-color: var(--color-dark-grey);
-    border: 0.1rem solid var(--color-dark-grey);
-    color: #fff;
-    font-family: "Open Sans Condensed";
-    font-size: 1.4rem;
-    height: 4rem;
-    letter-spacing: var(--letter-spacing-md);
-    line-height: 4rem;
-    margin: 2rem auto 0 auto;
-    outline: none;
-    text-align: center;
-    text-transform: uppercase;
-
-    width: 100%;
-    max-width: 40rem;
-
-    transition: var(--transition-fast);
-    &:hover,
-    &:active {
-      background-color: #fff;
-      border: 0.1rem solid var(--color-dark-grey);
-      color: var(--color-dark-grey);
-    }
-    &:active {
-      transform: translate(2px, 2px);
-    }
-    &:disabled {
-      background-color: transparent;
-      border: 0.1rem solid var(--color-light-grey);
-      color: var(--color-light-grey);
-      &:hover {
-        background-color: transparent;
-      }
-    }
+    @include checkout-step-page-btn;
   }
 }
 
@@ -131,13 +91,6 @@
       &__price {
         font-size: 1.25rem;
       }
-    }
-  }
-}
-@include respond(desktop) {
-  .review-order {
-    &__btn {
-      margin-left: unset;
     }
   }
 }

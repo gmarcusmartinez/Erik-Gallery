@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 interface IProps {
   shipping?: boolean;
@@ -9,23 +9,35 @@ interface IProps {
 
 const CheckoutSteps: React.FC<IProps> = ({ shipping, payment, review }) => {
   const shippingLink = shipping ? (
-    <Link className="checkout-steps__link" to="/shipping">
+    <NavLink
+      className="checkout-steps__link"
+      to="/shipping"
+      activeClassName="selected-checkout-step-link"
+    >
       Shipping
-    </Link>
+    </NavLink>
   ) : (
     <span className="checkout-steps__span">Shipping</span>
   );
   const paymentLink = payment ? (
-    <Link className="checkout-steps__link" to="/payment">
+    <NavLink
+      className="checkout-steps__link"
+      to="/payment"
+      activeClassName="selected-checkout-step-link"
+    >
       Payment
-    </Link>
+    </NavLink>
   ) : (
     <span className="checkout-steps__span">Payment</span>
   );
   const reviewLink = review ? (
-    <Link className="checkout-steps__link" to="/payment">
+    <NavLink
+      className="checkout-steps__link"
+      to="/review-order"
+      activeClassName="selected-checkout-step-link"
+    >
       Review
-    </Link>
+    </NavLink>
   ) : (
     <span className="checkout-steps__span">Review</span>
   );

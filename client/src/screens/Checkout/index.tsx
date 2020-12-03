@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { selectCartItems, selectCartTotal } from "store/selectors/cart";
 import { ICartItem } from "interfaces";
@@ -16,28 +16,31 @@ const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
 
   const renderHeaders = headers.map((h, i) => (
     <div key={i} className="checkout__header">
-      {" "}
       {h}
     </div>
   ));
   const list = cartItems.map((c, i) => <CheckoutItem item={c} key={i} />);
 
+  const history = useHistory();
+  const handleClick = () => history.push("/shipping");
   const renderProceedToCheckoutBtn = (bool: boolean) =>
     bool ? (
-      <Link to="/shipping" className="checkout__proceed-to-checkout">
+      <div className="checkout__btn" onClick={handleClick}>
         Proceed to Checkout
-      </Link>
+      </div>
     ) : null;
 
   return (
     <div className="checkout">
-      <div className="checkout__headers">{renderHeaders}</div>
-      <hr className="checkout-item__border"></hr>
-      {list}
-      <div className="checkout__total">
-        <span>total: {total}&#8364;</span>
+      <div className="checkout-details">
+        <div className="checkout__headers">{renderHeaders}</div>
+        <hr className="checkout-item__border"></hr>
+        {list}
+        <div className="checkout__total">
+          <span>total: {total}&#8364;</span>
+        </div>
+        {renderProceedToCheckoutBtn(!!cartItems.length)}
       </div>
-      {renderProceedToCheckoutBtn(!!cartItems.length)}
     </div>
   );
 };
