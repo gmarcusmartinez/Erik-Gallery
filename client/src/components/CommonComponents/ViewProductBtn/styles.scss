@@ -1,7 +1,7 @@
 .view-product-btn {
-  background-color: #fff;
-  border: 0.1rem solid var(--color-light-grey);
-  color: var(--color-dark-grey);
+  background-color: #000;
+  border: none;
+  color: #fff;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.1rem;
@@ -18,8 +18,9 @@
   text-align: center;
 
   &:active {
-    background-color: var(--color-dark-grey);
-    color: #fff;
+    background-color: #fff;
+    border: 0.1rem solid #000;
+    color: #000;
     transform: translate(2px, 2px);
   }
   &.btn-tablet {
@@ -37,7 +38,11 @@
     }
   }
 }
+
 .view-product-btn:disabled {
+  background-color: #fff;
+  border: 0.1rem solid #000;
+  color: #000;
   cursor: unset;
   &:active {
     background-color: unset;

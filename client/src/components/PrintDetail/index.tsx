@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
-  const { mainImage, description, size, quantityInStock } = print;
+  const { description, mainImage, price, quantityInStock } = print;
   const [qty, setQty] = React.useState(1);
 
   const options = mapQuantityToOptions(quantityInStock);
@@ -31,9 +31,8 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
     <div className="print-detail">
       <div className="print-detail__img" style={{ backgroundImage }}></div>
       <div className="print-detail__info">
-        <div className="print-detail__description">{description}</div>
-        <p className="print-detail__size">{size}</p>
-
+        <p className="print-detail__text">{description}</p>
+        <p className="print-detail__text">{price}&euro;</p>
         <Select
           label="Select Quantity"
           name="qty"
@@ -41,7 +40,6 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
           onChange={handleChange}
           options={options}
         />
-
         <div
           className="print-detail__btn"
           onClick={() => handleAddToCart(print, qty)}

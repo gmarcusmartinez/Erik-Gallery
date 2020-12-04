@@ -9,7 +9,8 @@
     position: relative;
   }
   &__title {
-    color: var(--color-dark-grey);
+    color: var(--color-grey);
+    font-size: 1.2rem;
     font-weight: 300;
     letter-spacing: var(--letter-spacing-lg);
     text-transform: uppercase;
@@ -31,7 +32,7 @@
     position: absolute;
     right: 1rem;
 
-    color: var(--color-dark-grey);
+    color: var(--color-grey);
     font-size: 2.4rem;
     height: 4rem;
     transition: 0.25s ease-in-out;
@@ -44,7 +45,7 @@
   &__sidenav__link {
     color: var(--color-grey);
     cursor: pointer;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     height: 8rem;
     line-height: 8rem;
     letter-spacing: var(--letter-spacing-lg);

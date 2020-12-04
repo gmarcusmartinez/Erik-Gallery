@@ -23,15 +23,13 @@
     width: 100%;
   }
 
-  &__description {
-    display: none;
+  &__text {
     letter-spacing: 0.2rem;
+    margin: 0.5rem 0;
     text-transform: capitalize;
     width: 100%;
   }
-  &__size {
-    display: none;
-  }
+
   &__btn {
     background-color: transparent;
     border: 0.1rem solid var(--color-dark-grey);

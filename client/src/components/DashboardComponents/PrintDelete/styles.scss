@@ -3,6 +3,9 @@
   margin: 2rem auto;
   text-align: center;
   width: 34rem;
+  form {
+    margin-top: 6rem;
+  }
 
   &__title {
     letter-spacing: var(--letter-spacing-md);
@@ -17,15 +20,7 @@
     margin-bottom: 2rem;
   }
   &__btn {
-    background-color: transparent;
-    color: red;
-
-    border: none;
-    height: 4rem;
-    letter-spacing: var(--letter-spacing-md);
-    outline: none;
-    text-transform: uppercase;
-    width: 32rem;
+    @include checkout-step-page-btn;
 
     &:active {
       transform: translateY(2px);
