@@ -30,6 +30,7 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   // });
 
   const order = Order.build(req.body);
+  await order.save();
 
   res.send(order);
 });

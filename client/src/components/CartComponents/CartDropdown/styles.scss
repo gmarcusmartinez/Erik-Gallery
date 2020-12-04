@@ -22,27 +22,9 @@
     margin-bottom: var(--margin-sm);
   }
   &__btn {
-    border: 0.1rem solid var(--color-light-grey);
-    color: var(--color-grey);
-    font-family: "Open Sans Condensed";
-    font-size: 1.4rem;
-    height: 4rem;
-    line-height: 4rem;
-    letter-spacing: var(--letter-spacing-md);
+    @include checkout-step-page-btn;
     margin-top: auto;
     text-decoration: none;
-    text-transform: uppercase;
-
-    transition: var(--transition-fast);
-    &:hover,
-    &:active {
-      background-color: var(--color-dark-grey);
-      border: 0.1rem solid var(--color-dark-grey);
-      color: #fff;
-    }
-    &:active {
-      transform: translate(2px, 2px);
-    }
   }
 
   .cart-items {
@@ -51,22 +33,6 @@
     flex-direction: column;
     overflow: scroll;
   }
-
-  button {
-    margin-top: auto;
-  }
-}
-.checkout-redirect {
-  height: 4rem;
-  color: var(--color-grey);
-  letter-spacing: var(--letter-spacing-md);
-  text-decoration: none;
-  border: 0.1rem solid var(--color-grey);
-  margin-top: auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .empty-message {

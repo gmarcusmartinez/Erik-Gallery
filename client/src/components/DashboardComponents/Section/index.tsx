@@ -1,54 +1,33 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import ToggleDisplayResource from "./ToggleDisplayResource";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { IPrint } from "interfaces";
 import PrintItem from "components/DashboardComponents/PrintItem";
 import BackgroundItem from "../BackgroundItem";
 
 interface IProps {
-  sectionTitle: string;
+  resourceType: string;
   formName: string;
   headers: { text: string }[];
-  fetchResource: Function;
   items: IPrint[];
   toggleModal: Function;
 }
-const Section: FC<IProps> = ({
-  sectionTitle,
-  formName,
-  headers,
-  fetchResource,
-  items,
-  toggleModal,
-}) => {
-  const [displayResources, setDisplayResources] = React.useState(false);
-  const renderAddForm = () => toggleModal(true, formName, null);
 
-  React.useEffect(() => {
-    fetchResource();
-  }, [fetchResource]);
+const Section: FC<IProps> = (props) => {
+  const renderAddForm = () => props.toggleModal(true, props.formName, null);
 
-  const list = renderDashItem(sectionTitle, items);
+  const list = renderDashItem(props.resourceType, props.items);
 
   return (
-    <div className="resource-section">
-      <div className="resource-section__actions">
-        <ToggleDisplayResource
-          bool={displayResources}
-          toggle={setDisplayResources}
-          title={sectionTitle}
-        />
-        <div className="add-resource-btn" onClick={renderAddForm}>
-          {formName.replace("_", " ")}
-        </div>
-      </div>
-
-      <div className={`resource ${displayResources ? "show" : ""}`}>
-        <div className="resource__headers">{renderHeaders(headers)}</div>
+    <>
+      <div className="resource-section">
+        <div className="resource__headers">{renderHeaders(props.headers)}</div>
         {list}
       </div>
-    </div>
+      <div className="add-resource-btn" onClick={renderAddForm}>
+        {props.formName.replace("_", " ")}
+      </div>
+    </>
   );
 };
 
@@ -58,11 +37,11 @@ function renderHeaders(headers: { text: string }[]) {
   return headers.map((h, i) => <div key={i}>{h.text}</div>);
 }
 
-function renderDashItem(sectionTitle: string, items: any[]) {
-  if (sectionTitle === "Prints") {
+function renderDashItem(resourceType: string, items: any[]) {
+  if (resourceType === "prints") {
     return items && items.map((i) => <PrintItem key={i._id} print={i} />);
   }
-  if (sectionTitle === "Backgrounds") {
+  if (resourceType === "backgrounds") {
     return (
       items && items.map((i) => <BackgroundItem key={i._id} background={i} />)
     );

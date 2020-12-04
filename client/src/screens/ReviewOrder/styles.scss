@@ -15,12 +15,10 @@
     font-size: 1.2rem;
     letter-spacing: var(--letter-spacing-sm);
     line-height: 1.8;
-    margin: var(--margin-sm);
     text-align: start;
     text-transform: uppercase;
-
-    span:not(:first-child) {
-      margin-left: var(--margin-xs);
+    &:not(:first-child) {
+      margin: 2rem 0;
     }
   }
 
@@ -35,7 +33,7 @@
     letter-spacing: var(--letter-spacing-md);
     line-height: 1.8;
     text-align: start;
-    margin: 0.5rem 0;
+    margin: 0.5rem;
 
     &__img {
       background-size: contain;
@@ -48,8 +46,8 @@
 
     &__desc {
       text-overflow: ellipsis;
-      margin-left: 1rem;
-      font-size: 1.2rem;
+      margin-left: 2rem;
+      font-size: 1.1rem;
     }
     &__price {
       text-align: center;
@@ -65,8 +63,6 @@
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: var(--letter-spacing-md);
     line-height: 1.8;
-    margin-top: var(--margin-sm);
-    margin-bottom: var(--margin-sm);
     text-transform: uppercase;
 
     span {

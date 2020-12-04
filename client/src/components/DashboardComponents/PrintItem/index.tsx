@@ -38,10 +38,10 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
       <div className="dash-print-item__text">{price}</div>
       <div className="dash-print-item__text">{quantityInStock}</div>
       <div className="dash-print-item__text edit" onClick={toggleEdit}>
-        &#9998;
+        Edit
       </div>
       <div className="dash-print-item__text delete" onClick={toggleDelete}>
-        &times;
+        Delete
       </div>
     </div>
   );

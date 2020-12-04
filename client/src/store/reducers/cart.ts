@@ -34,6 +34,9 @@ export const cart = (state = initialState, action: AnyAction) => {
     case CartActionTypes.UPDATE_PAYMENT_METHOD:
       return { ...state, paymentMethod: payload };
 
+    case CartActionTypes.CLEAR_CART:
+      return payload;
+
     default:
       return state;
   }

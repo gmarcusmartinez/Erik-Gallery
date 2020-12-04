@@ -22,8 +22,7 @@ export interface ICartItem extends IPrint {
 }
 export interface IShippingInfo {
   email: string;
-  firstName: string;
-  lastName: string;
+  name: string;
   address: string;
   country: string;
   city: string;

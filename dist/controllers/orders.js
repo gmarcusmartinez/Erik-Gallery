@@ -36,11 +36,39 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createOrder = void 0;
+exports.getOrder = exports.createOrder = void 0;
+var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
-var EXPIRATION_WINDOW_SECONDS = 15 * 60;
+var Order_1 = require("../models/Order");
+var Product_1 = require("../models/Product");
 exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var orderItems, orderItemIds, products, soldOutmsg, order;
     return __generator(this, function (_a) {
-        return [2 /*return*/];
+        switch (_a.label) {
+            case 0:
+                orderItems = req.body.orderItems;
+                if (orderItems.length <= 0)
+                    throw new bad_request_error_1.BadRequestError("No items in cart");
+                orderItemIds = [];
+                orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
+                return [4 /*yield*/, Product_1.Product.find({
+                        _id: { $in: orderItemIds },
+                        quantityInStock: { $gt: 0 },
+                    })];
+            case 1:
+                products = _a.sent();
+                soldOutmsg = "One or more products in your cart has recently sold out.";
+                if (products.length !== orderItems.length)
+                    throw new bad_request_error_1.BadRequestError(soldOutmsg);
+                order = Order_1.Order.build(req.body);
+                return [4 /*yield*/, order.save()];
+            case 2:
+                _a.sent();
+                res.send(order);
+                return [2 /*return*/];
+        }
     });
 }); });
+exports.getOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
+    return [2 /*return*/];
+}); }); });

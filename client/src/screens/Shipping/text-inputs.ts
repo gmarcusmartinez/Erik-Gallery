@@ -1,7 +1,6 @@
 export const blankFormState = {
   email: "",
-  firstName: "",
-  lastName: "",
+  name: "",
   address: "",
   country: "",
   city: "",
@@ -9,8 +8,7 @@ export const blankFormState = {
 };
 export const testFormState = {
   email: "test@test.com",
-  firstName: "Marcus",
-  lastName: "Martinez",
+  name: "Marcus Martinez",
   address: "195 Surf St",
   country: "United States",
   city: "Pacfica",
@@ -25,17 +23,12 @@ export const textInputs = [
     errorField: "email",
   },
   {
-    label: "First Name",
-    name: "firstName",
-    value: "firstName",
-    errorField: "firstName",
+    label: "Name",
+    name: "name",
+    value: "name",
+    errorField: "name",
   },
-  {
-    label: "Last Name",
-    name: "lastName",
-    value: "lastName",
-    errorField: "lastName",
-  },
+
   {
     label: "Address",
     name: "address",

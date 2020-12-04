@@ -3,74 +3,75 @@ import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
 import { ICartItem, IShippingInfo } from "interfaces";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import {
-  selectCartItems,
-  selectCartTotal,
-  selectPaymentMethod,
-  selectShippingInfo,
-} from "store/selectors/cart";
+import * as cartSelectors from "store/selectors/cart";
+import { createOrder } from "store/actions/orders";
 import ReviewOrderItem from "./ReviewOrderItem";
+import ROShippingInfo from "./ROShippingInfo";
 
 interface IProps {
   cartItems: ICartItem[];
+  cartTotal: number;
+  createOrder: Function;
   paymentMethod: string;
   shippingInfo: IShippingInfo;
-  cartTotal: number;
 }
 
-const ReviewOrder: FC<IProps> = ({
-  cartItems,
-  shippingInfo,
-  paymentMethod,
-  cartTotal,
-}) => {
-  const { firstName, lastName } = shippingInfo;
-  const list = cartItems.map((c) => <ReviewOrderItem key={c._id} c={c} />);
+const ReviewOrder: FC<IProps> = (props) => {
+  const list = props.cartItems.map((c) => (
+    <ReviewOrderItem key={c._id} c={c} />
+  ));
+
+  const handlePlaceOrder = () => {
+    const formData = {
+      orderItems: props.cartItems,
+      shippingAddress: props.shippingInfo,
+      paymentMethod: props.paymentMethod,
+    };
+
+    console.log(formData);
+  };
 
   return (
     <div className="review-order">
       <CheckoutSteps shipping payment review />
       <div className="review-order__details">
-        <h3 className="review-order__title">Shipping Address</h3>
+        <ROShippingInfo shippingInfo={props.shippingInfo} />
+
         <div className="review-order__section">
-          <span>
-            {firstName} {lastName}
-          </span>
-          <span>{shippingInfo.address}</span>
-          <span>{shippingInfo.city}</span>
-          <span>{shippingInfo.postalCode}</span>
-          <span>{shippingInfo.country}</span>
+          <h3 className="review-order__title">Payment Method</h3>
+          <span>{props.paymentMethod}</span>
+          <hr className="checkout-item__border"></hr>
         </div>
-        <hr className="checkout-item__border"></hr>
 
-        <h3 className="review-order__title">Payment Method</h3>
         <div className="review-order__section">
-          <span>{paymentMethod}</span>
+          <h3 className="review-order__title">Items</h3>
+          {list}
+          <hr className="checkout-item__border"></hr>
         </div>
-        <hr className="checkout-item__border"></hr>
 
-        <h3 className="review-order__title">Items</h3>
-        {list}
-        <hr className="checkout-item__border"></hr>
-
-        <h3 className="review-order__title">Summary</h3>
-        <div className="review-order__summary">
-          <span>Items: {cartTotal}&#8364;</span>
-          <span>Shipping: {0}&#8364;</span>
-          <span>Total: {cartTotal + 0}&#8364;</span>
+        <div className="review-order__section">
+          <div className="review-order__summary">
+            <h3 className="review-order__title">Summary</h3>
+            <span>Items: {props.cartTotal}&#8364;</span>
+            <span>Shipping: {0}&#8364;</span>
+            <span>Total: {props.cartTotal + 0}&#8364;</span>
+            <hr className="checkout-item__border"></hr>
+          </div>
         </div>
-        <hr className="checkout-item__border"></hr>
-        <div className="review-order__btn">Place Order</div>
+
+        <div className="review-order__btn" onClick={handlePlaceOrder}>
+          Place Order
+        </div>
       </div>
     </div>
   );
 };
 
 const mapStateToProps = createStructuredSelector({
-  shippingInfo: selectShippingInfo,
-  paymentMethod: selectPaymentMethod,
-  cartItems: selectCartItems,
-  cartTotal: selectCartTotal,
+  shippingInfo: cartSelectors.selectShippingInfo,
+  paymentMethod: cartSelectors.selectPaymentMethod,
+  cartItems: cartSelectors.selectCartItems,
+  cartTotal: cartSelectors.selectCartTotal,
 });
 
-export default connect(mapStateToProps, {})(ReviewOrder);
+export default connect(mapStateToProps, { createOrder })(ReviewOrder);

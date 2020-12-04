@@ -2,6 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderRouter = void 0;
 var express_1 = require("express");
-// import { createOrder } from "../controllers/orders";
+var validate_request_1 = require("../middlewares/validate-request");
+var orders_1 = require("../controllers/orders");
+var order_1 = require("../validation/order");
 var router = express_1.Router();
 exports.orderRouter = router;
+router.route("/").post(order_1.createOrderValidation, validate_request_1.validateRequest, orders_1.createOrder);

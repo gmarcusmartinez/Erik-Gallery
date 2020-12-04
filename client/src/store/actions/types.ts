@@ -31,6 +31,8 @@ export enum BackgroundActionTypes {
 export enum CartActionTypes {
   ADD_ITEM_TO_CART = "ADD_ITEM_TO_CART",
   CLEAR_ITEM_FROM_CART = "CLEAR_ITEM_FROM_CART",
+
+  CLEAR_CART = "CLEAR_CART",
   TOGGLE_CART_HIDDEN = "TOGGLE_CART_HIDDEN",
 
   UPDATE_SHIPPING_INFO = "UPDATE_SHIPPING_INFO",
@@ -46,6 +48,12 @@ export enum NavActionTypes {
 }
 export enum LightboxActionTypes {
   SET_DISPLAY_LIGHTBOX = "SET_DISPLAY_LIGHTBOX",
+}
+
+export enum OrdertActionTypes {
+  CREATE_ORDER_REQUEST = "CREATE_ORDER_REQUEST",
+  CREATE_ORDER_SUCCESS = "CREATE_ORDER_SUCCESS",
+  CREATE_ORDER_FAILURE = "CREATE_ORDER_FAILURE",
 }
 
 export enum PrintActionTypes {

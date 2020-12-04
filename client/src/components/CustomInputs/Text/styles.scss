@@ -34,9 +34,7 @@
     -moz-appearance: none;
 
     &:focus {
-      animation: input-focus 0.25s linear both;
-      border-left: 1px solid var(--color-dark-grey);
-      border-right: 1px solid var(--color-dark-grey);
+      border: 1px solid var(--color-dark-grey);
     }
     &:focus + label {
       font-weight: bold;
@@ -48,18 +46,5 @@
     letter-spacing: var(--letter-spacing-sm);
     text-align: start;
     margin-top: 0.25rem;
-  }
-}
-
-@keyframes input-focus {
-  0% {
-    border-top: 1px solid var(--color-dark-grey);
-    border-bottom: 1px solid var(--color-dark-grey);
-    width: 0%;
-  }
-  100% {
-    border-top: 1px solid var(--color-dark-grey);
-    border-bottom: 1px solid var(--color-dark-grey);
-    width: 100%;
   }
 }
