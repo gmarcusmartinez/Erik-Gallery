@@ -2,12 +2,24 @@
   width: 100vw;
   display: flex;
   position: relative;
-
+  &__header {
+    display: flex;
+    height: 4rem;
+    width: 100%;
+    position: relative;
+  }
+  &__title {
+    color: var(--color-dark-grey);
+    font-weight: 300;
+    letter-spacing: var(--letter-spacing-lg);
+    text-transform: uppercase;
+    align-self: center;
+    margin: auto;
+  }
   &__sidenav {
     position: absolute;
 
-    background-color: #fff;
-    box-shadow: 0.1rem 0.2rem 0.2rem 0.2rem var(--color-light-grey);
+    background-color: rgba(255, 255, 255, 0.9);
     display: flex;
     height: 100%;
     min-height: 90vh;
@@ -19,48 +31,54 @@
     position: absolute;
     right: 1rem;
 
-    color: #999;
+    color: var(--color-dark-grey);
     font-size: 2.4rem;
     height: 4rem;
-    margin: 0 auto;
-
     transition: 0.25s ease-in-out;
   }
   &__sidenav__links {
-    margin-top: 4rem;
-    margin-left: 2rem;
+    margin-top: 2rem;
     width: 100%;
   }
 
   &__sidenav__link {
     color: var(--color-grey);
     cursor: pointer;
-    font-size: 1.25rem;
-    height: 4rem;
-    line-height: 4rem;
+    font-size: 1.6rem;
+    height: 8rem;
+    line-height: 8rem;
     letter-spacing: var(--letter-spacing-lg);
+    margin-left: var(--margin-md);
     text-transform: uppercase;
+    @include respond(tablet) {
+      font-size: 1.4rem;
+    }
   }
 
   &__resources {
-    height: calc(100% - 20px);
+    position: absolute;
+    top: 4rem;
 
-    margin-left: 40px;
+    height: calc(100% - 20px);
     padding: 0.5rem;
-    width: calc(100% - 40px);
+    width: 100%;
     transition: 0.25s ease-in-out;
   }
 
   .sidenav-open {
     transition: 0.25s ease-in-out;
-    width: 24rem;
-    .dashboard__sidenav__trigger {
-      transform: rotate(180deg);
+    width: 75vw;
+    @include respond(tablet) {
+      width: 26rem;
     }
+  }
+
+  .rotate {
+    transform: rotate(-180deg);
   }
   .sidenav-closed {
     transition: 0.25s ease-in-out;
-    width: 4rem;
+    width: 0rem;
 
     .dashboard__sidenav__links {
       display: none;

@@ -13,4 +13,7 @@ export const backgroundHeaders = [
   { id: 11, text: "Delete" },
 ];
 
-export const fetchResourceLinks = [{ text: "Prints", value: "prints" }];
+export const fetchResourceLinks = [
+  { text: "Prints", value: "prints" },
+  { text: "Backgrounds", value: "backgrounds" },
+];

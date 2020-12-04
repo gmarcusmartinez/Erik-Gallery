@@ -41,7 +41,7 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
         Edit
       </div>
       <div className="dash-print-item__text delete" onClick={toggleDelete}>
-        Delete
+        &times;
       </div>
     </div>
   );
