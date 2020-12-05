@@ -9,3 +9,4 @@ export { default as SoundScreen } from "./Sound";
 export { default as LogoutScreen } from "./Logout";
 export { default as Dashboard } from "./Dashboard";
 export { default as CheckoutScreen } from "./Checkout";
+export { default as ZinesScreen } from "./Zines";

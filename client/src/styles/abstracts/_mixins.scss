@@ -31,7 +31,7 @@
 @mixin default-form {
   font-family: "Montserrat", sans-serif;
   height: 48rem;
-  width: 28rem;
+  width: 80vw;
   margin: auto;
   &__title {
     color: var(--color-dark-grey);
@@ -58,6 +58,9 @@
       color: #333;
       transform: translateY(3px);
     }
+  }
+  @include respond(tablet) {
+    width: 34rem;
   }
 }
 @mixin main-layout {

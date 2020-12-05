@@ -1,18 +1,17 @@
 import axios from "axios";
-import { ModalActionTypes, PrintActionTypes } from "store/actions/types";
+import { ModalActionTypes, ZineActionTypes } from "store/actions/types";
 
-export const createPrint = (formData: any, imageData: any) => async (
+export const createZine = (formData: any, imageData: any) => async (
   dispatch: any
 ) => {
   if (!imageData) {
     const errors = [{ message: "Please select an image", field: "image" }];
-    dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });
+    dispatch({ type: ZineActionTypes.CREATE_ZINE_FAILURE, payload: errors });
     return;
   }
 
   try {
-    dispatch({ type: PrintActionTypes.CREATE_PRINT_REQUEST });
-
+    dispatch({ type: ZineActionTypes.CREATE_ZINE_REQUEST });
     const uploadConfig = await axios.get("/api/uploads");
     const ContentType = imageData.type;
     const headers = { headers: { ContentType } };
@@ -20,14 +19,14 @@ export const createPrint = (formData: any, imageData: any) => async (
 
     const config = { headers: { "Content-Type": "application/json" } };
     const requestBody = { ...formData, mainImage: uploadConfig.data.key };
-    const { data } = await axios.post("/api/prints", requestBody, config);
-    dispatch({ type: PrintActionTypes.CREATE_PRINT_SUCCESS, payload: data });
+    const { data } = await axios.post("/api/zines", requestBody, config);
+    dispatch({ type: ZineActionTypes.CREATE_ZINE_SUCCESS, payload: data });
 
     const successPayload = { displayModal: false };
     dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: successPayload });
   } catch (err) {
     const errors = err.response.data.errors || err.message;
-    dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });
+    dispatch({ type: ZineActionTypes.CREATE_ZINE_FAILURE, payload: errors });
     return;
   }
 };

@@ -42,6 +42,8 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           <Route path="/shipping" component={screens.ShippingScreen} />
           <Route path="/sound" component={screens.SoundScreen} />
           <Route path="/signout" component={screens.LogoutScreen} />
+          <Route exact path="/zines" component={screens.ZinesScreen} />
+          <Route exact path="/zines/:page" component={screens.ZinesScreen} />
 
           <PRoute
             path="/dashboard"

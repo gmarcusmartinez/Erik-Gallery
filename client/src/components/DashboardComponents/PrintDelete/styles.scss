@@ -21,7 +21,7 @@
   }
   &__btn {
     @include checkout-step-page-btn;
-
+    margin-top: 0;
     &:active {
       transform: translateY(2px);
     }

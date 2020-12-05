@@ -3,6 +3,7 @@ import PrintDelete from "components/DashboardComponents/PrintDelete";
 import PrintForm from "components/DashboardComponents/Forms/PrintForm";
 import BackgroundForm from "components/DashboardComponents/Forms/BackgroundForm";
 import PrintDetail from "components/PrintDetail";
+import ZineForm from "components/DashboardComponents/Forms/ZineForm";
 
 export const renderForm = (component: string) => {
   switch (component) {
@@ -16,6 +17,8 @@ export const renderForm = (component: string) => {
       return <BackgroundForm />;
     case "VIEW_PRINT":
       return <PrintDetail />;
+    case "ADD_ZINE":
+      return <ZineForm formTitle="Add" />;
     default:
       return null;
   }

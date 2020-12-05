@@ -9,6 +9,7 @@ import { lightbox } from "./lightbox";
 import { modal } from "./modal";
 import { nav } from "./nav";
 import { prints } from "./prints";
+import { zines } from "./zines";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ export const rootReducer = combineReducers({
   modal,
   nav,
   prints,
+  zines,
 });
 
 export default persistReducer(persistConfig, rootReducer);

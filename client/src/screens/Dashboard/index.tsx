@@ -2,7 +2,12 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import { fetchPrints } from "store/actions/prints/fetchPrints";
 import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
-import { backgroundHeaders, fetchResourceLinks, printHeaders } from "./headers";
+import {
+  backgroundHeaders,
+  fetchResourceLinks,
+  printHeaders,
+  zineHeaders,
+} from "./headers";
 import Section from "components/DashboardComponents/Section";
 import { IPrint } from "interfaces";
 import SideNavTrigger from "./SideNavTrigger";
@@ -65,6 +70,14 @@ const Dashboard: FC<IProps> = (props) => {
               resourceType="backgrounds"
               formName="ADD_BG"
               headers={backgroundHeaders}
+              items={props.backgrounds}
+            />
+          )}
+          {resourceType === "zines" && (
+            <Section
+              resourceType="zines"
+              formName="ADD_ZINE"
+              headers={zineHeaders}
               items={props.backgrounds}
             />
           )}

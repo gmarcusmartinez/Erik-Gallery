@@ -30,7 +30,7 @@
 
 @include respond(tablet) {
   .print-item {
-    height: 70vh;
+    height: 50rem;
     width: 100%;
 
     &__img {
