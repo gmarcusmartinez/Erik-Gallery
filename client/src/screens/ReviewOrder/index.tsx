@@ -36,18 +36,19 @@ const ReviewOrder: FC<IProps> = (props) => {
       <CheckoutSteps shipping payment review />
       <div className="review-order__details">
         <ROShippingInfo shippingInfo={props.shippingInfo} />
+        <hr className="checkout-item__border"></hr>
 
         <div className="review-order__section">
           <h3 className="review-order__title">Payment Method</h3>
           <span>{props.paymentMethod}</span>
-          <hr className="checkout-item__border"></hr>
         </div>
+        <hr className="checkout-item__border"></hr>
 
         <div className="review-order__section">
           <h3 className="review-order__title">Items</h3>
           {list}
-          <hr className="checkout-item__border"></hr>
         </div>
+        <hr className="checkout-item__border"></hr>
 
         <div className="review-order__section">
           <div className="review-order__summary">
@@ -55,8 +56,8 @@ const ReviewOrder: FC<IProps> = (props) => {
             <span>Items: {props.cartTotal}&#8364;</span>
             <span>Shipping: {0}&#8364;</span>
             <span>Total: {props.cartTotal + 0}&#8364;</span>
-            <hr className="checkout-item__border"></hr>
           </div>
+          <hr className="checkout-item__border"></hr>
         </div>
 
         <div className="review-order__btn" onClick={handlePlaceOrder}>

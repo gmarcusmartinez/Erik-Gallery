@@ -11,7 +11,9 @@ const PreviewZine: React.FC<IProps> = ({ data }) => {
 
   const zinePages = data.images.map((page: string, i: number) => {
     const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${page}`;
-    return <img key={i} src={imageUrl} className="preview-zine__image" />;
+    return (
+      <img key={i} src={imageUrl} className="preview-zine__image" alt="page" />
+    );
   });
   const next = () => {
     if (selectedPage === zinePages.length - 1) setSelectedPage(0);

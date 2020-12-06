@@ -17,8 +17,25 @@
     line-height: 1.8;
     text-align: start;
     text-transform: uppercase;
-    &:not(:first-child) {
-      margin: 2rem 0;
+    margin: 1rem 0;
+
+    span {
+      margin-left: var(--margin-sm);
+    }
+  }
+  &__shipping {
+    color: var(--color-grey);
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    letter-spacing: var(--letter-spacing-sm);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+
+    text-align: start;
+    text-transform: uppercase;
+    span {
+      margin-left: var(--margin-sm);
     }
   }
 
@@ -66,8 +83,7 @@
     text-transform: uppercase;
 
     span {
-      margin-left: var(--margin-xs);
-      text-align: start;
+      margin-left: var(--margin-sm);
     }
   }
   &__btn {
