@@ -13,9 +13,9 @@ interface IProps {
 const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
   const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", zine);
 
-  const toggleEdit = async () => {
+  const toggleEdit = async (formType: string) => {
     const zineToUpdate = await fetchZine(zine._id);
-    toggleModal(true, "EDIT_ZINE", zineToUpdate);
+    toggleModal(true, formType, zineToUpdate);
   };
 
   const { title, price, quantityInStock } = zine;
@@ -26,7 +26,16 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
     <div className="dash-item" style={{ gridTemplateColumns }}>
       <div className="dash-item__img" style={{ backgroundImage }}>
         <div className="mobile-dash__btns">
-          <button className="mobile-dash__edit" onClick={toggleEdit}>
+          <button
+            className="mobile-dash__edit"
+            onClick={() => toggleEdit("ADD_IMG")}
+          >
+            Add Image
+          </button>
+          <button
+            className="mobile-dash__edit"
+            onClick={() => toggleEdit("EDIT_ZINE")}
+          >
             Edit
           </button>
           <button className="mobile-dash__delete" onClick={toggleDelete}>
@@ -39,7 +48,14 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
       </div>
       <div className="dash-item__text">{price}</div>
       <div className="dash-item__text">{quantityInStock}</div>
-      <div className="dash-item__text edit" onClick={toggleEdit}>
+      <div
+        className="dash-btn"
+        onClick={() => toggleEdit("ADD_IMG")}
+        style={{ fontSize: "0.8rem" }}
+      >
+        Image &#43;
+      </div>
+      <div className="dash-btn" onClick={() => toggleEdit("EDIT_ZINE")}>
         Edit
       </div>
       <div className="dash-item__text delete" onClick={toggleDelete}>

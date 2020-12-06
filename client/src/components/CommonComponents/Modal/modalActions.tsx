@@ -2,8 +2,10 @@ import React from "react";
 import ResourceDelete from "components/DashboardComponents/ResourceDelete";
 import PrintForm from "components/DashboardComponents/Forms/PrintForm";
 import BackgroundForm from "components/DashboardComponents/Forms/BackgroundForm";
-import PrintDetail from "components/PrintDetail";
+import ItemDetal from "components/ItemDetail";
 import ZineForm from "components/DashboardComponents/Forms/ZineForm";
+import ImageForm from "components/DashboardComponents/Forms/ImageForm";
+import PreviewZine from "components/PreviewZine";
 
 export const renderForm = (component: string) => {
   switch (component) {
@@ -15,12 +17,16 @@ export const renderForm = (component: string) => {
       return <PrintForm formTitle="Edit" />;
     case "ADD_BG":
       return <BackgroundForm />;
-    case "VIEW_PRINT":
-      return <PrintDetail />;
+    case "VIEW_ITEM":
+      return <ItemDetal />;
     case "ADD_ZINE":
       return <ZineForm formTitle="Add" />;
     case "EDIT_ZINE":
       return <ZineForm formTitle="Edit" />;
+    case "ADD_IMG":
+      return <ImageForm />;
+    case "PREVIEW_ZINE":
+      return <PreviewZine />;
     default:
       return null;
   }

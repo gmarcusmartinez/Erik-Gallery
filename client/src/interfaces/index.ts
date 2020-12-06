@@ -23,6 +23,7 @@ export interface IProduct {
   price: string;
   quantityInStock: number;
   type: string;
+  title: string;
 }
 
 export interface IPrint extends IProduct {
@@ -35,6 +36,7 @@ export interface IZine {
   mainImage: string;
   price: number;
   title: string;
+  description: string;
   quantityInStock: number;
   type: string;
 }

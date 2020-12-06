@@ -40,7 +40,7 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
       <div className="dash-item__text">{size}</div>
       <div className="dash-item__text">{price}</div>
       <div className="dash-item__text">{quantityInStock}</div>
-      <div className="dash-item__text edit" onClick={toggleEdit}>
+      <div className="dash-btn" onClick={toggleEdit}>
         Edit
       </div>
       <div className="dash-item__text delete" onClick={toggleDelete}>

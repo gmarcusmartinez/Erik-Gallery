@@ -23,7 +23,7 @@ const PrintItem: FC<IProps> = (props) => {
 
   const toggleViewPrint = () => {
     props.toggleCart(false);
-    props.toggleModal(true, "VIEW_PRINT", props.item);
+    props.toggleModal(true, "VIEW_ITEM", props.item);
   };
 
   return (

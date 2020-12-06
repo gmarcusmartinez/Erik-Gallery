@@ -37,6 +37,11 @@ router
     validateRequest,
     zineControllers.updateZine
   );
+
+router
+  .route("/:id")
+  .patch(currentUser, requireAuth, isAdmin, zineControllers.addZineImage);
+
 router
   .route("/:id")
   .delete(currentUser, requireAuth, isAdmin, zineControllers.deleteZine);

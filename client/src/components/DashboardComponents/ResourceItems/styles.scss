@@ -21,9 +21,7 @@
     width: 100%;
 
     div {
-      color: var(--color-dark-grey);
       letter-spacing: var(--letter-spacing-sm);
-      line-height: 6rem;
       text-align: center;
     }
     div:nth-child(2) {
@@ -36,7 +34,9 @@
       justify-self: center;
     }
     &__text {
+      color: var(--color-dark-grey);
       display: block;
+      line-height: 8rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -55,6 +55,20 @@
   }
   @include respond(desktop) {
     font-size: 1.1rem;
+  }
+}
+.dash-btn {
+  display: none;
+  align-self: center;
+  background-color: #000;
+  color: #fff;
+  height: 50%;
+  line-height: 4rem;
+  text-transform: uppercase;
+  width: 98%;
+
+  @include respond(tablet) {
+    display: block;
   }
 }
 

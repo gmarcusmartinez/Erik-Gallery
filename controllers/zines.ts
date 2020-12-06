@@ -28,6 +28,19 @@ export const updateZine = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json(zine);
 });
 
+export const addZineImage = asyncHandler(
+  async (req: Request, res: Response) => {
+    let zine = await Product.findById(req.params.id);
+    if (!zine) throw new BadRequestError("Zine Not Found.");
+
+    const image = req.body.image;
+    zine.images.push(image);
+    await zine.save();
+
+    res.status(200).json(zine);
+  }
+);
+
 export const deleteZine = asyncHandler(async (req: Request, res: Response) => {
   const zine = await Product.findById(req.params.id);
   zine?.remove();

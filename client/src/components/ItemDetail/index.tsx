@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { IPrint } from "interfaces";
+import { IPrint, IZine } from "interfaces";
 import { selectModalData } from "store/selectors/modal";
 import { Select } from "components/CustomInputs";
 import { addItemToCart } from "store/actions/cart";
@@ -9,11 +9,12 @@ import { mapQuantityToOptions } from "utils";
 
 interface IProps {
   addItemToCart: Function;
-  print: IPrint;
+  item: IPrint | IZine;
 }
 
-const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
-  const { description, mainImage, price, quantityInStock } = print;
+const PrintDetail: FC<IProps> = ({ item, addItemToCart }) => {
+  const { description, title, mainImage, price, quantityInStock } = item;
+
   const [qty, setQty] = React.useState(1);
 
   const options = mapQuantityToOptions(quantityInStock);
@@ -22,7 +23,7 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
     setQty(+e.target.value);
 
-  const handleAddToCart = (item: IPrint, qty: Number) => {
+  const handleAddToCart = (item: IPrint | IZine, qty: Number) => {
     const cartItem = { ...item, quantity: qty };
     addItemToCart(cartItem);
   };
@@ -31,7 +32,8 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
     <div className="print-detail">
       <div className="print-detail__img" style={{ backgroundImage }}></div>
       <div className="print-detail__info">
-        <p className="print-detail__text">{description}</p>
+        {description && <p className="print-detail__text">{description}</p>}
+        {title && <p className="print-detail__text">{title}</p>}
         <p className="print-detail__text">{price}&euro;</p>
         <Select
           label="Select Quantity"
@@ -42,7 +44,7 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
         />
         <div
           className="print-detail__btn"
-          onClick={() => handleAddToCart(print, qty)}
+          onClick={() => handleAddToCart(item, qty)}
         >
           Add to Cart
         </div>
@@ -51,5 +53,5 @@ const PrintDetail: FC<IProps> = ({ print, addItemToCart }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({ print: selectModalData });
+const mapStateToProps = createStructuredSelector({ item: selectModalData });
 export default connect(mapStateToProps, { addItemToCart })(PrintDetail);

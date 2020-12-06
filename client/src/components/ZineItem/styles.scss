@@ -17,6 +17,15 @@
     height: 100%;
     width: 100%;
   }
+  &__description {
+    margin: 1rem auto;
+    text-align: center;
+    text-transform: capitalize;
+    width: 80%;
+    @include respond(tablet) {
+      width: 100%;
+    }
+  }
 }
 
 @include respond(tablet) {
@@ -26,7 +35,7 @@
 
     &__img {
       position: relative;
-      height: 50rem;
+      height: 100%;
       width: 100%;
       transition: var(--transition-fast);
       &:hover {

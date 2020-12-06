@@ -25,6 +25,7 @@ export const zines = (state = initialState, action: AnyAction) => {
       const oldItems = state.items.filter(({ _id }) => _id !== payload._id);
       return { ...state, items: [payload, ...oldItems], errors: null };
 
+    case ZineActionTypes.ADD_ZINE_IMG_REQUEST:
     case ZineActionTypes.CREATE_ZINE_REQUEST:
     case ZineActionTypes.FETCH_ZINE_REQUEST:
     case ZineActionTypes.FETCH_ZINES_REQUEST:
@@ -49,6 +50,7 @@ export const zines = (state = initialState, action: AnyAction) => {
 
     case ZineActionTypes.CREATE_ZINE_FAILURE:
     case ZineActionTypes.UPDATE_ZINE_FAILURE:
+    case ZineActionTypes.ADD_ZINE_IMG_FAILURE:
       return { ...state, errors: payload, loading: false };
 
     default:
