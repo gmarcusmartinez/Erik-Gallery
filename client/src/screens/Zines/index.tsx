@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import LightBox from "components/CommonComponents/LightBox";
 import Pagination from "components/CommonComponents/Pagination";
-import ZinesContainer from "screens/Prints/Container";
+import ZinesContainer from "screens/Zines/Contatiner";
 import { fetchZines } from "store/actions/zines";
 import { zinesPages } from "store/selectors/zines";
 
@@ -25,9 +25,9 @@ const Zines: React.FC<IProps> = ({ fetchZines, match, pages }) => {
   }, [fetchZines, page]);
 
   return (
-    <div className="prints-screen">
+    <div className="zines-screen">
       <ZinesContainer />
-      <Pagination root="prints" pages={pages} />
+      <Pagination root="zines" pages={pages} />
       <LightBox />
     </div>
   );

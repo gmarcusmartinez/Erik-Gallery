@@ -2,7 +2,7 @@ import { createSelector } from "reselect";
 
 const selectZines = (state: any) => state.zines;
 
-export const selectAllzines = createSelector([selectZines], (zines) =>
+export const selectAllZines = createSelector([selectZines], (zines) =>
   Object.values(zines.items)
 );
 
@@ -15,7 +15,7 @@ export const selectedItem = createSelector(
   (zines) => zines.selectedItem
 );
 
-export const selectIszinesLoaded = createSelector(
+export const selectIsZinesLoaded = createSelector(
   [selectZines],
   (zines) => !!zines.items
 );

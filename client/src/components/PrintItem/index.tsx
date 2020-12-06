@@ -14,20 +14,16 @@ interface IProps {
   toggleCart: Function;
 }
 
-const PrintItem: FC<IProps> = ({
-  item,
-  toggleCart,
-  toggleLightbox,
-  toggleModal,
-}) => {
-  const { mainImage, description, size, quantityInStock } = item;
+const PrintItem: FC<IProps> = (props) => {
+  const { mainImage, description, size, quantityInStock } = props.item;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
 
-  const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
+  const handleToggleLightbox = () =>
+    props.toggleLightbox(true, backgroundImage);
 
   const toggleViewPrint = () => {
-    toggleCart(false);
-    toggleModal(true, "VIEW_PRINT", item);
+    props.toggleCart(false);
+    props.toggleModal(true, "VIEW_PRINT", props.item);
   };
 
   return (

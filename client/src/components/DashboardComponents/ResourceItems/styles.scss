@@ -1,4 +1,4 @@
-.dash-print-item {
+.dash-item {
   height: 45vh;
   width: 100%;
 
@@ -16,7 +16,6 @@
   }
   @include respond(tablet) {
     display: grid;
-    grid-template-columns: 8% 37% 15% 10% 10% 10% 10%;
 
     height: 8rem;
     width: 100%;
@@ -38,7 +37,6 @@
     }
     &__text {
       display: block;
-      margin-left: 1rem;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -60,7 +58,7 @@
   }
 }
 
-.mobile-dash-print__btns {
+.mobile-dash__btns {
   display: block;
   position: absolute;
   bottom: 1rem;
@@ -69,8 +67,8 @@
     display: none;
   }
 }
-.mobile-dash-print__delete,
-.mobile-dash-print__edit {
+.mobile-dash__delete,
+.mobile-dash__edit {
   background-color: var(--color-transparent-white);
   border: 0.1rem solid var(--color-light-grey);
   cursor: pointer;

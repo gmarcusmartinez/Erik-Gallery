@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
-  const toggleDelete = () => toggleModal(true, "DELETE_PRINT", print);
+  const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", print);
 
   const toggleEdit = async () => {
     const printToUpdate = await fetchPrint(print._id);
@@ -20,27 +20,30 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
 
   const { description, price, size, quantityInStock } = print;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${print.mainImage})`;
+  const gridTemplateColumns = "8% 37% 15% 10% 10% 10% 10%";
 
   return (
-    <div className="dash-print-item">
-      <div className="dash-print-item__img" style={{ backgroundImage }}>
-        <div className="mobile-dash-print__btns">
-          <button className="mobile-dash-print__edit" onClick={toggleEdit}>
+    <div className="dash-item" style={{ gridTemplateColumns }}>
+      <div className="dash-item__img" style={{ backgroundImage }}>
+        <div className="mobile-dash__btns">
+          <button className="mobile-dash__edit" onClick={toggleEdit}>
             Edit
           </button>
-          <button className="mobile-dash-print__delete" onClick={toggleDelete}>
+          <button className="mobile-dash__delete" onClick={toggleDelete}>
             Delete
           </button>
         </div>
       </div>
-      <div className="dash-print-item__text">{description}</div>
-      <div className="dash-print-item__text">{size}</div>
-      <div className="dash-print-item__text">{price}</div>
-      <div className="dash-print-item__text">{quantityInStock}</div>
-      <div className="dash-print-item__text edit" onClick={toggleEdit}>
+      <div className="dash-item__text" style={{ marginLeft: "0.5rem" }}>
+        {description}
+      </div>
+      <div className="dash-item__text">{size}</div>
+      <div className="dash-item__text">{price}</div>
+      <div className="dash-item__text">{quantityInStock}</div>
+      <div className="dash-item__text edit" onClick={toggleEdit}>
         Edit
       </div>
-      <div className="dash-print-item__text delete" onClick={toggleDelete}>
+      <div className="dash-item__text delete" onClick={toggleDelete}>
         &times;
       </div>
     </div>

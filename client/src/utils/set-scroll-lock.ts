@@ -7,6 +7,7 @@ const setScrollLock = (path: string) => {
     "checkout",
     "shipping",
     "review-order",
+    "zines",
   ];
 
   if (scrollable.includes(path)) {

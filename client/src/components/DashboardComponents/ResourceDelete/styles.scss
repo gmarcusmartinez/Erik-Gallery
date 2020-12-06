@@ -1,11 +1,9 @@
-.print-delete {
+.resource-delete {
   color: var(--color-grey);
   margin: 2rem auto;
   text-align: center;
   width: 34rem;
-  form {
-    margin-top: 6rem;
-  }
+  margin-top: 6rem;
 
   &__title {
     letter-spacing: var(--letter-spacing-md);

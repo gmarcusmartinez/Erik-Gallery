@@ -1,23 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { selectAllPrints } from "store/selectors/prints";
-// import PrintItem from "components/PrintItem";
+import { selectAllZines } from "store/selectors/zines";
+import ZineItem from "components/ZineItem";
 
 interface IProps {
   items: any[];
 }
 
 const ZinesList: React.FC<IProps> = ({ items }) => {
-  //   let printsList;
-  //   if (items)
-  //     printsList = items.map((p: any) => <PrintItem key={p._id} item={p} />);
-
-  return <></>;
+  let list;
+  if (items) list = items.map((p: any) => <ZineItem key={p._id} item={p} />);
+  return <>{list}</>;
 };
 
 const mapStateToProps = createStructuredSelector({
-  items: selectAllPrints,
+  items: selectAllZines,
 });
 
 export default connect(mapStateToProps, {})(ZinesList);

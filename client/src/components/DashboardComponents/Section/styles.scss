@@ -20,7 +20,6 @@
     display: none;
     @include respond(tablet) {
       display: grid;
-      grid-template-columns: 10% 35% 15% 10% 10% 10% 10%;
       height: 4rem;
       width: 100%;
     }

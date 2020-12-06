@@ -34,9 +34,8 @@
 @import "../components/DashboardComponents/Forms/PrintForm/styles.scss";
 @import "../components/DashboardComponents/Forms/ZineForm/styles.scss";
 
-@import "../components/DashboardComponents/BackgroundItem/styles.scss";
-@import "../components/DashboardComponents/PrintDelete/styles.scss";
-@import "../components/DashboardComponents/PrintItem/styles.scss";
+@import "../components/DashboardComponents/ResourceDelete/styles.scss";
+@import "../components/DashboardComponents/ResourceItems/styles.scss";
 @import "../components/DashboardComponents/Section/styles.scss";
 
 @import "../screens/Admin/styles.scss";
@@ -49,3 +48,4 @@
 @import "../screens/ReviewOrder/styles.scss";
 @import "../screens/Shipping/styles.scss";
 @import "../screens/Sound/styles.scss";
+@import "../screens/Zines/styles.scss";

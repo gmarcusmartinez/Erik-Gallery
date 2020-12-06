@@ -14,7 +14,7 @@ const PrintsContainer: React.FC<IProps> = ({ isLoading }) => {
   if (isLoading) display = <PrintsLoading />;
   if (!isLoading) display = <ZinesList />;
 
-  return <div className="prints-container">{display}</div>;
+  return <div className="zines-container">{display}</div>;
 };
 
 const mapStateToProps = createStructuredSelector({ isLoading: loading });
