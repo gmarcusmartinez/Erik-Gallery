@@ -14,18 +14,16 @@
 .admin-form {
   height: 36rem;
   font-family: "Montserrat", sans-serif;
-  margin-top: 8rem;
-  width: 28rem;
+  width: 90%;
 
   display: grid;
-  grid-template-rows: 15% 10% 20% 20% 35%;
+  grid-template-rows: 15% 5% 25% 25% 35%;
 
   &__title {
     align-self: center;
-    color: #666;
+    color: var(--color-dark-grey);
     font-size: 1.8rem;
     letter-spacing: var(--letter-spacing-md);
-    margin-left: 10px;
   }
   &__btn {
     background-color: transparent;
@@ -46,5 +44,9 @@
       color: #333;
       transform: translateY(3px);
     }
+  }
+  @include respond(tablet) {
+    margin-top: 6rem;
+    width: 32rem;
   }
 }
