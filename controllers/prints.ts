@@ -7,6 +7,11 @@ export const getPrints = asyncHandler(async (req: Request, res: any) => {
   res.status(200).json(res.advancedResults);
 });
 
+export const adminGetPrints = asyncHandler(async (req: Request, res: any) => {
+  const prints = await Product.find({ type: ProductType.Print });
+  res.send(prints);
+});
+
 export const getPrint = asyncHandler(async (req: Request, res: any) => {
   const print = await Product.findById(req.params.id);
   if (!print) throw new BadRequestError("Print not found.");

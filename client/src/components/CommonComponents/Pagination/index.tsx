@@ -8,6 +8,7 @@ interface IProps {
 const Pagination: FC<IProps> = ({ root, pages }) => {
   const pageNumbers: any[] = [];
   for (let i = 1; i <= pages; i++) pageNumbers.push(i);
+
   const history = useHistory();
   const active = +history.location.pathname.split("/")[2];
 

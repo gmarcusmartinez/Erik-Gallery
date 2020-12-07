@@ -15,6 +15,7 @@ router
   .get(advancedResults(Product, ProductType.Print), printControllers.getPrints);
 
 router.route("/:id").get(printControllers.getPrint);
+
 router
   .route("/")
   .post(
@@ -25,6 +26,10 @@ router
     validateRequest,
     printControllers.createPrint
   );
+
+router
+  .route("/:id/admin")
+  .get(currentUser, requireAuth, isAdmin, printControllers.adminGetPrints);
 
 router
   .route("/:id")

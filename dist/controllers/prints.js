@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deletePrint = exports.updatePrint = exports.createPrint = exports.getPrint = exports.getPrints = void 0;
+exports.deletePrint = exports.updatePrint = exports.createPrint = exports.getPrint = exports.adminGetPrints = exports.getPrints = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Product_1 = require("../models/Product");
@@ -55,6 +55,18 @@ exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(
     return __generator(this, function (_a) {
         res.status(200).json(res.advancedResults);
         return [2 /*return*/];
+    });
+}); });
+exports.adminGetPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var prints;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Product_1.Product.find({ type: Product_1.ProductType.Print })];
+            case 1:
+                prints = _a.sent();
+                res.send(prints);
+                return [2 /*return*/];
+        }
     });
 }); });
 exports.getPrint = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {

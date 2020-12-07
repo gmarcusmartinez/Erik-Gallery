@@ -39,6 +39,9 @@ router
     .route("/")
     .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.createPrint);
 router
+    .route("/:id/admin")
+    .get(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, printControllers.adminGetPrints);
+router
     .route("/:id")
     .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.updatePrint);
 router

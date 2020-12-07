@@ -42,6 +42,8 @@ export const prints = (state = initialState, action: AnyAction) => {
         page: payload.page,
         pages: payload.pages,
       };
+    case PrintActionTypes.ADMIN_FETCH_PRINTS_SUCCESS:
+      return { ...state, items: payload };
 
     case PrintActionTypes.DELETE_PRINT_SUCCESS:
       const newItems = state.items.filter(({ _id }) => _id !== payload);

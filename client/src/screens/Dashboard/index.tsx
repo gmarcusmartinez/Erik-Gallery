@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import { fetchPrints } from "store/actions/prints/fetchPrints";
+import { adminFetchPrints } from "store/actions/prints/adminFetchPrints";
 import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
 import { fetchZines } from "store/actions/zines/fetchZines";
 import * as headers from "./headers";
@@ -9,7 +9,7 @@ import { IPrint, IZine } from "interfaces";
 import SideNavTrigger from "./SideNavTrigger";
 
 interface IProps {
-  fetchPrints: Function;
+  adminFetchPrints: Function;
   prints: IPrint[];
   fetchBackgrounds: Function;
   backgrounds: any[];
@@ -38,7 +38,7 @@ const Dashboard: FC<IProps> = (props) => {
 
     switch (resource) {
       case "prints":
-        return props.fetchPrints();
+        return props.adminFetchPrints();
       case "backgrounds":
         return props.fetchBackgrounds();
       case "zines":
@@ -97,7 +97,7 @@ const mapStateToProps = (state: any) => ({
 });
 
 export default connect(mapStateToProps, {
-  fetchPrints,
+  adminFetchPrints,
   fetchBackgrounds,
   fetchZines,
 })(Dashboard);

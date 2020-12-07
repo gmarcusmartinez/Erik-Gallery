@@ -22,8 +22,11 @@ export const advancedResults = (model: any, type: ProductType) => async (
   const page = Number(req.query.page) || 1;
   const skip = limit * (page - 1);
 
-  const count = await model.countDocuments({ type });
-  const data = await model.find({ type }).limit(limit).skip(skip);
+  const count = await model.countDocuments({ type, isPublished: true });
+  const data = await model
+    .find({ type, isPublished: true })
+    .limit(limit)
+    .skip(skip);
   const pages = Math.ceil(count / limit);
 
   res.advancedResults = { page, pages, data };
