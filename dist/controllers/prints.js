@@ -122,7 +122,9 @@ exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaite
             case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
             case 1:
                 print = _a.sent();
-                print === null || print === void 0 ? void 0 : print.remove();
+                if (!print)
+                    throw new bad_request_error_1.BadRequestError("Print not found.");
+                print.remove();
                 res.status(200).json(print);
                 return [2 /*return*/];
         }

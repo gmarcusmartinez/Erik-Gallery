@@ -23,6 +23,7 @@ export const backgrounds = (state = initialState, action: AnyAction) => {
     //   return { ...state, items: [payload, ...oldItems], errors: null };
 
     case BackgroundActionTypes.CREATE_BACKGROUND_REQUEST:
+    case BackgroundActionTypes.DELETE_BACKGROUND_REQUEST:
     case BackgroundActionTypes.FETCH_BACKGROUND_REQUEST:
       return { ...state, loading: true };
 
@@ -32,9 +33,9 @@ export const backgrounds = (state = initialState, action: AnyAction) => {
     case BackgroundActionTypes.FETCH_BACKGROUND_SUCCESS:
       return { ...state, loading: false, items: payload };
 
-    // case PrintActionTypes.DELETE_PRINT_SUCCESS:
-    //   const newItems = state.items.filter(({ _id }) => _id !== payload);
-    //   return { ...state, items: newItems };
+    case BackgroundActionTypes.DELETE_BACKGROUND_SUCCESS:
+      const newItems = state.items.filter(({ _id }) => _id !== payload);
+      return { ...state, items: newItems };
 
     case BackgroundActionTypes.CREATE_BACKGROUND_FAILURE:
     case BackgroundActionTypes.FETCH_BACKGROUND_FAILURE:

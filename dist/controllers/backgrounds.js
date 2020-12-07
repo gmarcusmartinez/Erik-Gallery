@@ -85,7 +85,7 @@ exports.setActive = async_1.asyncHandler(function (req, res) { return __awaiter(
             case 1:
                 background = _a.sent();
                 if (!background)
-                    throw new bad_request_error_1.BadRequestError("Print Not Found.");
+                    throw new bad_request_error_1.BadRequestError("Background Not Found.");
                 return [4 /*yield*/, Background_1.Background.findOneAndUpdate({ active: true }, { active: false })];
             case 2:
                 currentlyActive = _a.sent();
@@ -115,10 +115,12 @@ exports.deleteBackground = async_1.asyncHandler(function (req, res) { return __a
                 return [4 /*yield*/, Background_1.Background.findById(req.params.id)];
             case 2:
                 background = _a.sent();
-                if ((background === null || background === void 0 ? void 0 : background.active) === true) {
+                if (!background)
+                    throw new bad_request_error_1.BadRequestError("Background Not Found.");
+                if (background.active === true) {
                     throw new bad_request_error_1.BadRequestError("Set bacground to inactive before deleting.");
                 }
-                background === null || background === void 0 ? void 0 : background.remove();
+                background.remove();
                 res.status(200).json(background);
                 return [2 /*return*/];
         }

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { IZine } from "interfaces";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { fetchZine } from "store/actions/zines";
+import { useHistory } from "react-router-dom";
 
 interface IProps {
   zine: IZine;
@@ -22,44 +23,41 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${zine.mainImage})`;
   const gridTemplateColumns = "10% 25% 15% 10% 10% 10% 10%";
 
+  const history = useHistory();
+  const handleRedirect = () => history.push(`/dashboard/zine/${zine._id}`);
+  const handleToggleEdit = () => toggleEdit("EDIT_ZINE");
+
   return (
     <div className="dash-item" style={{ gridTemplateColumns }}>
       <div className="dash-item__img" style={{ backgroundImage }}>
         <div className="mobile-dash__btns">
-          <button
-            className="mobile-dash__edit"
-            onClick={() => toggleEdit("ADD_IMG")}
-          >
-            Add Image
-          </button>
-          <button
-            className="mobile-dash__edit"
-            onClick={() => toggleEdit("EDIT_ZINE")}
-          >
+          <div className="mobile-dash__btn" onClick={handleRedirect}>
+            Images
+          </div>
+          <div className="mobile-dash__btn" onClick={handleToggleEdit}>
             Edit
-          </button>
-          <button className="mobile-dash__delete" onClick={toggleDelete}>
+          </div>
+          <div className="mobile-dash__btn" onClick={toggleDelete}>
             Delete
-          </button>
+          </div>
         </div>
       </div>
+
       <div className="dash-item__text" style={{ marginLeft: "0.5rem" }}>
         {title}
       </div>
+
       <div className="dash-item__text">{price}</div>
       <div className="dash-item__text">{quantityInStock}</div>
-      <div
-        className="dash-btn"
-        onClick={() => toggleEdit("ADD_IMG")}
-        style={{ fontSize: "0.8rem" }}
-      >
-        Image &#43;
+
+      <div className="dash-btn" onClick={handleRedirect}>
+        View
       </div>
-      <div className="dash-btn" onClick={() => toggleEdit("EDIT_ZINE")}>
+      <div className="dash-btn" onClick={handleToggleEdit}>
         Edit
       </div>
-      <div className="dash-item__text delete" onClick={toggleDelete}>
-        &times;
+      <div className="dash-btn" onClick={toggleDelete}>
+        Delete
       </div>
     </div>
   );

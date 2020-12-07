@@ -3,10 +3,10 @@
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
-  height: 90vh;
+  height: 95vh;
   justify-content: center;
   letter-spacing: var(--letter-spacing-sm);
-  margin: 0 auto 2rem auto;
+  margin: 0 auto;
   text-align: center;
   width: 96vw;
   &__img {
@@ -30,7 +30,7 @@
 
 @include respond(tablet) {
   .zine-item {
-    height: 50rem;
+    height: 60rem;
     width: 100%;
 
     &__img {
@@ -52,5 +52,54 @@
     &__size {
       font-size: 1.25rem;
     }
+  }
+}
+
+.zine-preview-btn {
+  background-color: #000;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1.1rem;
+  height: 5rem;
+  letter-spacing: var(--letter-spacing-lg);
+  margin: 0.25rem auto;
+  outline: none;
+  text-transform: uppercase;
+  width: 95%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &:active {
+    background-color: #fff;
+    border: 0.1rem solid #000;
+    color: #000;
+    transform: translate(2px, 2px);
+  }
+
+  @include respond(tablet) {
+    border: none;
+    width: 95%;
+    margin: 0.25rem 2.5%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.zine-preview-btn:disabled {
+  background-color: #fff;
+  border: 0.1rem solid #000;
+  color: #000;
+  cursor: unset;
+  &:active {
+    background-color: unset;
+    color: unset;
+    transform: unset;
   }
 }

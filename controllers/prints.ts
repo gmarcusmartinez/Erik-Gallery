@@ -35,6 +35,7 @@ export const updatePrint = asyncHandler(async (req: Request, res: Response) => {
 
 export const deletePrint = asyncHandler(async (req: Request, res: Response) => {
   const print = await Product.findById(req.params.id);
-  print?.remove();
+  if (!print) throw new BadRequestError("Print not found.");
+  print.remove();
   res.status(200).json(print);
 });

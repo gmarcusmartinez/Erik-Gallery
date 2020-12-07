@@ -19,16 +19,10 @@
     animation: image-fade-in 0.5s ease-in-out;
   }
   @include respond(tablet) {
-    width: 50rem;
-    height: 100%;
-  }
-  @include respond(desktop) {
-    margin-top: 2rem;
-    width: 60rem;
-
+    max-width: 75rem;
     &__image {
-      height: 50rem;
-      width: 100%;
+      height: 46rem;
+      max-width: 100%;
     }
   }
 }

@@ -26,12 +26,12 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
     <div className="dash-item" style={{ gridTemplateColumns }}>
       <div className="dash-item__img" style={{ backgroundImage }}>
         <div className="mobile-dash__btns">
-          <button className="mobile-dash__edit" onClick={toggleEdit}>
+          <div className="mobile-dash__btn" onClick={toggleEdit}>
             Edit
-          </button>
-          <button className="mobile-dash__delete" onClick={toggleDelete}>
+          </div>
+          <div className="mobile-dash__btn" onClick={toggleDelete}>
             Delete
-          </button>
+          </div>
         </div>
       </div>
       <div className="dash-item__text" style={{ marginLeft: "0.5rem" }}>
@@ -43,8 +43,8 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
       <div className="dash-btn" onClick={toggleEdit}>
         Edit
       </div>
-      <div className="dash-item__text delete" onClick={toggleDelete}>
-        &times;
+      <div className="dash-btn" onClick={toggleDelete}>
+        Delete
       </div>
     </div>
   );

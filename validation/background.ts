@@ -1,5 +1,5 @@
 import { body } from "express-validator";
 
 export const createBackgroundValidation = [
-  body("image").notEmpty().withMessage("Image required."),
+  body("mainImage").notEmpty().withMessage("Image required."),
 ];

@@ -4,26 +4,25 @@ interface IProps {
   breakpoint?: string;
   quantityInStock: number;
   toggleViewPrint: Function;
+  customStyle?: { display: string; margin: string };
 }
 
-const ViewProductBtn: React.FC<IProps> = ({
-  breakpoint,
-  quantityInStock,
-  toggleViewPrint,
-}) => {
-  const text = quantityInStock ? "View Product" : "Sold Out";
-  const btnBreakpoint = breakpoint ? breakpoint : "";
+const ViewProductBtn: React.FC<IProps> = (props) => {
+  const text = props.quantityInStock ? "View Product" : "Sold Out";
+  const btnBreakpoint = props.breakpoint ? props.breakpoint : "";
 
+  const style = props.customStyle ? props.customStyle : {};
   const handleClick = (e: any) => {
     e.stopPropagation();
-    toggleViewPrint();
+    props.toggleViewPrint();
   };
 
   return (
     <button
       className={`view-product-btn ${btnBreakpoint}`}
-      disabled={!quantityInStock}
+      disabled={!props.quantityInStock}
       onClick={handleClick}
+      style={style}
     >
       {text}
     </button>

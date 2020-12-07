@@ -28,8 +28,8 @@ router
   );
 
 router
-  .route("/:id/admin")
-  .get(currentUser, requireAuth, isAdmin, printControllers.adminGetPrints);
+  .route("/admin")
+  .put(currentUser, requireAuth, isAdmin, printControllers.adminGetPrints);
 
 router
   .route("/:id")

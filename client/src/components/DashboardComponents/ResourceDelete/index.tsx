@@ -5,10 +5,12 @@ import { IPrint, IZine } from "interfaces";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { deletePrint } from "store/actions/prints/deletePrint";
 import { deleteZine } from "store/actions/zines/deleteZine";
+import { deleteBackground } from "store/actions/backgrounds";
 import { selectModalData } from "store/selectors/modal";
 
 interface IProps {
   data: IPrint | IZine;
+  deleteBackground: Function;
   deletePrint: Function;
   deleteZine: Function;
   toggleModal: Function;
@@ -17,6 +19,8 @@ const ResourceDelete: FC<IProps> = (props) => {
   const handleClick = async (type: string) => {
     props.toggleModal(false, null);
     switch (type) {
+      case "background":
+        return props.deleteBackground(props.data._id);
       case "print":
         return props.deletePrint(props.data._id);
       case "zine":
@@ -45,6 +49,7 @@ const ResourceDelete: FC<IProps> = (props) => {
 const mapStateToProps = createStructuredSelector({ data: selectModalData });
 
 export default connect(mapStateToProps, {
+  deleteBackground,
   deletePrint,
   deleteZine,
   toggleModal,

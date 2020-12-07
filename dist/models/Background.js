@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Background = void 0;
 var mongoose_1 = __importDefault(require("mongoose"));
 var backgroundSchema = new mongoose_1.default.Schema({
-    image: {
+    mainImage: {
         type: String,
         required: true,
     },
@@ -14,6 +14,10 @@ var backgroundSchema = new mongoose_1.default.Schema({
         type: Boolean,
         required: true,
         default: false,
+    },
+    type: {
+        type: String,
+        default: "background",
     },
 });
 backgroundSchema.statics.build = function (attrs) {

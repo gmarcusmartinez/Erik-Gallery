@@ -18,7 +18,7 @@ export const createBackground = asyncHandler(
 
 export const setActive = asyncHandler(async (req: Request, res: Response) => {
   let background = await Background.findById(req.params.id);
-  if (!background) throw new BadRequestError("Print Not Found.");
+  if (!background) throw new BadRequestError("Background Not Found.");
 
   const currentlyActive = await Background.findOneAndUpdate(
     { active: true },
@@ -41,11 +41,12 @@ export const deleteBackground = asyncHandler(
     }
 
     const background = await Background.findById(req.params.id);
-    if (background?.active === true) {
+    if (!background) throw new BadRequestError("Background Not Found.");
+    if (background.active === true) {
       throw new BadRequestError("Set bacground to inactive before deleting.");
     }
 
-    background?.remove();
+    background.remove();
     res.status(200).json(background);
   }
 );

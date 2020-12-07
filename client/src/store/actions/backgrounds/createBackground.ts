@@ -20,7 +20,7 @@ export const createBackground = (imageData: any) => async (dispatch: any) => {
     await axios.put(uploadConfig.data.url, imageData, headers);
 
     const config = { headers: { "Content-Type": "application/json" } };
-    const requestBody = { image: uploadConfig.data.key };
+    const requestBody = { mainImage: uploadConfig.data.key };
     const { data } = await axios.post("/api/backgrounds", requestBody, config);
     dispatch({
       type: BackgroundActionTypes.CREATE_BACKGROUND_SUCCESS,

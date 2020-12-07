@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 interface BackgroundDoc extends mongoose.Document {
-  image: string;
+  mainImage: string;
   active: boolean;
 }
 
 interface BackgroundAttrs {
-  image: string;
+  mainImage: string;
   active: boolean;
 }
 
@@ -15,7 +15,7 @@ interface BackgroundModel extends mongoose.Model<BackgroundDoc> {
 }
 
 const backgroundSchema = new mongoose.Schema({
-  image: {
+  mainImage: {
     type: String,
     required: true,
   },
@@ -23,6 +23,10 @@ const backgroundSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
     default: false,
+  },
+  type: {
+    type: String,
+    default: "background",
   },
 });
 

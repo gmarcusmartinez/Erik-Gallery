@@ -4,8 +4,7 @@ import { PrintActionTypes } from "../types";
 export const adminFetchPrints = () => async (dispatch: any) => {
   try {
     dispatch({ type: PrintActionTypes.ADMIN_FETCH_PRINTS_REQUEST });
-    const { data } = await prints.get(`/1/admin`);
-    console.log(data);
+    const { data } = await prints.put(`/admin`);
     dispatch({
       type: PrintActionTypes.ADMIN_FETCH_PRINTS_SUCCESS,
       payload: data,

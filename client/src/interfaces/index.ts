@@ -33,11 +33,12 @@ export interface IPrint extends IProduct {
 
 export interface IZine {
   _id: string;
+  images: string[];
+  description: string;
   mainImage: string;
   price: number;
-  title: string;
-  description: string;
   quantityInStock: number;
+  title: string;
   type: string;
 }
 

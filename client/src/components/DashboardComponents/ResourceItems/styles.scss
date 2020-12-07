@@ -62,8 +62,8 @@
   align-self: center;
   background-color: #000;
   color: #fff;
-  height: 50%;
-  line-height: 4rem;
+  height: 45%;
+  line-height: 3.8rem;
   text-transform: uppercase;
   width: 98%;
 
@@ -81,10 +81,10 @@
     display: none;
   }
 }
-.mobile-dash__delete,
-.mobile-dash__edit {
+.mobile-dash__btn {
   background-color: var(--color-transparent-white);
   border: 0.1rem solid var(--color-light-grey);
+  color: #000;
   cursor: pointer;
   font-family: inherit;
   font-size: 1.1rem;
@@ -93,7 +93,7 @@
   line-height: 3rem;
   margin-left: 5%;
   margin-top: var(--margin-xs);
-  outline: none;
+  text-align: center;
   text-transform: uppercase;
   width: 90%;
 

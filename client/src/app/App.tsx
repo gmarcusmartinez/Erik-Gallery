@@ -46,9 +46,16 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           <Route exact path="/zines/:page" component={screens.ZinesScreen} />
 
           <PRoute
+            exact
             path="/dashboard"
             currentUser={currentUser}
             component={screens.Dashboard}
+          />
+          <PRoute
+            exact
+            path="/dashboard/zine/:id"
+            currentUser={currentUser}
+            component={screens.DashboardZine}
           />
         </Switch>
       </div>

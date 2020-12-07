@@ -32,17 +32,15 @@ export const zines = (state = initialState, action: AnyAction) => {
     case ZineActionTypes.UPDATE_ZINE_REQUEST:
       return { ...state, loading: true };
 
+    case ZineActionTypes.ADD_ZINE_IMG_SUCCESS:
+      return { ...state, selectedItem: payload };
+
     case ZineActionTypes.FETCH_ZINE_SUCCESS:
       return { ...state, loading: false, selectedItem: payload, errors: null };
 
     case ZineActionTypes.FETCH_ZINES_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        items: payload.data,
-        page: payload.page,
-        pages: payload.pages,
-      };
+      const { page, pages, data: items } = payload;
+      return { ...state, loading: false, items, page, pages };
 
     case ZineActionTypes.DELETE_ZINE_SUCCESS:
       const newItems = state.items.filter(({ _id }) => _id !== payload);
