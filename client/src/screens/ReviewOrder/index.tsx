@@ -1,69 +1,46 @@
 import React, { FC } from "react";
-import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
-import { ICartItem, IShippingInfo } from "interfaces";
 import { connect } from "react-redux";
+import { ICartItem, IShippingInfo } from "interfaces";
 import { createStructuredSelector } from "reselect";
 import * as cartSelectors from "store/selectors/cart";
 import { createOrder } from "store/actions/orders";
-import ReviewOrderItem from "./ReviewOrderItem";
-import ROShippingInfo from "./ROShippingInfo";
+import ReviewOrderShipping from "./ReviewOrderShipping";
+import ReviewOrderSummary from "./ReviewOrderSummary";
+import ReviewOrderPayMeth from "./ReviewOrderPayMeth";
+import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
+import ReviewOrderItems from "./ReviewOrderItems";
 
 interface IProps {
+  shippingInfo: IShippingInfo;
+  paymentMethod: string;
   cartItems: ICartItem[];
   cartTotal: number;
   cartVat: number;
   itemsTotal: number;
-
   createOrder: Function;
-  paymentMethod: string;
-  shippingInfo: IShippingInfo;
 }
 
 const ReviewOrder: FC<IProps> = (props) => {
-  const list = props.cartItems.map((c) => (
-    <ReviewOrderItem key={c._id} c={c} />
-  ));
-
   const handlePlaceOrder = () => {
     const formData = {
       orderItems: props.cartItems,
       shippingAddress: props.shippingInfo,
       paymentMethod: props.paymentMethod,
+      vatPrice: props.cartVat,
+      totalPrice: props.cartTotal,
     };
-
-    console.log(formData);
   };
+  const { itemsTotal, cartTotal, cartVat } = props;
+  const cartSummary = { itemsTotal, cartTotal, cartVat };
 
   return (
     <div className="review-order">
       <CheckoutSteps shipping payment review />
       <div className="review-order__details">
-        <ROShippingInfo shippingInfo={props.shippingInfo} />
-        <hr className="checkout-item__border"></hr>
-
-        <div className="review-order__section">
-          <h3 className="review-order__title">Payment Method</h3>
-          <span>{props.paymentMethod}</span>
-        </div>
-        <hr className="checkout-item__border"></hr>
-
-        <div className="review-order__section">
-          <h3 className="review-order__title">Items</h3>
-          {list}
-        </div>
-        <hr className="checkout-item__border"></hr>
-
-        <div className="review-order__section">
-          <div className="review-order__summary">
-            <h3 className="review-order__title">Summary</h3>
-            <span>Items: {props.itemsTotal}&#8364;</span>
-            <span>VAT: {props.cartVat}&#8364;</span>
-            <span>Shipping: {0}&#8364;</span>
-            <span>Total: {props.cartTotal + 0}&#8364;</span>
-          </div>
-          <hr className="checkout-item__border"></hr>
-        </div>
-
+        <ReviewOrderShipping shippingInfo={props.shippingInfo} />
+        <ReviewOrderPayMeth paymentMethod={props.paymentMethod} />
+        <ReviewOrderItems cartItems={props.cartItems} />
+        <ReviewOrderSummary cartSummary={cartSummary} />
         <div className="review-order__btn" onClick={handlePlaceOrder}>
           Place Order
         </div>
