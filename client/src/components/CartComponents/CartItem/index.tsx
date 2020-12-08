@@ -13,8 +13,8 @@ const CartItem: React.FC<IProps> = ({ item }) => {
     <div className="cart-item">
       <div className="cart-item__img" style={{ backgroundImage }}></div>
       <div className="cart-item__qty">{quantity}</div>
-      <div className="cart-item__price">{price}</div>
-      <div className="cart-item__total">{quantity * +price} &#8364; </div>
+      <div className="cart-item__price">{price}&#8364;</div>
+      <div className="cart-item__total">{quantity * +price}&#8364; </div>
     </div>
   );
 };

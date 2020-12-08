@@ -3,17 +3,26 @@ import ReactDOM from "react-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { toggleModal } from "store/actions/modal/toggleModal";
-import { selectModalComponent, selectModalIsOpen } from "store/selectors/modal";
+import {
+  selectModalComponent,
+  selectModalIsOpen,
+  selectDarkMode,
+} from "store/selectors/modal";
 import { renderForm } from "./modalActions";
 import { renderModalCloseBtn } from "./ModalCloseBtn";
 
 interface IProps {
+  darkmode?: boolean;
   toggleModal: Function;
   displayModal: boolean;
   component: string;
 }
-const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
-  const className = `modal ${displayModal ? "open" : "closed"}`;
+const Modal: React.FC<IProps> = (props) => {
+  const { toggleModal, displayModal, component, darkmode } = props;
+
+  const className = `modal ${displayModal ? "open" : "closed"} ${
+    darkmode ? "darkmode" : ""
+  }`;
 
   return ReactDOM.createPortal(
     <div className={className}>
@@ -27,6 +36,7 @@ const Modal: React.FC<IProps> = ({ toggleModal, displayModal, component }) => {
 const mapStateToProps = createStructuredSelector({
   displayModal: selectModalIsOpen,
   component: selectModalComponent,
+  darkmode: selectDarkMode,
 });
 
 export default connect(mapStateToProps, { toggleModal })(Modal);

@@ -31,14 +31,14 @@ const ImageForm: FC<IProps> = (props) => {
 
   if (props.loading) return <Spinner message="Uploading Image BB" />;
   return (
-    <form className="background-form" onSubmit={handleSubmit}>
-      <h3 className="background-form__title">Add Image</h3>
+    <form className="image-form" onSubmit={handleSubmit}>
+      <h3 className="image-form__title">Add Image</h3>
       <File
         onChange={handleFileChange}
         error={setError("image")}
         label={imageData ? "Image Selected" : "Choose an Image"}
       />
-      <button type="submit" className="background-form__btn">
+      <button type="submit" className="image-form__btn">
         Submit
       </button>
     </form>

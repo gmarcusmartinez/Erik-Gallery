@@ -2,8 +2,9 @@
   @include checkout-step-page;
 
   &__details {
-    margin: 1rem 0;
+    margin: 1rem auto;
     width: 100%;
+    max-width: 50rem;
   }
 
   &__title {
@@ -88,6 +89,7 @@
   }
   &__btn {
     @include checkout-step-page-btn;
+    max-width: unset;
   }
 }
 

@@ -72,7 +72,7 @@ const Dashboard: FC<IProps> = (props) => {
               formName="ADD_BG"
               headers={headers.backgroundHeaders}
               items={props.backgrounds}
-              gridTemplateColumns="10% 15% 15%"
+              gridTemplateColumns="15% 15% 15%"
             />
           )}
           {resourceType === "zines" && (

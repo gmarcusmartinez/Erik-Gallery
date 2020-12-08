@@ -38,7 +38,7 @@
   @include checkout-step-page-btn;
   margin: 1rem auto;
   @include respond(tablet) {
-    margin: 1rem 0;
+    margin: 1rem 0.5rem;
     width: 35rem;
   }
 }

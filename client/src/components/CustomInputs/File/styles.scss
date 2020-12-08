@@ -15,10 +15,10 @@
   }
 }
 .file-input-label {
-  font-size: 1.4em;
   color: var(--color-dark-grey);
+  font-size: 1.5em;
+  font-weight: bold;
   letter-spacing: var(--letter-spacing-md);
-  display: inline-block;
   &.success {
     color: #4bb543;
   }

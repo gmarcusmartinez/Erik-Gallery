@@ -33,7 +33,8 @@ export const zines = (state = initialState, action: AnyAction) => {
       return { ...state, loading: true };
 
     case ZineActionTypes.ADD_ZINE_IMG_SUCCESS:
-      return { ...state, selectedItem: payload };
+    case ZineActionTypes.DELETE_ZINE_PAGE_SUCCESS:
+      return { ...state, selectedItem: payload, loading: false };
 
     case ZineActionTypes.FETCH_ZINE_SUCCESS:
       return { ...state, loading: false, selectedItem: payload, errors: null };
@@ -49,6 +50,7 @@ export const zines = (state = initialState, action: AnyAction) => {
     case ZineActionTypes.CREATE_ZINE_FAILURE:
     case ZineActionTypes.UPDATE_ZINE_FAILURE:
     case ZineActionTypes.ADD_ZINE_IMG_FAILURE:
+    case ZineActionTypes.DELETE_ZINE_FAILURE:
       return { ...state, errors: payload, loading: false };
 
     default:

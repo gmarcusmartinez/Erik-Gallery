@@ -15,7 +15,7 @@ interface IProps {
 }
 
 const PrintItem: FC<IProps> = (props) => {
-  const { mainImage, description, size, quantityInStock } = props.item;
+  const { mainImage, description, size, quantityInStock, price } = props.item;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
 
   const handleToggleLightbox = () =>
@@ -27,8 +27,12 @@ const PrintItem: FC<IProps> = (props) => {
   };
 
   return (
-    <div className="print-item" onClick={handleToggleLightbox}>
-      <div className="print-item__img" style={{ backgroundImage }}>
+    <div className="print-item">
+      <div
+        className="print-item__img"
+        style={{ backgroundImage }}
+        onClick={handleToggleLightbox}
+      >
         <ViewProductBtn
           breakpoint="btn-tablet"
           quantityInStock={quantityInStock}
@@ -37,6 +41,7 @@ const PrintItem: FC<IProps> = (props) => {
       </div>
       <p className="print-item__description">{description}</p>
       <p className="print-item__size">{size}</p>
+      <p className="print-item__price">{price}&euro;</p>
       <ViewProductBtn
         quantityInStock={quantityInStock}
         toggleViewPrint={toggleViewPrint}

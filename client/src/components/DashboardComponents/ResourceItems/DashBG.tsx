@@ -11,7 +11,7 @@ const BackgroundItem: React.FC<IProps> = ({ background, toggleModal }) => {
   const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", background);
 
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${background.mainImage})`;
-  const gridTemplateColumns = "10% 15% 15%";
+  const gridTemplateColumns = "15% 15% 15%";
 
   return (
     <div className="dash-item" style={{ gridTemplateColumns }}>

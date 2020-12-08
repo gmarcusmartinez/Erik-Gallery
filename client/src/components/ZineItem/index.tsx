@@ -22,7 +22,7 @@ const ZineItem: React.FC<IProps> = (props) => {
   };
   const togglePreview = () => {
     props.toggleCart(false);
-    props.toggleModal(true, "PREVIEW_ZINE", props.item);
+    props.toggleModal(true, "PREVIEW_ZINE", props.item, true);
   };
 
   return (

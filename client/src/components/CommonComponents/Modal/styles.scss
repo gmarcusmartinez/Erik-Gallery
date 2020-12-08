@@ -4,14 +4,13 @@
   width: 100vw;
 
   position: fixed;
-  top: 0;
+  top: 10vh;
   left: 0;
 
   display: flex;
   justify-content: center;
 
   &__body {
-    margin-top: 10vh;
     width: 90vw;
   }
 
@@ -24,6 +23,12 @@
   &.closed {
     transition: all 0.3s;
     transform: translateX(-100%);
+  }
+  &.darkmode {
+    background-color: rgba(0, 0, 0, 0.9);
+    .modal__bar {
+      background-color: #fff;
+    }
   }
 
   &__close-btn {

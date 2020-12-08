@@ -5,6 +5,7 @@ const initialState = {
   displayModal: false,
   component: null,
   data: null,
+  darkmode: false,
 };
 
 export const modal = (state = initialState, action: AnyAction) => {
@@ -15,6 +16,7 @@ export const modal = (state = initialState, action: AnyAction) => {
         displayModal: payload.bool,
         component: payload.component,
         data: payload.data,
+        darkmode: payload.darkmode,
       };
     default:
       return state;

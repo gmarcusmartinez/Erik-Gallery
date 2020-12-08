@@ -15,3 +15,7 @@ export const selectModalComponent = createSelector(
   [selectModal],
   (modal) => modal.component
 );
+export const selectDarkMode = createSelector(
+  [selectModal],
+  (modal) => modal.darkmode
+);

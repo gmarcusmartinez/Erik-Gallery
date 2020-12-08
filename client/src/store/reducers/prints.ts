@@ -23,7 +23,12 @@ export const prints = (state = initialState, action: AnyAction) => {
 
     case PrintActionTypes.UPDATE_PRINT_SUCCESS:
       const oldItems = state.items.filter(({ _id }) => _id !== payload._id);
-      return { ...state, items: [payload, ...oldItems], errors: null };
+      return {
+        ...state,
+        items: [payload, ...oldItems],
+        errors: null,
+        loading: false,
+      };
 
     case PrintActionTypes.CREATE_PRINT_REQUEST:
     case PrintActionTypes.FETCH_PRINT_REQUEST:
@@ -35,13 +40,9 @@ export const prints = (state = initialState, action: AnyAction) => {
       return { ...state, loading: false, selectedItem: payload, errors: null };
 
     case PrintActionTypes.FETCH_PRINTS_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        items: payload.data,
-        page: payload.page,
-        pages: payload.pages,
-      };
+      const { page, pages, data: items } = payload;
+      return { ...state, loading: false, items, page, pages };
+
     case PrintActionTypes.ADMIN_FETCH_PRINTS_SUCCESS:
       return { ...state, items: payload };
 

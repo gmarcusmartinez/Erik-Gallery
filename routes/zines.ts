@@ -43,6 +43,10 @@ router
   .patch(currentUser, requireAuth, isAdmin, zineControllers.addZineImage);
 
 router
+  .route("/:id/deletePage")
+  .put(currentUser, requireAuth, isAdmin, zineControllers.deleteZineImage);
+
+router
   .route("/:id")
   .delete(currentUser, requireAuth, isAdmin, zineControllers.deleteZine);
 

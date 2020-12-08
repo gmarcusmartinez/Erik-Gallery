@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteZine = exports.addZineImage = exports.updateZine = exports.createZine = exports.getZine = exports.getZines = void 0;
+exports.deleteZine = exports.deleteZineImage = exports.addZineImage = exports.updateZine = exports.createZine = exports.getZine = exports.getZines = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Product_1 = require("../models/Product");
@@ -114,6 +114,29 @@ exports.addZineImage = async_1.asyncHandler(function (req, res) { return __await
                     throw new bad_request_error_1.BadRequestError("Zine Not Found.");
                 image = req.body.image;
                 zine.images.push(image);
+                return [4 /*yield*/, zine.save()];
+            case 2:
+                _a.sent();
+                res.status(200).json(zine);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.deleteZineImage = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var zine, imgStr, removeIndex;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
+            case 1:
+                zine = _a.sent();
+                if (!zine)
+                    throw new bad_request_error_1.BadRequestError("Zine Not Found.");
+                imgStr = req.body.imgStr;
+                removeIndex = zine.images.indexOf(imgStr);
+                if (removeIndex)
+                    zine.images.splice(removeIndex, 1);
+                if (!removeIndex)
+                    throw new bad_request_error_1.BadRequestError("Page Not Found.");
                 return [4 /*yield*/, zine.save()];
             case 2:
                 _a.sent();

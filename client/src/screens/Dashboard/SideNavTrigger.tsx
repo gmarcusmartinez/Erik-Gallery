@@ -9,7 +9,7 @@ const SideNavTrigger: React.FC<IProps> = ({ cb, bool }) => {
 
   return (
     <span className={className} onClick={() => cb(bool)}>
-      &#9655;
+      &#9654;
     </span>
   );
 };

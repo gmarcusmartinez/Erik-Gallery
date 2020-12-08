@@ -41,6 +41,23 @@ export const addZineImage = asyncHandler(
   }
 );
 
+export const deleteZineImage = asyncHandler(
+  async (req: Request, res: Response) => {
+    let zine = await Product.findById(req.params.id);
+    if (!zine) throw new BadRequestError("Zine Not Found.");
+
+    const imgStr: string = req.body.imgStr;
+    const removeIndex = zine.images.indexOf(imgStr);
+
+    if (removeIndex) zine.images.splice(removeIndex, 1);
+    if (!removeIndex) throw new BadRequestError("Page Not Found.");
+
+    await zine.save();
+
+    res.status(200).json(zine);
+  }
+);
+
 export const deleteZine = asyncHandler(async (req: Request, res: Response) => {
   const zine = await Product.findById(req.params.id);
   zine?.remove();

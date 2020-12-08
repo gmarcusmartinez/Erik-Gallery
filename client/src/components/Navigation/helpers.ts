@@ -1,5 +1,5 @@
 export const guestLinks = [
-  { to: "/prints", text: "print work" },
+  { to: "/prints/1", text: "print work" },
   { to: "/zines", text: "zines" },
   { to: "/sound", text: "sound" },
   { to: "/contact", text: "contact" },
