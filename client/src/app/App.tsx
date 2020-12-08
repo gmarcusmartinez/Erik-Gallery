@@ -21,7 +21,6 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
   const history = useHistory();
   useRouteMatch();
   const path = history.location.pathname.split("/")[1];
-
   React.useEffect(() => {
     setScrollLock(path);
   }, [path]);
