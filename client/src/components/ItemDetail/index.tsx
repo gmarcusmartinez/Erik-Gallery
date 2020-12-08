@@ -12,7 +12,7 @@ interface IProps {
   item: IPrint | IZine;
 }
 
-const PrintDetail: FC<IProps> = ({ item, addItemToCart }) => {
+const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
   const { description, title, mainImage, price, quantityInStock } = item;
 
   const [qty, setQty] = React.useState(1);
@@ -54,4 +54,4 @@ const PrintDetail: FC<IProps> = ({ item, addItemToCart }) => {
 };
 
 const mapStateToProps = createStructuredSelector({ item: selectModalData });
-export default connect(mapStateToProps, { addItemToCart })(PrintDetail);
+export default connect(mapStateToProps, { addItemToCart })(ItemDetail);
