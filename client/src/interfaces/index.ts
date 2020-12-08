@@ -20,10 +20,14 @@ export interface IShippingInfo {
 export interface IProduct {
   _id: string;
   mainImage: string;
-  price: string;
   quantityInStock: number;
   type: string;
-  title: string;
+  title?: string;
+
+  price: number;
+  netPrice: number;
+  vatPrice: number;
+  isPublished: boolean;
 }
 
 export interface IPrint extends IProduct {

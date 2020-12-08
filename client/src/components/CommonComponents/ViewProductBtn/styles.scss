@@ -41,12 +41,15 @@
 
 .view-product-btn:disabled {
   background-color: #fff;
-  border: 0.1rem solid #000;
-  color: #000;
+  border: 0.1rem solid var(--color-light-grey);
+  color: #999;
   cursor: unset;
   &:active {
     background-color: unset;
     color: unset;
     transform: unset;
+  }
+  @include respond(tablet) {
+    border: none;
   }
 }

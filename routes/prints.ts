@@ -41,6 +41,7 @@ router
     validateRequest,
     printControllers.updatePrint
   );
+
 router
   .route("/:id")
   .delete(currentUser, requireAuth, isAdmin, printControllers.deletePrint);

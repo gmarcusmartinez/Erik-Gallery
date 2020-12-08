@@ -34,8 +34,12 @@ interface ProductDoc extends mongoose.Document {
   type: ProductType;
   size: string;
   price: number;
+  vatPrice: number;
+  netPrice: number;
   quantityInStock: number;
   isPublished: boolean;
+  calculateVat(): number;
+  calculateNet(): number;
   createSubDoc(): ProductSubDoc;
 }
 
@@ -67,6 +71,14 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  vatPrice: {
+    type: Number,
+    required: true,
+  },
+  netPrice: {
+    type: Number,
+    required: true,
+  },
   quantityInStock: {
     type: Number,
     required: true,
@@ -84,6 +96,18 @@ productSchema.statics.build = (attrs: ProductAttrs) => {
 productSchema.methods.createSubDoc = function () {
   const { _id, title, description, mainImage, price } = this;
   return { _id, title, description, mainImage, price };
+};
+
+productSchema.methods.calculateVat = function () {
+  const vatRate = 0.16;
+  const { price } = this;
+  return price * vatRate;
+};
+
+productSchema.methods.calculateNet = function () {
+  const vatRate = 0.16;
+  const { price } = this;
+  return price - price * vatRate;
 };
 
 const Product = mongoose.model<ProductDoc, ProductModel>(

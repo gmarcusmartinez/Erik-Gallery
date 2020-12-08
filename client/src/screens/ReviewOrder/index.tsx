@@ -11,6 +11,9 @@ import ROShippingInfo from "./ROShippingInfo";
 interface IProps {
   cartItems: ICartItem[];
   cartTotal: number;
+  cartVat: number;
+  itemsTotal: number;
+
   createOrder: Function;
   paymentMethod: string;
   shippingInfo: IShippingInfo;
@@ -53,7 +56,8 @@ const ReviewOrder: FC<IProps> = (props) => {
         <div className="review-order__section">
           <div className="review-order__summary">
             <h3 className="review-order__title">Summary</h3>
-            <span>Items: {props.cartTotal}&#8364;</span>
+            <span>Items: {props.itemsTotal}&#8364;</span>
+            <span>VAT: {props.cartVat}&#8364;</span>
             <span>Shipping: {0}&#8364;</span>
             <span>Total: {props.cartTotal + 0}&#8364;</span>
           </div>
@@ -73,6 +77,8 @@ const mapStateToProps = createStructuredSelector({
   paymentMethod: cartSelectors.selectPaymentMethod,
   cartItems: cartSelectors.selectCartItems,
   cartTotal: cartSelectors.selectCartTotal,
+  cartVat: cartSelectors.selectCartVAT,
+  itemsTotal: cartSelectors.selectItemsTotal,
 });
 
 export default connect(mapStateToProps, { createOrder })(ReviewOrder);

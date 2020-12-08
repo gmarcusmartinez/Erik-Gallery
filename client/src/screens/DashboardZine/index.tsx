@@ -29,7 +29,7 @@ const DashboardZine: React.FC<IProps> = (props) => {
 
   const list = zine
     ? zine.images.map((imgStr) => (
-        <ZinePage cb={handleDeletePage} imgStr={imgStr} />
+        <ZinePage key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
       ))
     : null;
 
@@ -37,7 +37,7 @@ const DashboardZine: React.FC<IProps> = (props) => {
     <div className="dashboard-zine">
       <div className="dashboard-zine__pages">{list}</div>
       <div className="add-page-btn" onClick={toggleAddImage}>
-        Add Image
+        Add Page
       </div>
     </div>
   );

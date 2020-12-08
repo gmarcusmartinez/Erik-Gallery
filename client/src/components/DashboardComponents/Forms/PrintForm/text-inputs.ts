@@ -3,6 +3,7 @@ export const blankFormState = {
   size: "(35 x 50 cm)",
   price: "0.00",
   quantityInStock: 0,
+  isPublished: false,
   mainImage: null,
 };
 

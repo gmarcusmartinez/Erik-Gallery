@@ -63,7 +63,7 @@ const Dashboard: FC<IProps> = (props) => {
               formName="ADD_PRINT"
               headers={headers.printHeaders}
               items={props.prints}
-              gridTemplateColumns="8% 37% 15% 10% 10%"
+              gridTemplateColumns="10% 31% 15% 7% 7% 7% 7%"
             />
           )}
           {resourceType === "backgrounds" && (

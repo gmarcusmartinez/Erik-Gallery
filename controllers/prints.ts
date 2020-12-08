@@ -20,16 +20,22 @@ export const getPrint = asyncHandler(async (req: Request, res: any) => {
 
 export const createPrint = asyncHandler(async (req: Request, res: Response) => {
   const print = Product.build({ ...req.body, type: ProductType.Print });
+  print.vatPrice = print.calculateVat();
+  print.netPrice = print.calculateNet();
+
   await print.save();
   res.status(200).json(print);
 });
 
 export const updatePrint = asyncHandler(async (req: Request, res: Response) => {
-  let print = await Product.findById(req.params.id);
+  const opts = { new: true, runValidators: true };
+  const print = await Product.findByIdAndUpdate(req.params.id, req.body, opts);
   if (!print) throw new BadRequestError("Print Not Found.");
 
-  const opts = { new: true, runValidators: true };
-  print = await Product.findByIdAndUpdate(req.params.id, req.body, opts);
+  print.vatPrice = print.calculateVat();
+  print.netPrice = print.calculateNet();
+  await print.save();
+
   res.status(200).json(print);
 });
 

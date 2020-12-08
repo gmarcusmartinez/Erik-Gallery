@@ -33,6 +33,19 @@ export const selectCartItemsCount = createSelector(
     cartItems.reduce((acc: any, curr: any) => acc + curr.quantity, 0)
 );
 
+export const selectItemsTotal = createSelector([selectCartItems], (cartItems) =>
+  cartItems.reduce(
+    (acc: any, curr: any) => acc + curr.quantity * curr.netPrice,
+    0
+  )
+);
+export const selectCartVAT = createSelector([selectCartItems], (cartItems) =>
+  cartItems.reduce(
+    (acc: any, curr: any) => acc + curr.quantity * curr.vatPrice,
+    0
+  )
+);
+
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce((acc: any, curr: any) => acc + curr.quantity * curr.price, 0)
 );

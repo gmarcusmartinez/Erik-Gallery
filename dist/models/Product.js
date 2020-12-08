@@ -34,6 +34,14 @@ var productSchema = new mongoose_1.default.Schema({
         type: Number,
         required: true,
     },
+    vatPrice: {
+        type: Number,
+        required: true,
+    },
+    netPrice: {
+        type: Number,
+        required: true,
+    },
     quantityInStock: {
         type: Number,
         required: true,
@@ -49,6 +57,16 @@ productSchema.statics.build = function (attrs) {
 productSchema.methods.createSubDoc = function () {
     var _a = this, _id = _a._id, title = _a.title, description = _a.description, mainImage = _a.mainImage, price = _a.price;
     return { _id: _id, title: title, description: description, mainImage: mainImage, price: price };
+};
+productSchema.methods.calculateVat = function () {
+    var vatRate = 0.16;
+    var price = this.price;
+    return price * vatRate;
+};
+productSchema.methods.calculateNet = function () {
+    var vatRate = 0.16;
+    var price = this.price;
+    return price - price * vatRate;
 };
 var Product = mongoose_1.default.model("Product", productSchema);
 exports.Product = Product;

@@ -9,6 +9,7 @@ import { createPrint } from "store/actions/prints/createPrint";
 import { updatePrint } from "store/actions/prints/updatePrint";
 import { errors, loading, selectedItem } from "store/selectors/prints";
 import { blankFormState, textInputs } from "./text-inputs";
+import Checkbox from "components/CustomInputs/Checkbox";
 
 interface IProps {
   createPrint: Function;
@@ -23,6 +24,7 @@ const PrintForm: React.FC<IProps> = (props) => {
   const defaultFormState =
     props.formTitle === "Edit" ? props.selectedItem : blankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
+
   const [imageData, setImageData] = React.useState(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -30,6 +32,9 @@ const PrintForm: React.FC<IProps> = (props) => {
 
   const handleFileChange = (e: React.ChangeEvent<any>) =>
     setImageData(e.target.files[0]);
+
+  const handleCheck = (bool: boolean) =>
+    setFormData({ ...formData, isPublished: !bool });
 
   const handleRequest = (type: string) =>
     type === "Edit"
@@ -58,6 +63,7 @@ const PrintForm: React.FC<IProps> = (props) => {
           error={setError(t.errorField)}
         />
       ))}
+      <Checkbox isPublished={formData.isPublished} handleCheck={handleCheck} />
       <File
         onChange={handleFileChange}
         error={setError("image")}

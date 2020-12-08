@@ -21,7 +21,7 @@ const Section: FC<IProps> = (props) => {
 
   const gridTemplateColumns = props.gridTemplateColumns;
   return (
-    <>
+    <div className="resources">
       <div className="resource-section">
         <div className="resource__headers" style={{ gridTemplateColumns }}>
           {renderHeaders(props.headers)}
@@ -31,7 +31,7 @@ const Section: FC<IProps> = (props) => {
       <div className="add-resource-btn" onClick={renderAddForm}>
         {props.formName.replace("_", " ")}
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,13 +1,17 @@
 .dashboard-zine {
   padding: 0 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+
+  width: 100%;
+  max-width: 110rem;
+
   &__pages {
     display: flex;
-    margin: 0 auto;
     flex-wrap: wrap;
     min-height: 100vh;
-
     width: 100%;
-    max-width: 110rem;
   }
 
   &__page {
@@ -15,8 +19,8 @@
     margin: 1%;
     width: 48%;
     @include respond(desktop) {
-      width: 33%;
-      margin: 0.25rem 0;
+      width: 32%;
+      margin: 0.25rem;
     }
   }
   &__img {
@@ -34,7 +38,7 @@
 
   font-size: 1.2rem;
   letter-spacing: var(--letter-spacing-md);
-  margin: 1rem 5%;
+
   text-align: center;
   text-transform: uppercase;
 }
@@ -44,13 +48,17 @@
   line-height: 4rem;
   margin: 0.5rem auto;
   max-width: 49rem;
-  width: 98%;
+  width: 100%;
+  @include respond(tablet) {
+    margin: 0.25rem;
+  }
 }
 .delete-page-btn {
   background-color: rgba(0, 0, 0, 0.5);
   height: 3rem;
   line-height: 3rem;
   width: 90%;
+  margin: 1rem 5%;
 
   position: absolute;
   bottom: 0;

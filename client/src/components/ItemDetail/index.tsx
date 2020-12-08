@@ -27,6 +27,11 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
     const cartItem = { ...item, quantity: qty };
     addItemToCart(cartItem);
   };
+  const vatIncludeded = (
+    <span style={{ fontSize: "1rem", marginLeft: "0.5rem" }}>
+      (VAT Included)
+    </span>
+  );
 
   return (
     <div className="print-detail">
@@ -34,7 +39,9 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
       <div className="print-detail__info">
         {description && <p className="print-detail__text">{description}</p>}
         {title && <p className="print-detail__text">{title}</p>}
-        <p className="print-detail__text">{price}&euro;</p>
+        <p className="print-detail__text">
+          {price}&euro;{vatIncludeded}
+        </p>
         <Select
           label="Select Quantity"
           name="qty"

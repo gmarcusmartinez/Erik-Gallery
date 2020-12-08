@@ -9,7 +9,9 @@ export const printHeaders = [
   { id: 2, text: "Description" },
   { id: 3, text: "Size" },
   { id: 4, text: "Price" },
-  { id: 5, text: "In Stock" },
+  { id: 4, text: "Net" },
+  { id: 4, text: "Vat" },
+  { id: 5, text: "Qty" },
   { id: 6, text: "" },
   { id: 7, text: "" },
 ];
