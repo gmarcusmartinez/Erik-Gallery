@@ -2,20 +2,23 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import { Text } from "components/CustomInputs";
 import { textInputs, blankFormState } from "./text-inputs";
-import { updateShippingInfo } from "store/actions/cart";
+import { updateShippingAddress } from "store/actions/cart";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
-import { selectShippingInfo } from "store/selectors/cart";
-import { IShippingInfo } from "interfaces";
+import { selectShippingAddress } from "store/selectors/cart";
+import { IShippingAddress } from "interfaces";
 import { createStructuredSelector } from "reselect";
 
 interface IProps {
-  updateShippingInfo: Function;
-  shippingInfo?: IShippingInfo;
+  updateShippingAddress: Function;
+  shippingAddress?: IShippingAddress;
 }
 
-const ShippingScreen: FC<IProps> = ({ updateShippingInfo, shippingInfo }) => {
-  const defaultFormState = shippingInfo ? shippingInfo : blankFormState;
+const ShippingScreen: FC<IProps> = ({
+  updateShippingAddress,
+  shippingAddress,
+}) => {
+  const defaultFormState = shippingAddress ? shippingAddress : blankFormState;
   const [formData, setFormData] = React.useState<any>(defaultFormState);
   const disabled = Object.values(formData).some((value) => value === "");
   const history = useHistory();
@@ -25,7 +28,7 @@ const ShippingScreen: FC<IProps> = ({ updateShippingInfo, shippingInfo }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateShippingInfo(formData);
+    updateShippingAddress(formData);
     history.push("/payment");
   };
 
@@ -55,7 +58,10 @@ const ShippingScreen: FC<IProps> = ({ updateShippingInfo, shippingInfo }) => {
     </div>
   );
 };
+
 const mapStateToProps = createStructuredSelector({
-  shippingInfo: selectShippingInfo,
+  shippingAddress: selectShippingAddress,
 });
-export default connect(mapStateToProps, { updateShippingInfo })(ShippingScreen);
+export default connect(mapStateToProps, {
+  updateShippingAddress,
+})(ShippingScreen);

@@ -6,8 +6,9 @@ import { addItemToCart } from "utils";
 const initialState = {
   isOpen: false,
   cartItems: [],
-  shippingInfo: {},
+  shippingAddress: {},
   paymentMethod: "",
+  shippingPrice: 10,
 };
 
 export const cart = (state = initialState, action: AnyAction) => {
@@ -28,8 +29,8 @@ export const cart = (state = initialState, action: AnyAction) => {
           (c: ICartItem) => c._id !== payload._id
         ),
       };
-    case CartActionTypes.UPDATE_SHIPPING_INFO:
-      return { ...state, shippingInfo: payload };
+    case CartActionTypes.UPDATE_SHIPPING_ADDRESS:
+      return { ...state, shippingAddress: payload };
 
     case CartActionTypes.UPDATE_PAYMENT_METHOD:
       return { ...state, paymentMethod: payload };

@@ -124,7 +124,7 @@
   width: 100%;
   max-width: 45rem;
 
-  transition: var(--transition-fast);
+  transition: 0.15s ease-in-out;
   &:hover,
   &:active {
     background-color: #fff;
@@ -132,7 +132,7 @@
     color: var(--color-dark-grey);
   }
   &:active {
-    transform: translate(2px, 2px);
+    transform: translateY(2px);
   }
   &:disabled {
     background-color: transparent;

@@ -1,18 +1,19 @@
 import React from "react";
+import { IShippingAddress } from "interfaces";
 
 interface IProps {
-  shippingInfo: any;
+  shippingAddress: IShippingAddress;
 }
-const ReviewOrderShipping: React.FC<IProps> = ({ shippingInfo }) => {
+const ReviewOrderShipping: React.FC<IProps> = ({ shippingAddress }) => {
   return (
     <>
       <div className="review-order__shipping">
         <h3 className="review-order__title">Shipping Address</h3>
-        <span>{shippingInfo.name}</span>
-        <span>{shippingInfo.address}</span>
-        <span>{shippingInfo.city}</span>
-        <span>{shippingInfo.postalCode}</span>
-        <span>{shippingInfo.country}</span>
+        <span>{shippingAddress.name}</span>
+        <span>{shippingAddress.address}</span>
+        <span>{shippingAddress.city}</span>
+        <span>{shippingAddress.postalCode}</span>
+        <span>{shippingAddress.country}</span>
       </div>
       <hr className="checkout-item__border"></hr>
     </>

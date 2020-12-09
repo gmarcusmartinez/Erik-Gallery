@@ -9,7 +9,7 @@ export interface IError {
   field?: string;
 }
 
-export interface IShippingInfo {
+export interface IShippingAddress {
   email: string;
   name: string;
   address: string;

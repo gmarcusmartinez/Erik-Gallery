@@ -17,6 +17,10 @@ var orderSchema = new mongoose_1.default.Schema({
         },
     ],
     shippingAddress: {
+        email: {
+            type: String,
+            required: true,
+        },
         name: {
             type: String,
             required: true,

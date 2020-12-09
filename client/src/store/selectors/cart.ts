@@ -17,9 +17,9 @@ export const selectCartIsEmpty = createSelector(
   (cart) => cart.cartItems.length === 0
 );
 
-export const selectShippingInfo = createSelector(
+export const selectShippingAddress = createSelector(
   [selectCart],
-  (cart) => cart.shippingInfo
+  (cart) => cart.shippingAddress
 );
 
 export const selectPaymentMethod = createSelector(
@@ -44,6 +44,14 @@ export const selectCartVAT = createSelector([selectCartItems], (cartItems) =>
     (acc: any, curr: any) => acc + curr.quantity * curr.vatPrice,
     0
   )
+);
+export const selectCartShipping = createSelector(
+  [selectCartItems],
+  (cartItems) =>
+    cartItems.reduce(
+      (acc: any, curr: any) => acc + curr.quantity * curr.shippingPrice,
+      0
+    )
 );
 
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>

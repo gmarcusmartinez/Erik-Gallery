@@ -1,4 +1,4 @@
-import { ICartItem, IShippingInfo } from "interfaces";
+import { ICartItem, IShippingAddress } from "interfaces";
 import { CartActionTypes, ModalActionTypes } from "../types";
 
 export const addItemToCart = (item: ICartItem) => async (dispatch: any) => {
@@ -23,8 +23,8 @@ export const clearItemFromCart = (item: ICartItem) => ({
   payload: item,
 });
 
-export const updateShippingInfo = (data: IShippingInfo) => ({
-  type: CartActionTypes.UPDATE_SHIPPING_INFO,
+export const updateShippingAddress = (data: IShippingAddress) => ({
+  type: CartActionTypes.UPDATE_SHIPPING_ADDRESS,
   payload: data,
 });
 

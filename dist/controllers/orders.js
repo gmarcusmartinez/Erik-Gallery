@@ -42,12 +42,12 @@ var async_1 = require("../middlewares/async");
 var Order_1 = require("../models/Order");
 var Product_1 = require("../models/Product");
 exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orderItems, orderItemIds, products, soldOutmsg, order;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var orderItems, orderItemIds, products, soldOutmsg, _a, shippingAddress, paymentMethod, itemsPrice, vatPrice, shippingPrice, totalPrice, order;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
                 orderItems = req.body.orderItems;
-                if (orderItems.length <= 0)
+                if (orderItems && orderItems.length <= 0)
                     throw new bad_request_error_1.BadRequestError("No items in cart");
                 orderItemIds = [];
                 orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
@@ -56,14 +56,23 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
                         quantityInStock: { $gt: 0 },
                     })];
             case 1:
-                products = _a.sent();
+                products = _b.sent();
                 soldOutmsg = "One or more products in your cart has recently sold out.";
                 if (products.length !== orderItems.length)
                     throw new bad_request_error_1.BadRequestError(soldOutmsg);
-                order = Order_1.Order.build(req.body);
+                _a = req.body, shippingAddress = _a.shippingAddress, paymentMethod = _a.paymentMethod, itemsPrice = _a.itemsPrice, vatPrice = _a.vatPrice, shippingPrice = _a.shippingPrice, totalPrice = _a.totalPrice;
+                order = Order_1.Order.build({
+                    orderItems: orderItems,
+                    shippingAddress: shippingAddress,
+                    paymentMethod: paymentMethod,
+                    itemsPrice: itemsPrice,
+                    vatPrice: vatPrice,
+                    shippingPrice: shippingPrice,
+                    totalPrice: totalPrice,
+                });
                 return [4 /*yield*/, order.save()];
             case 2:
-                _a.sent();
+                _b.sent();
                 res.send(order);
                 return [2 /*return*/];
         }

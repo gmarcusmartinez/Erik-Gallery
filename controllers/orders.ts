@@ -6,7 +6,8 @@ import { Product, ProductSubDoc } from "../models/Product";
 
 export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   const { orderItems } = req.body;
-  if (orderItems.length <= 0) throw new BadRequestError("No items in cart");
+  if (orderItems && orderItems.length <= 0)
+    throw new BadRequestError("No items in cart");
 
   const orderItemIds: string[] = [];
   orderItems.forEach((item: ProductSubDoc) => orderItemIds.push(item._id));
@@ -29,7 +30,25 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   //   product.save();
   // });
 
-  const order = Order.build(req.body);
+  const {
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    vatPrice,
+    shippingPrice,
+    totalPrice,
+  } = req.body;
+
+  const order = Order.build({
+    orderItems,
+    shippingAddress,
+    paymentMethod,
+    itemsPrice,
+    vatPrice,
+    shippingPrice,
+    totalPrice,
+  });
+
   await order.save();
 
   res.send(order);

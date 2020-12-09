@@ -4,6 +4,7 @@ import { ProductSubDoc } from "./Product";
 interface OrderAttrs {
   orderItems: ProductSubDoc[];
   shippingAddress: {
+    email: string;
     name: string;
     address: string;
     city: string;
@@ -11,7 +12,8 @@ interface OrderAttrs {
     postalCode: number;
   };
   paymentMethod: string;
-  taxPrice: number;
+  itemsPrice: number;
+  vatPrice: number;
   shippingPrice: number;
   totalPrice: number;
 }
@@ -23,6 +25,7 @@ interface OrderModel extends mongoose.Model<OrderDoc> {
 export interface OrderDoc extends mongoose.Document {
   orderItems: ProductSubDoc[];
   shippingAddress: {
+    email: string;
     name: string;
     address: string;
     city: string;
@@ -48,6 +51,10 @@ const orderSchema = new mongoose.Schema(
       },
     ],
     shippingAddress: {
+      email: {
+        type: String,
+        required: true,
+      },
       name: {
         type: String,
         required: true,

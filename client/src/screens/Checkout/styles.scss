@@ -1,9 +1,8 @@
 .checkout {
   @include checkout-step-page;
+  max-width: 50rem;
   &__details {
     margin: 1rem auto;
-    width: 100%;
-    max-width: 45rem;
   }
   &__headers {
     display: grid;
@@ -30,7 +29,8 @@
   &__btn {
     @include checkout-step-page-btn;
     @include respond(tablet) {
-      margin-left: 2rem;
+      margin-left: var(--margin-md);
+      width: calc(100% - 50px);
     }
   }
 }

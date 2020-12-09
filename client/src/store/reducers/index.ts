@@ -8,6 +8,7 @@ import { cart } from "./cart";
 import { lightbox } from "./lightbox";
 import { modal } from "./modal";
 import { nav } from "./nav";
+import { orders } from "./orders";
 import { prints } from "./prints";
 import { zines } from "./zines";
 
@@ -24,6 +25,7 @@ export const rootReducer = combineReducers({
   lightbox,
   modal,
   nav,
+  orders,
   prints,
   zines,
 });

@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
-import { ICartItem, IShippingInfo } from "interfaces";
+import { ICartItem, IShippingAddress } from "interfaces";
 import { createStructuredSelector } from "reselect";
 import * as cartSelectors from "store/selectors/cart";
 import { createOrder } from "store/actions/orders";
@@ -9,14 +9,15 @@ import ReviewOrderSummary from "./ReviewOrderSummary";
 import ReviewOrderPayMeth from "./ReviewOrderPayMeth";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
 import ReviewOrderItems from "./ReviewOrderItems";
+import { useHistory } from "react-router-dom";
 
 interface IProps {
-  shippingInfo: IShippingInfo;
-  paymentMethod: string;
   cartItems: ICartItem[];
-  cartTotal: number;
-  cartVat: number;
-  itemsTotal: number;
+  shippingAddress: IShippingAddress;
+  paymentMethod: string;
+  itemsPrice: number;
+  vatPrice: number;
+  totalPrice: number;
   createOrder: Function;
 }
 
@@ -24,20 +25,29 @@ const ReviewOrder: FC<IProps> = (props) => {
   const handlePlaceOrder = () => {
     const formData = {
       orderItems: props.cartItems,
-      shippingAddress: props.shippingInfo,
+      shippingAddress: props.shippingAddress,
       paymentMethod: props.paymentMethod,
-      vatPrice: props.cartVat,
-      totalPrice: props.cartTotal,
+      itemsPrice: props.itemsPrice,
+      vatPrice: props.vatPrice,
+      shippingPrice: 10,
+      totalPrice: props.totalPrice,
     };
+    props.createOrder(formData);
   };
-  const { itemsTotal, cartTotal, cartVat } = props;
-  const cartSummary = { itemsTotal, cartTotal, cartVat };
+
+  const { itemsPrice, vatPrice, totalPrice } = props;
+  const cartSummary = { itemsPrice, vatPrice, totalPrice };
+
+  const history = useHistory();
+  React.useEffect(() => {
+    if (props.cartItems.length <= 0) history.push("/");
+  }, [history, props.cartItems.length]);
 
   return (
     <div className="review-order">
       <CheckoutSteps shipping payment review />
       <div className="review-order__details">
-        <ReviewOrderShipping shippingInfo={props.shippingInfo} />
+        <ReviewOrderShipping shippingAddress={props.shippingAddress} />
         <ReviewOrderPayMeth paymentMethod={props.paymentMethod} />
         <ReviewOrderItems cartItems={props.cartItems} />
         <ReviewOrderSummary cartSummary={cartSummary} />
@@ -50,12 +60,12 @@ const ReviewOrder: FC<IProps> = (props) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  shippingInfo: cartSelectors.selectShippingInfo,
+  shippingAddress: cartSelectors.selectShippingAddress,
   paymentMethod: cartSelectors.selectPaymentMethod,
   cartItems: cartSelectors.selectCartItems,
-  cartTotal: cartSelectors.selectCartTotal,
-  cartVat: cartSelectors.selectCartVAT,
-  itemsTotal: cartSelectors.selectItemsTotal,
+  totalPrice: cartSelectors.selectCartTotal,
+  vatPrice: cartSelectors.selectCartVAT,
+  itemsPrice: cartSelectors.selectItemsTotal,
 });
 
 export default connect(mapStateToProps, { createOrder })(ReviewOrder);

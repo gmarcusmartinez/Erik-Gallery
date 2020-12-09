@@ -2,25 +2,28 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
 import { createStructuredSelector } from "reselect";
-import { selectShippingInfo } from "store/selectors/cart";
-import { IShippingInfo } from "interfaces";
+import { selectShippingAddress } from "store/selectors/cart";
+import { IShippingAddress } from "interfaces";
 import { useHistory } from "react-router-dom";
 import PayPalIcon from "components/CommonComponents/PayPalIcon";
 import { updatePaymentMethod } from "store/actions/cart";
 
 interface IProps {
-  shippingInfo: IShippingInfo;
+  shippingAddress: IShippingAddress;
   updatePaymentMethod: Function;
 }
 
-const PaymentScreen: FC<IProps> = ({ shippingInfo, updatePaymentMethod }) => {
+const PaymentScreen: FC<IProps> = ({
+  shippingAddress,
+  updatePaymentMethod,
+}) => {
   const [paymentMethod, setPaymentMethod] = React.useState("");
   const history = useHistory();
   const disabled = paymentMethod === "";
 
   React.useEffect(() => {
-    if (!shippingInfo) history.push("/shipping");
-  }, [history, shippingInfo]);
+    if (!shippingAddress) history.push("/shipping");
+  }, [history, shippingAddress]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPaymentMethod(e.target.value);
@@ -54,6 +57,6 @@ const PaymentScreen: FC<IProps> = ({ shippingInfo, updatePaymentMethod }) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  shippingInfo: selectShippingInfo,
+  shippingAddress: selectShippingAddress,
 });
 export default connect(mapStateToProps, { updatePaymentMethod })(PaymentScreen);
