@@ -1,4 +1,5 @@
 import path from "path";
+import sslRedirect from "heroku-ssl-redirect";
 import express from "express";
 import "express-async-errors";
 import cookieSession from "cookie-session";
@@ -14,10 +15,12 @@ import { zineRouter } from "./routes/zines";
 
 import { NotFoundError } from "./errors/not-found-error";
 import { errorHandler } from "./middlewares/error-handler";
+import { paypalRouter } from "./routes/paypal";
 
 dotenv.config();
 
 const app = express();
+app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
@@ -29,6 +32,7 @@ app.use("/api/uploads", uploadRouter);
 app.use("/api/backgrounds", backgroundRouter);
 app.use("/api/prints", printRouter);
 app.use("/api/zines", zineRouter);
+app.use("/api/config", paypalRouter);
 
 const __dirname = path.resolve();
 

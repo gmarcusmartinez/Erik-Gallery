@@ -49,3 +49,5 @@ export interface IZine {
 export interface ICartItem extends IPrint {
   quantity: number;
 }
+
+export interface IOrder {}

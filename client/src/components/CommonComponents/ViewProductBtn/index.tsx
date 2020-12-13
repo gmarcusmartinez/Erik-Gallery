@@ -1,4 +1,4 @@
-import React from "react";
+import React, { MouseEvent } from "react";
 
 interface IProps {
   breakpoint?: string;
@@ -12,7 +12,8 @@ const ViewProductBtn: React.FC<IProps> = (props) => {
   const btnBreakpoint = props.breakpoint ? props.breakpoint : "";
 
   const style = props.customStyle ? props.customStyle : {};
-  const handleClick = (e: any) => {
+
+  const handleClick = (e: MouseEvent) => {
     e.stopPropagation();
     props.toggleViewPrint();
   };

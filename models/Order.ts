@@ -36,6 +36,15 @@ export interface OrderDoc extends mongoose.Document {
   taxPrice: number;
   shippingPrice: number;
   totalPrice: number;
+
+  isPaid: boolean;
+  paidAt: Date;
+  paymentResult: {
+    id: string;
+    status: string;
+    update_time: string;
+    email_address: string;
+  };
 }
 
 const orderSchema = new mongoose.Schema(

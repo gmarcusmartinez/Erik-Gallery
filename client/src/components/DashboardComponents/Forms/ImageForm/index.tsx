@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { File } from "components/CustomInputs";
 import Spinner from "components/CommonComponents/Spinner";
-import { IError } from "interfaces";
-
+import { IError, IZine } from "interfaces";
 import { addZineImage } from "store/actions/zines";
 import { errors, loading, selectedItem } from "store/selectors/zines";
 
@@ -12,7 +11,7 @@ interface IProps {
   errors: IError[];
   loading: boolean;
   addZineImage: Function;
-  selectedItem: any;
+  selectedItem: IZine;
 }
 
 const ImageForm: FC<IProps> = (props) => {

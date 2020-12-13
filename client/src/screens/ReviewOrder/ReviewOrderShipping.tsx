@@ -4,7 +4,7 @@ import { IShippingAddress } from "interfaces";
 interface IProps {
   shippingAddress: IShippingAddress;
 }
-const ReviewOrderShipping: React.FC<IProps> = ({ shippingAddress }) => {
+export const ReviewOrderShipping: React.FC<IProps> = ({ shippingAddress }) => {
   return (
     <>
       <div className="review-order__shipping">
@@ -19,5 +19,3 @@ const ReviewOrderShipping: React.FC<IProps> = ({ shippingAddress }) => {
     </>
   );
 };
-
-export default ReviewOrderShipping;

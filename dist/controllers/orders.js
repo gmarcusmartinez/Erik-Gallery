@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getOrder = exports.createOrder = void 0;
+exports.updateOrderToPaid = exports.getOrder = exports.getOrders = exports.createOrder = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Order_1 = require("../models/Order");
@@ -78,6 +78,52 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
         }
     });
 }); });
-exports.getOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () { return __generator(this, function (_a) {
-    return [2 /*return*/];
-}); }); });
+exports.getOrders = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var orders;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Order_1.Order.find()];
+            case 1:
+                orders = _a.sent();
+                res.send(orders);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.getOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var order;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Order_1.Order.findById(req.params.id)];
+            case 1:
+                order = _a.sent();
+                res.send(order);
+                return [2 /*return*/];
+        }
+    });
+}); });
+exports.updateOrderToPaid = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var order;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Order_1.Order.findById(req.params.id)];
+            case 1:
+                order = _a.sent();
+                if (!order)
+                    throw new bad_request_error_1.BadRequestError("Order not found");
+                order.isPaid = true;
+                order.paidAt = new Date(Date.now());
+                order.paymentResult = {
+                    id: req.body.id,
+                    status: req.body.status,
+                    update_time: req.body.update_time,
+                    email_address: req.body.email_address,
+                };
+                return [4 /*yield*/, order.save()];
+            case 2:
+                _a.sent();
+                res.send(order);
+                return [2 /*return*/];
+        }
+    });
+}); });

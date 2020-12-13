@@ -6,7 +6,7 @@ interface IProps {
   pages: number;
 }
 const Pagination: FC<IProps> = ({ root, pages }) => {
-  const pageNumbers: any[] = [];
+  const pageNumbers: number[] = [];
   for (let i = 1; i <= pages; i++) pageNumbers.push(i);
 
   const history = useHistory();

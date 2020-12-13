@@ -6,7 +6,7 @@ interface IProps {
   cartItems: ICartItem[];
 }
 
-const ReviewOrderItems: React.FC<IProps> = ({ cartItems }) => {
+export const ReviewOrderItems: React.FC<IProps> = ({ cartItems }) => {
   const list = cartItems.map((c) => <ReviewOrderItem key={c._id} c={c} />);
   return (
     <>
@@ -18,5 +18,3 @@ const ReviewOrderItems: React.FC<IProps> = ({ cartItems }) => {
     </>
   );
 };
-
-export default ReviewOrderItems;

@@ -1,15 +1,14 @@
 import React, { FC } from "react";
+import { useHistory } from "react-router-dom";
+import { PayPalButton } from "react-paypal-button-v2";
+import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import { ICartItem, IShippingAddress } from "interfaces";
-import { createStructuredSelector } from "reselect";
-import * as cartSelectors from "store/selectors/cart";
+import addPayPalScript from "utils/add-paypal-script";
 import { createOrder } from "store/actions/orders";
-import ReviewOrderShipping from "./ReviewOrderShipping";
-import ReviewOrderSummary from "./ReviewOrderSummary";
-import ReviewOrderPayMeth from "./ReviewOrderPayMeth";
 import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
-import ReviewOrderItems from "./ReviewOrderItems";
-import { useHistory } from "react-router-dom";
+import * as RO from "./components";
+import * as cartSelectors from "store/selectors/cart";
 
 interface IProps {
   cartItems: ICartItem[];
@@ -22,35 +21,39 @@ interface IProps {
 }
 
 const ReviewOrder: FC<IProps> = (props) => {
+  const [sdkReady, setSdkReady] = React.useState(false);
+  const { itemsPrice, vatPrice, totalPrice } = props;
+  const cartSummary = { itemsPrice, vatPrice, totalPrice };
+
   const handlePlaceOrder = () => {
     const formData = {
       orderItems: props.cartItems,
       shippingAddress: props.shippingAddress,
       paymentMethod: props.paymentMethod,
-      itemsPrice: props.itemsPrice,
-      vatPrice: props.vatPrice,
-      shippingPrice: 10,
-      totalPrice: props.totalPrice,
+      ...cartSummary,
     };
     props.createOrder(formData);
   };
 
-  const { itemsPrice, vatPrice, totalPrice } = props;
-  const cartSummary = { itemsPrice, vatPrice, totalPrice };
+  const successPaymentHandler = (paymentResult: any) =>
+    console.log(paymentResult);
 
+  const emptyCart = props.cartItems.length <= 0;
   const history = useHistory();
   React.useEffect(() => {
-    if (props.cartItems.length <= 0) history.push("/");
-  }, [history, props.cartItems.length]);
+    addPayPalScript(setSdkReady);
+    if (emptyCart) history.push("/");
+  }, [history, emptyCart]);
 
   return (
     <div className="review-order">
       <CheckoutSteps shipping payment review />
       <div className="review-order__details">
-        <ReviewOrderShipping shippingAddress={props.shippingAddress} />
-        <ReviewOrderPayMeth paymentMethod={props.paymentMethod} />
-        <ReviewOrderItems cartItems={props.cartItems} />
-        <ReviewOrderSummary cartSummary={cartSummary} />
+        <RO.Shipping shippingAddress={props.shippingAddress} />
+        <RO.PayMeth paymentMethod={props.paymentMethod} />
+        <RO.Items cartItems={props.cartItems} />
+        <RO.Summary cartSummary={cartSummary} />
+        <PayPalButton amount={totalPrice} onSuccess={successPaymentHandler} />
         <div className="review-order__btn" onClick={handlePlaceOrder}>
           Place Order
         </div>

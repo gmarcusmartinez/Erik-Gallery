@@ -36,7 +36,7 @@ export const updatePaymentMethod = (data: string) => ({
 const emptyCart = {
   isOpen: false,
   cartItems: [],
-  shippingInfo: {
+  shippingAddress: {
     email: "",
     name: "",
     address: "",

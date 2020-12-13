@@ -3,7 +3,7 @@ import React from "react";
 interface IProps {
   paymentMethod: string;
 }
-const ReviewOrderPayMeth: React.FC<IProps> = ({ paymentMethod }) => {
+export const ReviewOrderPayMeth: React.FC<IProps> = ({ paymentMethod }) => {
   return (
     <>
       <div className="review-order__section">
@@ -14,5 +14,3 @@ const ReviewOrderPayMeth: React.FC<IProps> = ({ paymentMethod }) => {
     </>
   );
 };
-
-export default ReviewOrderPayMeth;

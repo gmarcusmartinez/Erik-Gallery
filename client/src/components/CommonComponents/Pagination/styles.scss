@@ -1,7 +1,6 @@
 .pagination {
-  border: 0.1rem solid var(--color-light-grey);
   height: 4rem;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
   width: 90%;
 
   display: flex;
@@ -27,8 +26,9 @@
     color: #000;
   }
 
-  &:not(:last-child) {
-    border-right: 0.1rem solid var(--color-light-grey);
+  border-right: 0.1rem solid var(--color-light-grey);
+  &:first-of-type {
+    border-left: 0.1rem solid var(--color-light-grey);
   }
   .active {
     color: #000;

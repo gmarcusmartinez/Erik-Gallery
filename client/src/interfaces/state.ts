@@ -1,20 +1,14 @@
-import { IPrint } from "./";
+import { IZine, IError } from "./";
 
-interface IPrintsState {
+export interface IZineState {
   loading: boolean;
-  items: IPrint[];
-}
-
-interface IModalState {
-  displayModal: boolean;
-  component: string;
-  data: IPrint;
+  items: IZine[] | [];
+  page: number;
+  pages: number;
+  selectedItem: IZine;
+  errors: IError[] | [];
 }
 
 export interface IState {
-  prints: IPrintsState;
-  modal: IModalState;
-  nav: {
-    open: boolean;
-  };
+  zines: IZineState;
 }
