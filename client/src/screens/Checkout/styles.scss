@@ -1,15 +1,18 @@
 .checkout {
   @include checkout-step-page;
-  max-width: 50rem;
+  max-width: 55rem;
   &__details {
     margin: 1rem auto;
   }
   &__headers {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 26% 26% 16% 16% 16%;
 
     margin: var(--margin-md) 0;
     text-align: center;
+    :nth-child(2) {
+      text-align: start;
+    }
   }
   &__header {
     color: var(--color-grey);
@@ -28,6 +31,7 @@
   }
   &__btn {
     @include checkout-step-page-btn;
+    max-width: 55rem;
     @include respond(tablet) {
       margin-left: var(--margin-md);
       width: calc(100% - 50px);

@@ -29,38 +29,38 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
   const handleToggleEdit = () => toggleEdit("EDIT_ZINE");
 
   return (
-    <div className="dash-item" style={{ gridTemplateColumns }}>
-      <div className="dash-item__img" style={{ backgroundImage }}>
-        <div className="mobile-dash__btns">
-          <div className="mobile-dash__btn" onClick={handleRedirect}>
-            Images
-          </div>
-          <div className="mobile-dash__btn" onClick={handleToggleEdit}>
-            Edit
-          </div>
-          <div className="mobile-dash__btn" onClick={toggleDelete}>
-            Delete
+    <>
+      <div className="dash-item" style={{ gridTemplateColumns }}>
+        <div className="dash-item__img" style={{ backgroundImage }}>
+          <div className="mobile-dash__btns">
+            <div className="mobile-dash__btn" onClick={handleRedirect}>
+              Images
+            </div>
+            <div className="mobile-dash__btn" onClick={handleToggleEdit}>
+              Edit
+            </div>
+            <div className="mobile-dash__btn" onClick={toggleDelete}>
+              &#10060;
+            </div>
           </div>
         </div>
+        <div className="dash-item__text">{zine.title}</div>
+        <div className="dash-item__text">{toTwoDecimals(price)}&euro;</div>
+        <div className="dash-item__text">{toTwoDecimals(netPrice)}&euro;</div>
+        <div className="dash-item__text">{toTwoDecimals(vatPrice)}&euro;</div>
+        <div className="dash-item__text">{quantityInStock}</div>
+        <div className="dash-btn" onClick={handleRedirect}>
+          Images
+        </div>
+        <div className="dash-btn" onClick={handleToggleEdit}>
+          Edit
+        </div>
+        <div className="dash-btn" onClick={toggleDelete}>
+          &#10060;
+        </div>
       </div>
-      <div className="dash-item__text" style={{ marginLeft: "0.5rem" }}>
-        {zine.title}
-      </div>
-      <div className="dash-item__text">{toTwoDecimals(price)}&euro;</div>
-      <div className="dash-item__text">{toTwoDecimals(netPrice)}&euro;</div>
-      <div className="dash-item__text">{toTwoDecimals(vatPrice)}&euro;</div>
-      <div className="dash-item__text">{quantityInStock}</div>
-
-      <div className="dash-btn" onClick={handleRedirect}>
-        Images
-      </div>
-      <div className="dash-btn" onClick={handleToggleEdit}>
-        Edit
-      </div>
-      <div className="dash-btn" onClick={toggleDelete}>
-        &#10060;
-      </div>
-    </div>
+      <hr className="dash-item__border"></hr>
+    </>
   );
 };
 

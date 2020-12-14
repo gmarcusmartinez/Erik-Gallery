@@ -8,9 +8,9 @@ const SideNavTrigger: React.FC<IProps> = ({ cb, bool }) => {
   const className = `dashboard__sidenav__trigger ${bool ? "" : "rotate"}`;
 
   return (
-    <span className={className} onClick={() => cb(bool)}>
-      &#9655;
-    </span>
+    <div className={className} onClick={() => cb(bool)}>
+      &#x271D;
+    </div>
   );
 };
 

@@ -143,3 +143,16 @@
     }
   }
 }
+
+@mixin hr-border {
+  border: 0;
+  height: 0.1rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgb(153, 153, 153),
+    rgba(0, 0, 0, 0)
+  );
+}

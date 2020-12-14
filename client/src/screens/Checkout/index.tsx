@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
-  const headers = ["Item", "Quantity", "Price", "Remove"];
+  const headers = ["Item", "Description", "Qty", "Price", "Remove"];
 
   const renderHeaders = headers.map((h, i) => (
     <div key={i} className="checkout__header">
