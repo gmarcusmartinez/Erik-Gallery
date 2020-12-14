@@ -53,4 +53,6 @@ export const mapQuantityToOptions = (n: number) => {
   return opts;
 };
 
-export const toTwoDecimals = (num: number) => num.toFixed(2);
+export const toTwoDecimals = (num: number) => {
+  return num.toFixed(2);
+};

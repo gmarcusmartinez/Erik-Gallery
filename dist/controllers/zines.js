@@ -77,6 +77,8 @@ exports.createZine = async_1.asyncHandler(function (req, res) { return __awaiter
         switch (_a.label) {
             case 0:
                 zine = Product_1.Product.build(__assign(__assign({}, req.body), { type: Product_1.ProductType.Zine }));
+                zine.vatPrice = zine.calculateVat();
+                zine.netPrice = zine.calculateNet();
                 return [4 /*yield*/, zine.save()];
             case 1:
                 _a.sent();
@@ -86,18 +88,21 @@ exports.createZine = async_1.asyncHandler(function (req, res) { return __awaiter
     });
 }); });
 exports.updateZine = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var zine, opts;
+    var opts, zine;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
+            case 0:
+                opts = { new: true, runValidators: true };
+                return [4 /*yield*/, Product_1.Product.findByIdAndUpdate(req.params.id, req.body, opts)];
             case 1:
                 zine = _a.sent();
                 if (!zine)
                     throw new bad_request_error_1.BadRequestError("Zine Not Found.");
-                opts = { new: true, runValidators: true };
-                return [4 /*yield*/, Product_1.Product.findByIdAndUpdate(req.params.id, req.body, opts)];
+                zine.vatPrice = zine.calculateVat();
+                zine.netPrice = zine.calculateNet();
+                return [4 /*yield*/, zine.save()];
             case 2:
-                zine = _a.sent();
+                _a.sent();
                 res.status(200).json(zine);
                 return [2 /*return*/];
         }

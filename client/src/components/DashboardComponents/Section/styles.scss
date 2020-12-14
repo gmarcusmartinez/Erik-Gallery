@@ -31,17 +31,28 @@
       height: 100%;
       letter-spacing: 0.2rem;
       font-size: 1.1rem;
-
       text-align: center;
     }
   }
 }
 
 .add-resource-btn {
-  @include checkout-step-page-btn;
-  margin: 1rem auto;
-  @include respond(tablet) {
-    margin: 1rem 0.5rem;
-    width: 35rem;
+  background-color: #000;
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  height: 6rem;
+  width: 6rem;
+
+  position: fixed;
+  bottom: 2.5%;
+  right: 2.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-size: 3rem;
   }
 }

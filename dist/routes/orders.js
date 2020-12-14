@@ -32,6 +32,6 @@ exports.orderRouter = router;
 router
     .route("/")
     .post(order_1.createOrderValidation, validate_request_1.validateRequest, orders.createOrder);
-router.route("/").get(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, orders.getOrders);
+router.route("/").get(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, orders.adminGetOrders);
 router.route("/:id").get(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, orders.getOrder);
 router.route("/:id/pay").put(orders.updateOrderToPaid);

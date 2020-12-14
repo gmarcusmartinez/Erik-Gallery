@@ -29,7 +29,7 @@ const Section: FC<IProps> = (props) => {
         {list}
       </div>
       <div className="add-resource-btn" onClick={renderAddForm}>
-        {props.formName.replace("_", " ")}
+        <span>&#43;</span>
       </div>
     </div>
   );

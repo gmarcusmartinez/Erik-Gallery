@@ -21,7 +21,7 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
 
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${print.mainImage})`;
   const gridTemplateColumns = "10% 31% 15% 7% 7% 7% 7% 8% 8%";
-  const { netPrice, vatPrice, quantityInStock, isPublished } = print;
+  const { netPrice, vatPrice, price, isPublished } = print;
   const pubClassName = `isPub ${isPublished ? "pub-true" : "pub-false"}`;
 
   return (
@@ -39,15 +39,15 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
       </div>
       <div className="dash-item__text">{print.description}</div>
       <div className="dash-item__text">{print.size}</div>
-      <div className="dash-item__text">{print.price}&euro;</div>
+      <div className="dash-item__text">{toTwoDecimals(price)}&euro;</div>
       <div className="dash-item__text">{toTwoDecimals(netPrice)}&euro;</div>
       <div className="dash-item__text">{toTwoDecimals(vatPrice)}&euro;</div>
-      <div className="dash-item__text">{quantityInStock}</div>
+      <div className="dash-item__text">{print.quantityInStock}</div>
       <div className="dash-btn" onClick={toggleEdit}>
         Edit
       </div>
       <div className="dash-btn" onClick={toggleDelete}>
-        Delete
+        &#10060;
       </div>
     </div>
   );

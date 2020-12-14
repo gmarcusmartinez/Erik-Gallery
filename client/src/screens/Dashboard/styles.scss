@@ -1,21 +1,21 @@
 .dashboard {
   display: flex;
+  flex-direction: column;
   position: relative;
 
   height: 100%;
   margin: 0 auto;
   width: 100vw;
-  max-width: 120rem;
 
   &__header {
     display: flex;
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     position: relative;
   }
   &__title {
-    color: var(--color-grey);
-    font-size: 1.2rem;
+    color: var(--color-dark-grey);
+    font-size: 1.4rem;
     font-weight: 300;
     letter-spacing: var(--letter-spacing-lg);
     text-transform: uppercase;
@@ -24,6 +24,7 @@
   }
   &__sidenav {
     position: absolute;
+    top: 5rem;
 
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
@@ -43,18 +44,17 @@
     transition: 0.25s ease-in-out;
   }
   &__sidenav__links {
-    margin-top: 2rem;
     width: 100%;
   }
 
   &__sidenav__link {
     color: #000;
     cursor: pointer;
-    font-size: 1.4rem;
+    text-align: center;
+    font-size: 1.25rem;
     height: 8rem;
     line-height: 8rem;
     letter-spacing: var(--letter-spacing-lg);
-    margin-left: var(--margin-md);
     text-transform: uppercase;
     @include respond(tablet) {
       font-size: 1.4rem;
@@ -62,11 +62,9 @@
   }
 
   &__resources {
-    position: absolute;
-    top: 4rem;
-
     height: 100%;
     padding: 0.5rem;
+    margin: 0 auto;
     width: 100%;
     max-width: 120rem;
     transition: 0.25s ease-in-out;
@@ -74,9 +72,9 @@
 
   .sidenav-open {
     transition: 0.25s ease-in-out;
-    width: 75vw;
+    width: 100vw;
     @include respond(tablet) {
-      width: 26rem;
+      width: 24rem;
     }
   }
 

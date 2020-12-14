@@ -22,31 +22,23 @@ export interface IProduct {
   mainImage: string;
   quantityInStock: number;
   type: string;
+
   title?: string;
+  description?: string;
+  size?: string;
+  isPublished: boolean;
 
   price: number;
   netPrice: number;
   vatPrice: number;
-  isPublished: boolean;
 }
 
-export interface IPrint extends IProduct {
-  description: string;
-  size: string;
-}
-
-export interface IZine {
-  _id: string;
+export interface IPrint extends IProduct {}
+export interface IZine extends IProduct {
   images: string[];
-  description: string;
-  mainImage: string;
-  price: number;
-  quantityInStock: number;
-  title: string;
-  type: string;
 }
 
-export interface ICartItem extends IPrint {
+export interface ICartItem extends IProduct {
   quantity: number;
 }
 

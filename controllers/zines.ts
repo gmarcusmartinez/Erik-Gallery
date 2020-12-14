@@ -15,22 +15,28 @@ export const getZine = asyncHandler(async (req: Request, res: any) => {
 
 export const createZine = asyncHandler(async (req: Request, res: Response) => {
   const zine = Product.build({ ...req.body, type: ProductType.Zine });
+  zine.vatPrice = zine.calculateVat();
+  zine.netPrice = zine.calculateNet();
+
   await zine.save();
   res.status(200).json(zine);
 });
 
 export const updateZine = asyncHandler(async (req: Request, res: Response) => {
-  let zine = await Product.findById(req.params.id);
+  const opts = { new: true, runValidators: true };
+  const zine = await Product.findByIdAndUpdate(req.params.id, req.body, opts);
   if (!zine) throw new BadRequestError("Zine Not Found.");
 
-  const opts = { new: true, runValidators: true };
-  zine = await Product.findByIdAndUpdate(req.params.id, req.body, opts);
+  zine.vatPrice = zine.calculateVat();
+  zine.netPrice = zine.calculateNet();
+  await zine.save();
+
   res.status(200).json(zine);
 });
 
 export const addZineImage = asyncHandler(
   async (req: Request, res: Response) => {
-    let zine = await Product.findById(req.params.id);
+    const zine = await Product.findById(req.params.id);
     if (!zine) throw new BadRequestError("Zine Not Found.");
 
     const image = req.body.image;

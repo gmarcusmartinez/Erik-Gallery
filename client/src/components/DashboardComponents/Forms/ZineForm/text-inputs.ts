@@ -1,6 +1,6 @@
 export const blankFormState = {
   title: "",
-  price: 0.0,
+  price: "0.00",
   quantityInStock: 0,
   mainImage: null,
 };

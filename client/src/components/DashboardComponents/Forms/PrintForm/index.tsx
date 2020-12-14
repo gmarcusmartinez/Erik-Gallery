@@ -2,14 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { Text, File } from "components/CustomInputs";
+import { Text, File, Checkbox } from "components/CustomInputs";
 import Spinner from "components/CommonComponents/Spinner";
 import { IError } from "interfaces";
 import { createPrint } from "store/actions/prints/createPrint";
 import { updatePrint } from "store/actions/prints/updatePrint";
 import { errors, loading, selectedItem } from "store/selectors/prints";
 import { blankFormState, textInputs } from "./text-inputs";
-import Checkbox from "components/CustomInputs/Checkbox";
 
 interface IProps {
   createPrint: Function;

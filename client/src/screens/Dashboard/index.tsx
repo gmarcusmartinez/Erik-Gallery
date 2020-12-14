@@ -17,7 +17,7 @@ interface IProps {
   zines: IZine[];
 }
 const Dashboard: FC<IProps> = (props) => {
-  const [sidenavOpen, setSideNavOpen] = React.useState(false);
+  const [sidenavOpen, setSideNavOpen] = React.useState(true);
   const [resourceType, setResourceType] = React.useState("");
 
   const sidenavClass = sidenavOpen ? "sidenav-open" : "sidenav-closed";
@@ -47,46 +47,44 @@ const Dashboard: FC<IProps> = (props) => {
   };
 
   return (
-    <>
-      <div className="dashboard">
-        <div className="dashboard__header">
-          <h2 className="dashboard__title">Admin Dashboard</h2>
-          <SideNavTrigger cb={setSideNavOpen} bool={!sidenavOpen} />
-        </div>
-        <div className={`dashboard__sidenav ${sidenavClass}`}>
-          <div className="dashboard__sidenav__links">{sidenavLinks}</div>
-        </div>
-        <div className="dashboard__resources">
-          {resourceType === "prints" && (
-            <Section
-              resourceType="prints"
-              formName="ADD_PRINT"
-              headers={headers.printHeaders}
-              items={props.prints}
-              gridTemplateColumns="10% 31% 15% 7% 7% 7% 7%"
-            />
-          )}
-          {resourceType === "backgrounds" && (
-            <Section
-              resourceType="backgrounds"
-              formName="ADD_BG"
-              headers={headers.backgroundHeaders}
-              items={props.backgrounds}
-              gridTemplateColumns="15% 15% 15%"
-            />
-          )}
-          {resourceType === "zines" && (
-            <Section
-              resourceType="zines"
-              formName="ADD_ZINE"
-              headers={headers.zineHeaders}
-              items={props.zines}
-              gridTemplateColumns="10% 25% 15% 10% 10%"
-            />
-          )}
-        </div>
+    <div className="dashboard">
+      <div className="dashboard__header">
+        <h2 className="dashboard__title">Admin Dashboard</h2>
+        <SideNavTrigger cb={setSideNavOpen} bool={!sidenavOpen} />
       </div>
-    </>
+      <div className={`dashboard__sidenav ${sidenavClass}`}>
+        <div className="dashboard__sidenav__links">{sidenavLinks}</div>
+      </div>
+      <div className="dashboard__resources">
+        {resourceType === "prints" && (
+          <Section
+            resourceType="prints"
+            formName="ADD_PRINT"
+            headers={headers.printHeaders}
+            items={props.prints}
+            gridTemplateColumns="10% 31% 15% 7% 7% 7% 7%"
+          />
+        )}
+        {resourceType === "backgrounds" && (
+          <Section
+            resourceType="backgrounds"
+            formName="ADD_BG"
+            headers={headers.backgroundHeaders}
+            items={props.backgrounds}
+            gridTemplateColumns="15% 15% 15%"
+          />
+        )}
+        {resourceType === "zines" && (
+          <Section
+            resourceType="zines"
+            formName="ADD_ZINE"
+            headers={headers.zineHeaders}
+            items={props.zines}
+            gridTemplateColumns="10% 32% 8% 8% 8% 8% 8%"
+          />
+        )}
+      </div>
+    </div>
   );
 };
 

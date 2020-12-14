@@ -36,15 +36,15 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrderToPaid = exports.getOrder = exports.getOrders = exports.createOrder = void 0;
+exports.updateOrderToPaid = exports.getOrder = exports.adminGetOrders = exports.createOrder = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Order_1 = require("../models/Order");
 var Product_1 = require("../models/Product");
 exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var orderItems, orderItemIds, products, soldOutmsg, _a, shippingAddress, paymentMethod, itemsPrice, vatPrice, shippingPrice, totalPrice, order;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var orderItems, orderItemIds, products, soldOutmsg, order;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
                 orderItems = req.body.orderItems;
                 if (orderItems && orderItems.length <= 0)
@@ -56,29 +56,20 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
                         quantityInStock: { $gt: 0 },
                     })];
             case 1:
-                products = _b.sent();
+                products = _a.sent();
                 soldOutmsg = "One or more products in your cart has recently sold out.";
                 if (products.length !== orderItems.length)
                     throw new bad_request_error_1.BadRequestError(soldOutmsg);
-                _a = req.body, shippingAddress = _a.shippingAddress, paymentMethod = _a.paymentMethod, itemsPrice = _a.itemsPrice, vatPrice = _a.vatPrice, shippingPrice = _a.shippingPrice, totalPrice = _a.totalPrice;
-                order = Order_1.Order.build({
-                    orderItems: orderItems,
-                    shippingAddress: shippingAddress,
-                    paymentMethod: paymentMethod,
-                    itemsPrice: itemsPrice,
-                    vatPrice: vatPrice,
-                    shippingPrice: shippingPrice,
-                    totalPrice: totalPrice,
-                });
+                order = Order_1.Order.build(req.body);
                 return [4 /*yield*/, order.save()];
             case 2:
-                _b.sent();
+                _a.sent();
                 res.send(order);
                 return [2 /*return*/];
         }
     });
 }); });
-exports.getOrders = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+exports.adminGetOrders = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var orders;
     return __generator(this, function (_a) {
         switch (_a.label) {

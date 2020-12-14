@@ -1,7 +1,7 @@
 export const backgroundHeaders = [
   { id: 8, text: "Image" },
   { id: 10, text: "Set Active" },
-  { id: 11, text: "Delete" },
+  { id: 11, text: "" },
 ];
 
 export const printHeaders = [
@@ -19,10 +19,13 @@ export const printHeaders = [
 export const zineHeaders = [
   { id: 12, text: "Image" },
   { id: 13, text: "Title" },
-  { id: 15, text: "Price" },
-  { id: 16, text: "In Stock" },
-  { id: 17, text: "" },
+  { id: 14, text: "Price" },
+  { id: 15, text: "Net" },
+  { id: 16, text: "Vat" },
+  { id: 17, text: "Qty" },
   { id: 18, text: "" },
+  { id: 19, text: "" },
+  { id: 20, text: "" },
 ];
 
 export const fetchResourceLinks = [

@@ -30,34 +30,17 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   //   product.save();
   // });
 
-  const {
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    vatPrice,
-    shippingPrice,
-    totalPrice,
-  } = req.body;
-
-  const order = Order.build({
-    orderItems,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    vatPrice,
-    shippingPrice,
-    totalPrice,
-  });
-
+  const order = Order.build(req.body);
   await order.save();
-
   res.send(order);
 });
 
-export const getOrders = asyncHandler(async (req: Request, res: Response) => {
-  const orders = await Order.find();
-  res.send(orders);
-});
+export const adminGetOrders = asyncHandler(
+  async (req: Request, res: Response) => {
+    const orders = await Order.find();
+    res.send(orders);
+  }
+);
 
 export const getOrder = asyncHandler(async (req: Request, res: Response) => {
   const order = await Order.findById(req.params.id);

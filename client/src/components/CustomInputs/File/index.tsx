@@ -1,8 +1,8 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { IError } from "interfaces";
 
 interface IProps {
-  onChange: Function;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   error: IError | null | undefined;
   label: string;
 }
@@ -16,7 +16,7 @@ const CustomFileInput: React.FC<IProps> = ({ onChange, error, label }) => {
         className="custom-file-input"
         type="file"
         accept="image/*"
-        onChange={() => onChange}
+        onChange={onChange}
       />
       <label className={`file-input-label ${labelClass}`}>{label}</label>
       {error && (

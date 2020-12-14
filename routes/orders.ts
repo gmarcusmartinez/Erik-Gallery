@@ -11,7 +11,7 @@ router
   .route("/")
   .post(createOrderValidation, validateRequest, orders.createOrder);
 
-router.route("/").get(currentUser, requireAuth, isAdmin, orders.getOrders);
+router.route("/").get(currentUser, requireAuth, isAdmin, orders.adminGetOrders);
 router.route("/:id").get(currentUser, requireAuth, isAdmin, orders.getOrder);
 router.route("/:id/pay").put(orders.updateOrderToPaid);
 
