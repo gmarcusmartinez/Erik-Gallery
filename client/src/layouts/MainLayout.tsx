@@ -1,7 +1,24 @@
+import { IBackground } from "interfaces";
 import React from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { fetchBackgrounds } from "store/actions/backgrounds";
+import { activeBackground } from "store/selectors/backgrounds";
 
-const MainLayout: React.FC = ({ children }) => {
-  const backgroundImage = `url(https://lh3.googleusercontent.com/rNpoeeAsGMe2wBbcMHJbsnixLLSdi0cwGR_BikTTSgTMGRPpqDAmn0bcmRJGsYAcOOxRHLycid7qWh9wRnOwo34vuddxxeh7XDqCDVYezqYr_7O4C7nPF83I1ZixAD1yvusI3AS-ww=w2400)`;
+interface IProps {
+  fetchBackgrounds: Function;
+  activeBackground: IBackground;
+}
+const MainLayout: React.FC<IProps> = (props) => {
+  const { children, fetchBackgrounds, activeBackground } = props;
+
+  React.useEffect(() => {
+    fetchBackgrounds();
+  }, []);
+
+  let backgroundImage;
+  if (activeBackground)
+    backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${activeBackground.mainImage})`;
 
   return (
     <div className="main-layout">
@@ -11,4 +28,7 @@ const MainLayout: React.FC = ({ children }) => {
   );
 };
 
-export default MainLayout;
+const mapStateToProps = createStructuredSelector({
+  activeBackground,
+});
+export default connect(mapStateToProps, { fetchBackgrounds })(MainLayout);

@@ -1,9 +1,10 @@
 import zines from "api/zines";
+import { Dispatch } from "redux";
 import { ZineActionTypes } from "store/actions/types";
 
 const { DELETE_ZINE_PAGE_SUCCESS, DELETE_ZINE_PAGE_FAILURE } = ZineActionTypes;
 export const deleteZinePage = (id: string, imgStr: string) => async (
-  dispatch: any
+  dispatch: Dispatch
 ) => {
   try {
     dispatch({ type: ZineActionTypes.DELETE_ZINE_PAGE_REQUEST });

@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 
-const selectLighbox = (state: any) => state.lightbox;
+//@ts-ignore
+const selectLighbox = (state) => state.lightbox;
 
 export const selectLightboxlIsOpen = createSelector(
   [selectLighbox],

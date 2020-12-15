@@ -1,6 +1,7 @@
 import { createSelector } from "reselect";
 
-const selectModal = (state: any) => state.modal;
+//@ts-ignore
+const selectModal = (state) => state.modal;
 
 export const selectModalIsOpen = createSelector(
   [selectModal],

@@ -78,7 +78,7 @@ exports.createBackground = async_1.asyncHandler(function (req, res) { return __a
     });
 }); });
 exports.setActive = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var background, currentlyActive, opts, id;
+    var background, currentlyActive, opts, id, backgrounds;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, Background_1.Background.findById(req.params.id)];
@@ -97,7 +97,10 @@ exports.setActive = async_1.asyncHandler(function (req, res) { return __awaiter(
                 return [4 /*yield*/, Background_1.Background.findByIdAndUpdate(id, { active: true }, opts)];
             case 4:
                 background = _a.sent();
-                res.status(200).json(background);
+                return [4 /*yield*/, Background_1.Background.find({})];
+            case 5:
+                backgrounds = _a.sent();
+                res.status(200).json(backgrounds);
                 return [2 /*return*/];
         }
     });

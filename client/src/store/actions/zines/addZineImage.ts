@@ -1,8 +1,9 @@
 import axios from "axios";
+import { Dispatch } from "redux";
 import { ModalActionTypes, ZineActionTypes } from "store/actions/types";
 
 export const addZineImage = (id: string, imageData: any) => async (
-  dispatch: any
+  dispatch: Dispatch
 ) => {
   if (!imageData) {
     const errors = [{ message: "Please select an image", field: "image" }];

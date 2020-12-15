@@ -1,16 +1,13 @@
 import { ICartItem, IShippingAddress } from "interfaces";
+import { Dispatch } from "redux";
 import { CartActionTypes, ModalActionTypes } from "../types";
 
-export const addItemToCart = (item: ICartItem) => async (dispatch: any) => {
+export const addItemToCart = (item: ICartItem) => (dispatch: Dispatch) => {
+  const modalPayload = { displayModal: false, component: "", data: null };
+  const cartPayload = { bool: true };
   dispatch({ type: CartActionTypes.ADD_ITEM_TO_CART, payload: item });
-  dispatch({
-    type: ModalActionTypes.TOGGLE_MODAL,
-    payload: { displayModal: false, component: "", data: null },
-  });
-  dispatch({
-    type: CartActionTypes.TOGGLE_CART_HIDDEN,
-    payload: { bool: true },
-  });
+  dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: modalPayload });
+  dispatch({ type: CartActionTypes.TOGGLE_CART_HIDDEN, payload: cartPayload });
 };
 
 export const toggleCart = (bool: boolean) => ({

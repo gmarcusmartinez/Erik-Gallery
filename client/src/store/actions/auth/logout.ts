@@ -1,9 +1,10 @@
 import auth from "api/auth";
 import history from "core/history";
+import { Dispatch } from "redux";
 
 import { AuthActionTypes } from "../types";
 
-export const logout = () => async (dispatch: any) => {
+export const logout = () => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: AuthActionTypes.USER_LOGOUT_REQUEST });
     const { data } = await auth.post("/logout");

@@ -5,14 +5,14 @@ import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
 import { fetchZines } from "store/actions/zines/fetchZines";
 import * as headers from "./headers";
 import Section from "components/DashboardComponents/Section";
-import { IPrint, IZine } from "interfaces";
+import { IBackground, IPrint, IZine } from "interfaces";
 import SideNavTrigger from "./SideNavTrigger";
 
 interface IProps {
   adminFetchPrints: Function;
   prints: IPrint[];
   fetchBackgrounds: Function;
-  backgrounds: any[];
+  backgrounds: IBackground[];
   fetchZines: Function;
   zines: IZine[];
 }

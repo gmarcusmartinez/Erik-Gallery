@@ -3,6 +3,12 @@ export interface IUser {
   email: string;
   role: string;
 }
+export interface IBackground {
+  _id: string;
+  active: boolean;
+  mainImage: string;
+  type: string;
+}
 
 export interface IError {
   message: string;

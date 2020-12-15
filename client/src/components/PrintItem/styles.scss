@@ -1,8 +1,8 @@
 .print-item {
-  color: var(--color-dark-grey);
+  color: var(--color-grey);
   display: flex;
   flex-direction: column;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   height: 90vh;
   justify-content: center;
   letter-spacing: var(--letter-spacing-sm);
@@ -46,12 +46,6 @@
           display: block;
         }
       }
-    }
-    &__description {
-      font-size: 1.4rem;
-    }
-    &__size {
-      font-size: 1.25rem;
     }
   }
 }

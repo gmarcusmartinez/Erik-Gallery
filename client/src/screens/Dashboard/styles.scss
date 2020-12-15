@@ -75,9 +75,6 @@
   .sidenav-open {
     transition: 0.25s ease-in-out;
     width: 100vw;
-    @include respond(tablet) {
-      width: 24rem;
-    }
   }
 
   .rotate {

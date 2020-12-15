@@ -3,15 +3,16 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectAllPrints } from "store/selectors/prints";
 import PrintItem from "components/PrintItem";
+import { IPrint } from "interfaces";
 
 interface IProps {
-  items: any[];
+  items: IPrint[];
 }
 
 const PrintsList: React.FC<IProps> = ({ items }) => {
   let printsList;
   if (items)
-    printsList = items.map((p: any) => <PrintItem key={p._id} item={p} />);
+    printsList = items.map((p: IPrint) => <PrintItem key={p._id} item={p} />);
 
   return <>{printsList}</>;
 };

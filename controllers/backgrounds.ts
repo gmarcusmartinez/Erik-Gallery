@@ -29,8 +29,8 @@ export const setActive = asyncHandler(async (req: Request, res: Response) => {
   const opts = { new: true, runValidators: true };
   const id = req.params.id;
   background = await Background.findByIdAndUpdate(id, { active: true }, opts);
-
-  res.status(200).json(background);
+  const backgrounds = await Background.find({});
+  res.status(200).json(backgrounds);
 });
 
 export const deleteBackground = asyncHandler(

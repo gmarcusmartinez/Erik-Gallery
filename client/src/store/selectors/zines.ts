@@ -1,9 +1,11 @@
 import { createSelector } from "reselect";
 
-const selectZines = (state: any) => state.zines;
+//@ts-ignore
+const selectZines = (state) => state.zines;
 
-export const selectAllZines = createSelector([selectZines], (zines) =>
-  Object.values(zines.items)
+export const selectAllZines = createSelector(
+  [selectZines],
+  (zines) => zines.items
 );
 
 export const errors = createSelector([selectZines], (zines) => zines.errors);

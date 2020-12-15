@@ -1,6 +1,7 @@
+import { Dispatch } from "redux";
 import { NavActionTypes, CartActionTypes } from "store/actions/types";
 
-export const toggleNav = (bool: boolean) => (dispatch: any) => {
+export const toggleNav = (bool: boolean) => (dispatch: Dispatch) => {
   dispatch({
     type: NavActionTypes.TOGGLE_NAV,
     payload: bool,

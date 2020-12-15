@@ -1,6 +1,8 @@
+import { ICartItem } from "interfaces";
 import { createSelector } from "reselect";
 
-const selectCart = (state: any) => state.cart;
+//@ts-ignore
+const selectCart = (state) => state.cart;
 
 export const selectCartItems = createSelector(
   [selectCart],
@@ -30,30 +32,25 @@ export const selectPaymentMethod = createSelector(
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
   (cartItems) =>
-    cartItems.reduce((acc: any, curr: any) => acc + curr.quantity, 0)
+    cartItems.reduce((acc: number, curr: ICartItem) => acc + curr.quantity, 0)
 );
 
 export const selectItemsTotal = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce(
-    (acc: any, curr: any) => acc + curr.quantity * curr.netPrice,
+    (acc: number, curr: ICartItem) => acc + curr.quantity * curr.netPrice,
     0
   )
 );
 export const selectCartVAT = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce(
-    (acc: any, curr: any) => acc + curr.quantity * curr.vatPrice,
+    (acc: number, curr: ICartItem) => acc + curr.quantity * curr.vatPrice,
     0
   )
 );
-export const selectCartShipping = createSelector(
-  [selectCartItems],
-  (cartItems) =>
-    cartItems.reduce(
-      (acc: any, curr: any) => acc + curr.quantity * curr.shippingPrice,
-      0
-    )
-);
 
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
-  cartItems.reduce((acc: any, curr: any) => acc + curr.quantity * curr.price, 0)
+  cartItems.reduce(
+    (acc: number, curr: ICartItem) => acc + curr.quantity * curr.price,
+    0
+  )
 );

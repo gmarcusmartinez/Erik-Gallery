@@ -1,10 +1,11 @@
+import { IZine } from "interfaces";
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-
 import { selectModalData } from "store/selectors/modal";
+
 interface IProps {
-  data: any;
+  data: IZine;
 }
 const PreviewZine: React.FC<IProps> = ({ data }) => {
   const [selectedPage, setSelectedPage] = React.useState(0);

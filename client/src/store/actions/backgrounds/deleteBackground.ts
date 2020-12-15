@@ -1,7 +1,8 @@
 import backgrounds from "api/backgrounds";
+import { Dispatch } from "redux";
 import { BackgroundActionTypes } from "../types";
 
-export const deleteBackground = (id: string) => async (dispatch: any) => {
+export const deleteBackground = (id: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: BackgroundActionTypes.DELETE_BACKGROUND_REQUEST });
     await backgrounds.delete(`/${id}`);

@@ -3,14 +3,15 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { selectAllZines } from "store/selectors/zines";
 import ZineItem from "components/ZineItem";
+import { IZine } from "interfaces";
 
 interface IProps {
-  items: any[];
+  items: IZine[];
 }
 
 const ZinesList: React.FC<IProps> = ({ items }) => {
   let list;
-  if (items) list = items.map((p: any) => <ZineItem key={p._id} item={p} />);
+  if (items) list = items.map((p: IZine) => <ZineItem key={p._id} item={p} />);
   return <>{list}</>;
 };
 

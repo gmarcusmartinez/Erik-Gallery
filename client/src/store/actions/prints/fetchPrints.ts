@@ -1,7 +1,8 @@
 import prints from "api/prints";
+import { Dispatch } from "redux";
 import { PrintActionTypes } from "../types";
 
-export const fetchPrints = (page: Number) => async (dispatch: any) => {
+export const fetchPrints = (page: Number) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: PrintActionTypes.FETCH_PRINTS_REQUEST });
     const { data } = await prints.get(`/?page=${page}`);

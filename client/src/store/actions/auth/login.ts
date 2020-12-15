@@ -1,5 +1,6 @@
 import auth from "api/auth";
 import history from "core/history";
+import { Dispatch } from "redux";
 import { AuthActionTypes } from "../types";
 
 interface ILoginFormData {
@@ -7,7 +8,9 @@ interface ILoginFormData {
   password: string;
 }
 
-export const login = (formData: ILoginFormData) => async (dispatch: any) => {
+export const login = (formData: ILoginFormData) => async (
+  dispatch: Dispatch
+) => {
   const config = { headers: { "Content-Type": "application/json" } };
   try {
     dispatch({ type: AuthActionTypes.USER_LOGIN_REQUEST });

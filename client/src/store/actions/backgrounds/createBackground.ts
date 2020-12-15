@@ -1,13 +1,15 @@
 import axios from "axios";
+import { Dispatch } from "redux";
 import { ModalActionTypes, BackgroundActionTypes } from "store/actions/types";
 
-export const createBackground = (imageData: any) => async (dispatch: any) => {
+const { CREATE_BACKGROUND_FAILURE } = BackgroundActionTypes;
+
+export const createBackground = (imageData: any) => async (
+  dispatch: Dispatch
+) => {
   if (!imageData) {
     const errors = [{ message: "Please select an image", field: "image" }];
-    dispatch({
-      type: BackgroundActionTypes.CREATE_BACKGROUND_FAILURE,
-      payload: errors,
-    });
+    dispatch({ type: CREATE_BACKGROUND_FAILURE, payload: errors });
     return;
   }
 
@@ -31,10 +33,7 @@ export const createBackground = (imageData: any) => async (dispatch: any) => {
     dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: successPayload });
   } catch (err) {
     const errors = err.response.data.errors || err.message;
-    dispatch({
-      type: BackgroundActionTypes.CREATE_BACKGROUND_FAILURE,
-      payload: errors,
-    });
+    dispatch({ type: CREATE_BACKGROUND_FAILURE, payload: errors });
     return;
   }
 };

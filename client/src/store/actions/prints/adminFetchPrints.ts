@@ -1,7 +1,8 @@
 import prints from "api/prints";
+import { Dispatch } from "redux";
 import { PrintActionTypes } from "../types";
 
-export const adminFetchPrints = () => async (dispatch: any) => {
+export const adminFetchPrints = () => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: PrintActionTypes.ADMIN_FETCH_PRINTS_REQUEST });
     const { data } = await prints.put(`/admin`);

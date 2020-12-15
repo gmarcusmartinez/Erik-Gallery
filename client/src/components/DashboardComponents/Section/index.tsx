@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import { toggleModal } from "store/actions/modal/toggleModal";
-import { IPrint, IZine } from "interfaces";
+import { IPrint, IZine, IBackground } from "interfaces";
 import BackgroundItem from "../ResourceItems/DashBG";
 import PrintItem from "../ResourceItems/DashPrint";
 import ZineItem from "../ResourceItems/DashZine";
@@ -10,7 +10,7 @@ interface IProps {
   resourceType: string;
   formName: string;
   headers: { text: string }[];
-  items: IPrint[] | IZine[];
+  items: IPrint[] | IZine[] | IBackground[];
   toggleModal: Function;
   gridTemplateColumns: string;
 }

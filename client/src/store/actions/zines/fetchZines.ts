@@ -1,7 +1,8 @@
 import zines from "api/zines";
+import { Dispatch } from "redux";
 import { ZineActionTypes } from "../types";
 
-export const fetchZines = (page: Number) => async (dispatch: any) => {
+export const fetchZines = (page: Number) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: ZineActionTypes.FETCH_ZINES_REQUEST });
     const { data } = await zines.get(`/?page=${page}`);
