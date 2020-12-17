@@ -11,7 +11,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    width: 100%;
+    width: 90vw;
     height: 30rem;
     margin-bottom: 2rem;
 
@@ -48,6 +48,7 @@
   line-height: 5rem;
   text-align: center;
   width: 5rem;
+  z-index: 2;
   &:active {
     background-color: rgba(0, 0, 0, 0.6);
   }
@@ -68,4 +69,15 @@
   100% {
     opacity: 1;
   }
+}
+
+.zine-pages {
+  display: none;
+}
+.selected-zine-page {
+  display: block;
+}
+
+.next-page {
+  transform: translateX(-100%);
 }

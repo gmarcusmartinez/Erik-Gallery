@@ -43,6 +43,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, login }) => {
             label="Email"
             type="text"
             name="email"
+            className="admin-input"
             value={email}
             onChange={handleChange}
             error={setError("email")}
@@ -51,6 +52,7 @@ const AdminLogin: React.FC<IProps> = ({ errors, login }) => {
             label="Password"
             type="password"
             name="password"
+            className="admin-input"
             value={password}
             onChange={handleChange}
             error={setError("password")}

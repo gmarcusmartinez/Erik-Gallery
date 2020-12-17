@@ -13,7 +13,12 @@ const PreviewZine: React.FC<IProps> = ({ data }) => {
   const zinePages = data.images.map((page: string, i: number) => {
     const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${page}`;
     return (
-      <img key={i} src={imageUrl} className="preview-zine__image" alt="page" />
+      <img
+        key={i}
+        src={imageUrl}
+        className={`preview-zine__image`}
+        alt="page"
+      />
     );
   });
   const next = () => {
@@ -34,7 +39,8 @@ const PreviewZine: React.FC<IProps> = ({ data }) => {
       <div className="previous-btn" onClick={previous}>
         &lsaquo;
       </div>
-      {zinePages[selectedPage]}
+      <div className="zine-pages">{zinePages}</div>
+      <div className="selected-zine-page">{zinePages[selectedPage]}</div>
     </div>
   );
 };

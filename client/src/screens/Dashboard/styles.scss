@@ -50,7 +50,7 @@
   }
 
   &__sidenav__link {
-    color: #000;
+    color: var(--color-dark-grey);
     cursor: pointer;
     text-align: center;
     font-size: 1.25rem;
@@ -58,8 +58,9 @@
     line-height: 8rem;
     letter-spacing: var(--letter-spacing-lg);
     text-transform: uppercase;
-    @include respond(tablet) {
-      font-size: 1.4rem;
+    &:active {
+      background-color: #000;
+      color: #fff;
     }
   }
 
@@ -70,6 +71,11 @@
     width: 100%;
     max-width: 120rem;
     transition: 0.25s ease-in-out;
+  }
+  .cross-icon {
+    height: 5rem;
+    width: 5rem;
+    cursor: pointer;
   }
 
   .sidenav-open {

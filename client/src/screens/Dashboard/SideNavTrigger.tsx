@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as CrossIcon } from "assets/cross.svg";
 
 interface IProps {
   cb: Function;
@@ -9,7 +10,7 @@ const SideNavTrigger: React.FC<IProps> = ({ cb, bool }) => {
 
   return (
     <div className={className} onClick={() => cb(bool)}>
-      &#10013;
+      <CrossIcon className="cross-icon" />
     </div>
   );
 };

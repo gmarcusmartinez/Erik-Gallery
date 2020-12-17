@@ -1,4 +1,4 @@
-.checkout {
+.cart {
   @include checkout-step-page;
   max-width: 55rem;
   &__details {
@@ -6,13 +6,10 @@
   }
   &__headers {
     display: grid;
-    grid-template-columns: 26% 26% 16% 16% 16%;
+    grid-template-columns: 20% 32% 16% 16% 16%;
 
     margin: var(--margin-md) 0;
     text-align: center;
-    :nth-child(2) {
-      text-align: start;
-    }
   }
   &__header {
     color: var(--color-grey);
@@ -33,8 +30,8 @@
     @include checkout-step-page-btn;
     max-width: 55rem;
     @include respond(tablet) {
-      margin-left: var(--margin-md);
-      width: calc(100% - 50px);
+      margin: 2rem auto;
+      width: calc(100% - 40px);
     }
   }
 }

@@ -35,7 +35,6 @@ const Dashboard: FC<IProps> = (props) => {
   const handleClick = (resource: string) => {
     setSideNavOpen(false);
     setResourceType(resource);
-
     switch (resource) {
       case "prints":
         return props.adminFetchPrints();

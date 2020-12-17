@@ -1,11 +1,10 @@
 .checkout-item {
   display: grid;
-  grid-template-columns: 26% 26% 16% 16% 16%;
-  align-items: center;
+  grid-template-columns: 20% 32% 16% 16% 16%;
   color: var(--color-grey);
   font-size: 1.2rem;
   height: 14vh;
-  letter-spacing: var(--letter-spacing-sm);
+  letter-spacing: var(--letter-spacing-md);
   text-align: center;
   margin: 0.75rem 0;
 
@@ -18,15 +17,19 @@
     width: 100%;
   }
   &__desc {
-    text-align: start;
+    margin-top: 1.6rem;
+    font-size: 1.25rem;
+    text-align: center;
   }
   &__text {
+    margin-top: 1.6rem;
     font-size: 1.2rem;
   }
   &__delete {
     color: red;
     cursor: pointer;
     font-size: 3rem;
+    align-items: start;
   }
   &__border {
     @include hr-border;

@@ -12,23 +12,18 @@ const CheckoutItem: React.FC<IProps> = ({ item, clearItemFromCart }) => {
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
 
   return (
-    <>
-      <div className="checkout-item">
-        <div className="checkout-item__img" style={{ backgroundImage }}></div>
-        <span className="checkout-item__desc">
-          {title ? title : description}
-        </span>
-        <span className="checkout-item__text">{quantity}</span>
-        <span className="checkout-item__text">{price}&#8364;</span>
-        <div
-          className="checkout-item__delete"
-          onClick={() => clearItemFromCart(item)}
-        >
-          &times;
-        </div>
+    <div className="checkout-item">
+      <div className="checkout-item__img" style={{ backgroundImage }}></div>
+      <span className="checkout-item__desc">{title ? title : description}</span>
+      <span className="checkout-item__text">{quantity}</span>
+      <span className="checkout-item__text">{price}&#8364;</span>
+      <div
+        className="checkout-item__delete"
+        onClick={() => clearItemFromCart(item)}
+      >
+        &times;
       </div>
-      <hr className="checkout-item__border"></hr>
-    </>
+    </div>
   );
 };
 

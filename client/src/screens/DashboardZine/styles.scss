@@ -42,17 +42,7 @@
   text-align: center;
   text-transform: uppercase;
 }
-.add-page-btn {
-  background-color: #000;
-  height: 4rem;
-  line-height: 4rem;
-  margin: 0.5rem auto;
-  max-width: 49rem;
-  width: 100%;
-  @include respond(tablet) {
-    margin: 0.25rem;
-  }
-}
+
 .delete-page-btn {
   background-color: rgba(0, 0, 0, 0.5);
   height: 3rem;

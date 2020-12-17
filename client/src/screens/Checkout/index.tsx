@@ -11,11 +11,11 @@ interface IProps {
   total: number;
 }
 
-const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
+const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
   const headers = ["Item", "Description", "Qty", "Price", "Remove"];
 
   const renderHeaders = headers.map((h, i) => (
-    <div key={i} className="checkout__header">
+    <div key={i} className="cart__header">
       {h}
     </div>
   ));
@@ -25,18 +25,17 @@ const Checkout: React.FC<IProps> = ({ cartItems, total }) => {
   const handleClick = () => history.push("/shipping");
   const renderProceedToCheckoutBtn = (bool: boolean) =>
     bool ? (
-      <div className="checkout__btn" onClick={handleClick}>
+      <div className="cart__btn" onClick={handleClick}>
         Proceed to Checkout
       </div>
     ) : null;
 
   return (
-    <div className="checkout">
-      <div className="checkout-details">
-        <div className="checkout__headers">{renderHeaders}</div>
-        <hr className="checkout-item__border"></hr>
+    <div className="cart">
+      <div className="cart-details">
+        <div className="cart__headers">{renderHeaders}</div>
         {list}
-        <div className="checkout__total">
+        <div className="cart__total">
           <span>total: {total}&#8364;</span>
         </div>
         {renderProceedToCheckoutBtn(!!cartItems.length)}
@@ -48,4 +47,4 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
   total: selectCartTotal,
 });
-export default connect(mapStateToProps, {})(Checkout);
+export default connect(mapStateToProps, {})(CartScreen);

@@ -4,6 +4,7 @@ import { IError } from "../../../interfaces";
 interface IProps {
   label: string;
   name: string;
+  className?: string;
   value: string;
   type?: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -11,31 +12,25 @@ interface IProps {
   required?: boolean;
 }
 
-const CustomInput: React.FC<IProps> = ({
-  label,
-  name,
-  value,
-  type,
-  onChange,
-  error,
-  required,
-}) => {
+const CustomInput: React.FC<IProps> = (props) => {
+  const { required, className } = props;
   const isRequired = required ? <span className="is-required">*</span> : null;
+  const inputClassName = className ? className : "text-input";
 
   return (
-    <div className="text-input">
+    <div className={inputClassName}>
       <input
-        type={type ? type : "text"}
-        name={name}
-        value={value}
-        onChange={onChange}
+        type={props.type ? props.type : "text"}
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
       />
       <label className="text-input__label">
-        {label}
+        {props.label}
         {isRequired}
       </label>
 
-      {error && <div className="input-error">{error.message}</div>}
+      {props.error && <div className="input-error">{props.error.message}</div>}
     </div>
   );
 };

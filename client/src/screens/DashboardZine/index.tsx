@@ -36,8 +36,8 @@ const DashboardZine: React.FC<IProps> = (props) => {
   return (
     <div className="dashboard-zine">
       <div className="dashboard-zine__pages">{list}</div>
-      <div className="add-page-btn" onClick={toggleAddImage}>
-        Add Page
+      <div className="add-resource-btn" onClick={toggleAddImage}>
+        <span>&#43;</span>
       </div>
     </div>
   );

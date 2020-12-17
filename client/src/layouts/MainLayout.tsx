@@ -14,7 +14,7 @@ const MainLayout: React.FC<IProps> = (props) => {
 
   React.useEffect(() => {
     fetchBackgrounds();
-  }, []);
+  }, [fetchBackgrounds]);
 
   let backgroundImage;
   if (activeBackground)

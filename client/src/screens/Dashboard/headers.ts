@@ -29,7 +29,7 @@ export const zineHeaders = [
 ];
 
 export const fetchResourceLinks = [
-  { text: "Prints", value: "prints" },
-  { text: "Backgrounds", value: "backgrounds" },
-  { text: "Zines", value: "zines" },
+  { text: "Manage Prints", value: "prints" },
+  { text: "Manage Backgrounds", value: "backgrounds" },
+  { text: "Manage Zines", value: "zines" },
 ];
