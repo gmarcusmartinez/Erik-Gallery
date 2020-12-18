@@ -23,7 +23,6 @@ const PrintForm: React.FC<IProps> = (props) => {
   const defaultFormState =
     props.formTitle === "Edit" ? props.selectedItem : blankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
-
   const [imageData, setImageData] = React.useState(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>

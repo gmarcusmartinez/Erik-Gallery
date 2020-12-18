@@ -32,7 +32,7 @@ export const backgrounds = (state = initialState, action: AnyAction) => {
 
     case BackgroundActionTypes.DELETE_BACKGROUND_SUCCESS:
       const newItems = state.items.filter(({ _id }) => _id !== payload);
-      return { ...state, items: newItems };
+      return { ...state, items: newItems, loading: false };
 
     case BackgroundActionTypes.CREATE_BACKGROUND_FAILURE:
     case BackgroundActionTypes.FETCH_BACKGROUNDS_FAILURE:

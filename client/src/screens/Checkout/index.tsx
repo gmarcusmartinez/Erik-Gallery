@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
-  const headers = ["Item", "Description", "Qty", "Price", "Remove"];
+  const headers = ["Item", "Description", "Qty", "€", ""];
 
   const renderHeaders = headers.map((h, i) => (
     <div key={i} className="cart__header">
@@ -32,9 +32,9 @@ const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
 
   return (
     <div className="cart">
-      <div className="cart-details">
+      <div className="cart__details">
         <div className="cart__headers">{renderHeaders}</div>
-        {list}
+        <div className="cart__list">{list}</div>
         <div className="cart__total">
           <span>total: {total}&#8364;</span>
         </div>

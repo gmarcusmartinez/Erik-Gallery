@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { blankFormState, textInputs } from "./text-inputs";
-import { Text, File } from "components/CustomInputs";
+import { Text, File, Checkbox } from "components/CustomInputs";
 import { IError } from "interfaces";
 import { errors, loading, selectedItem } from "store/selectors/zines";
 import { createZine, updateZine } from "store/actions/zines";
@@ -30,6 +30,9 @@ const ZineForm: React.FC<IProps> = (props) => {
   const handleFileChange = (e: React.ChangeEvent<any>) =>
     setImageData(e.target.files[0]);
 
+  const handleCheck = (bool: boolean) =>
+    setFormData({ ...formData, isPublished: !bool });
+
   const handleRequest = (type: string) =>
     type === "Edit"
       ? props.updateZine(formData, props.selectedItem._id, imageData)
@@ -55,6 +58,7 @@ const ZineForm: React.FC<IProps> = (props) => {
           error={setError(t.errorField)}
         />
       ))}
+      <Checkbox isPublished={formData.isPublished} handleCheck={handleCheck} />
       <File
         onChange={handleFileChange}
         error={setError("image")}

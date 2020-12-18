@@ -42,6 +42,7 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
         <p className="print-detail__text">
           {price}&euro;{vatIncludeded}
         </p>
+        <p className="print-detail__text">{item.size ? item.size : null}</p>
         <Select
           label="Select Quantity"
           name="qty"

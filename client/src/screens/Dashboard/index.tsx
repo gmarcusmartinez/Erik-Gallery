@@ -48,7 +48,7 @@ const Dashboard: FC<IProps> = (props) => {
   return (
     <div className="dashboard">
       <div className="dashboard__header">
-        <h2 className="dashboard__title">Admin Dashboard</h2>
+        <span className="dashboard__title">Admin Dashboard</span>
         <SideNavTrigger cb={setSideNavOpen} bool={!sidenavOpen} />
       </div>
       <div className={`dashboard__sidenav ${sidenavClass}`}>

@@ -27,14 +27,22 @@ const ZineItem: React.FC<IProps> = (props) => {
 
   return (
     <div className="zine-item">
-      <div className="zine-item__img" style={{ backgroundImage }}></div>
-      <p className="zine-item__description">{title}</p>
-      <p className="zine-item__size">{price} &euro;</p>
+      <div className="zine-item__img" style={{ backgroundImage }}>
+        <div className="zine-preview-btn__tablet" onClick={togglePreview}>
+          Preview
+        </div>
+        <ViewProductBtn
+          breakpoint="btn-tablet"
+          quantityInStock={quantityInStock}
+          toggleViewPrint={toggleViewZine}
+        />
+      </div>
+      <p className="zine-item__title">{title}</p>
+      <p className="zine-item__price">{price} &euro;</p>
       <div className="zine-preview-btn" onClick={togglePreview}>
         Preview
       </div>
       <ViewProductBtn
-        customStyle={{ display: "unset", margin: "0.25 auto" }}
         quantityInStock={quantityInStock}
         toggleViewPrint={toggleViewZine}
       />

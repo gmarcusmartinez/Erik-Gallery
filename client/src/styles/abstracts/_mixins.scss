@@ -107,15 +107,17 @@
   text-align: start;
   text-transform: uppercase;
 }
+
 @mixin checkout-step-page-btn {
   background-color: #000;
   border: 0.1rem solid var(--color-dark-grey);
+  border-radius: 0.2rem;
   color: #fff;
   font-family: "Open Sans Condensed";
   font-size: 1.4rem;
-  height: 4rem;
+  height: 5rem;
   letter-spacing: var(--letter-spacing-md);
-  line-height: 4rem;
+  line-height: 5rem;
   margin-top: 2rem;
   outline: none;
   text-align: center;

@@ -29,7 +29,6 @@ const CustomInput: React.FC<IProps> = (props) => {
         {props.label}
         {isRequired}
       </label>
-
       {props.error && <div className="input-error">{props.error.message}</div>}
     </div>
   );

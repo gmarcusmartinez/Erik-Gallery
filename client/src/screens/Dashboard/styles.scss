@@ -11,7 +11,6 @@
     display: flex;
     height: 5rem;
     width: 100%;
-    position: relative;
   }
   &__title {
     color: var(--color-dark-grey);
@@ -19,8 +18,10 @@
     font-weight: 300;
     letter-spacing: var(--letter-spacing-lg);
     text-transform: uppercase;
+    text-align: center;
     align-self: center;
-    margin: auto;
+    width: 90%;
+    margin-left: calc(60px + 2.5%);
   }
   &__sidenav {
     position: absolute;
@@ -35,10 +36,8 @@
   }
 
   &__sidenav__trigger {
-    position: absolute;
-    right: 5%;
+    margin-right: 2.5%;
     color: #000;
-    font-size: 3.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,8 +72,8 @@
     transition: 0.25s ease-in-out;
   }
   .cross-icon {
-    height: 5rem;
-    width: 5rem;
+    height: 4rem;
+    width: 6rem;
     cursor: pointer;
   }
 

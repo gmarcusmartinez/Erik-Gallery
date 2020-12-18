@@ -4,13 +4,14 @@
   width: 100vw;
 
   position: fixed;
-  top: 10vh;
+  top: 0;
   left: 0;
 
   display: flex;
   justify-content: center;
-
+  z-index: 3;
   &__body {
+    margin-top: 10vh;
     width: 90vw;
   }
 
@@ -34,8 +35,8 @@
   &__close-btn {
     cursor: pointer;
     position: absolute;
-    right: 4%;
-    top: 1rem;
+    right: 2.5%;
+    top: 5%;
     z-index: 2;
 
     animation: fadein 1s;
