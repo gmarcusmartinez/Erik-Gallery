@@ -12,13 +12,6 @@ interface IProps {
 }
 
 const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
-  const headers = ["Item", "Description", "Qty", "€", ""];
-
-  const renderHeaders = headers.map((h, i) => (
-    <div key={i} className="cart__header">
-      {h}
-    </div>
-  ));
   const list = cartItems.map((c, i) => <CheckoutItem item={c} key={i} />);
 
   const history = useHistory();
@@ -32,8 +25,10 @@ const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
 
   return (
     <div className="cart">
+      <div className="cart__title">Cart</div>
+      <hr className="dash-item__border" style={{ display: "block" }}></hr>
+
       <div className="cart__details">
-        <div className="cart__headers">{renderHeaders}</div>
         <div className="cart__list">{list}</div>
         <div className="cart__total">
           <span>total: {total}&#8364;</span>
