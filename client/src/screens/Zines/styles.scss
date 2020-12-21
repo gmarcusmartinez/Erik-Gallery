@@ -1,19 +1,23 @@
 .zines-screen {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-self: center;
   height: 100%;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
 }
 
 .zines-container {
-  margin-top: 2vh;
-  width: 100%;
+  justify-content: center;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 140rem;
+
   @include respond(tablet) {
-    max-width: 57rem;
+    flex-direction: unset;
+    flex-wrap: wrap;
   }
   @include respond(desktop) {
-    max-width: 110rem;
   }
 }

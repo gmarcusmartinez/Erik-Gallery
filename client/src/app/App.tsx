@@ -56,6 +56,7 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
             currentUser={currentUser}
             component={screens.DashboardZine}
           />
+          <Route component={screens.NotFoundScreen} />
         </Switch>
       </div>
       <Modal />

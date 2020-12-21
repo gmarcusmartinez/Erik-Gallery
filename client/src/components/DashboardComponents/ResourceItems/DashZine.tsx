@@ -20,9 +20,10 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
     toggleModal(true, formType, zineToUpdate);
   };
 
-  const { price, netPrice, vatPrice, quantityInStock } = zine;
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${zine.mainImage})`;
   const gridTemplateColumns = "10% 32% 8% 8% 8% 8% 8% 6% 6% 6%";
+  const { price, netPrice, vatPrice, quantityInStock } = zine;
+  const pubClassName = `isPub ${zine.isPublished ? "pub-true" : "pub-false"}`;
 
   const history = useHistory();
   const handleRedirect = () => history.push(`/dashboard/zine/${zine._id}`);
@@ -32,6 +33,7 @@ const ZineItem: React.FC<IProps> = ({ zine, toggleModal, fetchZine }) => {
     <>
       <div className="dash-item" style={{ gridTemplateColumns }}>
         <div className="dash-item__img" style={{ backgroundImage }}>
+          <div className={pubClassName}></div>
           <div className="mobile-dash__btns">
             <div className="mobile-dash__btn" onClick={handleRedirect}>
               Images

@@ -13,7 +13,11 @@ const Logout: React.FC<IProps> = ({ logout }) => {
   }, [logout]);
   return (
     <MainLayout>
-      <div className="logout-screen">Signing you out bb</div>
+      <div className="logout-screen">
+        <div className="logout-screen__info">
+          <p>Signing you out bb</p>
+        </div>
+      </div>
     </MainLayout>
   );
 };

@@ -25,7 +25,7 @@ const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
 
   return (
     <div className="cart">
-      <div className="cart__title">Cart</div>
+      <div className="cart__title">Shopping Cart</div>
       <hr className="dash-item__border" style={{ display: "block" }}></hr>
 
       <div className="cart__details">

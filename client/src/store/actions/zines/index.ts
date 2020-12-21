@@ -1,3 +1,4 @@
+export { adminFetchZines } from "./adminFetchZines";
 export { addZineImage } from "./addZineImage";
 export { createZine } from "./createZine";
 export { deleteZinePage } from "./deleteZinePage";

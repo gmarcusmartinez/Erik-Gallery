@@ -17,6 +17,10 @@ router
 router.route("/:id").get(zineControllers.getZine);
 
 router
+  .route("/admin")
+  .put(currentUser, requireAuth, isAdmin, zineControllers.adminGetZines);
+
+router
   .route("/")
   .post(
     currentUser,

@@ -34,16 +34,23 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
   );
 
   return (
-    <div className="print-detail">
-      <div className="print-detail__img" style={{ backgroundImage }}></div>
-      <div className="print-detail__info">
-        {description && <p className="print-detail__text">{description}</p>}
-        {title && <p className="print-detail__text">{title}</p>}
-        <p className="print-detail__text">
+    <div className="item-detail">
+      <div className="item-detail__img" style={{ backgroundImage }}></div>
+      <div className="item-detail__info">
+        {description && <p className="item-detail__text">{description}</p>}
+        {title && <p className="item-detail__text">{title}</p>}
+        <p className="item-detail__text">
           {price}&euro;{vatIncludeded}
         </p>
-        <p className="print-detail__text">{item.size ? item.size : null}</p>
-        <Select
+        <p className="item-detail__text">{item.size ? item.size : null}</p>
+        <p className="item-detail__placeholder">
+          If intrested in purchasing email:
+          <a href="mailto: erik.felfalusi@gmail.com<">
+            erik.felfalusi@gmail.com
+          </a>
+        </p>
+
+        {/* <Select
           label="Select Quantity"
           name="qty"
           value={qty}
@@ -51,11 +58,11 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
           options={options}
         />
         <div
-          className="print-detail__btn"
+          className="item-detail__btn"
           onClick={() => handleAddToCart(item, qty)}
         >
           Add to Cart
-        </div>
+        </div> */}
       </div>
     </div>
   );

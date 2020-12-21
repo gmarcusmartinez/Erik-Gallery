@@ -36,6 +36,9 @@ router
     .get(advanced_results_1.advancedResults(Product_1.Product, Product_1.ProductType.Zine), zineControllers.getZines);
 router.route("/:id").get(zineControllers.getZine);
 router
+    .route("/admin")
+    .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, zineControllers.adminGetZines);
+router
     .route("/")
     .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, zine_1.createZineValidation, validate_request_1.validateRequest, zineControllers.createZine);
 router

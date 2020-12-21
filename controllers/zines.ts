@@ -7,6 +7,11 @@ export const getZines = asyncHandler(async (req: Request, res: any) => {
   res.status(200).json(res.advancedResults);
 });
 
+export const adminGetZines = asyncHandler(async (req: Request, res: any) => {
+  const zines = await Product.find({ type: ProductType.Zine });
+  res.send(zines);
+});
+
 export const getZine = asyncHandler(async (req: Request, res: any) => {
   const zine = await Product.findById(req.params.id);
   if (!zine) throw new BadRequestError("Zine not found.");

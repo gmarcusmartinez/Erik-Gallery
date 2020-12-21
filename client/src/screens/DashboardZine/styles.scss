@@ -17,6 +17,7 @@
 
   &__page {
     position: relative;
+    max-height: 25rem;
     margin: 0.5%;
     width: 49%;
     @include respond(desktop) {

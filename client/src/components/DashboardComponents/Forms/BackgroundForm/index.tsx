@@ -35,7 +35,7 @@ const BackgroundForm: React.FC<IProps> = ({
   if (loading) return <Spinner message="Uploading Background BB" />;
   return (
     <form className="image-form" onSubmit={handleSubmit}>
-      <h3 className="image-form__title">Add Background Iamge</h3>
+      <h3 className="image-form__title">Add Background Image</h3>
       <File
         onChange={handleFileChange}
         error={setError("image")}

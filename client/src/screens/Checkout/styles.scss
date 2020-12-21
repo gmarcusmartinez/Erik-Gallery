@@ -2,10 +2,10 @@
   @include checkout-step-page;
   max-width: 55rem;
   &__title {
-    color: var(--color-grey);
+    color: var(--color-medium-grey);
     font-size: 1.4rem;
     letter-spacing: var(--letter-spacing-lg);
-    text-align: center;
+    text-align: start;
     text-transform: uppercase;
   }
   &__details {

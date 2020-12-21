@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { connect } from "react-redux";
 import { adminFetchPrints } from "store/actions/prints/adminFetchPrints";
+import { adminFetchZines } from "store/actions/zines";
 import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
-import { fetchZines } from "store/actions/zines/fetchZines";
 import * as headers from "./headers";
 import Section from "components/DashboardComponents/Section";
 import { IBackground, IPrint, IZine } from "interfaces";
@@ -13,7 +13,7 @@ interface IProps {
   prints: IPrint[];
   fetchBackgrounds: Function;
   backgrounds: IBackground[];
-  fetchZines: Function;
+  adminFetchZines: Function;
   zines: IZine[];
 }
 const Dashboard: FC<IProps> = (props) => {
@@ -21,7 +21,6 @@ const Dashboard: FC<IProps> = (props) => {
   const [resourceType, setResourceType] = React.useState("");
 
   const sidenavClass = sidenavOpen ? "sidenav-open" : "sidenav-closed";
-
   const sidenavLinks = headers.fetchResourceLinks.map((l, i) => (
     <div
       key={i}
@@ -41,7 +40,7 @@ const Dashboard: FC<IProps> = (props) => {
       case "backgrounds":
         return props.fetchBackgrounds();
       case "zines":
-        return props.fetchZines();
+        return props.adminFetchZines();
     }
   };
 
@@ -96,5 +95,5 @@ const mapStateToProps = (state: any) => ({
 export default connect(mapStateToProps, {
   adminFetchPrints,
   fetchBackgrounds,
-  fetchZines,
+  adminFetchZines,
 })(Dashboard);

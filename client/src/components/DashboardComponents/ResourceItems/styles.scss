@@ -70,7 +70,7 @@
   border: 0.1rem solid var(--color-grey);
   border-radius: 50%;
   &.pub-true {
-    background-color: rgba(32, 148, 243, 0.6);
+    background-color: hsla(103, 60%, 63%, 0.8);
   }
   &.pub-false {
     background-color: rgba(204, 204, 204, 0.9);

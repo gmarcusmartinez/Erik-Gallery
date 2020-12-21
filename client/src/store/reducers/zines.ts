@@ -47,6 +47,9 @@ export const zines = (state = initialState, action: AnyAction) => {
       const newItems = state.items.filter(({ _id }) => _id !== payload);
       return { ...state, items: newItems };
 
+    case ZineActionTypes.ADMIN_FETCH_ZINES_SUCCESS:
+      return { ...state, items: payload };
+
     case ZineActionTypes.CREATE_ZINE_FAILURE:
     case ZineActionTypes.UPDATE_ZINE_FAILURE:
     case ZineActionTypes.ADD_ZINE_IMG_FAILURE:
