@@ -40,6 +40,8 @@ export interface IProduct {
   vatPrice: number;
 }
 export interface IOrder {
+  id: string;
+
   orderItems: any[];
   shippingAddress: IShippingAddress;
 

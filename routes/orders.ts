@@ -10,8 +10,11 @@ const router = Router();
 router
   .route("/")
   .post(createOrderValidation, validateRequest, orders.createOrder);
-router.route("/:id/pay").put(orders.updateOrderToPaid);
+router
+  .route("/:id")
+  .put(createOrderValidation, validateRequest, orders.updateOrder);
 
+router.route("/:id/pay").put(orders.updateOrderToPaid);
 router.route("/").get(currentUser, requireAuth, isAdmin, orders.adminGetOrders);
 router.route("/:id").get(currentUser, requireAuth, isAdmin, orders.getOrder);
 

@@ -6,8 +6,7 @@ import { Product, ProductSubDoc } from "../models/Product";
 
 export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   const { orderItems } = req.body;
-  if (orderItems && orderItems.length <= 0)
-    throw new BadRequestError("No items in cart");
+  if (orderItems.length <= 0) throw new BadRequestError("No items in cart");
 
   const orderItemIds: string[] = [];
   orderItems.forEach((item: ProductSubDoc) => orderItemIds.push(item._id));
@@ -21,17 +20,30 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
   if (products.length !== orderItems.length)
     throw new BadRequestError(soldOutmsg);
 
-  // await products.forEach((product) => {
-  //   const qty = orderItems.find(
-  //     (o: ProductSubDoc) => o._id === product._id.toString()
-  //   ).quantity;
-
-  //   product.quantityInStock -= qty;
-  //   product.save();
-  // });
-
   const order = Order.build(req.body);
   await order.save();
+  res.send(order);
+});
+
+export const updateOrder = asyncHandler(async (req: Request, res: Response) => {
+  const { orderItems } = req.body;
+  if (orderItems.length <= 0) throw new BadRequestError("No items in cart");
+
+  const orderItemIds: string[] = [];
+  orderItems.forEach((item: ProductSubDoc) => orderItemIds.push(item._id));
+
+  const products = await Product.find({
+    _id: { $in: orderItemIds },
+    quantityInStock: { $gt: 0 },
+  });
+
+  const soldOutmsg = "One or more products in your cart has recently sold out.";
+  if (products.length !== orderItems.length)
+    throw new BadRequestError(soldOutmsg);
+
+  const order = await Order.findByIdAndUpdate(req.params.id, req.body);
+  if (!order) throw new BadRequestError("Order not found");
+  order.save();
   res.send(order);
 });
 
@@ -65,3 +77,12 @@ export const updateOrderToPaid = asyncHandler(
     res.send(order);
   }
 );
+
+// await products.forEach((product) => {
+//   const qty = orderItems.find(
+//     (o: ProductSubDoc) => o._id === product._id.toString()
+//   ).quantity;
+
+//   product.quantityInStock -= qty;
+//   product.save();
+// });

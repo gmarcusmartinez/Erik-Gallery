@@ -40,6 +40,7 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
           <Route exact path="/prints/:page" component={screens.PrintsScreen} />
           <Route path="/review-order" component={screens.ReviewOrderScreen} />
           <Route path="/shipping" component={screens.ShippingScreen} />
+          <Route path="/soldout" component={screens.SoldoutScreen} />
           <Route path="/sound" component={screens.SoundScreen} />
           <Route exact path="/zines" component={screens.ZinesScreen} />
           <Route exact path="/zines/:page" component={screens.ZinesScreen} />
@@ -55,6 +56,12 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
             path="/dashboard/zine/:id"
             currentUser={currentUser}
             component={screens.DashboardZine}
+          />
+          <PRoute
+            exact
+            path="/dashboard/order/:id"
+            currentUser={currentUser}
+            component={screens.Order}
           />
           <Route component={screens.NotFoundScreen} />
         </Switch>

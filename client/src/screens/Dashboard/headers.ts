@@ -31,7 +31,7 @@ export const orderHeaders = [
   { text: "Name" },
   { text: "Date" },
   { text: "Paid" },
-  { text: "Delivred" },
+  { text: "Delivered" },
   { text: "Net" },
   { text: "Vat" },
   { text: "Total" },

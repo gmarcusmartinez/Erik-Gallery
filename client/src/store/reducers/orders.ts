@@ -3,6 +3,7 @@ import { OrdertActionTypes, AdminOrdertActionTypes } from "../actions/types";
 
 const initialState = {
   loading: false,
+  selectedItem: null,
   items: [],
   errors: null,
 };

@@ -30,21 +30,6 @@ export const updatePaymentMethod = (data: string) => ({
   payload: data,
 });
 
-const emptyCart = {
-  isOpen: false,
-  cartItems: [],
-  shippingAddress: {
-    email: "",
-    name: "",
-    address: "",
-    country: "",
-    city: "",
-    postalCode: "",
-  },
-  paymentMethod: "",
-};
-
 export const clearCart = () => ({
   type: CartActionTypes.CLEAR_CART,
-  payload: emptyCart,
 });

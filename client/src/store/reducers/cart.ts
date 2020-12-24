@@ -36,7 +36,7 @@ export const cart = (state = initialState, action: AnyAction) => {
       return { ...state, paymentMethod: payload };
 
     case CartActionTypes.CLEAR_CART:
-      return payload;
+      return { ...state, cartItems: [], isOpen: false };
 
     default:
       return state;

@@ -1,5 +1,6 @@
 import { IOrder } from "interfaces";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 interface IProps {
   order: IOrder;
@@ -16,12 +17,14 @@ const OrderItem: React.FC<IProps> = ({ order }) => {
   const del = isDelivered ? "is_delivered" : "not_delivered";
   const mobile = "order-item__mobile";
 
-  const handleClick = () => {};
+  const history = useHistory();
+  const handleRedirect = () => history.push(`/dashboard/order/${order.id}`);
+
   return (
     <div
       className="order-item"
       style={{ gridTemplateColumns }}
-      onClick={handleClick}
+      onClick={handleRedirect}
     >
       <div className={mobile}>{shippingAddress.name}</div>
       <div className={mobile}>{formatDate(order.createdAt)}</div>
