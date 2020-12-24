@@ -4,10 +4,8 @@ import { guestLinks, adminLinks } from "./helpers";
 
 const renderLinks = (bool: boolean, cb: Function, isAdmin: boolean | null) => {
   const direction = bool ? "slide-in" : "slide-out";
-  const className = `mobile-navigation__link ${direction}`;
-
-  let links = guestLinks;
-  if (isAdmin) links = [...guestLinks, ...adminLinks];
+  const className = `navigation__link ${direction}`;
+  const links = isAdmin ? [...guestLinks, ...adminLinks] : guestLinks;
 
   const handleClick = () => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });

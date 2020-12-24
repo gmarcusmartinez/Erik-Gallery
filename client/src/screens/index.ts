@@ -1,4 +1,4 @@
-export { default as AdminScreen } from "./Admin";
+export { default as LoginScreen } from "./Login";
 export { default as CheckoutScreen } from "./Checkout";
 export { default as ContactScreen } from "./Contact";
 export { default as Dashboard } from "./Dashboard";

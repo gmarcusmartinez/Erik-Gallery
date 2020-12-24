@@ -31,16 +31,16 @@ const App: FC<IProps> = ({ getCurrentUser, currentUser }) => {
       <div className="main-content">
         <Switch>
           <Route exact path="/" component={screens.LandingScreen} />
-          <Route path="/admin" component={screens.AdminScreen} />
           <Route path="/contact" component={screens.ContactScreen} />
           <Route path="/checkout" component={screens.CheckoutScreen} />
+          <Route path="/login" component={screens.LoginScreen} />
+          <Route path="/logout" component={screens.LogoutScreen} />
           <Route path="/payment/" component={screens.PaymentScreen} />
           <Route exact path="/prints/" component={screens.PrintsScreen} />
           <Route exact path="/prints/:page" component={screens.PrintsScreen} />
           <Route path="/review-order" component={screens.ReviewOrderScreen} />
           <Route path="/shipping" component={screens.ShippingScreen} />
           <Route path="/sound" component={screens.SoundScreen} />
-          <Route path="/signout" component={screens.LogoutScreen} />
           <Route exact path="/zines" component={screens.ZinesScreen} />
           <Route exact path="/zines/:page" component={screens.ZinesScreen} />
 

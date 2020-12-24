@@ -37,7 +37,7 @@ export const createOrder = asyncHandler(async (req: Request, res: Response) => {
 
 export const adminGetOrders = asyncHandler(
   async (req: Request, res: Response) => {
-    const orders = await Order.find();
+    const orders = await Order.find({});
     res.send(orders);
   }
 );

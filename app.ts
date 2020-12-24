@@ -20,19 +20,19 @@ import { paypalRouter } from "./routes/paypal";
 dotenv.config();
 
 const app = express();
-app.use(sslRedirect());
+// app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
 
 app.use("/api/auth", authRouter);
-app.use("/api/orders", orderRouter);
+app.use("/api/config", paypalRouter);
 app.use("/api/uploads", uploadRouter);
 
 app.use("/api/backgrounds", backgroundRouter);
+app.use("/api/orders", orderRouter);
 app.use("/api/prints", printRouter);
 app.use("/api/zines", zineRouter);
-app.use("/api/config", paypalRouter);
 
 const __dirname = path.resolve();
 

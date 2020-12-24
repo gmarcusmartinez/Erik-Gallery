@@ -2,18 +2,21 @@ import React, { FC } from "react";
 import { connect } from "react-redux";
 import { adminFetchPrints } from "store/actions/prints/adminFetchPrints";
 import { adminFetchZines } from "store/actions/zines";
+import { adminFetchOrders } from "store/actions/orders";
 import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
 import * as headers from "./headers";
 import Section from "components/DashboardComponents/Section";
-import { IBackground, IPrint, IZine } from "interfaces";
+import { IBackground, IPrint, IZine, IOrder } from "interfaces";
 import SideNavTrigger from "./SideNavTrigger";
 
 interface IProps {
-  adminFetchPrints: Function;
-  prints: IPrint[];
   fetchBackgrounds: Function;
-  backgrounds: IBackground[];
+  adminFetchPrints: Function;
+  adminFetchOrders: Function;
   adminFetchZines: Function;
+  backgrounds: IBackground[];
+  prints: IPrint[];
+  orders: IOrder[];
   zines: IZine[];
 }
 const Dashboard: FC<IProps> = (props) => {
@@ -41,6 +44,8 @@ const Dashboard: FC<IProps> = (props) => {
         return props.fetchBackgrounds();
       case "zines":
         return props.adminFetchZines();
+      case "orders":
+        return props.adminFetchOrders();
     }
   };
 
@@ -69,7 +74,7 @@ const Dashboard: FC<IProps> = (props) => {
             formName="ADD_BG"
             headers={headers.backgroundHeaders}
             items={props.backgrounds}
-            gridTemplateColumns="15% 15% 15%"
+            gridTemplateColumns="10% 12% 12%"
           />
         )}
         {resourceType === "zines" && (
@@ -81,19 +86,29 @@ const Dashboard: FC<IProps> = (props) => {
             gridTemplateColumns="10% 32% 8% 8% 8% 8% 8%"
           />
         )}
+        {resourceType === "orders" && (
+          <Section
+            resourceType="orders"
+            headers={headers.orderHeaders}
+            items={props.orders}
+            gridTemplateColumns="22% 18% 12% 12% 12% 12% 12%"
+          />
+        )}
       </div>
     </div>
   );
 };
 
 const mapStateToProps = (state: any) => ({
-  prints: state.prints.items,
   backgrounds: state.backgrounds.items,
+  orders: state.orders.items,
+  prints: state.prints.items,
   zines: state.zines.items,
 });
 
 export default connect(mapStateToProps, {
-  adminFetchPrints,
   fetchBackgrounds,
+  adminFetchPrints,
+  adminFetchOrders,
   adminFetchZines,
 })(Dashboard);

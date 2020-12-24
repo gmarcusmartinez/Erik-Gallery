@@ -55,7 +55,7 @@
   transform: rotate(45deg) translate(-6px, -8px);
 }
 
-.mobile-navigation {
+.navigation {
   height: 90vh;
   width: 100%;
 
@@ -66,15 +66,13 @@
   z-index: 2;
 
   display: grid;
-  grid-template-rows: repeat(3, 20vh) 30vh;
-
+  grid-template-rows: repeat(4, 20vh);
   &.admin-layout {
     grid-template-rows: repeat(6, 13vh) 12vh;
     a {
       line-height: 12vh;
     }
   }
-
   &.open {
     transition: all 0.4s;
     transform: translateX(0);
@@ -104,14 +102,18 @@
       text-align: center;
       text-decoration: none;
     }
-    &:last-of-type {
-      padding-bottom: 20rem;
+    &:active {
+      background-color: #000;
+      a {
+        color: #fff;
+      }
     }
   }
+  &__padding {
+    background-color: var(--color-overlay-bg);
+  }
 }
-.mobile-padding {
-  background-color: var(--color-overlay-bg);
-}
+
 // Animations
 .slide-in-0 {
   animation: slide-in 0.4s linear 0.1s both;

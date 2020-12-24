@@ -35,8 +35,9 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   }, [path]);
 
   return (
-    <ul className={`mobile-navigation ${navOpen} ${adminLinks}`}>
+    <ul className={`navigation ${navOpen} ${adminLinks}`}>
       {renderLinks(isOpen, closeModalAndNav, isAdmin)}
+      <div className="navigation__padding"></div>
     </ul>
   );
 };

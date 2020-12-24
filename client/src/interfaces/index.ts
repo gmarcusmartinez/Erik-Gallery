@@ -23,6 +23,7 @@ export interface IShippingAddress {
   city: string;
   postalCode: string;
 }
+
 export interface IProduct {
   _id: string;
   mainImage: string;
@@ -37,6 +38,26 @@ export interface IProduct {
   price: number;
   netPrice: number;
   vatPrice: number;
+}
+export interface IOrder {
+  orderItems: any[];
+  shippingAddress: IShippingAddress;
+
+  paymentMethod: string;
+  vatPrice: number;
+  shippingPrice: number;
+  totalPrice: number;
+
+  isDelivered: boolean;
+  isPaid: boolean;
+  paidAt: Date;
+  paymentResult: {
+    id: string;
+    status: string;
+    update_time: string;
+    email_address: string;
+  };
+  createdAt: Date;
 }
 
 export interface IPrint extends IProduct {}

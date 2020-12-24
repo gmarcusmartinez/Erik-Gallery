@@ -5,22 +5,24 @@ import { setActive } from "store/actions/backgrounds";
 import { IBackground } from "interfaces";
 
 interface IProps {
-  background: IBackground;
+  bg: IBackground;
   toggleModal: Function;
   setActive: Function;
 }
 
 const BackgroundItem: React.FC<IProps> = (props) => {
-  const { background, toggleModal, setActive } = props;
-  const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", background);
-  const handleSetActive = () => setActive(background._id);
+  const { bg, toggleModal, setActive } = props;
+  const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", bg);
+  const handleSetActive = () => setActive(bg._id);
 
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${background.mainImage})`;
-  const gridTemplateColumns = "15% 15% 15%";
+  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${bg.mainImage})`;
+  const gridTemplateColumns = "10% 12% 13%";
+  const pubClassName = `isPub ${bg.active ? "pub-true" : "pub-false"}`;
 
   return (
     <div className="dash-item" style={{ gridTemplateColumns }}>
       <div className="dash-item__img" style={{ backgroundImage }}>
+        <div className={pubClassName}></div>
         <div className="mobile-dash__btns">
           <div className="mobile-dash__btn" onClick={handleSetActive}>
             Set Active

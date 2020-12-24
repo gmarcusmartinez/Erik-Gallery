@@ -43,14 +43,14 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
           {price}&euro;{vatIncludeded}
         </p>
         <p className="item-detail__text">{item.size ? item.size : null}</p>
-        <p className="item-detail__placeholder">
+        {/* <p className="item-detail__placeholder">
           If intrested in purchasing email:
           <a href="mailto: erik.felfalusi@gmail.com<">
             erik.felfalusi@gmail.com
           </a>
-        </p>
+        </p> */}
 
-        {/* <Select
+        <Select
           label="Select Quantity"
           name="qty"
           value={qty}
@@ -62,7 +62,7 @@ const ItemDetail: FC<IProps> = ({ item, addItemToCart }) => {
           onClick={() => handleAddToCart(item, qty)}
         >
           Add to Cart
-        </div> */}
+        </div>
       </div>
     </div>
   );

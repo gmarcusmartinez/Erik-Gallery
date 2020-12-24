@@ -36,10 +36,11 @@
 @import "../components/DashboardComponents/Forms/PrintForm/styles.scss";
 @import "../components/DashboardComponents/Forms/ZineForm/styles.scss";
 
+@import "../components/DashboardComponents/Buttons/styles.scss";
 @import "../components/DashboardComponents/ResourceDelete/styles.scss";
 @import "../components/DashboardComponents/ResourceItems/styles.scss";
+@import "../components/DashboardComponents/ResourceItems/order-item.scss";
 @import "../components/DashboardComponents/Section/styles.scss";
-@import "../components/DashboardComponents/Buttons/styles.scss";
 
 @import "../screens/Admin/styles.scss";
 @import "../screens/Checkout/styles.scss";

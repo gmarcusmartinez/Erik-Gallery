@@ -6,5 +6,5 @@ export const guestLinks = [
 ];
 export const adminLinks = [
   { to: "/dashboard", text: "dashboard" },
-  { to: "/signout", text: "signout" },
+  { to: "/logout", text: "logout" },
 ];

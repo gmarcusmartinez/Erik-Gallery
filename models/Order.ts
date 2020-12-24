@@ -33,7 +33,7 @@ export interface OrderDoc extends mongoose.Document {
     postalCode: number;
   };
   paymentMethod: string;
-  taxPrice: number;
+  vatPrice: number;
   shippingPrice: number;
   totalPrice: number;
 
