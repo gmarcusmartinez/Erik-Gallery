@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface IProps {
   isPublished: boolean;
@@ -6,14 +6,14 @@ interface IProps {
 }
 const Checkbox: React.FC<IProps> = ({ isPublished, handleCheck }) => {
   return (
-    <label className="custom-checkbox">
+    <label className='custom-checkbox'>
       Published
       <input
-        type="checkbox"
+        type='checkbox'
         checked={isPublished}
         onChange={() => handleCheck(isPublished)}
       />
-      <span className="checkmark"></span>
+      <span className='checkmark'></span>
     </label>
   );
 };

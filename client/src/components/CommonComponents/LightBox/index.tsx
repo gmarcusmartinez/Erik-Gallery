@@ -1,39 +1,27 @@
-import React, { FC } from "react";
-import ReactDOM from "react-dom";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectLightboxlIsOpen, selectImage } from "store/selectors/lightbox";
-import { toggleLightbox } from "store/actions/lightbox/toggleLightbox";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useActions } from 'hooks/use-actions';
 
-interface IProps {
-  displayLightbox: boolean;
-  toggleLightbox: Function;
-  image: string;
-}
-
-const Lightbox: FC<IProps> = ({ displayLightbox, toggleLightbox, image }) => {
-  const className = `lightbox ${displayLightbox ? "lb-open" : "lb-closed"}`;
+const Lightbox: React.FC = () => {
+  const { image, display } = useTypedSelector((state) => state.lightbox);
+  const { toggleLightbox } = useActions();
 
   return ReactDOM.createPortal(
-    <div className={className}>
-      {renderLighboxCloseBtn(displayLightbox, toggleLightbox)}
-      <div className="lightbox__image" style={{ backgroundImage: image }} />
+    <div className={`lightbox ${display ? 'lb-open' : 'lb-closed'}`}>
+      {renderCloseBtn(display, toggleLightbox)}
+      <div className='lightbox__image' style={{ backgroundImage: image }} />
     </div>,
-    document.querySelector("#lightbox")!
+    document.querySelector('#lightbox')!
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  displayLightbox: selectLightboxlIsOpen,
-  image: selectImage,
-});
+export default Lightbox;
 
-export default connect(mapStateToProps, { toggleLightbox })(Lightbox);
-
-const renderLighboxCloseBtn = (bool: boolean, cb: Function) => (
-  <div className="lightbox__close-btn" onClick={() => cb(false)}>
-    <div className={`lightbox__bar ${bool ? "cross" : ""}`}></div>
-    <div className={`lightbox__bar ${bool ? "cross" : ""}`}></div>
-    <div className={`lightbox__bar ${bool ? "cross" : ""}`}></div>
+const renderCloseBtn = (bool: boolean, cb: Function) => (
+  <div className='lightbox__close-btn' onClick={() => cb(false)}>
+    <div className={`lightbox__bar ${bool ? 'cross' : ''}`}></div>
+    <div className={`lightbox__bar ${bool ? 'cross' : ''}`}></div>
+    <div className={`lightbox__bar ${bool ? 'cross' : ''}`}></div>
   </div>
 );

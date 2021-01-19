@@ -1,26 +1,15 @@
-import { IZine } from "interfaces";
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { selectModalData } from "store/selectors/modal";
+import React from 'react';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import ZinePage from './ZinePage';
 
-interface IProps {
-  data: IZine;
-}
-const PreviewZine: React.FC<IProps> = ({ data }) => {
+const PreviewZine: React.FC = () => {
+  const { data } = useTypedSelector((state) => state.modal);
   const [selectedPage, setSelectedPage] = React.useState(0);
 
-  const zinePages = data.images.map((page: string, i: number) => {
-    const imageUrl = `https://erik-gallery.s3-us-west-1.amazonaws.com/${page}`;
-    return (
-      <img
-        key={i}
-        src={imageUrl}
-        className={`preview-zine__image`}
-        alt="page"
-      />
-    );
-  });
+  const zinePages = data.images.map((page: string, i: number) => (
+    <ZinePage page={page} i={i} />
+  ));
+
   const next = () => {
     if (selectedPage === zinePages.length - 1) setSelectedPage(0);
     else setSelectedPage(selectedPage + 1);
@@ -32,18 +21,17 @@ const PreviewZine: React.FC<IProps> = ({ data }) => {
   };
 
   return (
-    <div className="preview-zine">
-      <div className="next-btn" onClick={next}>
+    <div className='preview-zine'>
+      <div className='next-btn' onClick={next}>
         &rsaquo;
       </div>
-      <div className="previous-btn" onClick={previous}>
+      <div className='previous-btn' onClick={previous}>
         &lsaquo;
       </div>
-      <div className="zine-pages">{zinePages}</div>
-      <div className="selected-zine-page">{zinePages[selectedPage]}</div>
+      <div className='zine-pages'>{zinePages}</div>
+      <div className='selected-zine-page'>{zinePages[selectedPage]}</div>
     </div>
   );
 };
-const mapStateToProps = createStructuredSelector({ data: selectModalData });
 
-export default connect(mapStateToProps, {})(PreviewZine);
+export default PreviewZine;

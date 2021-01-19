@@ -1,46 +1,42 @@
-import React from "react";
-import { connect } from "react-redux";
-import { s3Url } from "api/url";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import { setActive } from "store/actions/backgrounds";
-import { IBackground } from "interfaces";
+import React from 'react';
+import { s3Url } from 'api/url';
+import { IBackground } from 'interfaces';
+import { useActions } from 'hooks/use-actions';
 
 interface IProps {
   bg: IBackground;
-  toggleModal: Function;
-  setActive: Function;
 }
 
-const BackgroundItem: React.FC<IProps> = (props) => {
-  const { bg, toggleModal, setActive } = props;
-  const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", bg);
+const BackgroundItem: React.FC<IProps> = ({ bg }) => {
+  const { setActive, toggleModal } = useActions();
+  const toggleDelete = () => toggleModal(true, 'DELETE_RESOURCE', bg);
   const handleSetActive = () => setActive(bg._id);
 
   const backgroundImage = `url(${s3Url}/${bg.mainImage})`;
-  const gridTemplateColumns = "10% 12% 13%";
-  const pubClassName = `isPub ${bg.active ? "pub-true" : "pub-false"}`;
+  const gridTemplateColumns = '10% 12% 13%';
+  const pubClassName = `isPub ${bg.active ? 'pub-true' : 'pub-false'}`;
 
   return (
-    <div className="dash-item" style={{ gridTemplateColumns }}>
-      <div className="dash-item__img" style={{ backgroundImage }}>
+    <div className='dash-item' style={{ gridTemplateColumns }}>
+      <div className='dash-item__img' style={{ backgroundImage }}>
         <div className={pubClassName}></div>
-        <div className="mobile-dash__btns">
-          <div className="mobile-dash__btn" onClick={handleSetActive}>
+        <div className='mobile-dash__btns'>
+          <div className='mobile-dash__btn' onClick={handleSetActive}>
             Set Active
           </div>
-          <div className="mobile-dash__btn" onClick={toggleDelete}>
+          <div className='mobile-dash__btn' onClick={toggleDelete}>
             Delete
           </div>
         </div>
       </div>
-      <div className="dash-btn" onClick={handleSetActive}>
+      <div className='dash-btn' onClick={handleSetActive}>
         Set Active
       </div>
-      <div className="dash-btn" onClick={toggleDelete}>
+      <div className='dash-btn' onClick={toggleDelete}>
         Delete
       </div>
     </div>
   );
 };
 
-export default connect(null, { toggleModal, setActive })(BackgroundItem);
+export default BackgroundItem;
