@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { s3Url } from "api/url";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { setActive } from "store/actions/backgrounds";
 import { IBackground } from "interfaces";
@@ -15,7 +16,7 @@ const BackgroundItem: React.FC<IProps> = (props) => {
   const toggleDelete = () => toggleModal(true, "DELETE_RESOURCE", bg);
   const handleSetActive = () => setActive(bg._id);
 
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${bg.mainImage})`;
+  const backgroundImage = `url(${s3Url}/${bg.mainImage})`;
   const gridTemplateColumns = "10% 12% 13%";
   const pubClassName = `isPub ${bg.active ? "pub-true" : "pub-false"}`;
 

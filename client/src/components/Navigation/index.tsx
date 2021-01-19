@@ -17,27 +17,22 @@ interface IProps {
   toggleNav: Function;
 }
 
-const Navigation: FC<IProps> = ({
-  cartIsEmpty,
-  isOpen,
-  cartOpen,
-  toggleNav,
-}) => {
+const Navigation: FC<IProps> = (props) => {
   const handleClick = () => {
     window.scroll({ top: 0, left: 0, behavior: "smooth" });
-    toggleNav(false);
+    props.toggleNav(false);
   };
 
   return (
     <>
       <div className="header">
-        <MenuBars bool={isOpen} cb={toggleNav} />
+        <MenuBars bool={props.isOpen} cb={props.toggleNav} />
         <Link to="/" className="header__title">
           <span onClick={handleClick}>Erik Felfalusi</span>
         </Link>
-        {!cartIsEmpty && <CartIcon />}
-        {cartOpen && <CartDropDown />}
-        {isOpen && <Links />}
+        {!props.cartIsEmpty && <CartIcon />}
+        {props.cartOpen && <CartDropDown />}
+        {props.isOpen && <Links />}
       </div>
     </>
   );

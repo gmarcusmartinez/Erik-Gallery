@@ -16,7 +16,6 @@ interface IProps {
 
 const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   let isAdmin = currentUser && currentUser.role === "admin" ? true : false;
-  const navOpen = `${isOpen ? "open" : "closed"}`;
   const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
 
   const closeModalAndNav = () => {
@@ -35,7 +34,7 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
   }, [path]);
 
   return (
-    <ul className={`navigation ${navOpen} ${adminLinks}`}>
+    <ul className={`navigation ${adminLinks}`}>
       {renderLinks(isOpen, closeModalAndNav, isAdmin)}
       <div className="navigation__padding"></div>
     </ul>

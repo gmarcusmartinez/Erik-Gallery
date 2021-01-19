@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { IZine } from "interfaces";
 import ViewProductBtn from "components/CommonComponents/ViewProductBtn";
 
+import { s3Url } from "api/url";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { toggleCart } from "store/actions/cart";
 
@@ -14,7 +15,7 @@ interface IProps {
 
 const ZineItem: React.FC<IProps> = (props) => {
   const { mainImage, quantityInStock, title, price } = props.item;
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
+  const backgroundImage = `url(${s3Url}/${mainImage})`;
 
   const toggleViewZine = () => {
     props.toggleCart(false);

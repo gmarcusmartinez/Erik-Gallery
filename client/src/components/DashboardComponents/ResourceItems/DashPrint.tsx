@@ -4,6 +4,7 @@ import { IPrint } from "interfaces";
 import { toggleModal } from "store/actions/modal/toggleModal";
 import { fetchPrint } from "store/actions/prints/fetchPrint";
 import { toTwoDecimals } from "utils";
+import { s3Url } from "api/url";
 
 interface IProps {
   print: IPrint;
@@ -19,7 +20,7 @@ const PrintItem: React.FC<IProps> = ({ print, toggleModal, fetchPrint }) => {
     toggleModal(true, "EDIT_PRINT", printToUpdate);
   };
 
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${print.mainImage})`;
+  const backgroundImage = `url(${s3Url}/${print.mainImage})`;
   const gridTemplateColumns = "10% 31% 15% 7% 7% 7% 7% 8% 8%";
   const { netPrice, vatPrice, price, isPublished } = print;
   const pubClassName = `isPub ${isPublished ? "pub-true" : "pub-false"}`;

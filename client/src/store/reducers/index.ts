@@ -1,21 +1,21 @@
-import { combineReducers } from "redux";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import { auth } from "./auth";
-import { backgrounds } from "./backgrounds";
-import { cart } from "./cart";
-import { lightbox } from "./lightbox";
-import { modal } from "./modal";
-import { nav } from "./nav";
-import { orders } from "./orders";
-import { prints } from "./prints";
-import { zines } from "./zines";
+import { auth } from './auth';
+import { backgrounds } from './backgrounds';
+import { cart } from './cart';
+import { lightbox } from './lightbox';
+import { modal } from './modal';
+import { nav } from './nav';
+import { orders } from './orders';
+import { prints } from './prints';
+import { zines } from './zines';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["cart"],
+  whitelist: ['cart'],
 };
 
 export const rootReducer = combineReducers({
@@ -30,4 +30,5 @@ export const rootReducer = combineReducers({
   zines,
 });
 
+export type RootState = ReturnType<typeof rootReducer>;
 export default persistReducer(persistConfig, rootReducer);

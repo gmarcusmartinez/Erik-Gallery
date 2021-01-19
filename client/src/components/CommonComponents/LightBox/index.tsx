@@ -10,13 +10,14 @@ interface IProps {
   toggleLightbox: Function;
   image: string;
 }
+
 const Lightbox: FC<IProps> = ({ displayLightbox, toggleLightbox, image }) => {
   const className = `lightbox ${displayLightbox ? "lb-open" : "lb-closed"}`;
 
   return ReactDOM.createPortal(
     <div className={className}>
       {renderLighboxCloseBtn(displayLightbox, toggleLightbox)}
-      <div className="lightbox__image" style={{ backgroundImage: image }}></div>
+      <div className="lightbox__image" style={{ backgroundImage: image }} />
     </div>,
     document.querySelector("#lightbox")!
   );

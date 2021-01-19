@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { guestLinks, adminLinks } from "./helpers";
 
 const renderLinks = (bool: boolean, cb: Function, isAdmin: boolean | null) => {
-  const direction = bool ? "slide-in" : "slide-out";
+  const direction = bool ? "slide-in" : "";
   const className = `navigation__link ${direction}`;
   const links = isAdmin ? [...guestLinks, ...adminLinks] : guestLinks;
 

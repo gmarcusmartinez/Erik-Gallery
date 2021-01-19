@@ -1,55 +1,46 @@
-import React, { FC } from "react";
-import ViewProductBtn from "components/CommonComponents/ViewProductBtn";
-import { connect } from "react-redux";
-import { IPrint } from "interfaces";
-
-import { toggleLightbox } from "store/actions/lightbox/toggleLightbox";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import { toggleCart } from "store/actions/cart";
+import React from 'react';
+import { IPrint } from 'interfaces';
+import { s3Url } from 'api/url';
+import { useActions } from 'hooks/use-actions';
+import ViewProductBtn from 'components/CommonComponents/ViewProductBtn';
 
 interface IProps {
   item: IPrint;
-  toggleLightbox: Function;
-  toggleModal: Function;
-  toggleCart: Function;
 }
 
-const PrintItem: FC<IProps> = (props) => {
-  const { mainImage, description, size, quantityInStock, price } = props.item;
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${mainImage})`;
+const PrintItem: React.FC<IProps> = ({ item }) => {
+  const { mainImage, description, size, quantityInStock, price } = item;
+  const backgroundImage = `url(${s3Url}/${mainImage})`;
 
-  const handleToggleLightbox = () =>
-    props.toggleLightbox(true, backgroundImage);
-
-  const toggleViewPrint = () => {
-    props.toggleCart(false);
-    props.toggleModal(true, "VIEW_ITEM", props.item);
+  const { toggleLightbox, toggleCart, toggleModal } = useActions();
+  const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
+  const handleToggleViewPrint = () => {
+    toggleCart(false);
+    toggleModal(true, 'VIEW_ITEM', item);
   };
 
   return (
-    <div className="print-item">
+    <div className='print-item'>
       <div
-        className="print-item__img"
+        className='print-item__img'
         style={{ backgroundImage }}
         onClick={handleToggleLightbox}
       >
         <ViewProductBtn
-          breakpoint="btn-tablet"
+          breakpoint='btn-tablet'
           quantityInStock={quantityInStock}
-          toggleViewPrint={toggleViewPrint}
+          toggleViewPrint={handleToggleViewPrint}
         />
       </div>
-      <p className="print-item__description">{description}</p>
-      <p className="print-item__size">{size}</p>
-      <p className="print-item__price">{price}&euro;</p>
+      <p className='print-item__description'>{description}</p>
+      <p className='print-item__size'>{size}</p>
+      <p className='print-item__price'>{price}&euro;</p>
       <ViewProductBtn
         quantityInStock={quantityInStock}
-        toggleViewPrint={toggleViewPrint}
+        toggleViewPrint={handleToggleViewPrint}
       />
     </div>
   );
 };
 
-export default connect(null, { toggleCart, toggleLightbox, toggleModal })(
-  PrintItem
-);
+export default PrintItem;
