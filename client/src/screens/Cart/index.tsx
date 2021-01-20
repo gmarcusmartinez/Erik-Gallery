@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import CheckoutItem from 'components/CheckoutComponents/CheckoutItem';
 import { calculateTotal } from 'utils';
+import CheckoutItem from 'components/CheckoutComponents/CheckoutItem';
 
 const CartScreen: React.FC = () => {
   const { cartItems } = useTypedSelector((state) => state.cart);

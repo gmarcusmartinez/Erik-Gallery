@@ -14,8 +14,7 @@ const App: React.FC = () => {
 
   React.useEffect(() => {
     getCurrentUser();
-    // eslint-disable-next-line
-  }, []);
+  }, [getCurrentUser]);
 
   const history = useHistory();
   useRouteMatch();

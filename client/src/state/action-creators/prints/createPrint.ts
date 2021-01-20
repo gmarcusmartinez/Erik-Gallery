@@ -3,9 +3,10 @@ import { IPrintForm } from 'interfaces/forms';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, PrintActionTypes } from 'state';
 
-export const createPrint = (formData: IPrintForm, imageData: any) => async (
-  dispatch: Dispatch
-) => {
+export const createPrint = (
+  formData: IPrintForm,
+  imageData: { type: string } | null
+) => async (dispatch: Dispatch) => {
   if (!imageData) {
     const errors = [{ message: 'Please select an image', field: 'image' }];
     dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });

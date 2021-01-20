@@ -1,9 +1,11 @@
 import axios from 'axios';
+import { Dispatch } from 'redux';
 import { ModalActionTypes, ZineActionTypes } from 'state';
 
-export const createZine = (formData: any, imageData: any) => async (
-  dispatch: any
-) => {
+export const createZine = (
+  formData: any,
+  imageData: { type: string } | null
+) => async (dispatch: Dispatch) => {
   if (!imageData) {
     const errors = [{ message: 'Please select an image', field: 'image' }];
     dispatch({ type: ZineActionTypes.CREATE_ZINE_FAILURE, payload: errors });

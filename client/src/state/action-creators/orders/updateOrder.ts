@@ -1,12 +1,13 @@
 import orders from 'api/order';
 import history from 'core/history';
+import { Dispatch } from 'redux';
 import { OrdertActionTypes } from 'state';
 import { CartActionTypes } from 'state';
 
 const { UPDATE_ORDER_FAILURE, UPDATE_ORDER_SUCCESS } = OrdertActionTypes;
 
 export const updateOrder = (id: string, formData: any) => async (
-  dispatch: any
+  dispatch: Dispatch
 ) => {
   const config = { headers: { 'Content-Type': 'application/json' } };
   try {

@@ -12,7 +12,7 @@ interface IProps {
 
 const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const { createPrint, updatePrint } = useActions();
-  const [imageData, setImageData] = React.useState(null);
+  const [imageData, setImageData] = React.useState<File | null>(null);
   const { errors, loading, selectedItem } = useTypedSelector(
     ({ prints }) => prints
   );
@@ -22,8 +22,8 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleFileChange = (e: React.ChangeEvent<any>) =>
-    setImageData(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    e.target.files ? setImageData(e.target.files[0]) : null;
 
   const handleCheck = (bool: boolean) =>
     setFormData({ ...formData, isPublished: !bool });

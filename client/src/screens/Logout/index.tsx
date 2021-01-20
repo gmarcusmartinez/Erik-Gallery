@@ -6,8 +6,7 @@ const Logout: React.FC = () => {
   const { logout } = useActions();
   React.useEffect(() => {
     logout();
-    // eslint-disable-next-line
-  }, []);
+  }, [logout]);
   return (
     <MainLayout>
       <div className='logout-screen'>

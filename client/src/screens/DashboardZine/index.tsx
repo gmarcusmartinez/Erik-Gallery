@@ -16,8 +16,7 @@ const DashboardZine: React.FC = () => {
 
   React.useEffect(() => {
     fetchZine(id);
-    // eslint-disable-next-line
-  }, [id]);
+  }, [id, fetchZine]);
 
   return (
     <div className='dashboard-zine'>

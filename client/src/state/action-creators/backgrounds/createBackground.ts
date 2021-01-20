@@ -4,7 +4,7 @@ import { ModalActionTypes, BackgroundActionTypes } from 'state';
 
 const { CREATE_BACKGROUND_FAILURE } = BackgroundActionTypes;
 
-export const createBackground = (imageData: any) => async (
+export const createBackground = (imageData: { type: string } | null) => async (
   dispatch: Dispatch
 ) => {
   if (!imageData) {

@@ -6,7 +6,7 @@ import { ModalActionTypes, PrintActionTypes } from 'state';
 export const updatePrint = (
   formData: IPrintForm,
   id: string,
-  imageData?: any
+  imageData: { type: string } | null
 ) => async (dispatch: Dispatch) => {
   try {
     const config = { headers: { 'Content-Type': 'application/json' } };

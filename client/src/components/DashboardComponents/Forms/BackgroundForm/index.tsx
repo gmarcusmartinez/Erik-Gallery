@@ -6,12 +6,12 @@ import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 
 const BackgroundForm: React.FC = () => {
-  const [imageData, setImageData] = React.useState(null);
-  const { loading, errors } = useTypedSelector((state) => state.backgrounds);
+  const [imageData, setImageData] = React.useState<File | null>(null);
   const { createBackground } = useActions();
+  const { loading, errors } = useTypedSelector((state) => state.backgrounds);
 
-  const handleFileChange = (e: React.ChangeEvent<any>) =>
-    setImageData(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    e.target.files ? setImageData(e.target.files[0]) : null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

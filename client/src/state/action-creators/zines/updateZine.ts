@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { Dispatch } from 'redux';
 import { ModalActionTypes, ZineActionTypes } from 'state';
 
 export const updateZine = (
   formData: any,
   id: string,
-  imageData?: any
-) => async (dispatch: any) => {
+  imageData: { type: string } | null
+) => async (dispatch: Dispatch) => {
   const config = { headers: { 'Content-Type': 'application/json' } };
 
   try {

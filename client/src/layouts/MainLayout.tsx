@@ -11,8 +11,7 @@ const MainLayout: React.FC = ({ children }) => {
 
   React.useEffect(() => {
     fetchBackgrounds();
-    // eslint-disable-next-line
-  }, []);
+  }, [fetchBackgrounds]);
 
   let backgroundImage;
   if (activeBackground)

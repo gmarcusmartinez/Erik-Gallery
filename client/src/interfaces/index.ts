@@ -3,11 +3,10 @@ export interface IAdmin {
   email: string;
   role: 'admin';
 }
-export interface IBackground {
+export interface IUser {
   _id: string;
-  active: boolean;
-  mainImage: string;
-  type: string;
+  email: string;
+  role: string;
 }
 
 export interface IError {
@@ -22,6 +21,13 @@ export interface IShippingAddress {
   country: string;
   city: string;
   postalCode: string;
+}
+
+export interface IBackground {
+  _id: string;
+  active: boolean;
+  mainImage: string;
+  type: string;
 }
 
 export interface IProduct {
@@ -42,7 +48,7 @@ export interface IProduct {
 export interface IOrder {
   id: string;
 
-  orderItems: any[];
+  orderItems: ICartItem[];
   shippingAddress: IShippingAddress;
 
   paymentMethod: string;

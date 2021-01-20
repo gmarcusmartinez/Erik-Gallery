@@ -6,14 +6,14 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import Spinner from 'components/CommonComponents/Spinner';
 
 const ImageForm: React.FC = () => {
-  const [imageData, setImageData] = React.useState(null);
+  const [imageData, setImageData] = React.useState<File | null>(null);
   const label = imageData ? 'Image Selected' : 'Choose an Image';
   const { addZineImage } = useActions();
   const { errors, loading, selectedItem } = useTypedSelector(
     ({ zines }) => zines
   );
-  const handleFileChange = (e: React.ChangeEvent<any>) =>
-    setImageData(e.target.files[0]);
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    e.target.files ? setImageData(e.target.files[0]) : null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

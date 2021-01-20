@@ -1,29 +1,24 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { PayPalButton } from 'react-paypal-button-v2';
-import addPayPalScript from 'utils/add-paypal-script';
-import CheckoutSteps from 'components/CheckoutComponents/CheckoutSteps';
-import * as RO from './components';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
-import { calculateVat } from 'utils/cart/calculate-vat';
-import { calculateTotal } from 'utils/cart/calculate-cart-total';
-import { calculateItemsTotal } from 'utils/cart/calculate-cart-items';
+import { useHistory } from 'react-router-dom';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import * as cartUtils from 'utils/cart';
+import * as RO from './components';
+import CheckoutSteps from 'components/CheckoutComponents/CheckoutSteps';
 
 const ReviewOrder: React.FC = () => {
-  const [sdkReady, setSdkReady] = React.useState(false);
   const { createOrder, updateOrder } = useActions();
   const { selectedItem } = useTypedSelector(({ orders }) => orders);
   const { cartItems, shippingAddress, paymentMethod } = useTypedSelector(
     ({ cart }) => cart
   );
-  const vatPrice = calculateVat(cartItems);
-  const totalPrice = calculateTotal(cartItems);
-  const itemsPrice = calculateItemsTotal(cartItems);
+  const vatPrice = cartUtils.calculateVat(cartItems);
+  const totalPrice = cartUtils.calculateTotal(cartItems);
+  const itemsPrice = cartUtils.calculateItemsTotal(cartItems);
   const cartSummary = { itemsPrice, vatPrice, totalPrice };
-  const orderId = selectedItem?.id;
+  const history = useHistory();
 
-  const prepareOrder = (orderId?: string) => {
+  const prepareOrder = () => {
     const formData = {
       orderItems: cartItems,
       shippingAddress,
@@ -32,22 +27,16 @@ const ReviewOrder: React.FC = () => {
       ...cartSummary,
     };
 
-    if (orderId) updateOrder(orderId, formData);
-    else createOrder(formData);
+    return selectedItem?.id
+      ? updateOrder(selectedItem.id, formData)
+      : createOrder(formData);
   };
 
-  const successPaymentHandler = (paymentResult: any) =>
-    console.log(paymentResult);
-
-  const emptyCart = cartItems.length <= 0;
-  const history = useHistory();
-
   React.useEffect(() => {
-    prepareOrder(orderId);
-    addPayPalScript(setSdkReady);
-    if (emptyCart) history.push('/');
+    prepareOrder();
+    if (cartItems.length <= 0) history.push('/');
     // eslint-disable-next-line
-  }, [history, emptyCart, orderId]);
+  }, [history]);
 
   return (
     <div className='review-order'>
@@ -57,14 +46,7 @@ const ReviewOrder: React.FC = () => {
         <RO.PayMeth paymentMethod={paymentMethod} />
         <RO.Items cartItems={cartItems} />
         <RO.Summary cartSummary={cartSummary} />
-        {sdkReady && (
-          <PayPalButton
-            amount={totalPrice}
-            options={{ currency: 'EUR' }}
-            onSuccess={successPaymentHandler}
-            onButtonReady={() => setSdkReady(true)}
-          />
-        )}
+        <RO.SDK totalPrice={totalPrice} />
       </div>
     </div>
   );
