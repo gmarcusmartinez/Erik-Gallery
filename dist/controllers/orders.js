@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateOrderToPaid = exports.getOrder = exports.adminGetOrders = exports.createOrder = void 0;
+exports.updateOrderToPaid = exports.getOrder = exports.adminGetOrders = exports.updateOrder = exports.createOrder = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Order_1 = require("../models/Order");
@@ -47,7 +47,7 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
         switch (_a.label) {
             case 0:
                 orderItems = req.body.orderItems;
-                if (orderItems && orderItems.length <= 0)
+                if (orderItems.length <= 0)
                     throw new bad_request_error_1.BadRequestError("No items in cart");
                 orderItemIds = [];
                 orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
@@ -69,11 +69,41 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
         }
     });
 }); });
+exports.updateOrder = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var orderItems, orderItemIds, products, soldOutmsg, order;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                orderItems = req.body.orderItems;
+                if (orderItems.length <= 0)
+                    throw new bad_request_error_1.BadRequestError("No items in cart");
+                orderItemIds = [];
+                orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
+                return [4 /*yield*/, Product_1.Product.find({
+                        _id: { $in: orderItemIds },
+                        quantityInStock: { $gt: 0 },
+                    })];
+            case 1:
+                products = _a.sent();
+                soldOutmsg = "One or more products in your cart has recently sold out.";
+                if (products.length !== orderItems.length)
+                    throw new bad_request_error_1.BadRequestError(soldOutmsg);
+                return [4 /*yield*/, Order_1.Order.findByIdAndUpdate(req.params.id, req.body)];
+            case 2:
+                order = _a.sent();
+                if (!order)
+                    throw new bad_request_error_1.BadRequestError("Order not found");
+                order.save();
+                res.send(order);
+                return [2 /*return*/];
+        }
+    });
+}); });
 exports.adminGetOrders = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var orders;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Order_1.Order.find()];
+            case 0: return [4 /*yield*/, Order_1.Order.find({})];
             case 1:
                 orders = _a.sent();
                 res.send(orders);
@@ -118,3 +148,10 @@ exports.updateOrderToPaid = async_1.asyncHandler(function (req, res) { return __
         }
     });
 }); });
+// await products.forEach((product) => {
+//   const qty = orderItems.find(
+//     (o: ProductSubDoc) => o._id === product._id.toString()
+//   ).quantity;
+//   product.quantityInStock -= qty;
+//   product.save();
+// });

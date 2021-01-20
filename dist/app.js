@@ -19,7 +19,7 @@ var upload_1 = require("./routes/upload");
 var zines_1 = require("./routes/zines");
 var not_found_error_1 = require("./errors/not-found-error");
 var error_handler_1 = require("./middlewares/error-handler");
-var paypal_1 = require("./routes/paypal");
+var keys_1 = __importDefault(require("./config/keys"));
 dotenv_1.default.config();
 var app = express_1.default();
 exports.app = app;
@@ -27,21 +27,23 @@ app.use(heroku_ssl_redirect_1.default());
 app.use(express_1.default.json());
 app.use(cors_1.default());
 app.use(cookie_session_1.default({ signed: false, secure: false }));
-app.use("/api/auth", auth_1.authRouter);
-app.use("/api/orders", orders_1.orderRouter);
-app.use("/api/uploads", upload_1.uploadRouter);
-app.use("/api/backgrounds", backgrounds_1.backgroundRouter);
-app.use("/api/prints", prints_1.printRouter);
-app.use("/api/zines", zines_1.zineRouter);
-app.use("/api/config", paypal_1.paypalRouter);
+app.use('/api/auth', auth_1.authRouter);
+app.use('/api/uploads', upload_1.uploadRouter);
+app.use('/api/backgrounds', backgrounds_1.backgroundRouter);
+app.use('/api/orders', orders_1.orderRouter);
+app.use('/api/prints', prints_1.printRouter);
+app.use('/api/zines', zines_1.zineRouter);
+app.get('/api/config/paypal', function (req, res) {
+    return res.send(keys_1.default.paypalClientID);
+});
 var __dirname = path_1.default.resolve();
-if (process.env.NODE_ENV === "production") {
-    app.use(express_1.default.static(path_1.default.join(__dirname, "client/build")));
-    app.get("*", function (req, res) {
-        return res.sendFile(path_1.default.resolve(__dirname, "client", "build", "index.html"));
+if (process.env.NODE_ENV === 'production') {
+    app.use(express_1.default.static(path_1.default.join(__dirname, 'client/build')));
+    app.get('*', function (req, res) {
+        return res.sendFile(path_1.default.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-app.all("*", function () {
+app.all('*', function () {
     throw new not_found_error_1.NotFoundError();
 });
 app.use(error_handler_1.errorHandler);

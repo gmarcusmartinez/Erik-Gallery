@@ -59,9 +59,9 @@ exports.register = async_1.asyncHandler(function (req, res) { return __awaiter(v
             case 1:
                 existingUser = _b.sent();
                 if (existingUser)
-                    throw new bad_request_error_1.BadRequestError("Email in use.");
+                    throw new bad_request_error_1.BadRequestError('Email in use.');
                 if (!email || !password)
-                    throw new bad_request_error_1.BadRequestError("Please provide all required fields.");
+                    throw new bad_request_error_1.BadRequestError('Please provide all required fields.');
                 user = User_1.User.build({ email: email, password: password });
                 return [4 /*yield*/, user.save()];
             case 2:
@@ -83,12 +83,12 @@ exports.login = async_1.asyncHandler(function (req, res) { return __awaiter(void
             case 1:
                 user = _b.sent();
                 if (!user)
-                    throw new bad_request_error_1.BadRequestError("Invalid credentials");
+                    throw new bad_request_error_1.BadRequestError('Invalid credentials');
                 return [4 /*yield*/, PasswordManager_1.PasswordManager.compare(user.password, password)];
             case 2:
                 passwordsMatch = _b.sent();
                 if (!passwordsMatch)
-                    throw new bad_request_error_1.BadRequestError("Invalid Credentials");
+                    throw new bad_request_error_1.BadRequestError('Invalid Credentials');
                 token = user.getSignedJwtToken();
                 req.session = { jwt: token };
                 res.status(200).send(user);
@@ -98,5 +98,5 @@ exports.login = async_1.asyncHandler(function (req, res) { return __awaiter(void
 }); });
 exports.logout = function (req, res) {
     req.session = null;
-    res.send({});
+    res.send(null);
 };

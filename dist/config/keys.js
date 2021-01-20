@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // import devKeys from "./dev";
 var prod_1 = __importDefault(require("./prod"));
 var keys;
-if (process.env.NODE_ENV === "production")
+if (process.env.NODE_ENV === 'production')
     keys = prod_1.default;
 // else keys = devKeys;
 exports.default = keys;
