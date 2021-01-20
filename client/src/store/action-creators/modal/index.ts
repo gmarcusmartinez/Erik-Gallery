@@ -3,7 +3,7 @@ import { ModalActionTypes } from 'store/actions/types';
 
 export const toggleModal = (
   bool: boolean,
-  component: string,
+  component: string | null,
   data?: any,
   darkmode?: boolean
 ) => (dispatch: Dispatch) => {

@@ -1,6 +1,6 @@
-import backgrounds from "api/backgrounds";
-import { Dispatch } from "redux";
-import { BackgroundActionTypes } from "../types";
+import backgrounds from 'api/backgrounds';
+import { Dispatch } from 'redux';
+import { BackgroundActionTypes } from 'store/actions/types';
 
 export const fetchBackgrounds = () => async (dispatch: Dispatch) => {
   try {

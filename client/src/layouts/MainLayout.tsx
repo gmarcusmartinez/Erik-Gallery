@@ -1,34 +1,28 @@
-import { IBackground } from "interfaces";
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { fetchBackgrounds } from "store/actions/backgrounds";
-import { activeBackground } from "store/selectors/backgrounds";
+import React from 'react';
+import { s3Url } from 'api/url';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 
-interface IProps {
-  fetchBackgrounds: Function;
-  activeBackground: IBackground;
-}
-const MainLayout: React.FC<IProps> = (props) => {
-  const { children, fetchBackgrounds, activeBackground } = props;
+const MainLayout: React.FC = ({ children }) => {
+  const { fetchBackgrounds } = useActions();
+  const activeBackground = useTypedSelector((state) =>
+    state.backgrounds.items.find((b) => b.active === true)
+  );
 
   React.useEffect(() => {
     fetchBackgrounds();
-  }, [fetchBackgrounds]);
+    // eslint-disable-next-line
+  }, []);
 
   let backgroundImage;
   if (activeBackground)
-    backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${activeBackground.mainImage})`;
+    backgroundImage = `url(${s3Url}/${activeBackground.mainImage})`;
 
   return (
-    <div className="main-layout">
-      <div className="main-bg" style={{ backgroundImage }}></div>
+    <div className='main-layout'>
+      <div className='main-bg' style={{ backgroundImage }}></div>
       {children}
     </div>
   );
 };
-
-const mapStateToProps = createStructuredSelector({
-  activeBackground,
-});
-export default connect(mapStateToProps, { fetchBackgrounds })(MainLayout);
+export default MainLayout;

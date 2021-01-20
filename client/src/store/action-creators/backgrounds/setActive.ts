@@ -1,6 +1,6 @@
-import backgrounds from "api/backgrounds";
-import { Dispatch } from "redux";
-import { BackgroundActionTypes } from "../types";
+import backgrounds from 'api/backgrounds';
+import { Dispatch } from 'redux';
+import { BackgroundActionTypes } from 'store/actions/types';
 
 const { SET_ACTIVE_SUCCESS, SET_ACTIVE_FAILURE } = BackgroundActionTypes;
 

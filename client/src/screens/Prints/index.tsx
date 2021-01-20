@@ -1,37 +1,32 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "react-router";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import LightBox from "components/CommonComponents/LightBox";
-import Pagination from "components/CommonComponents/Pagination";
-import PrintsContainer from "screens/Prints/Container";
-import { fetchPrints } from "store/actions/prints/fetchPrints";
-import { printsPages } from "store/selectors/prints";
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import LightBox from 'components/CommonComponents/LightBox';
+import Pagination from 'components/CommonComponents/Pagination';
+import PrintsContainer from 'screens/Prints/Container';
 
 interface MatchParams {
   page: string;
 }
+interface IProps extends RouteComponentProps<MatchParams> {}
 
-interface IProps extends RouteComponentProps<MatchParams> {
-  fetchPrints: Function;
-  pages: number;
-}
-
-const Prints: React.FC<IProps> = ({ fetchPrints, match, pages }) => {
+const Prints: React.FC<IProps> = ({ match }) => {
   const page = +match.params.page || 1;
+  const { fetchPrints } = useActions();
+  const { pages } = useTypedSelector((state) => state.prints);
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchPrints(page);
-  }, [fetchPrints, page]);
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
-    <div className="prints-screen">
+    <div className='prints-screen'>
       <PrintsContainer />
-      <Pagination root="prints" pages={pages} />
+      <Pagination root='prints' pages={pages} />
       <LightBox />
     </div>
   );
 };
-
-const mapStateToProps = createStructuredSelector({ pages: printsPages });
-export default connect(mapStateToProps, { fetchPrints })(Prints);
+export default Prints;

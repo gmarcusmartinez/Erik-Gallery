@@ -1,10 +1,10 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { IPrint, IZine } from "interfaces";
-import { selectModalData } from "store/selectors/modal";
-import { addItemToCart } from "store/actions/cart";
-import { s3Url } from "api/url";
+import React, { FC } from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { IPrint, IZine } from 'interfaces';
+import { selectModalData } from 'store/selectors/modal';
+import { addItemToCart } from 'store/actions/cart';
+import { s3Url } from 'api/url';
 
 interface IProps {
   item: IPrint | IZine;
@@ -15,24 +15,24 @@ const ItemDetail: FC<IProps> = ({ item }) => {
   const backgroundImage = `url(${s3Url}/${mainImage})`;
 
   const vatIncludeded = (
-    <span style={{ fontSize: "1rem", marginLeft: "0.5rem" }}>
+    <span style={{ fontSize: '1rem', marginLeft: '0.5rem' }}>
       (VAT Included)
     </span>
   );
 
   return (
-    <div className="item-detail">
-      <div className="item-detail__img" style={{ backgroundImage }} />
-      <div className="item-detail__info">
-        {description && <p className="item-detail__text">{description}</p>}
-        {title && <p className="item-detail__text">{title}</p>}
-        <p className="item-detail__text">
+    <div className='item-detail'>
+      <div className='item-detail__img' style={{ backgroundImage }} />
+      <div className='item-detail__info'>
+        {description && <p className='item-detail__text'>{description}</p>}
+        {title && <p className='item-detail__text'>{title}</p>}
+        <p className='item-detail__text'>
           {price}&euro;{vatIncludeded}
         </p>
-        <p className="item-detail__text">{item.size ? item.size : null}</p>
-        <p className="item-detail__placeholder">
+        <p className='item-detail__text'>{item.size ? item.size : null}</p>
+        <p className='item-detail__placeholder'>
           If intrested in purchasing email:
-          <a href="mailto: erik.felfalusi@gmail.com<">
+          <a href='mailto: erik.felfalusi@gmail.com<'>
             erik.felfalusi@gmail.com
           </a>
         </p>
@@ -53,20 +53,17 @@ export default connect(mapStateToProps, { addItemToCart })(ItemDetail);
 //   addItemToCart(cartItem);
 // };
 
-{
-  /* <Select
+/* <Select
           label="Select Quantity"
           name="qty"
           value={qty}
           onChange={handleChange}
           options={options}
         /> */
-}
-{
-  /* <div
+
+/* <div
           className="item-detail__btn"
           onClick={() => handleAddToCart(item, qty)}
         >
           Add to Cart
         </div> */
-}

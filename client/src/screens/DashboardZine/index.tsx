@@ -1,54 +1,36 @@
-import React from "react";
-import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createStructuredSelector } from "reselect";
-import { IZine } from "interfaces";
-import { deleteZinePage, fetchZine } from "store/actions/zines";
-import { selectedItem } from "store/selectors/zines";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import ZinePage from "./ZinePage";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import ZinePage from './ZinePage';
 
-interface IProps {
-  deleteZinePage: Function;
-  fetchZine: Function;
-  toggleModal: Function;
-  zine: IZine;
-}
-
-const DashboardZine: React.FC<IProps> = (props) => {
-  const { deleteZinePage, fetchZine, toggleModal, zine } = props;
+const DashboardZine: React.FC = () => {
+  const { deleteZinePage, fetchZine, toggleModal } = useActions();
+  const { selectedItem } = useTypedSelector((state) => state.zines);
   const history = useHistory();
-  const id = history.location.pathname.split("/")[3];
+  const id = history.location.pathname.split('/')[3];
 
-  const toggleAddImage = async () => toggleModal(true, "ADD_IMG", zine);
-  const handleDeletePage = (imgStr: string) => deleteZinePage(zine._id, imgStr);
+  const toggleAddImage = async () => toggleModal(true, 'ADD_IMG', selectedItem);
+  const handleDeletePage = (imgStr: string) =>
+    deleteZinePage(selectedItem._id, imgStr);
 
   React.useEffect(() => {
     fetchZine(id);
-  }, [fetchZine, id]);
-
-  const list = zine
-    ? zine.images.map((imgStr) => (
-        <ZinePage key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
-      ))
-    : null;
+    // eslint-disable-next-line
+  }, [id]);
 
   return (
-    <div className="dashboard-zine">
-      <div className="dashboard-zine__pages">{list}</div>
-      <div className="add-resource-btn" onClick={toggleAddImage}>
+    <div className='dashboard-zine'>
+      <div className='dashboard-zine__pages'>
+        {selectedItem &&
+          selectedItem.images.map((imgStr: string) => (
+            <ZinePage key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
+          ))}
+      </div>
+      <div className='add-resource-btn' onClick={toggleAddImage}>
         <span>&#43;</span>
       </div>
     </div>
   );
 };
-
-const mapStateToProps = createStructuredSelector({
-  zine: selectedItem,
-});
-
-export default connect(mapStateToProps, {
-  deleteZinePage,
-  fetchZine,
-  toggleModal,
-})(DashboardZine);
+export default DashboardZine;

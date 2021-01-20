@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { renderForm } from './modalActions';
-import { renderModalCloseBtn } from './ModalCloseBtn';
+import { renderForm } from './ModalActions';
 
 const Modal: React.FC = () => {
   const { toggleModal } = useActions();
@@ -25,3 +24,11 @@ const Modal: React.FC = () => {
 };
 
 export default Modal;
+
+export const renderModalCloseBtn = (bool: boolean, cb: Function) => (
+  <div className='modal__close-btn' onClick={() => cb(false)}>
+    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
+    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
+    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
+  </div>
+);

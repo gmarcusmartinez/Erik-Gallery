@@ -1,5 +1,12 @@
-import { AnyAction } from "redux";
-import { BackgroundActionTypes } from "store/actions/types";
+import { IBackground, IError } from 'interfaces';
+import { AnyAction } from 'redux';
+import { BackgroundActionTypes } from 'store/actions/types';
+
+interface BackgroundsState {
+  loading: boolean;
+  items: IBackground[];
+  errors: IError[] | null;
+}
 
 const initialState = {
   loading: true,
@@ -7,7 +14,10 @@ const initialState = {
   errors: null,
 };
 
-export const backgrounds = (state = initialState, action: AnyAction) => {
+export const backgrounds = (
+  state: BackgroundsState = initialState,
+  action: AnyAction
+): BackgroundsState => {
   const { type, payload } = action;
   switch (type) {
     case BackgroundActionTypes.CREATE_BACKGROUND_SUCCESS:

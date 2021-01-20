@@ -6,7 +6,6 @@ import Links from 'components/Navigation/links';
 import MenuBars from './MenuBars';
 import CartDropDown from 'components/CartComponents/CartDropdown';
 import CartIcon from 'components/CartComponents/CartIcon';
-import { toggleNav } from 'store/actions/nav/toggleNav';
 import { selectNavIsOpen } from 'store/selectors/nav';
 import { selectCartIsOpen, selectCartIsEmpty } from 'store/selectors/cart';
 import { useActions } from 'hooks/use-actions';
@@ -16,12 +15,11 @@ interface IProps {
   isOpen: boolean;
   cartOpen: boolean;
   cartIsEmpty: boolean;
-  toggleNav: Function;
 }
 
 const Navigation: FC<IProps> = (props) => {
   const { toggleNav } = useActions();
-  const {} = useTypedSelector((state) => state.cart);
+  const {} = useTypedSelector((state) => state.nav);
 
   const handleClick = () => {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
@@ -31,7 +29,7 @@ const Navigation: FC<IProps> = (props) => {
   return (
     <>
       <div className='header'>
-        <MenuBars bool={props.isOpen} cb={props.toggleNav} />
+        <MenuBars bool={props.isOpen} cb={toggleNav} />
         <Link to='/' className='header__title'>
           <span onClick={handleClick}>Erik Felfalusi</span>
         </Link>
@@ -49,4 +47,4 @@ const mapStateToProps = createStructuredSelector({
   cartIsEmpty: selectCartIsEmpty,
 });
 
-export default connect(mapStateToProps, { toggleNav })(Navigation);
+export default connect(mapStateToProps, {})(Navigation);

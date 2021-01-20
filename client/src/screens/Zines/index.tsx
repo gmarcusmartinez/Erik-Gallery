@@ -1,37 +1,34 @@
-import React, { useEffect } from "react";
-import { RouteComponentProps } from "react-router";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import LightBox from "components/CommonComponents/LightBox";
-import Pagination from "components/CommonComponents/Pagination";
-import ZinesContainer from "screens/Zines/Contatiner";
-import { fetchZines } from "store/actions/zines";
-import { zinesPages } from "store/selectors/zines";
+import React from 'react';
+import { RouteComponentProps } from 'react-router';
+import LightBox from 'components/CommonComponents/LightBox';
+import Pagination from 'components/CommonComponents/Pagination';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useActions } from 'hooks/use-actions';
+import ZinesContainer from 'screens/Zines/Contatiner';
 
 interface MatchParams {
   page: string;
 }
 
-interface IProps extends RouteComponentProps<MatchParams> {
-  fetchZines: Function;
-  pages: number;
-}
+interface IProps extends RouteComponentProps<MatchParams> {}
 
-const Zines: React.FC<IProps> = ({ fetchZines, match, pages }) => {
+const Zines: React.FC<IProps> = ({ match }) => {
+  const { pages } = useTypedSelector((state) => state.zines);
+  const { fetchZines } = useActions();
   const page = +match.params.page || 1;
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetchZines(page);
-  }, [fetchZines, page]);
+    // eslint-disable-next-line
+  }, [page]);
 
   return (
-    <div className="zines-screen">
+    <div className='zines-screen'>
       <ZinesContainer />
-      <Pagination root="zines" pages={pages} />
+      <Pagination root='zines' pages={pages} />
       <LightBox />
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({ pages: zinesPages });
-export default connect(mapStateToProps, { fetchZines })(Zines);
+export default Zines;

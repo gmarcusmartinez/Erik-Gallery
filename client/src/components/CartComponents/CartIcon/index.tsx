@@ -1,29 +1,22 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { ICartItem } from 'interfaces';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { ReactComponent as ShoppingIcon } from 'assets/shopping-bag.svg';
+import { useActions } from 'hooks/use-actions';
 
-import { ReactComponent as ShoppingIcon } from "assets/shopping-bag.svg";
-import { toggleCart } from "store/actions/cart";
-import { selectCartItemsCount, selectCartIsOpen } from "store/selectors/cart";
-
-interface IProps {
-  isOpen: boolean;
-  itemCount: number;
-  toggleCart: Function;
-}
-
-const CartIcon: React.FC<IProps> = ({ isOpen, toggleCart, itemCount }) => {
+const CartIcon: React.FC = () => {
+  const { toggleCart } = useActions();
+  const { isOpen, cartItems } = useTypedSelector((state) => state.cart);
+  const itemCount = cartItems.reduce(
+    (acc: number, curr: ICartItem) => acc + curr.quantity,
+    0
+  );
   return (
-    <div className="cart-icon" onClick={() => toggleCart(!isOpen)}>
-      <ShoppingIcon className="shopping-icon" />
-      <span className="item-count">{itemCount}</span>
+    <div className='cart-icon' onClick={() => toggleCart(!isOpen)}>
+      <ShoppingIcon className='shopping-icon' />
+      <span className='item-count'>{itemCount}</span>
     </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  isOpen: selectCartIsOpen,
-  itemCount: selectCartItemsCount,
-});
-
-export default connect(mapStateToProps, { toggleCart })(CartIcon);
+export default CartIcon;

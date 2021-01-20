@@ -1,17 +1,28 @@
-import { ICartItem } from "interfaces";
-import { AnyAction } from "redux";
-import { CartActionTypes } from "store/actions/types";
-import { addItemToCart } from "utils";
+import { ICartItem, IShippingAddress } from 'interfaces';
+import { AnyAction } from 'redux';
+import { CartActionTypes } from 'store/actions/types';
+import { addItemToCart } from 'utils';
+
+interface CartState {
+  isOpen: boolean;
+  cartItems: ICartItem[];
+  shippingAddress: IShippingAddress | {};
+  paymentMethod: string;
+  shippingPrice: number;
+}
 
 const initialState = {
   isOpen: false,
   cartItems: [],
   shippingAddress: {},
-  paymentMethod: "",
+  paymentMethod: '',
   shippingPrice: 10,
 };
 
-export const cart = (state = initialState, action: AnyAction) => {
+export const cart = (
+  state: CartState = initialState,
+  action: AnyAction
+): CartState => {
   const { type, payload } = action;
   switch (type) {
     case CartActionTypes.TOGGLE_CART_HIDDEN:

@@ -13,7 +13,6 @@ interface IProps {
 
 const CartScreen: React.FC<IProps> = ({ cartItems, total }) => {
   const list = cartItems.map((c, i) => <CheckoutItem item={c} key={i} />);
-
   const history = useHistory();
   const handleClick = () => history.push('/shipping');
 
