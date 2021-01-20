@@ -5,8 +5,8 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 
 const MainLayout: React.FC = ({ children }) => {
   const { fetchBackgrounds } = useActions();
-  const activeBackground = useTypedSelector((state) =>
-    state.backgrounds.items.find((b) => b.active === true)
+  const activeBackground = useTypedSelector(({ backgrounds: { items } }) =>
+    items.find((b) => b.active === true)
   );
 
   React.useEffect(() => {
@@ -20,7 +20,7 @@ const MainLayout: React.FC = ({ children }) => {
 
   return (
     <div className='main-layout'>
-      <div className='main-bg' style={{ backgroundImage }}></div>
+      <div className='main-bg' style={{ backgroundImage }} />
       {children}
     </div>
   );

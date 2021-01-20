@@ -1,33 +1,29 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import { adminFetchPrints } from "store/actions/prints/adminFetchPrints";
-import { adminFetchZines } from "store/actions/zines";
-import { adminFetchOrders } from "store/actions/orders";
-import { fetchBackgrounds } from "store/actions/backgrounds/fetchBackgrounds";
-import * as headers from "./headers";
-import Section from "components/DashboardComponents/Section";
-import { IBackground, IPrint, IZine, IOrder } from "interfaces";
-import SideNavTrigger from "./SideNavTrigger";
+import React from 'react';
+import * as headers from './headers';
+import Section from 'components/DashboardComponents/Section';
+import SideNavTrigger from './SideNavTrigger';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useActions } from 'hooks/use-actions';
 
-interface IProps {
-  fetchBackgrounds: Function;
-  adminFetchPrints: Function;
-  adminFetchOrders: Function;
-  adminFetchZines: Function;
-  backgrounds: IBackground[];
-  prints: IPrint[];
-  orders: IOrder[];
-  zines: IZine[];
-}
-const Dashboard: FC<IProps> = (props) => {
+const Dashboard: React.FC = () => {
   const [sidenavOpen, setSideNavOpen] = React.useState(true);
-  const [resourceType, setResourceType] = React.useState("");
+  const [resourceType, setResourceType] = React.useState('');
+  const {
+    adminFetchPrints,
+    adminFetchZines,
+    fetchBackgrounds,
+    adminFetchOrders,
+  } = useActions();
+  const { items: backgrounds } = useTypedSelector((state) => state.backgrounds);
+  const { items: orders } = useTypedSelector((state) => state.orders);
+  const { items: prints } = useTypedSelector((state) => state.prints);
+  const { items: zines } = useTypedSelector((state) => state.zines);
 
-  const sidenavClass = sidenavOpen ? "sidenav-open" : "sidenav-closed";
+  const sidenavClass = sidenavOpen ? 'sidenav-open' : 'sidenav-closed';
   const sidenavLinks = headers.fetchResourceLinks.map((l, i) => (
     <div
       key={i}
-      className="dashboard__sidenav__link"
+      className='dashboard__sidenav__link'
       onClick={() => handleClick(l.value)}
     >
       {l.text}
@@ -38,60 +34,61 @@ const Dashboard: FC<IProps> = (props) => {
     setSideNavOpen(false);
     setResourceType(resource);
     switch (resource) {
-      case "prints":
-        return props.adminFetchPrints();
-      case "backgrounds":
-        return props.fetchBackgrounds();
-      case "zines":
-        return props.adminFetchZines();
-      case "orders":
-        return props.adminFetchOrders();
+      case 'prints':
+        return adminFetchPrints();
+      case 'backgrounds':
+        return fetchBackgrounds();
+      case 'zines':
+        return adminFetchZines();
+      case 'orders':
+        return adminFetchOrders();
     }
   };
 
   return (
-    <div className="dashboard">
-      <div className="dashboard__header">
-        <span className="dashboard__title">Admin Dashboard</span>
+    <div className='dashboard'>
+      <div className='dashboard__header'>
+        <span className='dashboard__title'>Admin Dashboard</span>
         <SideNavTrigger cb={setSideNavOpen} bool={!sidenavOpen} />
       </div>
       <div className={`dashboard__sidenav ${sidenavClass}`}>
-        <div className="dashboard__sidenav__links">{sidenavLinks}</div>
+        <div className='dashboard__sidenav__links'>{sidenavLinks}</div>
       </div>
-      <div className="dashboard__resources">
-        {resourceType === "prints" && (
+      <div className='dashboard__resources'>
+        {resourceType === 'prints' && (
           <Section
-            resourceType="prints"
-            formName="ADD_PRINT"
+            resourceType='prints'
+            formName='ADD_PRINT'
             headers={headers.printHeaders}
-            items={props.prints}
-            gridTemplateColumns="10% 31% 15% 7% 7% 7% 7%"
+            items={prints}
+            gridTemplateColumns='10% 31% 15% 7% 7% 7% 7%'
           />
         )}
-        {resourceType === "backgrounds" && (
+        {resourceType === 'backgrounds' && (
           <Section
-            resourceType="backgrounds"
-            formName="ADD_BG"
+            resourceType='backgrounds'
+            formName='ADD_BG'
             headers={headers.backgroundHeaders}
-            items={props.backgrounds}
-            gridTemplateColumns="10% 12% 12%"
+            items={backgrounds}
+            gridTemplateColumns='10% 12% 12%'
           />
         )}
-        {resourceType === "zines" && (
+        {resourceType === 'zines' && (
           <Section
-            resourceType="zines"
-            formName="ADD_ZINE"
+            resourceType='zines'
+            formName='ADD_ZINE'
             headers={headers.zineHeaders}
-            items={props.zines}
-            gridTemplateColumns="10% 32% 8% 8% 8% 8% 8%"
+            items={zines}
+            gridTemplateColumns='10% 32% 8% 8% 8% 8% 8%'
           />
         )}
-        {resourceType === "orders" && (
+        {resourceType === 'orders' && (
           <Section
-            resourceType="orders"
+            resourceType='orders'
+            formName={null}
             headers={headers.orderHeaders}
-            items={props.orders}
-            gridTemplateColumns="22% 18% 12% 12% 12% 12% 12%"
+            items={orders}
+            gridTemplateColumns='22% 18% 12% 12% 12% 12% 12%'
           />
         )}
       </div>
@@ -99,16 +96,4 @@ const Dashboard: FC<IProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  backgrounds: state.backgrounds.items,
-  orders: state.orders.items,
-  prints: state.prints.items,
-  zines: state.zines.items,
-});
-
-export default connect(mapStateToProps, {
-  fetchBackgrounds,
-  adminFetchPrints,
-  adminFetchOrders,
-  adminFetchZines,
-})(Dashboard);
+export default Dashboard;

@@ -1,19 +1,19 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { s3Url } from 'api/url';
 import { ICartItem } from 'interfaces';
-import { clearItemFromCart } from 'store/actions/cart';
+import { useActions } from 'hooks/use-actions';
 
 interface IProps {
   item: ICartItem;
-  clearItemFromCart: Function;
 }
-const CheckoutItem: React.FC<IProps> = ({ item, clearItemFromCart }) => {
+const CheckoutItem: React.FC<IProps> = ({ item }) => {
   const { quantity, price, mainImage, description, title } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const text = description ? description : title;
   const totalItemPrice = quantity * price;
   const handleClearItem = () => clearItemFromCart(item);
+  const { clearItemFromCart } = useActions();
+
   return (
     <div className='checkout-item'>
       <div className='checkout-item__img' style={{ backgroundImage }} />
@@ -32,4 +32,4 @@ const CheckoutItem: React.FC<IProps> = ({ item, clearItemFromCart }) => {
   );
 };
 
-export default connect(null, { clearItemFromCart })(CheckoutItem);
+export default CheckoutItem;

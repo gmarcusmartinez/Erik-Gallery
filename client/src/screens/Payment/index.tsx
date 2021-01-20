@@ -1,28 +1,18 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
-import { createStructuredSelector } from "reselect";
-import { selectShippingAddress } from "store/selectors/cart";
-import { IShippingAddress } from "interfaces";
-import { useHistory } from "react-router-dom";
-import PayPalIcon from "components/CommonComponents/PayPalIcon";
-import { updatePaymentMethod } from "store/actions/cart";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import CheckoutSteps from 'components/CheckoutComponents/CheckoutSteps';
+import PayPalIcon from 'components/CommonComponents/PayPalIcon';
 
-interface IProps {
-  shippingAddress: IShippingAddress;
-  updatePaymentMethod: Function;
-}
-
-const PaymentScreen: FC<IProps> = ({
-  shippingAddress,
-  updatePaymentMethod,
-}) => {
-  const [paymentMethod, setPaymentMethod] = React.useState("");
+const PaymentScreen: React.FC = () => {
+  const [paymentMethod, setPaymentMethod] = React.useState('');
+  const { updatePaymentMethod } = useActions();
+  const { shippingAddress } = useTypedSelector(({ cart }) => cart);
   const history = useHistory();
-  const disabled = paymentMethod === "";
 
   React.useEffect(() => {
-    if (!shippingAddress) history.push("/shipping");
+    if (!shippingAddress) history.push('/shipping');
   }, [history, shippingAddress]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,22 +22,22 @@ const PaymentScreen: FC<IProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     updatePaymentMethod(paymentMethod);
-    history.push("/review-order");
+    history.push('/review-order');
   };
 
   return (
-    <div className="payment-screen">
+    <div className='payment-screen'>
       <CheckoutSteps shipping payment />
-      <form className="payment-method-form" onSubmit={handleSubmit}>
-        <h3 className="payment-method-form__title">Payment Method</h3>
-        <div className="payment-method-form__input-group">
-          <input type="radio" value="paypal" onChange={handleChange} />
+      <form className='payment-method-form' onSubmit={handleSubmit}>
+        <h3 className='payment-method-form__title'>Payment Method</h3>
+        <div className='payment-method-form__input-group'>
+          <input type='radio' value='paypal' onChange={handleChange} />
           <PayPalIcon />
         </div>
         <button
-          disabled={disabled}
-          type="submit"
-          className="payment-method-form__btn"
+          disabled={paymentMethod === ''}
+          type='submit'
+          className='payment-method-form__btn'
         >
           Proceed to Place Order
         </button>
@@ -55,8 +45,4 @@ const PaymentScreen: FC<IProps> = ({
     </div>
   );
 };
-
-const mapStateToProps = createStructuredSelector({
-  shippingAddress: selectShippingAddress,
-});
-export default connect(mapStateToProps, { updatePaymentMethod })(PaymentScreen);
+export default PaymentScreen;

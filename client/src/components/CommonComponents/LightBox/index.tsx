@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 
 const Lightbox: React.FC = () => {
-  const { image, display } = useTypedSelector((state) => state.lightbox);
   const { toggleLightbox } = useActions();
+  const { backgroundImage, display } = useTypedSelector(
+    ({ lightbox }) => lightbox
+  );
 
   return ReactDOM.createPortal(
     <div className={`lightbox ${display ? 'lb-open' : 'lb-closed'}`}>
       {renderCloseBtn(display, toggleLightbox)}
-      <div className='lightbox__image' style={{ backgroundImage: image }} />
+      <div className='lightbox__image' style={{ backgroundImage }} />
     </div>,
     document.querySelector('#lightbox')!
   );

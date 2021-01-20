@@ -1,11 +1,11 @@
-import { IError } from 'interfaces';
+import { IError, IAdmin } from 'interfaces';
 import { AnyAction } from 'redux';
 import { AuthActionTypes } from '../../store/actions/types';
 
 interface AuthState {
   loading: boolean;
   errors: IError[] | null;
-  currentUser: {} | null;
+  currentUser: IAdmin | null;
 }
 
 const initialState = {

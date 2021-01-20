@@ -1,6 +1,10 @@
 import { ICartItem, IShippingAddress } from 'interfaces';
 import { Dispatch } from 'redux';
-import { CartActionTypes, ModalActionTypes } from 'store/actions/types';
+import {
+  CartActionTypes,
+  ModalActionTypes,
+  NavActionTypes,
+} from 'store/actions/types';
 
 export const addItemToCart = (item: ICartItem) => (dispatch: Dispatch) => {
   const modalPayload = { displayModal: false, component: '', data: null };
@@ -33,3 +37,10 @@ export const updatePaymentMethod = (data: string) => ({
 export const clearCart = () => ({
   type: CartActionTypes.CLEAR_CART,
 });
+
+export const closeAll = () => (dispatch: Dispatch) => {
+  const modalPayload = { displayModal: false, component: '', data: null };
+  dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: modalPayload });
+  dispatch({ type: NavActionTypes.TOGGLE_NAV, payload: false });
+  dispatch({ type: CartActionTypes.TOGGLE_CART_HIDDEN, payload: false });
+};

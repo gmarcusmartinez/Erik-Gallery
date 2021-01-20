@@ -1,22 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { loading } from "store/selectors/prints";
+import React from 'react';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import PrintsList from './List';
+import PrintsLoading from './Loading';
 
-import PrintsList from "./List";
-import PrintsLoading from "./Loading";
-
-interface IProps {
-  isLoading: boolean;
-}
-const PrintsContainer: React.FC<IProps> = ({ isLoading }) => {
-  let display;
-  if (isLoading) display = <PrintsLoading />;
-  if (!isLoading) display = <PrintsList />;
-
-  return <div className="prints-container">{display}</div>;
+const PrintsContainer: React.FC = () => {
+  const { loading } = useTypedSelector((state) => state.prints);
+  return (
+    <div className='prints-container'>
+      {loading ? <PrintsLoading /> : <PrintsList />}
+    </div>
+  );
 };
 
-const mapStateToProps = createStructuredSelector({ isLoading: loading });
-
-export default connect(mapStateToProps, {})(PrintsContainer);
+export default PrintsContainer;

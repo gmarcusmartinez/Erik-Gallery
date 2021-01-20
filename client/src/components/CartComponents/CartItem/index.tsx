@@ -1,6 +1,6 @@
-import React from "react";
-import { ICartItem } from "interfaces";
-import { s3Url } from "api/url";
+import React from 'react';
+import { ICartItem } from 'interfaces';
+import { s3Url } from 'api/url';
 
 interface IProps {
   item: ICartItem;
@@ -12,11 +12,14 @@ const CartItem: React.FC<IProps> = ({ item }) => {
   const text = description ? description : title;
 
   return (
-    <div className="cart-item">
-      <div className="cart-item__img" style={{ backgroundImage }} />
-      <div className="cart-item__text">{text}</div>
-      <div className="cart-item__total">
-        {+price}&#8364;&times;{quantity}
+    <div className='cart-item'>
+      <div className='cart-item__img' style={{ backgroundImage }} />
+      <div className='cart-item__text'>{text}</div>
+      <div className='cart-item__total'>
+        <span>{+price}</span>
+        <span>&#8364;</span>
+        <span>&times;</span>
+        <span>{quantity}</span>
       </div>
     </div>
   );

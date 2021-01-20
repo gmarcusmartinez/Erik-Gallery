@@ -1,25 +1,17 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 import Links from 'components/Navigation/links';
 import MenuBars from './MenuBars';
 import CartDropDown from 'components/CartComponents/CartDropdown';
 import CartIcon from 'components/CartComponents/CartIcon';
-import { selectNavIsOpen } from 'store/selectors/nav';
-import { selectCartIsOpen, selectCartIsEmpty } from 'store/selectors/cart';
-import { useActions } from 'hooks/use-actions';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 
-interface IProps {
-  isOpen: boolean;
-  cartOpen: boolean;
-  cartIsEmpty: boolean;
-}
-
-const Navigation: FC<IProps> = (props) => {
+const Navigation: React.FC = () => {
   const { toggleNav } = useActions();
-  const {} = useTypedSelector((state) => state.nav);
+  const { isOpen } = useTypedSelector((state) => state.nav);
+  const { isOpen: cartOpen, cartItems } = useTypedSelector(({ cart }) => cart);
+  const cartIsEmpty = cartItems.length === 0;
 
   const handleClick = () => {
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
@@ -27,24 +19,16 @@ const Navigation: FC<IProps> = (props) => {
   };
 
   return (
-    <>
-      <div className='header'>
-        <MenuBars bool={props.isOpen} cb={toggleNav} />
-        <Link to='/' className='header__title'>
-          <span onClick={handleClick}>Erik Felfalusi</span>
-        </Link>
-        {!props.cartIsEmpty && <CartIcon />}
-        {props.cartOpen && <CartDropDown />}
-        {props.isOpen && <Links />}
-      </div>
-    </>
+    <div className='header'>
+      <MenuBars bool={isOpen} cb={toggleNav} />
+      <Link to='/' className='header__title'>
+        <span onClick={handleClick}>Erik Felfalusi</span>
+      </Link>
+      {!cartIsEmpty && <CartIcon />}
+      {cartOpen && <CartDropDown />}
+      {isOpen && <Links />}
+    </div>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  isOpen: selectNavIsOpen,
-  cartOpen: selectCartIsOpen,
-  cartIsEmpty: selectCartIsEmpty,
-});
-
-export default connect(mapStateToProps, {})(Navigation);
+export default Navigation;

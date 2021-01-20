@@ -1,26 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { blankFormState, textInputs } from "./text-inputs";
-import { Text, File, Checkbox } from "components/CustomInputs";
-import { IError } from "interfaces";
-import { errors, loading, selectedItem } from "store/selectors/zines";
-import { createZine, updateZine } from "store/actions/zines";
-import Spinner from "components/CommonComponents/Spinner";
+import React from 'react';
+import { IError } from 'interfaces';
+import { blankFormState, textInputs } from './text-inputs';
+import { Text, File, Checkbox } from 'components/CustomInputs';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useActions } from 'hooks/use-actions';
+import Spinner from 'components/CommonComponents/Spinner';
 
 interface IProps {
-  createZine: Function;
-  errors: IError[];
   formTitle: string;
-  loading: boolean;
-  selectedItem?: any;
-  updateZine: Function;
 }
 
-const ZineForm: React.FC<IProps> = (props) => {
-  const defaultFormState =
-    props.formTitle === "Edit" ? props.selectedItem : blankFormState;
-
+const ZineForm: React.FC<IProps> = ({ formTitle }) => {
+  const { createZine, updateZine } = useActions();
+  const { loading, selectedItem, errors } = useTypedSelector(
+    ({ zines }) => zines
+  );
+  const defaultFormState = formTitle === 'Edit' ? selectedItem : blankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
   const [imageData, setImageData] = React.useState(null);
 
@@ -34,20 +29,21 @@ const ZineForm: React.FC<IProps> = (props) => {
     setFormData({ ...formData, isPublished: !bool });
 
   const handleRequest = (type: string) =>
-    type === "Edit"
-      ? props.updateZine(formData, props.selectedItem._id, imageData)
-      : props.createZine(formData, imageData);
+    type === 'Edit'
+      ? updateZine(formData, selectedItem._id, imageData)
+      : createZine(formData, imageData);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleRequest(props.formTitle);
+    handleRequest(formTitle);
   };
   const setError = (field: string) =>
-    props.errors ? props.errors.find((err) => err.field === field) : null;
+    errors ? errors.find((err: IError) => err.field === field) : null;
 
-  if (props.loading) return <Spinner message="Uploading Zine BB" />;
+  if (loading) return <Spinner message='Uploading Zine BB' />;
   return (
-    <form className="zine-form" onSubmit={handleSubmit}>
-      <h3 className="zine-form__title">{props.formTitle} Zine</h3>
+    <form className='zine-form' onSubmit={handleSubmit}>
+      <h3 className='zine-form__title'>{formTitle} Zine</h3>
       {textInputs.map((t, i) => (
         <Text
           key={i}
@@ -61,20 +57,14 @@ const ZineForm: React.FC<IProps> = (props) => {
       <Checkbox isPublished={formData.isPublished} handleCheck={handleCheck} />
       <File
         onChange={handleFileChange}
-        error={setError("image")}
-        label={imageData ? "Image Selected" : "Choose an Image"}
+        error={setError('image')}
+        label={imageData ? 'Image Selected' : 'Choose an Image'}
       />
-      <button type="submit" className="zine-form__btn">
+      <button type='submit' className='zine-form__btn'>
         Submit
       </button>
     </form>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  errors,
-  loading,
-  selectedItem,
-});
-
-export default connect(mapStateToProps, { createZine, updateZine })(ZineForm);
+export default ZineForm;

@@ -1,7 +1,7 @@
-export interface IUser {
+export interface IAdmin {
   _id: string;
   email: string;
-  role: string;
+  role: 'admin';
 }
 export interface IBackground {
   _id: string;

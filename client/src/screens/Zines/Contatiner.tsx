@@ -1,22 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { loading } from 'store/selectors/prints';
-
 import ZinesList from './List';
 import PrintsLoading from 'screens/Prints/Loading';
+import { useTypedSelector } from 'hooks/use-typed-selector';
 
-interface IProps {
-  isLoading: boolean;
-}
-const ZinesContainer: React.FC<IProps> = ({ isLoading }) => {
-  let display;
-  if (isLoading) display = <PrintsLoading />;
-  if (!isLoading) display = <ZinesList />;
-
-  return <div className='zines-container'>{display}</div>;
+const ZinesContainer: React.FC = () => {
+  const { loading } = useTypedSelector((state) => state.zines);
+  return (
+    <div className='zines-container'>
+      {loading ? <PrintsLoading /> : <ZinesList />}
+    </div>
+  );
 };
 
-const mapStateToProps = createStructuredSelector({ isLoading: loading });
-
-export default connect(mapStateToProps, {})(ZinesContainer);
+export default ZinesContainer;

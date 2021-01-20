@@ -1,9 +1,17 @@
-import { AnyAction } from "redux";
-import { ModalActionTypes } from "../actions/types";
+import { AnyAction } from 'redux';
+import { ModalActionTypes } from 'store/actions/types';
+import { IProduct, IBackground } from 'interfaces';
+
+interface ModalState {
+  displayModal: boolean;
+  component: string;
+  data: IProduct | IBackground;
+  darkmode?: boolean;
+}
 
 const initialState = {
   displayModal: false,
-  component: null,
+  component: '',
   data: null,
   darkmode: false,
 };

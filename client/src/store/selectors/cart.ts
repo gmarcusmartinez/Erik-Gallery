@@ -1,5 +1,5 @@
-import { ICartItem } from "interfaces";
-import { createSelector } from "reselect";
+import { ICartItem } from 'interfaces';
+import { createSelector } from 'reselect';
 
 //@ts-ignore
 const selectCart = (state) => state.cart;
@@ -41,6 +41,7 @@ export const selectItemsTotal = createSelector([selectCartItems], (cartItems) =>
     0
   )
 );
+
 export const selectCartVAT = createSelector([selectCartItems], (cartItems) =>
   cartItems.reduce(
     (acc: number, curr: ICartItem) => acc + curr.quantity * curr.vatPrice,

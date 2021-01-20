@@ -1,53 +1,42 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
-import { File } from "components/CustomInputs";
-import Spinner from "components/CommonComponents/Spinner";
-import { IError, IZine } from "interfaces";
-import { addZineImage } from "store/actions/zines";
-import { errors, loading, selectedItem } from "store/selectors/zines";
+import React from 'react';
+import { IError } from 'interfaces';
+import { File } from 'components/CustomInputs';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import Spinner from 'components/CommonComponents/Spinner';
 
-interface IProps {
-  errors: IError[];
-  loading: boolean;
-  addZineImage: Function;
-  selectedItem: IZine;
-}
-
-const ImageForm: FC<IProps> = (props) => {
+const ImageForm: React.FC = () => {
   const [imageData, setImageData] = React.useState(null);
-
+  const label = imageData ? 'Image Selected' : 'Choose an Image';
+  const { addZineImage } = useActions();
+  const { errors, loading, selectedItem } = useTypedSelector(
+    ({ zines }) => zines
+  );
   const handleFileChange = (e: React.ChangeEvent<any>) =>
     setImageData(e.target.files[0]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    props.addZineImage(props.selectedItem._id, imageData);
+    addZineImage(selectedItem._id, imageData);
   };
 
   const setError = (field: string) =>
-    props.errors ? props.errors.find((err) => err.field === field) : null;
+    errors ? errors.find((err: IError) => err.field === field) : null;
 
-  if (props.loading) return <Spinner message="Uploading Image BB" />;
+  if (loading) return <Spinner message='Uploading Image BB' />;
   return (
-    <form className="image-form" onSubmit={handleSubmit}>
-      <h3 className="image-form__title">Add Image</h3>
+    <form className='image-form' onSubmit={handleSubmit}>
+      <h3 className='image-form__title'>Add Image</h3>
       <File
         onChange={handleFileChange}
-        error={setError("image")}
-        label={imageData ? "Image Selected" : "Choose an Image"}
+        error={setError('image')}
+        label={label}
       />
-      <button type="submit" className="image-form__btn">
+      <button type='submit' className='image-form__btn'>
         Submit
       </button>
     </form>
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  errors,
-  loading,
-  selectedItem,
-});
-
-export default connect(mapStateToProps, { addZineImage })(ImageForm);
+export default ImageForm;

@@ -6,7 +6,7 @@ import { addItemToCart } from 'utils';
 interface CartState {
   isOpen: boolean;
   cartItems: ICartItem[];
-  shippingAddress: IShippingAddress | {};
+  shippingAddress?: IShippingAddress;
   paymentMethod: string;
   shippingPrice: number;
 }
@@ -14,7 +14,6 @@ interface CartState {
 const initialState = {
   isOpen: false,
   cartItems: [],
-  shippingAddress: {},
   paymentMethod: '',
   shippingPrice: 10,
 };

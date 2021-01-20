@@ -19,6 +19,7 @@ const PreviewZine: React.FC = () => {
     if (selectedPage === 0) setSelectedPage(zinePages.length - 1);
     else setSelectedPage(selectedPage - 1);
   };
+
   return (
     <div className='preview-zine'>
       <div className='next-btn' onClick={next}>
