@@ -15,11 +15,9 @@ const Prints: React.FC<IProps> = ({ match }) => {
   const page = +match.params.page || 1;
   const { fetchPrints } = useActions();
   const { pages } = useTypedSelector((state) => state.prints);
-
   React.useEffect(() => {
     fetchPrints(page);
-    // eslint-disable-next-line
-  }, [page]);
+  }, [page, fetchPrints]);
 
   return (
     <div className='prints-screen'>

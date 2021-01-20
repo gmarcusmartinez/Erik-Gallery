@@ -29,10 +29,8 @@ const ItemDetail: React.FC = () => {
         {description && <p className='item-detail__text'>{description}</p>}
         {title && <p className='item-detail__text'>{title}</p>}
         <p className='item-detail__text'>
-          {price}&euro;
-          <span style={{ fontSize: '1rem', marginLeft: '0.5rem' }}>
-            (VAT Included)
-          </span>
+          <span>{price}&euro;</span>
+          <span>(vat Included)</span>
         </p>
         <p className='item-detail__text'>{data.size ? data.size : null}</p>
         <Select

@@ -8,8 +8,8 @@
 
   display: grid;
   grid-template-areas:
-    "image desc"
-    "image price";
+    'image desc'
+    'image price';
 
   grid-template-columns: 35% 65%;
   grid-template-rows: 65% 35%;

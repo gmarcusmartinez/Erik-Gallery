@@ -46,7 +46,8 @@ const ReviewOrder: React.FC = () => {
     prepareOrder(orderId);
     addPayPalScript(setSdkReady);
     if (emptyCart) history.push('/');
-  }, [history, emptyCart]);
+    // eslint-disable-next-line
+  }, [history, emptyCart, orderId]);
 
   return (
     <div className='review-order'>

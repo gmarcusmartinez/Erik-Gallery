@@ -1,53 +1,41 @@
 import React from 'react';
 import { s3Url } from 'api/url';
 import { IZine } from 'interfaces';
-import { connect } from 'react-redux';
-import ViewProductBtn from 'components/CommonComponents/ViewProductBtn';
-import { toggleModal } from 'store/actions/modal/toggleModal';
-import { toggleCart } from 'store/actions/cart';
+import { useActions } from 'hooks/use-actions';
 
 interface IProps {
   item: IZine;
-  toggleCart: Function;
-  toggleModal: Function;
 }
 
-const ZineItem: React.FC<IProps> = (props) => {
-  const { mainImage, quantityInStock, title, price } = props.item;
+const ZineItem: React.FC<IProps> = ({ item }) => {
+  const { mainImage, title, price } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
+  const { toggleCart, toggleModal } = useActions();
 
   const toggleViewZine = () => {
-    props.toggleCart(false);
-    props.toggleModal(true, 'VIEW_ITEM', props.item);
+    toggleCart(false);
+    toggleModal(true, 'VIEW_ITEM', item);
   };
   const togglePreview = () => {
-    props.toggleCart(false);
-    props.toggleModal(true, 'PREVIEW_ZINE', props.item, true);
+    toggleCart(false);
+    toggleModal(true, 'PREVIEW_ZINE', item, true);
   };
 
   return (
     <div className='zine-item'>
-      <div className='zine-item__img' style={{ backgroundImage }}>
-        <div className='zine-preview-btn__tablet' onClick={togglePreview}>
+      <div className='zine-item__img' style={{ backgroundImage }}></div>
+      <div className='zine-item__details'>
+        <p className='zine-item__title'>{title}</p>
+        <p className='zine-item__price'>{price} &euro;</p>
+        <div className='zine-preview-btn' onClick={togglePreview}>
           Preview
         </div>
-        <ViewProductBtn
-          breakpoint='btn-tablet'
-          quantityInStock={quantityInStock}
-          toggleViewPrint={toggleViewZine}
-        />
+        <div className='zine-preview-btn' onClick={toggleViewZine}>
+          View Product
+        </div>
       </div>
-      <p className='zine-item__title'>{title}</p>
-      <p className='zine-item__price'>{price} &euro;</p>
-      <div className='zine-preview-btn' onClick={togglePreview}>
-        Preview
-      </div>
-      <ViewProductBtn
-        quantityInStock={quantityInStock}
-        toggleViewPrint={toggleViewZine}
-      />
     </div>
   );
 };
 
-export default connect(null, { toggleCart, toggleModal })(ZineItem);
+export default ZineItem;

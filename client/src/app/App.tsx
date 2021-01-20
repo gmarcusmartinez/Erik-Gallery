@@ -31,7 +31,7 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path='/' component={screens.LandingScreen} />
           <Route path='/contact' component={screens.ContactScreen} />
-          <Route path='/checkout' component={screens.CheckoutScreen} />
+          <Route path='/checkout' component={screens.CartScreen} />
           <Route path='/login' component={screens.LoginScreen} />
           <Route path='/logout' component={screens.LogoutScreen} />
           <Route path='/payment/' component={screens.PaymentScreen} />

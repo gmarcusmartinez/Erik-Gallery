@@ -1,33 +1,23 @@
-import React, { FC } from "react";
-import { useHistory } from "react-router-dom";
-import { connect } from "react-redux";
-import { toggleNav } from "store/actions/nav/toggleNav";
-import renderLinks from "./RenderLinks";
-import { toggleModal } from "store/actions/modal/toggleModal";
-import setScrollLock from "utils/set-scroll-lock";
-import { disableBodyScroll } from "body-scroll-lock";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { disableBodyScroll } from 'body-scroll-lock';
+import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import renderLinks from './RenderLinks';
+import setScrollLock from 'utils/set-scroll-lock';
 
-interface IProps {
-  isOpen: boolean;
-  currentUser: { role: string };
-  toggleNav: Function;
-  toggleModal: Function;
-}
+const Links: React.FC = () => {
+  const { closeAll } = useActions();
+  const { currentUser } = useTypedSelector(({ auth }) => auth);
+  const { isOpen } = useTypedSelector(({ nav }) => nav);
 
-const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
-  let isAdmin = currentUser && currentUser.role === "admin" ? true : false;
-  const adminLinks = `${isAdmin ? "admin-layout" : ""}`;
-
-  const closeModalAndNav = () => {
-    toggleModal(false, "", null);
-    toggleNav(false);
-  };
-
+  let isAdmin = currentUser && currentUser.role === 'admin' ? true : false;
+  const adminLinks = `${isAdmin ? 'admin-layout' : ''}`;
   const history = useHistory();
-  const path = history.location.pathname.split("/")[1];
+  const path = history.location.pathname.split('/')[1];
 
   React.useEffect(() => {
-    disableBodyScroll(document.querySelector(".main-content")!);
+    disableBodyScroll(document.querySelector('.main-content')!);
     return () => {
       setScrollLock(path);
     };
@@ -35,15 +25,10 @@ const Links: FC<IProps> = ({ isOpen, currentUser, toggleNav, toggleModal }) => {
 
   return (
     <ul className={`navigation ${adminLinks}`}>
-      {renderLinks(isOpen, closeModalAndNav, isAdmin)}
-      <div className="navigation__padding"></div>
+      {renderLinks(isOpen, closeAll, isAdmin)}
+      <div className='navigation__padding'></div>
     </ul>
   );
 };
 
-const mapStateToProps = (state: any) => ({
-  isOpen: state.nav.isOpen,
-  currentUser: state.auth.currentUser,
-});
-
-export default connect(mapStateToProps, { toggleNav, toggleModal })(Links);
+export default Links;

@@ -1,26 +1,18 @@
-import React, { FC } from "react";
-import { connect } from "react-redux";
-import { Text } from "components/CustomInputs";
-import { textInputs, blankFormState } from "./text-inputs";
-import { updateShippingAddress } from "store/actions/cart";
-import { useHistory } from "react-router-dom";
-import CheckoutSteps from "components/CheckoutComponents/CheckoutSteps";
-import { selectShippingAddress } from "store/selectors/cart";
-import { IShippingAddress } from "interfaces";
-import { createStructuredSelector } from "reselect";
+import React from 'react';
+import { Text } from 'components/CustomInputs';
+import { textInputs, blankFormState } from './text-inputs';
+import { useHistory } from 'react-router-dom';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { useActions } from 'hooks/use-actions';
+import CheckoutSteps from 'components/CheckoutComponents/CheckoutSteps';
 
-interface IProps {
-  updateShippingAddress: Function;
-  shippingAddress?: IShippingAddress;
-}
-
-const ShippingScreen: FC<IProps> = ({
-  updateShippingAddress,
-  shippingAddress,
-}) => {
+const ShippingScreen: React.FC = () => {
+  const { updateShippingAddress } = useActions();
+  const { shippingAddress } = useTypedSelector(({ cart }) => cart);
   const defaultFormState = shippingAddress ? shippingAddress : blankFormState;
   const [formData, setFormData] = React.useState<any>(defaultFormState);
-  const disabled = Object.values(formData).some((value) => value === "");
+
+  const disabled = Object.values(formData).some((value) => value === '');
   const history = useHistory();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -29,14 +21,14 @@ const ShippingScreen: FC<IProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     updateShippingAddress(formData);
-    history.push("/payment");
+    history.push('/payment');
   };
 
   return (
-    <div className="shipping-screen">
+    <div className='shipping-screen'>
       <CheckoutSteps shipping />
-      <form className="shipping-form" onSubmit={handleSubmit}>
-        <h3 className="shipping-form__title">Shipping Address</h3>
+      <form className='shipping-form' onSubmit={handleSubmit}>
+        <h3 className='shipping-form__title'>Shipping Address</h3>
         {textInputs.map((t, i) => (
           <Text
             key={i}
@@ -47,11 +39,7 @@ const ShippingScreen: FC<IProps> = ({
             required={true}
           />
         ))}
-        <button
-          disabled={disabled}
-          type="submit"
-          className="shipping-form__btn"
-        >
+        <button disabled={disabled} type='submit'>
           Proceed to Payment
         </button>
       </form>
@@ -59,9 +47,4 @@ const ShippingScreen: FC<IProps> = ({
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  shippingAddress: selectShippingAddress,
-});
-export default connect(mapStateToProps, {
-  updateShippingAddress,
-})(ShippingScreen);
+export default ShippingScreen;

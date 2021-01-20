@@ -9,7 +9,7 @@
   &__title {
     @include checkout-step-page-title;
   }
-  &__btn {
+  button {
     @include checkout-step-page-btn;
   }
 }
