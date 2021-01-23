@@ -13,10 +13,6 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const { toggleLightbox } = useActions();
   const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
-  // const handleToggleViewPrint = () => {
-  //   toggleCart(false);
-  //   toggleModal(true, 'VIEW_ITEM', item);
-  // };
 
   return (
     <div className='print-item'>

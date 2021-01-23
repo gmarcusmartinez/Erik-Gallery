@@ -20,6 +20,7 @@ const ItemAttrs: React.FC<IProps> = ({ item }) => {
         <p>{item.description}</p>
         <p>{item.size}</p>
       </div>
+      <div className='item-attrs__btn'>View Product</div>
     </div>
   );
 };

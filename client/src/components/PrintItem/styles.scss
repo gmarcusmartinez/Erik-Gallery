@@ -18,10 +18,10 @@
 
 @include respond(tablet) {
   .print-item {
-    height: 50rem;
+    height: 58rem;
     width: 100%;
     &__img {
-      height: 40rem;
+      height: 48rem;
       width: 100%;
     }
   }
@@ -32,7 +32,7 @@
     &:hover {
       .print-item__img {
         transition: 0.2s ease-in;
-        filter: brightness(25%);
+        filter: brightness(20%);
       }
       & .item-attrs {
         cursor: pointer;
@@ -40,6 +40,10 @@
         div {
           transform: translateY(2.8rem);
         }
+      }
+      div:nth-of-type(2) {
+        transition: 0.2s ease-in;
+        transform: translateY(0);
       }
     }
   }
