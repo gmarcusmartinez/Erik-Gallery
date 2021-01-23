@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
 
 @import './abstracts/animations';
@@ -29,6 +29,7 @@
 @import '../components/Navigation/styles.scss';
 @import '../components/ItemDetail/styles.scss';
 @import '../components/PrintItem/styles.scss';
+@import '../components/PrintItem/item-attrs.scss';
 @import '../components/ZineItem/styles.scss';
 @import '../components/PreviewZine/styles.scss';
 

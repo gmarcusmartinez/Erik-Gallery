@@ -7,12 +7,12 @@ interface IProps {
   item: ICartItem;
 }
 const CheckoutItem: React.FC<IProps> = ({ item }) => {
+  const { clearItemFromCart } = useActions();
   const { quantity, price, mainImage, description, title } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const text = description ? description : title;
   const totalItemPrice = quantity * price;
   const handleClearItem = () => clearItemFromCart(item);
-  const { clearItemFromCart } = useActions();
 
   return (
     <div className='checkout-item'>

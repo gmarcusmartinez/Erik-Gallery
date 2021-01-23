@@ -2,7 +2,7 @@
   @include default-form;
   display: grid;
   grid-template-rows: 20% 10% 20%;
-  &__btn {
+  button {
     align-self: center;
   }
 }

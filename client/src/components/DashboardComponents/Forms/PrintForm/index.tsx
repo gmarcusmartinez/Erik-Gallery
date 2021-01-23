@@ -28,8 +28,8 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const handleCheck = (bool: boolean) =>
     setFormData({ ...formData, isPublished: !bool });
 
-  const handleRequest = (type: string) =>
-    type === 'Edit'
+  const handleRequest = (formTitle: string) =>
+    formTitle === 'Edit'
       ? updatePrint(formData, selectedItem._id, imageData)
       : createPrint(formData, imageData);
 

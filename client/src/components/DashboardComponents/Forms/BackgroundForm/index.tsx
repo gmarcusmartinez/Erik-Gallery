@@ -1,9 +1,9 @@
 import React from 'react';
-import { File } from 'components/CustomInputs';
-import Spinner from 'components/CommonComponents/Spinner';
-import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
+import { useTypedSelector } from 'hooks/use-typed-selector';
+import { File } from 'components/CustomInputs';
+import Spinner from 'components/CommonComponents/Spinner';
 
 const BackgroundForm: React.FC = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);
@@ -30,9 +30,7 @@ const BackgroundForm: React.FC = () => {
         error={setError('image')}
         label={imageData ? 'Image Selected' : 'Choose an Image'}
       />
-      <button type='submit' className='image-form__btn'>
-        Submit
-      </button>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

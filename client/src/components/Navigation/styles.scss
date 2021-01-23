@@ -14,11 +14,9 @@
   z-index: 3;
   &__title {
     color: var(--color-black);
-    font-weight: var(--font-weight-normal);
-    font-size: 1.6rem;
-    font-style: italic;
-    letter-spacing: var(--letter-spacing-md);
-    margin-left: 1.5rem;
+    font-size: 1.8rem;
+    letter-spacing: var(--letter-spacing-lg);
+    margin-left: 1rem;
     text-decoration: none;
     text-transform: uppercase;
   }
@@ -30,6 +28,10 @@
   }
   @include respond(tablet) {
     font-size: 1.8rem;
+    &__title {
+      font-size: 2.2rem;
+      margin-left: 1.5rem;
+    }
   }
 }
 
@@ -41,18 +43,18 @@
   width: 3.2rem;
   height: 0.2rem;
   background-color: #000;
-  margin: 0.8rem 0;
+  margin: 0.6rem 0;
   transition: 0.25s;
 }
 
 .bar:nth-of-type(1).change {
-  transform: rotate(-45deg) translate(-7px, 8px);
+  transform: rotate(-45deg) translate(-4px, 6px);
 }
 .bar:nth-of-type(2).change {
   opacity: 0;
 }
 .bar:nth-of-type(3).change {
-  transform: rotate(45deg) translate(-6px, -8px);
+  transform: rotate(45deg) translate(-5px, -8px);
 }
 
 .navigation {
@@ -85,7 +87,7 @@
     a {
       color: #000;
       display: block;
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       letter-spacing: var(--letter-spacing-lg);
       line-height: 20vh;
       height: 100%;

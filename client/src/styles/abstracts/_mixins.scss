@@ -29,7 +29,7 @@
 }
 
 @mixin default-form {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   height: 48rem;
   width: 80vw;
   margin: auto;
@@ -70,15 +70,15 @@
   width: 100%;
   background-color: var(--color-overlay-bg);
   &__info {
-    display: flex;
     align-items: center;
+    display: flex;
     flex-direction: column;
     margin-top: 10rem;
 
     p,
     a {
       color: var(--color-black);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       letter-spacing: var(--letter-spacing-md);
       margin: var(--margin-sm) 0;
       text-decoration: none;
@@ -112,7 +112,7 @@
   border: 0.1rem solid var(--color-dark-grey);
   border-radius: 0.2rem;
   color: #fff;
-  font-family: "Open Sans Condensed";
+  font-family: 'Open Sans Condensed';
   font-size: 1.4rem;
   height: 5rem;
   letter-spacing: var(--letter-spacing-md);
