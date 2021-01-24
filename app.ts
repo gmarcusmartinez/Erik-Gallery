@@ -20,7 +20,7 @@ import keys from './config/keys';
 dotenv.config();
 
 const app = express();
-// app.use(sslRedirect());
+app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
