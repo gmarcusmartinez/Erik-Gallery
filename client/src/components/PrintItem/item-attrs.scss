@@ -3,13 +3,13 @@
   justify-content: center;
   display: flex;
   flex-direction: column;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   letter-spacing: var(--letter-spacing-md);
   margin-top: 0.5rem;
   text-transform: uppercase;
   transition: 0.2s ease-in;
   &__wrapper {
-    padding: 0 0.25rem;
+    padding: var(--padding-sm) var(--padding-md);
     p {
       margin: 0.5rem 0;
     }
@@ -20,9 +20,9 @@
     color: var(--color-dark-grey);
     height: 4rem;
     line-height: 4rem;
+    margin: var(--margin-sm) 0;
     cursor: pointer;
-    width: 95%;
-    margin-left: 2.5%;
+
     &:active {
       background-color: #000;
       border: 1px solid #000;
@@ -33,12 +33,11 @@
 
 @include respond(tablet) {
   .item-attrs {
-    font-size: 1.4rem;
     margin-top: unset;
-
+    &__wrapper {
+      padding: unset;
+    }
     &__btn {
-      width: 100%;
-      margin-left: 0%;
       &:hover {
         transition: 0.1s ease-in;
         background-color: #000;

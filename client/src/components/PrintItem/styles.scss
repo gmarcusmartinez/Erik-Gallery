@@ -1,8 +1,9 @@
 .print-item {
   display: flex;
   flex-direction: column;
+  font-weight: 300;
   height: 90vh;
-  margin: 0 auto 1rem auto;
+  margin: 0 auto 2rem auto;
   position: relative;
   text-align: center;
   width: 96vw;
@@ -20,6 +21,8 @@
   .print-item {
     height: 58rem;
     width: 100%;
+    margin: 0 auto;
+
     &__img {
       height: 48rem;
       width: 100%;
@@ -41,6 +44,16 @@
           transform: translateY(2.8rem);
         }
       }
+    }
+  }
+}
+
+@media (min-height: 800px) {
+  .print-item {
+    height: 80vh;
+    margin-bottom: unset;
+    &__img {
+      height: 70%;
     }
   }
 }
