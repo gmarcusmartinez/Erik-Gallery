@@ -26,7 +26,6 @@ const Links: React.FC = () => {
   return (
     <ul className={`navigation ${adminLinks}`}>
       {renderLinks(isOpen, closeAll, isAdmin)}
-      <div className='navigation__padding'></div>
     </ul>
   );
 };

@@ -7,7 +7,7 @@ const PreviewZine: React.FC = () => {
   const [selectedPage, setSelectedPage] = React.useState(0);
 
   const zinePages = data.images.map((page: string, i: number) => (
-    <ZinePage page={page} i={i} />
+    <ZinePage page={page} i={i} key={i} />
   ));
 
   const next = () => {

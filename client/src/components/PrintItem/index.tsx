@@ -13,7 +13,6 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const { toggleLightbox } = useActions();
   const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
-
   return (
     <div className='print-item'>
       <div

@@ -5,6 +5,7 @@
   flex-direction: column;
   font-size: 1.6rem;
   letter-spacing: var(--letter-spacing-md);
+  margin-top: 0.5rem;
   text-transform: uppercase;
   transition: 0.2s ease-in;
   &__wrapper {
@@ -14,7 +15,7 @@
     }
   }
   &__btn {
-    border: 1px solid var(--color-light-grey);
+    border: 1px solid var(--color-grey);
     background-color: transparent;
     color: var(--color-dark-grey);
     height: 4rem;
@@ -33,6 +34,8 @@
 @include respond(tablet) {
   .item-attrs {
     font-size: 1.4rem;
+    margin-top: unset;
+
     &__btn {
       width: 100%;
       margin-left: 0%;

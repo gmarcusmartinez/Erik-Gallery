@@ -30,15 +30,10 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path='/' component={screens.LandingScreen} />
           <Route path='/contact' component={screens.ContactScreen} />
-          <Route path='/checkout' component={screens.CartScreen} />
           <Route path='/login' component={screens.LoginScreen} />
           <Route path='/logout' component={screens.LogoutScreen} />
-          <Route path='/payment/' component={screens.PaymentScreen} />
           <Route exact path='/prints/' component={screens.PrintsScreen} />
           <Route exact path='/prints/:page' component={screens.PrintsScreen} />
-          <Route path='/review-order' component={screens.ReviewOrderScreen} />
-          <Route path='/shipping' component={screens.ShippingScreen} />
-          <Route path='/soldout' component={screens.SoldoutScreen} />
           <Route path='/sound' component={screens.SoundScreen} />
           <Route exact path='/zines' component={screens.ZinesScreen} />
           <Route exact path='/zines/:page' component={screens.ZinesScreen} />
@@ -54,12 +49,6 @@ const App: React.FC = () => {
             path='/dashboard/zine/:id'
             currentUser={currentUser}
             component={screens.DashboardZine}
-          />
-          <PRoute
-            exact
-            path='/dashboard/order/:id'
-            currentUser={currentUser}
-            component={screens.Order}
           />
           <Route component={screens.NotFoundScreen} />
         </Switch>
