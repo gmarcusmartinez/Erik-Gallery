@@ -19,16 +19,18 @@ html {
 }
 
 #root,
-#modal {
+#modal,
+#lightbox {
   --color-grey: #666;
   --color-light-grey: #ccc;
   --color-medium-grey: #999;
   --color-dark-grey: #333;
   --color-black: #000;
+  --color-white: rgb(251, 250, 245);
 
   --color-modal-bg: rgba(0, 0, 0, 0.9);
   --color-overlay-bg: rgba(255, 255, 255, 0.9);
-  --color-transparent-white: rgba(255, 255, 255, 0.8);
+  --color-transparent-white: rgba(251, 250, 245, 0.8);
 
   --font-weight-light: 300;
   --font-weight-normal: 400;

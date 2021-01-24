@@ -111,7 +111,7 @@
   background-color: #000;
   border: 0.1rem solid var(--color-dark-grey);
   border-radius: 0.2rem;
-  color: #fff;
+  color: var(--color-white);
   font-family: 'Open Sans Condensed';
   font-size: 1.4rem;
   height: 5rem;
@@ -128,7 +128,7 @@
   transition: 0.15s ease-in-out;
   &:hover,
   &:active {
-    background-color: #fff;
+    background-color: var(--color-white);
     border: 0.1rem solid var(--color-dark-grey);
     color: var(--color-dark-grey);
   }

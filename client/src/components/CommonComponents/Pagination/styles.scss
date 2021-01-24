@@ -1,16 +1,12 @@
 .pagination {
   height: 4rem;
   margin: 1rem 0;
-  width: 90%;
+  width: 30rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-
-  @include respond(tablet) {
-    width: 40rem;
-  }
 }
 
 .page-number {

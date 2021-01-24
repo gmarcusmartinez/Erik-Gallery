@@ -10,37 +10,28 @@
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 55vh;
+    height: 68vh;
     margin-bottom: 1rem;
   }
   &__info {
-    font-size: 1.2rem;
-    height: 40vh;
+    font-size: 1.4rem;
+    font-weight: 400;
+    height: 30vh;
     margin: 0 auto;
     width: 100%;
     text-align: center;
-
-    span:nth-of-type(1) {
-      font-weight: bold;
-      font-size: 1.45rem;
-    }
-    span:nth-of-type(2) {
-      margin-left: 0.5rem;
-    }
   }
 
   &__text {
-    letter-spacing: 0.2rem;
+    letter-spacing: var(--letter-spacing-md);
     margin: 0.5rem 0;
     text-transform: capitalize;
     width: 100%;
   }
 
   &__placeholder {
-    font-size: 1.3rem;
     letter-spacing: 0.2rem;
     margin: 0.5rem 0;
-    text-transform: capitalize;
     width: 100%;
     a {
       color: var(--color-dark-grey);
@@ -50,33 +41,7 @@
       text-transform: lowercase;
     }
   }
-  &__btn {
-    background-color: transparent;
-    border: 0.1rem solid var(--color-dark-grey);
-    color: var(--color-dark-grey);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 1.1rem;
-    height: 4rem;
-    letter-spacing: var(--letter-spacing-lg);
-    margin-top: var(--margin-sm);
-    outline: none;
-    text-transform: uppercase;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: var(--transition-fast);
-    &:hover,
-    &:active {
-      background-color: #000;
-      color: #fff;
-    }
-    &:active {
-      transform: translate(2px, 2px);
-    }
-  }
   @media (min-width: 600px) {
     flex-direction: unset;
     align-items: center;
@@ -84,21 +49,22 @@
     height: 55rem;
     margin-top: unset;
     &__img {
+      justify-self: start;
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
 
-      height: 80%;
+      height: 100%;
       width: 50%;
     }
     &__info {
       display: flex;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       height: min-content;
       flex-direction: column;
-      padding: 2rem;
+      padding: var(--padding-sm);
       width: 50%;
-      text-align: start;
+      text-align: center;
     }
     &__description,
     &__size {
@@ -110,8 +76,14 @@
     }
   }
   @media (min-width: 1000px) {
+    align-items: unset;
+    &__img {
+      width: 60%;
+    }
     &__info {
-      max-width: 45rem;
+      font-size: 1.6rem;
+      width: 40%;
+      margin-top: 10%;
     }
   }
 }

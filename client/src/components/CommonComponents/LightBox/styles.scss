@@ -45,7 +45,7 @@
   &__bar {
     width: 3rem;
     height: 0.2rem;
-    background-color: #fff;
+    background-color: var(--color-white);
     margin: 0.8rem 0;
 
     transition: 0.25s;

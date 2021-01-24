@@ -25,7 +25,7 @@
     &:active {
       background-color: #000;
       border: 1px solid #000;
-      color: #fff;
+      color: var(--color-white);
     }
   }
 }
@@ -40,7 +40,7 @@
         transition: 0.1s ease-in;
         background-color: #000;
         border: 1px solid #000;
-        color: #fff;
+        color: var(--color-white);
       }
     }
   }
@@ -54,7 +54,7 @@
     width: 100%;
     &__wrapper {
       height: min-content;
-      color: #fff;
+      color: var(--color-white);
       padding: var(--padding-md);
       transition: 0.2s ease-in;
       transform: translateY(0);
@@ -63,15 +63,14 @@
       }
     }
     &__btn {
-      width: 90%;
-      margin-left: 5%;
       margin-top: 5rem;
-      color: #fff;
+      color: var(--color-white);
       transform: translateY(2.8rem);
 
       &:hover {
-        border: 0.1rem solid #fff;
-        background-color: transparent;
+        color: rgba(0, 0, 0, 0.8);
+        border: 0.1rem solid var(--color-white);
+        background-color: var(--color-white);
       }
     }
   }

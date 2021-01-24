@@ -99,7 +99,7 @@
     &:active {
       background-color: #000;
       a {
-        color: #fff;
+        color: var(--color-white);
       }
     }
   }
