@@ -1,5 +1,5 @@
 .preview-zine {
-  height: 70%;
+  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -19,11 +19,10 @@
   }
   @include respond(tablet) {
     max-width: 50rem;
-    margin: 2.5% auto;
-    height: 80%;
+    margin: auto;
 
     &__image {
-      height: 40rem;
+      height: 36rem;
       width: 100%;
     }
   }
@@ -39,7 +38,7 @@
 .next-btn,
 .previous-btn {
   position: absolute;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
   color: var(--color-white);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;

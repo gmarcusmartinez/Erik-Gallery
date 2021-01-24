@@ -10,7 +10,6 @@
   margin-top: 2vh;
   width: 100%;
   justify-content: center;
-  padding: var(--padding-sm);
   @include respond(tablet) {
     display: grid;
     gap: 1rem;
