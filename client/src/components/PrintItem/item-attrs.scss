@@ -75,9 +75,8 @@
     &__btn {
       border-color: var(--color-white);
       color: var(--color-white);
-      margin-top: 5rem;
-      transform: translateY(2.8rem);
-
+      margin: var(--margin-sm) auto;
+      width: 80%;
       &:hover {
         color: rgba(0, 0, 0, 0.8);
         border: 0.1rem solid var(--color-white);

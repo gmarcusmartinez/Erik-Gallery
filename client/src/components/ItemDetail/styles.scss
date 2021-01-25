@@ -21,22 +21,27 @@
     width: 100%;
     text-align: center;
     text-transform: capitalize;
-  }
-
-  &__text {
-    letter-spacing: var(--letter-spacing-md);
-    margin: 0.5rem 0;
-    width: 100%;
+    p {
+      letter-spacing: var(--letter-spacing-md);
+      margin: 0.5rem 0;
+      width: 100%;
+    }
+    p:nth-of-type(1) {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
   }
 
   &__placeholder {
-    letter-spacing: 0.2rem;
     margin: 0.5rem 0;
     width: 100%;
+
     a {
       color: var(--color-dark-grey);
+      font-weight: 400;
       display: block;
-      margin: 0.5rem 0;
+      margin: 0.25rem 0;
       text-decoration: none;
       text-transform: lowercase;
     }
@@ -64,14 +69,6 @@
       padding: var(--padding-sm);
       width: 50%;
       text-align: center;
-    }
-    &__description,
-    &__size {
-      display: block;
-      margin-bottom: var(--margin-sm);
-    }
-    &__btn {
-      width: 100%;
     }
   }
   @media (min-width: 1000px) {

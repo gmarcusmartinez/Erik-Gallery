@@ -12,9 +12,9 @@ const ItemDetail = () => {
     <div className='item-detail'>
       <div className='item-detail__img' style={{ backgroundImage }} />
       <div className='item-detail__info'>
-        {description && <p className='item-detail__text'>{description}</p>}
-        {title && <p className='item-detail__text'>{title}</p>}
-        <p className='item-detail__text'>{data.size ? data.size : null}</p>
+        {description && <p>{description}</p>}
+        {title && <p>{title}</p>}
+        <p>{data.size ? data.size : null}</p>
         <PlaceHolder />
       </div>
     </div>
