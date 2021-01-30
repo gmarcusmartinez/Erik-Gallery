@@ -1,23 +1,22 @@
 .dashboard-zine {
-  padding: 0 0 1rem 0;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  margin: auto;
-
+  justify-content: center;
+  margin: 0 auto;
   width: 100%;
-  max-width: 110rem;
+  max-width: 100rem;
 
   &__pages {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 100vh;
     width: 100%;
   }
 
   &__page {
     position: relative;
-    max-height: 25rem;
+    height: 25rem;
     margin: 0.5%;
     width: 49%;
     @include respond(desktop) {
@@ -28,31 +27,24 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
     height: 100%;
     width: 100%;
   }
 }
-.delete-page-btn,
-.add-page-btn {
-  color: var(--color-white);
-
-  font-size: 1.2rem;
-  letter-spacing: var(--letter-spacing-md);
-
-  text-align: center;
-  text-transform: uppercase;
-}
 
 .delete-page-btn {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: 3rem;
-  line-height: 3rem;
-  width: 90%;
-  margin: 1rem 5%;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: red;
+  display: flex;
+  font-size: 1.8rem;
+  height: 4rem;
+  justify-content: center;
+  width: 4rem;
 
   position: absolute;
-  bottom: 0;
+  top: 0.5rem;
+  right: 0.5rem;
   &:hover,
   &:active {
     background-color: rgba(0, 0, 0, 0.9);

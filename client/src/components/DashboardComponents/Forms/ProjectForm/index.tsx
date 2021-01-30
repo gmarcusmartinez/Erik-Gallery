@@ -11,9 +11,9 @@ interface IProps {
 }
 
 const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
-  const { createZine, updateZine } = useActions();
+  const { createProject, updateZine } = useActions();
   const { loading, selectedItem, errors } = useTypedSelector(
-    ({ zines }) => zines
+    ({ projects }) => projects
   );
   const defaultFormState = formTitle === 'Edit' ? selectedItem : blankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
@@ -28,19 +28,16 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
   const handleCheck = (bool: boolean) =>
     setFormData({ ...formData, isPublished: !bool });
 
-  const handleRequest = (type: string) =>
-    type === 'Edit'
-      ? updateZine(formData, selectedItem._id, imageData)
-      : createZine(formData, imageData);
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleRequest(formTitle);
+    formTitle === 'Edit'
+      ? updateZine(formData, selectedItem._id, imageData)
+      : createProject(formData, imageData);
   };
   const setError = (field: string) =>
     errors ? errors.find((err: IError) => err.field === field) : null;
 
-  if (loading) return <Spinner message='Uploading Zine BB' />;
+  if (loading) return <Spinner message='Uploading Project BB' />;
   return (
     <form className='zine-form' onSubmit={handleSubmit}>
       <h3 className='zine-form__title'>{formTitle} Project</h3>
