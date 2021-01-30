@@ -6,6 +6,7 @@ import ItemDetal from 'components/ItemDetail';
 import ZineForm from 'components/DashboardComponents/Forms/ZineForm';
 import ImageForm from 'components/DashboardComponents/Forms/ImageForm';
 import PreviewZine from 'components/PreviewZine';
+import ProjectForm from 'components/DashboardComponents/Forms/ProjectForm';
 
 export const renderForm = (component: string) => {
   switch (component) {
@@ -17,6 +18,8 @@ export const renderForm = (component: string) => {
       return <PrintForm formTitle='Edit' />;
     case 'ADD_BG':
       return <BackgroundForm />;
+    case 'ADD_PROJECT':
+      return <ProjectForm formTitle='Add' />;
     case 'VIEW_ITEM':
       return <ItemDetal />;
     case 'ADD_ZINE':

@@ -85,10 +85,10 @@ const Dashboard: React.FC = () => {
         {resourceType === 'projects' && (
           <Section
             resourceType='projects'
-            formName={null}
+            formName='ADD_PROJECT'
             headers={headers.projectHeaders}
             items={projects}
-            gridTemplateColumns='22% 18% 12% 12% 12% 12% 12%'
+            gridTemplateColumns='15% 15% 35%'
           />
         )}
       </div>
