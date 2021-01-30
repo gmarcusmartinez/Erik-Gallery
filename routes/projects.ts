@@ -38,5 +38,21 @@ router
     validateRequest,
     projectControllers.updateProject
   );
+router
+  .route('/:id')
+  .patch(currentUser, requireAuth, isAdmin, projectControllers.addProjectImage);
+
+router
+  .route('/:id/deletePage')
+  .put(
+    currentUser,
+    requireAuth,
+    isAdmin,
+    projectControllers.deleteProjectImage
+  );
+
+router
+  .route('/:id')
+  .delete(currentUser, requireAuth, isAdmin, projectControllers.deleteProject);
 
 export { router as projectRouter };
