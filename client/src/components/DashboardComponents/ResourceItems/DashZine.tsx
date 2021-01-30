@@ -1,8 +1,8 @@
 import React from 'react';
 import { IZine } from 'interfaces';
 import { useHistory } from 'react-router-dom';
-import { toTwoDecimals } from 'utils';
 import { useActions } from 'hooks/use-actions';
+import { s3Url } from 'api/url';
 
 interface IProps {
   zine: IZine;
@@ -17,9 +17,8 @@ const ZineItem: React.FC<IProps> = ({ zine }) => {
     toggleModal(true, formType, zineToUpdate);
   };
 
-  const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${zine.mainImage})`;
-  const gridTemplateColumns = '10% 32% 8% 8% 8% 8% 8% 6% 6% 6%';
-  const { price, netPrice, vatPrice, quantityInStock } = zine;
+  const backgroundImage = `url(${s3Url}/${zine.mainImage})`;
+  const gridTemplateColumns = '15% 45% 15% 12.5% 12.5%';
   const pubClassName = `isPub ${zine.isPublished ? 'pub-true' : 'pub-false'}`;
 
   const history = useHistory();
@@ -43,14 +42,10 @@ const ZineItem: React.FC<IProps> = ({ zine }) => {
             </div>
           </div>
         </div>
-        <div className='dash-item__text'>{zine.title}</div>
-        <div className='dash-item__text'>{toTwoDecimals(price)}&euro;</div>
-        <div className='dash-item__text'>{toTwoDecimals(netPrice)}&euro;</div>
-        <div className='dash-item__text'>{toTwoDecimals(vatPrice)}&euro;</div>
-        <div className='dash-item__text'>{quantityInStock}</div>
-        <div className='dash-btn' onClick={handleRedirect}>
-          Images
+        <div className='dash-item__text zine-redirect' onClick={handleRedirect}>
+          {zine.title}
         </div>
+        <div className='dash-item__text'>{zine.quantityInStock}</div>
         <div className='dash-btn' onClick={handleToggleEdit}>
           Edit
         </div>

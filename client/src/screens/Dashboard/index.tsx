@@ -70,7 +70,7 @@ const Dashboard: React.FC = () => {
             formName='ADD_BG'
             headers={headers.backgroundHeaders}
             items={backgrounds}
-            gridTemplateColumns='10% 12% 12%'
+            gridTemplateColumns='15%'
           />
         )}
         {resourceType === 'zines' && (
@@ -79,7 +79,7 @@ const Dashboard: React.FC = () => {
             formName='ADD_ZINE'
             headers={headers.zineHeaders}
             items={zines}
-            gridTemplateColumns='10% 32% 8% 8% 8% 8% 8%'
+            gridTemplateColumns='15% 45% 15%'
           />
         )}
         {resourceType === 'projects' && (

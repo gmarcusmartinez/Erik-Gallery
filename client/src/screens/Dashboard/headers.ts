@@ -1,8 +1,4 @@
-export const backgroundHeaders = [
-  { text: 'Image' },
-  { text: '' },
-  { text: '' },
-];
+export const backgroundHeaders = [{ text: 'Image' }];
 
 export const printHeaders = [
   { text: 'Image' },
@@ -14,13 +10,7 @@ export const printHeaders = [
 export const zineHeaders = [
   { text: 'Image' },
   { text: 'Title' },
-  { text: 'Price' },
-  { text: 'Net' },
-  { text: 'Vat' },
   { text: 'Qty' },
-  { text: '' },
-  { text: '' },
-  { text: '' },
 ];
 export const projectHeaders = [
   { text: 'Image' },

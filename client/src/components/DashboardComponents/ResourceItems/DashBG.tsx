@@ -13,7 +13,7 @@ const BackgroundItem: React.FC<IProps> = ({ bg }) => {
   const handleSetActive = () => setActive(bg._id);
 
   const backgroundImage = `url(${s3Url}/${bg.mainImage})`;
-  const gridTemplateColumns = '10% 12% 13%';
+  const gridTemplateColumns = '15% 15% 15%';
   const pubClassName = `isPub ${bg.active ? 'pub-true' : 'pub-false'}`;
 
   return (
@@ -33,7 +33,7 @@ const BackgroundItem: React.FC<IProps> = ({ bg }) => {
         Set Active
       </div>
       <div className='dash-btn' onClick={toggleDelete}>
-        Delete
+        &#10060;
       </div>
     </div>
   );
