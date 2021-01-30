@@ -1,14 +1,14 @@
-import { ProductType } from "aws-sdk/clients/servicecatalog";
-import { NextFunction } from "express";
+import { ProductType } from 'aws-sdk/clients/servicecatalog';
+import { NextFunction } from 'express';
 
-export const advancedResults = (model: any, type: ProductType) => async (
+export const advancedResults = (model: any, type?: ProductType) => async (
   req: any,
   res: any,
   next: NextFunction
 ) => {
   let query;
   const requestQuery = { ...req.query };
-  const removeFields = ["page"];
+  const removeFields = ['page'];
   removeFields.forEach((param) => delete requestQuery[param]);
 
   let queryStr = JSON.stringify(requestQuery);
@@ -22,7 +22,13 @@ export const advancedResults = (model: any, type: ProductType) => async (
   const page = Number(req.query.page) || 1;
   const skip = limit * (page - 1);
 
-  const count = await model.countDocuments({ type, isPublished: true });
+  let count;
+  if (type) {
+    count = await model.countDocuments({ type, isPublished: true });
+  } else {
+    count = await model.countDocuments({ isPublished: true });
+  }
+
   const data = await model
     .find({ type, isPublished: true })
     .limit(limit)

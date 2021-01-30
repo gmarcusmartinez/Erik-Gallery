@@ -10,6 +10,7 @@ import { authRouter } from './routes/auth';
 import { backgroundRouter } from './routes/backgrounds';
 import { orderRouter } from './routes/orders';
 import { printRouter } from './routes/prints';
+import { projectRouter } from './routes/projects';
 import { uploadRouter } from './routes/upload';
 import { zineRouter } from './routes/zines';
 
@@ -31,6 +32,7 @@ app.use('/api/uploads', uploadRouter);
 app.use('/api/backgrounds', backgroundRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/prints', printRouter);
+app.use('/api/projects', projectRouter);
 app.use('/api/zines', zineRouter);
 
 app.get('/api/config/paypal', (req: Request, res: Response) =>
