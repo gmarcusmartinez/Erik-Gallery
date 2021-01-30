@@ -1,7 +1,6 @@
 import React from 'react';
 import { s3Url } from 'api/url';
 import { IPrint } from 'interfaces';
-import { toTwoDecimals } from 'utils';
 import { useActions } from 'hooks/use-actions';
 
 interface IProps {
@@ -18,9 +17,8 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
   };
 
   const backgroundImage = `url(${s3Url}/${print.mainImage})`;
-  const gridTemplateColumns = '10% 31% 15% 7% 7% 7% 7% 8% 8%';
-  const { netPrice, vatPrice, price, isPublished } = print;
-  const pubClassName = `isPub ${isPublished ? 'pub-true' : 'pub-false'}`;
+  const gridTemplateColumns = '15% 35% 20% 10% 10% 10%';
+  const pubClassName = `isPub ${print.isPublished ? 'pub-true' : 'pub-false'}`;
 
   return (
     <>
@@ -38,9 +36,6 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
         </div>
         <div className='dash-item__text'>{print.description}</div>
         <div className='dash-item__text'>{print.size}</div>
-        <div className='dash-item__text'>{toTwoDecimals(price)}&euro;</div>
-        <div className='dash-item__text'>{toTwoDecimals(netPrice)}&euro;</div>
-        <div className='dash-item__text'>{toTwoDecimals(vatPrice)}&euro;</div>
         <div className='dash-item__text'>{print.quantityInStock}</div>
         <div className='dash-btn' onClick={toggleEdit}>
           Edit

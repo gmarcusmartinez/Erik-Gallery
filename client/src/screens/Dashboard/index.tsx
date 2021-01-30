@@ -61,7 +61,7 @@ const Dashboard: React.FC = () => {
             formName='ADD_PRINT'
             headers={headers.printHeaders}
             items={prints}
-            gridTemplateColumns='10% 31% 15% 7% 7% 7% 7%'
+            gridTemplateColumns='15% 35% 20% 10%'
           />
         )}
         {resourceType === 'backgrounds' && (

@@ -8,12 +8,7 @@ export const printHeaders = [
   { text: 'Image' },
   { text: 'Description' },
   { text: 'Size' },
-  { text: 'Price' },
-  { text: 'Net' },
-  { text: 'Vat' },
   { text: 'Qty' },
-  { text: '' },
-  { text: '' },
 ];
 
 export const zineHeaders = [

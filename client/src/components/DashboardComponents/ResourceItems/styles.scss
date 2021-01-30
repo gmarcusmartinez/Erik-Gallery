@@ -20,9 +20,10 @@
   }
   &__text {
     display: none;
-    font-size: 1.25rem;
+    font-size: 1.35rem;
   }
   @include respond(tablet) {
+    align-self: center;
     display: grid;
     height: 9rem;
     width: 100%;
@@ -51,9 +52,12 @@
     }
     .edit {
       cursor: pointer;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       text-transform: uppercase;
     }
+  }
+  @include respond(desktop) {
+    width: 80%;
   }
 }
 

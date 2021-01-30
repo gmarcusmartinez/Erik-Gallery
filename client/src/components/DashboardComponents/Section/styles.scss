@@ -22,9 +22,13 @@
   &__headers {
     display: none;
     @include respond(tablet) {
+      align-self: center;
       display: grid;
       height: 4rem;
       width: 100%;
+    }
+    @include respond(desktop) {
+      width: 80%;
     }
     div {
       color: var(--color-grey);
