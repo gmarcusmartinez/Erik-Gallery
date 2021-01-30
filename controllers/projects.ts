@@ -18,3 +18,25 @@ export const getProject = asyncHandler(async (req: Request, res: Response) => {
   if (!project) throw new BadRequestError('Project not found.');
   res.status(200).json(project);
 });
+
+export const createProject = asyncHandler(
+  async (req: Request, res: Response) => {
+    const project = Project.build({ ...req.body });
+    await project.save();
+    res.status(200).json(project);
+  }
+);
+
+export const updateProject = asyncHandler(
+  async (req: Request, res: Response) => {
+    const project = await Project.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!project) throw new BadRequestError('Project Not Found.');
+    await project.save();
+
+    res.status(200).json(project);
+  }
+);
