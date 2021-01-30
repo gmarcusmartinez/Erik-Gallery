@@ -34,7 +34,6 @@ const App: React.FC = () => {
           <Route path='/logout' component={screens.LogoutScreen} />
           <Route exact path='/prints/' component={screens.PrintsScreen} />
           <Route exact path='/prints/:page' component={screens.PrintsScreen} />
-          <Route path='/sound' component={screens.SoundScreen} />
           <Route exact path='/zines' component={screens.ZinesScreen} />
           <Route exact path='/zines/:page' component={screens.ZinesScreen} />
 

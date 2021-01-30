@@ -7,6 +7,4 @@ export { default as LogoutScreen } from './Logout';
 export { default as NotFoundScreen } from './NotFound';
 export { default as Order } from './Order';
 export { default as PrintsScreen } from './Prints';
-export { default as SoundScreen } from './Sound';
-export { default as SoldoutScreen } from './Soldout';
 export { default as ZinesScreen } from './Zines';

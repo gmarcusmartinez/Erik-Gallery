@@ -6,4 +6,5 @@ export * from './modal';
 export * from './nav';
 export * from './orders';
 export * from './prints';
+export * from './projects';
 export * from './zines';

@@ -12,10 +12,10 @@ const Dashboard: React.FC = () => {
     adminFetchPrints,
     adminFetchZines,
     fetchBackgrounds,
-    adminFetchOrders,
+    adminFetchProjects,
   } = useActions();
   const { items: backgrounds } = useTypedSelector((state) => state.backgrounds);
-  const { items: orders } = useTypedSelector((state) => state.orders);
+  const { items: projects } = useTypedSelector((state) => state.projects);
   const { items: prints } = useTypedSelector((state) => state.prints);
   const { items: zines } = useTypedSelector((state) => state.zines);
 
@@ -40,8 +40,8 @@ const Dashboard: React.FC = () => {
         return fetchBackgrounds();
       case 'zines':
         return adminFetchZines();
-      case 'orders':
-        return adminFetchOrders();
+      case 'projects':
+        return adminFetchProjects();
     }
   };
 
@@ -82,12 +82,12 @@ const Dashboard: React.FC = () => {
             gridTemplateColumns='10% 32% 8% 8% 8% 8% 8%'
           />
         )}
-        {resourceType === 'orders' && (
+        {resourceType === 'projects' && (
           <Section
-            resourceType='orders'
+            resourceType='projects'
             formName={null}
-            headers={headers.orderHeaders}
-            items={orders}
+            headers={headers.projectHeaders}
+            items={projects}
             gridTemplateColumns='22% 18% 12% 12% 12% 12% 12%'
           />
         )}

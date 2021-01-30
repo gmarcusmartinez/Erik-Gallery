@@ -7,8 +7,9 @@ import { cart } from './cart';
 import { lightbox } from './lightbox';
 import { modal } from './modal';
 import { nav } from './nav';
-import { orders } from './orders';
 import { prints } from './prints';
+import { projects } from './projects';
+import { orders } from './orders';
 import { zines } from './zines';
 
 const persistConfig = {
@@ -26,6 +27,7 @@ export const rootReducer = combineReducers({
   nav,
   orders,
   prints,
+  projects,
   zines,
 });
 
