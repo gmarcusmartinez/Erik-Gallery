@@ -54,7 +54,7 @@ exports.advancedResults = function (model, type) { return function (req, res, ne
         switch (_a.label) {
             case 0:
                 requestQuery = __assign({}, req.query);
-                removeFields = ["page"];
+                removeFields = ['page'];
                 removeFields.forEach(function (param) { return delete requestQuery[param]; });
                 queryStr = JSON.stringify(requestQuery);
                 queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, function (match) { return "$" + match; });
@@ -62,14 +62,20 @@ exports.advancedResults = function (model, type) { return function (req, res, ne
                 limit = 6;
                 page = Number(req.query.page) || 1;
                 skip = limit * (page - 1);
+                if (!type) return [3 /*break*/, 2];
                 return [4 /*yield*/, model.countDocuments({ type: type, isPublished: true })];
             case 1:
                 count = _a.sent();
-                return [4 /*yield*/, model
-                        .find({ type: type, isPublished: true })
-                        .limit(limit)
-                        .skip(skip)];
-            case 2:
+                return [3 /*break*/, 4];
+            case 2: return [4 /*yield*/, model.countDocuments({ isPublished: true })];
+            case 3:
+                count = _a.sent();
+                _a.label = 4;
+            case 4: return [4 /*yield*/, model
+                    .find({ type: type, isPublished: true })
+                    .limit(limit)
+                    .skip(skip)];
+            case 5:
                 data = _a.sent();
                 pages = Math.ceil(count / limit);
                 res.advancedResults = { page: page, pages: pages, data: data };

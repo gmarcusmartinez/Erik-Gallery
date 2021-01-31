@@ -15,6 +15,7 @@ var auth_1 = require("./routes/auth");
 var backgrounds_1 = require("./routes/backgrounds");
 var orders_1 = require("./routes/orders");
 var prints_1 = require("./routes/prints");
+var projects_1 = require("./routes/projects");
 var upload_1 = require("./routes/upload");
 var zines_1 = require("./routes/zines");
 var not_found_error_1 = require("./errors/not-found-error");
@@ -32,6 +33,7 @@ app.use('/api/uploads', upload_1.uploadRouter);
 app.use('/api/backgrounds', backgrounds_1.backgroundRouter);
 app.use('/api/orders', orders_1.orderRouter);
 app.use('/api/prints', prints_1.printRouter);
+app.use('/api/projects', projects_1.projectRouter);
 app.use('/api/zines', zines_1.zineRouter);
 app.get('/api/config/paypal', function (req, res) {
     return res.send(keys_1.default.paypalClientID);
