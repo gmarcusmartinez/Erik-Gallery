@@ -5,6 +5,5 @@ export { default as DashboardZine } from './DashboardZine';
 export { default as LandingScreen } from './Landing';
 export { default as LogoutScreen } from './Logout';
 export { default as NotFoundScreen } from './NotFound';
-export { default as Order } from './Order';
 export { default as PrintsScreen } from './Prints';
 export { default as ZinesScreen } from './Zines';

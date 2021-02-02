@@ -39,8 +39,8 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
 
   if (loading) return <Spinner message='Uploading Project BB' />;
   return (
-    <form className='project-form' onSubmit={handleSubmit}>
-      <h3 className='project-form__title'>{formTitle} Project</h3>
+    <form className='zine-form' onSubmit={handleSubmit}>
+      <h3 className='zine-form__title'>{formTitle} Project</h3>
       {textInputs.map((t, i) => (
         <Text
           key={i}
@@ -57,7 +57,7 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
         error={setError('image')}
         label={imageData ? 'Image Selected' : 'Choose an Image'}
       />
-      <button type='submit' className='project-form__btn'>
+      <button type='submit' className='zine-form__btn'>
         Submit
       </button>
     </form>

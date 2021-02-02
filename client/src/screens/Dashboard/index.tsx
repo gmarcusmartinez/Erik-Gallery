@@ -88,7 +88,7 @@ const Dashboard: React.FC = () => {
             formName='ADD_PROJECT'
             headers={headers.projectHeaders}
             items={projects}
-            gridTemplateColumns='15% 15% 35%'
+            gridTemplateColumns='15% 25% 40%'
           />
         )}
       </div>

@@ -20,6 +20,8 @@ export const renderForm = (component: string) => {
       return <BackgroundForm />;
     case 'ADD_PROJECT':
       return <ProjectForm formTitle='Add' />;
+    case 'EDIT_PROJECT':
+      return <ProjectForm formTitle='Edit' />;
     case 'VIEW_ITEM':
       return <ItemDetal />;
     case 'ADD_ZINE':

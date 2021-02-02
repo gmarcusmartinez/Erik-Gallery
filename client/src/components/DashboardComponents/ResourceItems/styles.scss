@@ -35,25 +35,13 @@
       justify-self: center;
     }
     &__text {
-      text-align: center;
       letter-spacing: var(--letter-spacing-sm);
       color: var(--color-dark-grey);
-      display: block;
-      line-height: 9rem;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    .delete {
-      color: red;
-      cursor: pointer;
-      font-size: 2.4rem;
-      text-transform: uppercase;
-    }
-    .edit {
-      cursor: pointer;
-      font-size: 1.1rem;
-      text-transform: uppercase;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
   }
   @include respond(desktop) {
@@ -91,4 +79,8 @@
   &:hover {
     cursor: pointer;
   }
+}
+
+.dash-btn {
+  width: 90%;
 }

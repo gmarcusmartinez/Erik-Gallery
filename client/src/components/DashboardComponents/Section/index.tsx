@@ -1,16 +1,16 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
-import { IPrint, IZine, IBackground, IOrder } from 'interfaces';
+import { IPrint, IZine, IBackground } from 'interfaces';
 import BackgroundItem from '../ResourceItems/DashBG';
-import OrderItem from '../ResourceItems/DashOrder';
 import PrintItem from '../ResourceItems/DashPrint';
 import ZineItem from '../ResourceItems/DashZine';
+import ProjectItem from '../ResourceItems/DashProject';
 
 interface IProps {
   resourceType: string;
   formName: string | null;
   headers: { text: string }[];
-  items: IPrint[] | IZine[] | IBackground[] | IOrder[];
+  items: IPrint[] | IZine[] | IBackground[] | any;
   gridTemplateColumns: string;
 }
 
@@ -46,10 +46,10 @@ function renderDashItem(resourceType: string, items: any[]) {
   switch (resourceType) {
     case 'backgrounds':
       return items.map((item) => <BackgroundItem key={item._id} bg={item} />);
-    case 'orders':
-      return items.map((item) => <OrderItem key={item.id} order={item} />);
     case 'prints':
       return items.map((item) => <PrintItem key={item._id} print={item} />);
+    case 'projects':
+      return items.map((item) => <ProjectItem key={item._id} project={item} />);
     case 'zines':
       return items.map((item) => <ZineItem key={item._id} zine={item} />);
   }

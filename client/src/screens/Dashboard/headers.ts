@@ -15,7 +15,7 @@ export const zineHeaders = [
 export const projectHeaders = [
   { text: 'Image' },
   { text: 'Title' },
-  { text: 'Description' },
+  { text: 'Medium' },
 ];
 
 export const fetchResourceLinks = [
