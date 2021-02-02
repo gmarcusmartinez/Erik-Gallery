@@ -27,7 +27,7 @@ const ItemAttrs: React.FC<IProps> = ({ item }) => {
         <p>{item.description}</p>
         <p>{item.size}</p>
         <div className='item-attrs__btn' onClick={(e) => handleToggleModal(e)}>
-          View Product
+          View Print
         </div>
       </div>
     </div>

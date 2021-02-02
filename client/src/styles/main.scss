@@ -7,13 +7,6 @@
 
 @import '../layouts/styles.scss';
 
-@import '../components/CartComponents/CartDropdown/styles.scss';
-@import '../components/CartComponents/CartIcon/styles.scss';
-@import '../components/CartComponents/CartItem/styles.scss';
-
-@import '../components/CheckoutComponents/CheckoutItem/styles.scss';
-@import '../components/CheckoutComponents/CheckoutSteps/styles.scss';
-
 @import '../components/CommonComponents/LightBox/styles.scss';
 @import '../components/CommonComponents/Modal/styles.scss';
 @import '../components/CommonComponents/Spinner/styles.scss';
@@ -35,6 +28,7 @@
 
 @import '../components/DashboardComponents/Forms/BackgroundForm/styles.scss';
 @import '../components/DashboardComponents/Forms/PrintForm/styles.scss';
+@import '../components/DashboardComponents/Forms/ProjectForm/styles.scss';
 @import '../components/DashboardComponents/Forms/ZineForm/styles.scss';
 
 @import '../components/DashboardComponents/Buttons/styles.scss';
@@ -43,15 +37,11 @@
 @import '../components/DashboardComponents/ResourceItems/order-item.scss';
 @import '../components/DashboardComponents/Section/styles.scss';
 
-@import '../screens/Cart/styles.scss';
 @import '../screens/Contact/styles.scss';
 @import '../screens/Dashboard/styles.scss';
 @import '../screens/DashboardZine/styles.scss';
 @import '../screens/Login/styles.scss';
 @import '../screens/Logout/styles.scss';
-@import '../screens/Payment/styles.scss';
 @import '../screens/NotFound/styles.scss';
 @import '../screens/Prints/styles.scss';
-@import '../screens/ReviewOrder/styles.scss';
-@import '../screens/Shipping/styles.scss';
 @import '../screens/Zines/styles.scss';

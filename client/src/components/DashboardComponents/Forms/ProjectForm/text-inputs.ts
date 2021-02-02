@@ -1,6 +1,7 @@
 export const blankFormState = {
   title: '',
   description: '',
+  medium: '',
   mainImage: null,
   isPublished: false,
 };
@@ -17,5 +18,11 @@ export const textInputs = [
     name: 'description',
     value: 'description',
     errorField: 'description',
+  },
+  {
+    label: 'Medium',
+    name: 'medium',
+    value: 'medium',
+    errorField: 'medium',
   },
 ];
