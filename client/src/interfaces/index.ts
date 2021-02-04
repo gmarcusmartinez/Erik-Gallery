@@ -14,20 +14,20 @@ export interface IError {
   field?: string;
 }
 
-export interface IShippingAddress {
-  email: string;
-  name: string;
-  address: string;
-  country: string;
-  city: string;
-  postalCode: string;
-}
-
 export interface IBackground {
   _id: string;
   active: boolean;
   mainImage: string;
   type: string;
+}
+export interface IProject {
+  _id: string;
+  title: string;
+  description?: string;
+  medium?: string;
+  mainImage: string;
+  images: [string] | [];
+  isPublished: boolean;
 }
 
 export interface IProduct {
@@ -49,7 +49,6 @@ export interface IOrder {
   id: string;
 
   orderItems: ICartItem[];
-  shippingAddress: IShippingAddress;
 
   paymentMethod: string;
   vatPrice: number;

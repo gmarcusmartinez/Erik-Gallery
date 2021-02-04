@@ -1,0 +1,23 @@
+.gallery-screen {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.projects-container {
+  margin-top: 2vh;
+  width: 100%;
+  justify-content: center;
+  @include respond(tablet) {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    padding: unset;
+    width: 62rem;
+  }
+  @include respond(desktop) {
+    width: 94rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

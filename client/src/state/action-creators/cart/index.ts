@@ -1,4 +1,4 @@
-import { ICartItem, IShippingAddress } from 'interfaces';
+import { ICartItem } from 'interfaces';
 import { Dispatch } from 'redux';
 import { CartActionTypes, ModalActionTypes, NavActionTypes } from 'state';
 
@@ -18,11 +18,6 @@ export const toggleCart = (bool: boolean) => ({
 export const clearItemFromCart = (item: ICartItem) => ({
   type: CartActionTypes.CLEAR_ITEM_FROM_CART,
   payload: item,
-});
-
-export const updateShippingAddress = (data: IShippingAddress) => ({
-  type: CartActionTypes.UPDATE_SHIPPING_ADDRESS,
-  payload: data,
 });
 
 export const updatePaymentMethod = (data: string) => ({

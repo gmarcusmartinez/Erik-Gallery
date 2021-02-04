@@ -31,6 +31,7 @@ const App: React.FC = () => {
           <Route exact path='/' component={screens.LandingScreen} />
           <Route exact path='/bio' component={screens.BioScreen} />
           <Route path='/contact' component={screens.ContactScreen} />
+          <Route path='/gallery' component={screens.GalleryScreen} />
           <Route path='/login' component={screens.LoginScreen} />
           <Route path='/logout' component={screens.LogoutScreen} />
           <Route exact path='/prints/' component={screens.PrintsScreen} />

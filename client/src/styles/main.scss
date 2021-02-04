@@ -21,9 +21,7 @@
 @import '../components/ItemDetail/styles.scss';
 @import '../components/PrintItem/styles.scss';
 @import '../components/PrintItem/item-attrs.scss';
-@import '../components/ZineItem/styles.scss';
-@import '../components/ZineItem/zine-attrs.scss';
-@import '../components/PreviewZine/styles.scss';
+@import '../components/ProjectItem/styles.scss';
 
 @import '../components/DashboardComponents/Forms/BackgroundForm/styles.scss';
 @import '../components/DashboardComponents/Forms/PrintForm/styles.scss';
@@ -37,8 +35,9 @@
 @import '../screens/Contact/styles.scss';
 @import '../screens/Bio/styles.scss';
 @import '../screens/Dashboard/styles.scss';
-@import '../screens/Pages/styles.scss';
+@import '../screens/Gallery/styles.scss';
 @import '../screens/Login/styles.scss';
 @import '../screens/Logout/styles.scss';
 @import '../screens/NotFound/styles.scss';
+@import '../screens/Pages/styles.scss';
 @import '../screens/Prints/styles.scss';

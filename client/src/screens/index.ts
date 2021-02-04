@@ -1,6 +1,7 @@
 export { default as BioScreen } from './Bio';
 export { default as ContactScreen } from './Contact';
 export { default as Dashboard } from './Dashboard';
+export { default as GalleryScreen } from './Gallery';
 export { default as LandingScreen } from './Landing';
 export { default as LoginScreen } from './Login';
 export { default as LogoutScreen } from './Logout';

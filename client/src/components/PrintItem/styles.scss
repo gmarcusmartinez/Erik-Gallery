@@ -1,8 +1,9 @@
 .print-item {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   font-weight: 300;
-  height: 90vh;
+  height: 80vh;
   margin: 0 auto 2rem auto;
   position: relative;
   text-align: center;
@@ -11,7 +12,6 @@
     background-size: contain;
     background-position: top center;
     background-repeat: no-repeat;
-    cursor: pointer;
     height: 85%;
     width: 100%;
   }
@@ -19,10 +19,9 @@
 
 @include respond(tablet) {
   .print-item {
-    height: 58rem;
+    height: 54rem;
     width: 100%;
     margin: 0 auto;
-
     &__img {
       height: 48rem;
       width: 100%;
@@ -31,7 +30,7 @@
 }
 @include respond(desktop) {
   .print-item {
-    height: 40rem;
+    height: 44rem;
     &:hover {
       .print-item__img {
         transition: 0.2s ease-in;
@@ -42,6 +41,12 @@
         opacity: 1;
         div {
           transform: translateY(2.8rem);
+        }
+        &__btn {
+          color: rgba(0, 0, 0, 0.8);
+          border: 0.1rem solid var(--color-white);
+          transition: 0.4s background-color ease-in-out;
+          background-color: var(--color-white);
         }
       }
     }

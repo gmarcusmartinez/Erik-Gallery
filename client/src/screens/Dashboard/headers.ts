@@ -17,5 +17,4 @@ export const fetchResourceLinks = [
   { text: 'Manage Backgrounds', value: 'backgrounds' },
   { text: 'Manage Prints', value: 'prints' },
   { text: 'Manage Projects', value: 'projects' },
-  { text: 'Manage Zines', value: 'zines' },
 ];

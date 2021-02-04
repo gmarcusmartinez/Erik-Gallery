@@ -18,7 +18,7 @@
     width: 62rem;
   }
   @include respond(desktop) {
-    width: 85rem;
+    width: 94rem;
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -32,8 +32,8 @@
   height: 80vh;
   width: 80%;
   @include respond(tablet) {
-    height: 38rem;
-    width: 28rem;
+    height: 44rem;
+    width: 32rem;
   }
 }
 

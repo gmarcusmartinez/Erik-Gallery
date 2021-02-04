@@ -46,7 +46,10 @@ const ProjectItem: React.FC<IProps> = ({ project }) => {
             </div>
           </div>
         </div>
-        <div className='dash-item__text zine-redirect' onClick={handleRedirect}>
+        <div
+          className='dash-item__text project-redirect'
+          onClick={handleRedirect}
+        >
           {project.title}
         </div>
         <div className='dash-item__text'>{project.medium}</div>

@@ -22,6 +22,7 @@
     border: 1px solid var(--color-dark-grey);
     background-color: transparent;
     color: var(--color-dark-grey);
+    display: none;
     font-weight: 400;
     height: 5rem;
     letter-spacing: var(--letter-spacing-lg);
@@ -45,14 +46,6 @@
       padding: unset;
       width: 100%;
     }
-    &__btn {
-      &:hover {
-        transition: 0.1s ease-in;
-        background-color: #000;
-        border: 1px solid #000;
-        color: var(--color-white);
-      }
-    }
   }
 }
 @include respond(desktop) {
@@ -75,13 +68,9 @@
     &__btn {
       border-color: var(--color-white);
       color: var(--color-white);
+      display: block;
       margin: var(--margin-sm) auto;
       width: 80%;
-      &:hover {
-        color: rgba(0, 0, 0, 0.8);
-        border: 0.1rem solid var(--color-white);
-        background-color: var(--color-white);
-      }
     }
   }
 }

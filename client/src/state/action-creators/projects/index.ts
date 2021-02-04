@@ -4,4 +4,5 @@ export { createProject } from './createProject';
 export { deleteProject } from './deleteProject';
 export { deleteProjectImage } from './deleteProjectImage';
 export { fetchProject } from './fetchProject';
+export { fetchProjects } from './fetchProjects';
 export { updateProject } from './updateProject';

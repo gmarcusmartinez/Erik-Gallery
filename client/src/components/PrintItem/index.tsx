@@ -11,15 +11,16 @@ interface IProps {
 const PrintItem: React.FC<IProps> = ({ item }) => {
   const { mainImage } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
-  const { toggleLightbox } = useActions();
-  const handleToggleLightbox = () => toggleLightbox(true, backgroundImage);
+  const { toggleModal } = useActions();
+  const handleToggleModal = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    e.stopPropagation();
+    toggleModal(true, 'VIEW_ITEM', item);
+  };
   return (
-    <div className='print-item'>
-      <div
-        className='print-item__img'
-        style={{ backgroundImage }}
-        onClick={handleToggleLightbox}
-      />
+    <div className='print-item' onClick={handleToggleModal}>
+      <div className='print-item__img' style={{ backgroundImage }} />
       <ItemAttrs item={item} />
     </div>
   );
