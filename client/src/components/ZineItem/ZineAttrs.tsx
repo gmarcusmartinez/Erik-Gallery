@@ -1,9 +1,8 @@
-import { IZine } from 'interfaces';
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
 
 interface IProps {
-  item: IZine;
+  item: any;
 }
 
 const ZineAttrs: React.FC<IProps> = ({ item }) => {

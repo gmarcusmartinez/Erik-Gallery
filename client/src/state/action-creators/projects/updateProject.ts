@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ModalActionTypes, ZineActionTypes } from 'state';
+import { ModalActionTypes, ProjectActionTypes } from 'state';
 
-export const updateZine = (
+export const updateProject = (
   formData: any,
   id: string,
   imageData: { type: string } | null
@@ -11,7 +11,7 @@ export const updateZine = (
 
   try {
     if (imageData) {
-      dispatch({ type: ZineActionTypes.UPDATE_ZINE_REQUEST });
+      dispatch({ type: ProjectActionTypes.UPDATE_PROJECT_REQUEST });
       const ContentType = imageData.type;
       const headers = { headers: { ContentType } };
 
@@ -19,25 +19,34 @@ export const updateZine = (
       await axios.put(uploadConfig.data.url, imageData, headers);
 
       const { data } = await axios.put(
-        `/api/zines/${id}`,
+        `/api/projects/${id}`,
         { ...formData, image: uploadConfig.data.key },
         config
       );
-      dispatch({ type: ZineActionTypes.UPDATE_ZINE_SUCCESS, payload: data });
+      dispatch({
+        type: ProjectActionTypes.UPDATE_PROJECT_SUCCESS,
+        payload: data,
+      });
 
       const success = { displayModal: false };
       dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: success });
     } else {
-      dispatch({ type: ZineActionTypes.UPDATE_ZINE_REQUEST });
-      const { data } = await axios.put(`/api/zines/${id}`, formData, config);
-      dispatch({ type: ZineActionTypes.UPDATE_ZINE_SUCCESS, payload: data });
+      dispatch({ type: ProjectActionTypes.UPDATE_PROJECT_REQUEST });
+      const { data } = await axios.put(`/api/projects/${id}`, formData, config);
+      dispatch({
+        type: ProjectActionTypes.UPDATE_PROJECT_SUCCESS,
+        payload: data,
+      });
 
       const success = { displayModal: false };
       dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: success });
     }
   } catch (err) {
     const errors = err.response.data.errors || err.message;
-    dispatch({ type: ZineActionTypes.UPDATE_ZINE_FAILURE, payload: errors });
+    dispatch({
+      type: ProjectActionTypes.UPDATE_PROJECT_FAILURE,
+      payload: errors,
+    });
     return;
   }
 };

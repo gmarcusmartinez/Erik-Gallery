@@ -7,11 +7,6 @@ export const printHeaders = [
   { text: 'Qty' },
 ];
 
-export const zineHeaders = [
-  { text: 'Image' },
-  { text: 'Title' },
-  { text: 'Qty' },
-];
 export const projectHeaders = [
   { text: 'Image' },
   { text: 'Title' },

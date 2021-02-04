@@ -7,7 +7,7 @@ const ResourceDelete: React.FC = () => {
   const {
     deleteBackground,
     deletePrint,
-    deleteZine,
+    deleteProject,
     toggleModal,
   } = useActions();
 
@@ -21,8 +21,8 @@ const ResourceDelete: React.FC = () => {
           return deleteBackground(data._id);
         case 'print':
           return deletePrint(data._id);
-        case 'zine':
-          return deleteZine(data._id);
+        case 'project':
+          return deleteProject(data._id);
       }
     }
   };

@@ -5,8 +5,8 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import Page from './Page';
 
 const Pages: React.FC = () => {
-  const { deleteZinePage, fetchZine, toggleModal } = useActions();
-  const { selectedItem } = useTypedSelector((state) => state.zines);
+  const { deleteProjectImage, fetchProject, toggleModal } = useActions();
+  const { selectedItem } = useTypedSelector(({ projects }) => projects);
   const history = useHistory();
   const id = history.location.pathname.split('/')[3];
 
@@ -14,11 +14,11 @@ const Pages: React.FC = () => {
     toggleModal(true, 'ADD_ZINE_IMG', selectedItem);
 
   const handleDeletePage = (imgStr: string) =>
-    deleteZinePage(selectedItem._id, imgStr);
+    deleteProjectImage(selectedItem._id, imgStr);
 
   React.useEffect(() => {
-    fetchZine(id);
-  }, [id, fetchZine]);
+    fetchProject(id);
+  }, [id, fetchProject]);
 
   return (
     <div className='dashboard-zine'>

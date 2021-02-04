@@ -5,24 +5,19 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import Spinner from 'components/CommonComponents/Spinner';
 
-interface IProps {
-  type: string;
-}
-const ImageForm: React.FC<IProps> = ({ type }) => {
+const ImageForm = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);
   const label = imageData ? 'Image Selected' : 'Choose an Image';
-  const { addZineImage } = useActions();
+  const { addProjectImage } = useActions();
   const { errors, loading, selectedItem } = useTypedSelector(
-    ({ zines }) => zines
+    ({ projects }) => projects
   );
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    type === 'zine'
-      ? addZineImage(selectedItem._id, imageData)
-      : addZineImage(selectedItem._id, imageData);
+    addProjectImage(selectedItem._id, imageData);
   };
 
   const setError = (field: string) =>

@@ -10,14 +10,12 @@ const Dashboard: React.FC = () => {
   const [resourceType, setResourceType] = React.useState('');
   const {
     adminFetchPrints,
-    adminFetchZines,
     fetchBackgrounds,
     adminFetchProjects,
   } = useActions();
   const { items: backgrounds } = useTypedSelector((state) => state.backgrounds);
   const { items: projects } = useTypedSelector((state) => state.projects);
   const { items: prints } = useTypedSelector((state) => state.prints);
-  const { items: zines } = useTypedSelector((state) => state.zines);
 
   const sidenavClass = sidenavOpen ? 'sidenav-open' : 'sidenav-closed';
   const sidenavLinks = headers.fetchResourceLinks.map((l, i) => (
@@ -38,8 +36,6 @@ const Dashboard: React.FC = () => {
         return adminFetchPrints();
       case 'backgrounds':
         return fetchBackgrounds();
-      case 'zines':
-        return adminFetchZines();
       case 'projects':
         return adminFetchProjects();
     }
@@ -71,15 +67,6 @@ const Dashboard: React.FC = () => {
             headers={headers.backgroundHeaders}
             items={backgrounds}
             gridTemplateColumns='15%'
-          />
-        )}
-        {resourceType === 'zines' && (
-          <Section
-            resourceType='zines'
-            formName='ADD_ZINE'
-            headers={headers.zineHeaders}
-            items={zines}
-            gridTemplateColumns='15% 45% 15%'
           />
         )}
         {resourceType === 'projects' && (

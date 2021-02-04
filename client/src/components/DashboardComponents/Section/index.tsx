@@ -1,16 +1,15 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
-import { IPrint, IZine, IBackground } from 'interfaces';
+import { IPrint, IBackground } from 'interfaces';
 import BackgroundItem from '../ResourceItems/DashBG';
 import PrintItem from '../ResourceItems/DashPrint';
-import ZineItem from '../ResourceItems/DashZine';
 import ProjectItem from '../ResourceItems/DashProject';
 
 interface IProps {
   resourceType: string;
   formName: string | null;
   headers: { text: string }[];
-  items: IPrint[] | IZine[] | IBackground[] | any;
+  items: IPrint[] | IBackground[] | any;
   gridTemplateColumns: string;
 }
 
@@ -50,7 +49,5 @@ function renderDashItem(resourceType: string, items: any[]) {
       return items.map((item) => <PrintItem key={item._id} print={item} />);
     case 'projects':
       return items.map((item) => <ProjectItem key={item._id} project={item} />);
-    case 'zines':
-      return items.map((item) => <ZineItem key={item._id} zine={item} />);
   }
 }

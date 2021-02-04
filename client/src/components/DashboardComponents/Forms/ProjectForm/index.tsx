@@ -11,7 +11,7 @@ interface IProps {
 }
 
 const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
-  const { createProject, updateZine } = useActions();
+  const { createProject, updateProject } = useActions();
   const { loading, selectedItem, errors } = useTypedSelector(
     ({ projects }) => projects
   );
@@ -31,7 +31,7 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     formTitle === 'Edit'
-      ? updateZine(formData, selectedItem._id, imageData)
+      ? updateProject(formData, selectedItem._id, imageData)
       : createProject(formData, imageData);
   };
   const setError = (field: string) =>

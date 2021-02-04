@@ -69,9 +69,6 @@ export interface IOrder {
 }
 
 export interface IPrint extends IProduct {}
-export interface IZine extends IProduct {
-  images: string[];
-}
 
 export interface ICartItem extends IProduct {
   quantity: number;

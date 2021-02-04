@@ -1,10 +1,9 @@
 import React from 'react';
 import { s3Url } from 'api/url';
-import { IZine } from 'interfaces';
 import ZineAttrs from './ZineAttrs';
 
 interface IProps {
-  item: IZine;
+  item: any;
 }
 
 const ZineItem: React.FC<IProps> = ({ item }) => {
