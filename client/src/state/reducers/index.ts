@@ -6,7 +6,6 @@ import { modal } from './modal';
 import { nav } from './nav';
 import { prints } from './prints';
 import { projects } from './projects';
-import { orders } from './orders';
 import { zines } from './zines';
 
 export const rootReducer = combineReducers({
@@ -15,7 +14,6 @@ export const rootReducer = combineReducers({
   lightbox,
   modal,
   nav,
-  orders,
   prints,
   projects,
   zines,

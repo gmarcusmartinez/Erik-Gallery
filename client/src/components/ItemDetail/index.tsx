@@ -1,7 +1,6 @@
 import React from 'react';
 import { s3Url } from 'api/url';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import PlaceHolder from './PlaceHolder';
 
 const ItemDetail = () => {
   const { data } = useTypedSelector(({ modal }) => modal);
@@ -15,7 +14,12 @@ const ItemDetail = () => {
         {description && <p>{description}</p>}
         {title && <p>{title}</p>}
         <p>{data.size ? data.size : null}</p>
-        <PlaceHolder />
+        <p className='item-detail__placeholder'>
+          If intrested in purchasing email:
+          <a href='mailto: erik.felfalusi@gmail.com<'>
+            erik.felfalusi@gmail.com
+          </a>
+        </p>
       </div>
     </div>
   );

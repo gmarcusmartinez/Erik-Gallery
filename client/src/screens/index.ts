@@ -1,9 +1,10 @@
-export { default as LoginScreen } from './Login';
+export { default as BioScreen } from './Bio';
 export { default as ContactScreen } from './Contact';
 export { default as Dashboard } from './Dashboard';
-export { default as DashboardZine } from './DashboardZine';
 export { default as LandingScreen } from './Landing';
+export { default as LoginScreen } from './Login';
 export { default as LogoutScreen } from './Logout';
 export { default as NotFoundScreen } from './NotFound';
+export { default as Pages } from './Pages';
 export { default as PrintsScreen } from './Prints';
 export { default as ZinesScreen } from './Zines';

@@ -28,8 +28,10 @@ export const renderForm = (component: string) => {
       return <ZineForm formTitle='Add' />;
     case 'EDIT_ZINE':
       return <ZineForm formTitle='Edit' />;
-    case 'ADD_IMG':
-      return <ImageForm />;
+    case 'ADD_ZINE_IMG':
+      return <ImageForm type='zine' />;
+    case 'ADD_PROJECT_IMG':
+      return <ImageForm type='project' />;
     case 'PREVIEW_ZINE':
       return <PreviewZine />;
     default:

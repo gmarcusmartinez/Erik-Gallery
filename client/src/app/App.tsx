@@ -29,6 +29,7 @@ const App: React.FC = () => {
       <div className='main-content'>
         <Switch>
           <Route exact path='/' component={screens.LandingScreen} />
+          <Route exact path='/bio' component={screens.BioScreen} />
           <Route path='/contact' component={screens.ContactScreen} />
           <Route path='/login' component={screens.LoginScreen} />
           <Route path='/logout' component={screens.LogoutScreen} />
@@ -45,9 +46,9 @@ const App: React.FC = () => {
           />
           <PRoute
             exact
-            path='/dashboard/zine/:id'
+            path='/dashboard/pages/:id'
             currentUser={currentUser}
-            component={screens.DashboardZine}
+            component={screens.Pages}
           />
           <Route component={screens.NotFoundScreen} />
         </Switch>

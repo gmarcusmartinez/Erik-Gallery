@@ -22,7 +22,7 @@ const ZineItem: React.FC<IProps> = ({ zine }) => {
   const pubClassName = `isPub ${zine.isPublished ? 'pub-true' : 'pub-false'}`;
 
   const history = useHistory();
-  const handleRedirect = () => history.push(`/dashboard/zine/${zine._id}`);
+  const handleRedirect = () => history.push(`/dashboard/pages/${zine._id}`);
   const handleToggleEdit = () => toggleEdit('EDIT_ZINE');
 
   return (
