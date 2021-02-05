@@ -7,10 +7,9 @@ interface IProps {
 
 const ProjectItemAttrs: React.FC<IProps> = ({ item }) => {
   return (
-    <div className='item-attrs'>
-      <div className='item-attrs__wrapper'>
-        <p>{item.title}</p>
-        <div className='item-attrs__btn'>View Project</div>
+    <div className='project-item-attrs'>
+      <div className='project-item-attrs__wrapper'>
+        <h3>{item.title}</h3>
       </div>
     </div>
   );
