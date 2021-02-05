@@ -8,3 +8,4 @@ export { default as LogoutScreen } from './Logout';
 export { default as NotFoundScreen } from './NotFound';
 export { default as Pages } from './Pages';
 export { default as PrintsScreen } from './Prints';
+export { default as ProjectScreen } from './Project';

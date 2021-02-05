@@ -4,7 +4,6 @@ import PrintForm from 'components/DashboardComponents/Forms/PrintForm';
 import BackgroundForm from 'components/DashboardComponents/Forms/BackgroundForm';
 import ItemDetal from 'components/ItemDetail';
 import ImageForm from 'components/DashboardComponents/Forms/ImageForm';
-import PreviewZine from 'components/PreviewZine';
 import ProjectForm from 'components/DashboardComponents/Forms/ProjectForm';
 
 export const renderForm = (component: string) => {
@@ -25,8 +24,6 @@ export const renderForm = (component: string) => {
       return <ItemDetal />;
     case 'ADD_PROJECT_IMG':
       return <ImageForm />;
-    case 'PREVIEW_ZINE':
-      return <PreviewZine />;
     default:
       return null;
   }

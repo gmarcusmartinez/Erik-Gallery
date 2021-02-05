@@ -1,3 +1,6 @@
 .bio-screen {
   @include main-layout;
+  &__info {
+    margin-top: 4rem;
+  }
 }

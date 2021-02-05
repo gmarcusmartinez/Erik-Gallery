@@ -16,6 +16,7 @@ export const adminGetProjects = asyncHandler(
 export const getProject = asyncHandler(async (req: Request, res: Response) => {
   const project = await Project.findById(req.params.id);
   if (!project) throw new BadRequestError('Project not found.');
+  if (!project.isPublished) throw new BadRequestError('Project not found.');
   res.status(200).json(project);
 });
 

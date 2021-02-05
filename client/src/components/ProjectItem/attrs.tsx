@@ -5,7 +5,7 @@ interface IProps {
   item: IProject;
 }
 
-const ProjectAttrs: React.FC<IProps> = ({ item }) => {
+const ProjectItemAttrs: React.FC<IProps> = ({ item }) => {
   return (
     <div className='item-attrs'>
       <div className='item-attrs__wrapper'>
@@ -16,4 +16,4 @@ const ProjectAttrs: React.FC<IProps> = ({ item }) => {
   );
 };
 
-export default ProjectAttrs;
+export default ProjectItemAttrs;

@@ -8,7 +8,7 @@ const Bio = () => {
         <div className='bio-screen__info'>
           <p>ERIK FELFALUSI</p>
           <p>(b. 1998)</p>
-          <p style={{ width: '350px', textAlign: 'center', lineHeight: '2' }}>
+          <p style={{ width: '340px', textAlign: 'center', lineHeight: '2.2' }}>
             Multidisciplinary artist from Cluj-Napoca, Romania based in Berlin,
             Germany. Following a journey in visual arts representing a
             reinterpretation of street culture and imagery. Volatile when it

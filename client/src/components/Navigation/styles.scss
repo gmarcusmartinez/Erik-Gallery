@@ -20,12 +20,7 @@
     text-decoration: none;
     text-transform: uppercase;
   }
-  &__cart-btn {
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: var(--letter-spacing-md);
-    margin-left: auto;
-    text-transform: uppercase;
-  }
+
   @include respond(tablet) {
     font-size: 1.8rem;
     &__title {
@@ -96,7 +91,8 @@
       text-align: center;
       text-decoration: none;
     }
-    &:active {
+    &:active,
+    &:hover {
       background-color: #000;
       a {
         color: var(--color-white);

@@ -12,6 +12,7 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
   const { mainImage } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const { toggleModal } = useActions();
+
   const handleToggleModal = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>
   ) => {

@@ -44,6 +44,12 @@
         div {
           transform: translateY(2.8rem);
         }
+        &__btn {
+          color: rgba(0, 0, 0, 0.8);
+          border: 0.1rem solid var(--color-white);
+          transition: 0.4s background-color ease-in-out;
+          background-color: var(--color-white);
+        }
       }
     }
   }
