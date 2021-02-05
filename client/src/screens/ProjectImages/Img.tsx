@@ -4,11 +4,15 @@ interface IProps {
   cb: Function;
   imgStr: string;
 }
-const ZinePage: React.FC<IProps> = ({ cb, imgStr }) => {
+const Img: React.FC<IProps> = ({ cb, imgStr }) => {
   const backgroundImage = `url(https://erik-gallery.s3-us-west-1.amazonaws.com/${imgStr})`;
+
   return (
-    <div key={imgStr} className='dashboard-zine__page'>
-      <div className='dashboard-zine__img' style={{ backgroundImage }}>
+    <div key={imgStr} className='dashboard-project-images__img-wrapper'>
+      <div
+        className='dashboard-project-images__img'
+        style={{ backgroundImage }}
+      >
         <div className='delete-page-btn' onClick={() => cb(imgStr)}>
           <span>X</span>
         </div>
@@ -17,4 +21,4 @@ const ZinePage: React.FC<IProps> = ({ cb, imgStr }) => {
   );
 };
 
-export default ZinePage;
+export default Img;

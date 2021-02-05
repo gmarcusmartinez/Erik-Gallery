@@ -47,7 +47,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProject = exports.deleteProjectImage = exports.addProjectImage = exports.updateProject = exports.createProject = exports.getProject = exports.adminGetProjects = exports.getProjects = void 0;
+exports.deleteProject = exports.deleteProjectImage = exports.addProjectImage = exports.updateProject = exports.createProject = exports.getProject = exports.adminGetProject = exports.adminGetProjects = exports.getProjects = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
 var Project_1 = require("../models/Project");
@@ -69,6 +69,20 @@ exports.adminGetProjects = async_1.asyncHandler(function (req, res) { return __a
         }
     });
 }); });
+exports.adminGetProject = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var project;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, Project_1.Project.findById(req.params.id)];
+            case 1:
+                project = _a.sent();
+                if (!project)
+                    throw new bad_request_error_1.BadRequestError('Project not found.');
+                res.status(200).json(project);
+                return [2 /*return*/];
+        }
+    });
+}); });
 exports.getProject = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var project;
     return __generator(this, function (_a) {
@@ -77,6 +91,8 @@ exports.getProject = async_1.asyncHandler(function (req, res) { return __awaiter
             case 1:
                 project = _a.sent();
                 if (!project)
+                    throw new bad_request_error_1.BadRequestError('Project not found.');
+                if (!project.isPublished)
                     throw new bad_request_error_1.BadRequestError('Project not found.');
                 res.status(200).json(project);
                 return [2 /*return*/];
@@ -149,7 +165,7 @@ exports.deleteProjectImage = async_1.asyncHandler(function (req, res) { return _
                 removeIndex = project.images.indexOf(imgStr);
                 if (removeIndex)
                     project.images.splice(removeIndex, 1);
-                if (!removeIndex)
+                else if (!removeIndex)
                     throw new bad_request_error_1.BadRequestError('Page Not Found.');
                 return [4 /*yield*/, project.save()];
             case 2:

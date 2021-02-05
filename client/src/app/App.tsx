@@ -46,9 +46,9 @@ const App: React.FC = () => {
           />
           <PRoute
             exact
-            path='/dashboard/pages/:id'
+            path='/dashboard/project/:id'
             currentUser={currentUser}
-            component={screens.Pages}
+            component={screens.ProjectImages}
           />
           <Route component={screens.NotFoundScreen} />
         </Switch>

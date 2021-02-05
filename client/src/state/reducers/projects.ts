@@ -23,7 +23,12 @@ export const projects = (state = initialState, action: AnyAction) => {
 
     case ProjectActionTypes.UPDATE_PROJECT_SUCCESS:
       const oldItems = state.items.filter(({ _id }) => _id !== payload._id);
-      return { ...state, items: [payload, ...oldItems], errors: null };
+      return {
+        ...state,
+        items: [payload, ...oldItems],
+        errors: null,
+        loading: false,
+      };
 
     case ProjectActionTypes.ADD_PROJECT_IMG_REQUEST:
     case ProjectActionTypes.CREATE_PROJECT_REQUEST:
@@ -48,12 +53,18 @@ export const projects = (state = initialState, action: AnyAction) => {
       return { ...state, items: newItems };
 
     case ProjectActionTypes.ADMIN_FETCH_PROJECTS_SUCCESS:
-      return { ...state, items: payload };
+      return { ...state, items: payload, loading: false };
 
-    case ProjectActionTypes.CREATE_PROJECT_FAILURE:
-    case ProjectActionTypes.UPDATE_PROJECT_FAILURE:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECT_SUCCESS:
+      return { ...state, selectedItem: payload, loading: false, errors: null };
+
     case ProjectActionTypes.ADD_PROJECT_IMG_FAILURE:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECT_FAILURE:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECTS_FAILURE:
+    case ProjectActionTypes.CREATE_PROJECT_FAILURE:
     case ProjectActionTypes.DELETE_PROJECT_FAILURE:
+    case ProjectActionTypes.FETCH_PROJECT_FAILURE:
+    case ProjectActionTypes.UPDATE_PROJECT_FAILURE:
       return { ...state, errors: payload, loading: false };
 
     default:

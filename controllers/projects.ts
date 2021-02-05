@@ -13,6 +13,14 @@ export const adminGetProjects = asyncHandler(
     res.send(projects);
   }
 );
+export const adminGetProject = asyncHandler(
+  async (req: Request, res: Response) => {
+    const project = await Project.findById(req.params.id);
+    if (!project) throw new BadRequestError('Project not found.');
+    res.status(200).json(project);
+  }
+);
+
 export const getProject = asyncHandler(async (req: Request, res: Response) => {
   const project = await Project.findById(req.params.id);
   if (!project) throw new BadRequestError('Project not found.');
@@ -64,7 +72,7 @@ export const deleteProjectImage = asyncHandler(
     const removeIndex = project.images.indexOf(imgStr);
 
     if (removeIndex) project.images.splice(removeIndex, 1);
-    if (!removeIndex) throw new BadRequestError('Page Not Found.');
+    else if (!removeIndex) throw new BadRequestError('Page Not Found.');
 
     await project.save();
 

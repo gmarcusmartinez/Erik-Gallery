@@ -1,4 +1,5 @@
 export { addProjectImage } from './addProjectImage';
+export { adminFetchProject } from './adminFetchProject';
 export { adminFetchProjects } from './adminFetchProjects';
 export { createProject } from './createProject';
 export { deleteProject } from './deleteProject';

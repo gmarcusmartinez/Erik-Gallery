@@ -1,4 +1,4 @@
-import zines from 'api/zines';
+import projects from 'api/projects';
 import { Dispatch } from 'redux';
 import { ProjectActionTypes } from 'state';
 
@@ -9,7 +9,11 @@ export const deleteProjectImage = (id: string, imgStr: string) => async (
     dispatch({ type: ProjectActionTypes.DELETE_PROJECT_PAGE_REQUEST });
 
     const config = { headers: { 'Content-Type': 'application/json' } };
-    const { data } = await zines.put(`/${id}/deletePage`, { imgStr }, config);
+    const { data } = await projects.put(
+      `/${id}/deletePage`,
+      { imgStr },
+      config
+    );
     dispatch({
       type: ProjectActionTypes.DELETE_PROJECT_PAGE_SUCCESS,
       payload: data,

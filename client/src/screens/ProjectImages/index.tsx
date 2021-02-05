@@ -2,30 +2,30 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import Page from './Page';
+import Img from './Img';
 
-const Pages: React.FC = () => {
-  const { deleteProjectImage, fetchProject, toggleModal } = useActions();
+const ProjectImages: React.FC = () => {
+  const { deleteProjectImage, adminFetchProject, toggleModal } = useActions();
   const { selectedItem } = useTypedSelector(({ projects }) => projects);
   const history = useHistory();
   const id = history.location.pathname.split('/')[3];
 
   const toggleAddImage = async () =>
-    toggleModal(true, 'ADD_ZINE_IMG', selectedItem);
+    toggleModal(true, 'ADD_PROJECT_IMG', selectedItem);
 
   const handleDeletePage = (imgStr: string) =>
     deleteProjectImage(selectedItem._id, imgStr);
 
   React.useEffect(() => {
-    fetchProject(id);
-  }, [id, fetchProject]);
+    adminFetchProject(id);
+  }, [id, adminFetchProject]);
 
   return (
-    <div className='dashboard-zine'>
-      <div className='dashboard-zine__pages'>
+    <div className='dashboard-project-images'>
+      <div className='dashboard-project-images__container'>
         {selectedItem &&
           selectedItem.images.map((imgStr: string) => (
-            <Page key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
+            <Img key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
           ))}
       </div>
       <div className='add-resource-btn' onClick={toggleAddImage}>
@@ -34,4 +34,4 @@ const Pages: React.FC = () => {
     </div>
   );
 };
-export default Pages;
+export default ProjectImages;

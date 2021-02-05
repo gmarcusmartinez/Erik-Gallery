@@ -8,8 +8,13 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var projectSchema = new mongoose_1.default.Schema({
     title: {
         type: String,
+        required: true,
+        trim: true,
     },
     description: {
+        type: String,
+    },
+    medium: {
         type: String,
     },
     mainImage: {

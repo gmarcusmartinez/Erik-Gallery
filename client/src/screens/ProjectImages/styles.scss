@@ -1,4 +1,4 @@
-.dashboard-zine {
+.dashboard-project-images {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -7,14 +7,14 @@
   width: 100%;
   max-width: 100rem;
 
-  &__pages {
+  &__container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
   }
 
-  &__page {
+  &__img-wrapper {
     position: relative;
     height: 25rem;
     margin: 0.5%;

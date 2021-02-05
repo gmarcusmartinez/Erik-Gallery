@@ -8,11 +8,11 @@ interface IProps {
 }
 
 const ProjectItem: React.FC<IProps> = ({ project }) => {
-  const { toggleModal, fetchProject } = useActions();
+  const { toggleModal, adminFetchProject } = useActions();
   const toggleDelete = () => toggleModal(true, 'DELETE_RESOURCE', project);
 
   const toggleEdit = async (formType: string) => {
-    const projectToUpdate = await fetchProject(project._id);
+    const projectToUpdate = await adminFetchProject(project._id);
     toggleModal(true, formType, projectToUpdate);
     return;
   };

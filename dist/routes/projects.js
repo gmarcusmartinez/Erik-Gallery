@@ -37,6 +37,9 @@ router
     .route('/admin')
     .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, projectControllers.adminGetProjects);
 router
+    .route('/:id/admin')
+    .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, projectControllers.adminGetProject);
+router
     .route('/')
     .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, project_1.createProjectValidation, validate_request_1.validateRequest, projectControllers.createProject);
 router

@@ -8,8 +8,7 @@
 }
 .projects-container {
   justify-content: center;
-  padding: 0 var(--padding-md);
-  margin-top: 2vh;
+  padding: var(--padding-md);
   width: 100%;
   @include respond(tablet) {
     display: grid;

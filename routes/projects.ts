@@ -16,6 +16,9 @@ router.route('/:id').get(projectControllers.getProject);
 router
   .route('/admin')
   .put(currentUser, requireAuth, isAdmin, projectControllers.adminGetProjects);
+router
+  .route('/:id/admin')
+  .put(currentUser, requireAuth, isAdmin, projectControllers.adminGetProject);
 
 router
   .route('/')
