@@ -44,6 +44,9 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 0.5rem;
     }
+    &__img {
+      height: 44rem;
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import ProjectAttrs from './attrs';
 
 const Project = () => {
-  const { fetchProject } = useActions();
+  const { fetchProject, toggleLightbox } = useActions();
   const { selectedItem } = useTypedSelector((state) => state.projects);
   const history = useHistory();
   const id = history.location.pathname.split('/')[2];
@@ -16,7 +16,9 @@ const Project = () => {
 
   return (
     <div className='project-screen'>
-      {selectedItem && <ProjectAttrs item={selectedItem} />}
+      {selectedItem && (
+        <ProjectAttrs item={selectedItem} toggleLightbox={toggleLightbox} />
+      )}
     </div>
   );
 };
