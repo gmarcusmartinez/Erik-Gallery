@@ -11,10 +11,8 @@
     font-size: 2.2rem;
   }
   &__images {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(330px, 1fr));
-    gap: 0.5rem;
-    grid-auto-rows: 107px;
+    display: flex;
+    flex-direction: column;
   }
   &__img {
     width: 33rem;
@@ -24,7 +22,7 @@
     font-weight: 300;
     line-height: 1.8;
     padding: var(--padding-sm);
-    text-align: center;
+    text-align: start;
   }
   &__medium {
     font-size: 1.6rem;
@@ -34,14 +32,17 @@
 
 @include respond(tablet) {
   .project-screen {
-    width: 66rem;
+    width: 64rem;
     padding: unset;
     margin: 0 auto;
     &__images {
-      grid-template-columns: repeat(2, minmax(330px, 1fr));
+      display: grid;
+      grid-template-columns: repeat(2, minmax(315px, 1fr));
+      gap: 0.5rem;
+      grid-auto-rows: 102px;
     }
     &__img {
-      width: 33rem;
+      width: 315px;
       &:hover {
         transition: 0.2s ease-in;
         filter: brightness(50%);
@@ -52,9 +53,9 @@
 
 @include respond(desktop) {
   .project-screen {
-    width: 99rem;
+    width: 96rem;
     &__images {
-      grid-template-columns: repeat(3, minmax(330px, 1fr));
+      grid-template-columns: repeat(3, minmax(315px, 1fr));
     }
   }
 }

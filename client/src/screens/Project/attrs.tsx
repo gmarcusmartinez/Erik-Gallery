@@ -14,7 +14,6 @@ const ProjectAttrs: React.FC<IProps> = ({ item, toggleLightbox }) => {
   const list = [mainImage, ...item.images].map((imgUrl, i) => (
     <ProjectImg key={i} imgUrl={imgUrl} cb={toggleLightbox} />
   ));
-
   return (
     <>
       <h1>{item.title}</h1>

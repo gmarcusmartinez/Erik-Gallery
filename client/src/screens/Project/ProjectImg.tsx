@@ -13,7 +13,8 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
 
   const calcSpans = () => {
     const height = imageRef.current?.clientHeight;
-    const numberOfSpans = Math.floor(height! / 106);
+    const numberOfSpans = Math.ceil(height! / 105);
+    console.log(height);
     setSpans(numberOfSpans);
   };
 
