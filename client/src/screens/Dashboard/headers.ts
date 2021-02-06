@@ -8,7 +8,7 @@ export const printHeaders = [
 ];
 
 export const projectHeaders = [
-  { text: 'Image' },
+  { text: 'Main Image' },
   { text: 'Title' },
   { text: 'Medium' },
 ];

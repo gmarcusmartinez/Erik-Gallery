@@ -6,26 +6,23 @@
   padding: 0 var(--padding-md);
   width: 100%;
   h1 {
-    margin-bottom: var(--margin-sm);
+    margin: var(--margin-sm) 0;
     letter-spacing: var(--letter-spacing-md);
+    font-size: 2.2rem;
   }
   &__images {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(330px, 1fr));
+    gap: 0.5rem;
+    grid-auto-rows: 107px;
   }
   &__img {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    height: 50rem;
-    margin: var(--margin-xs) 0;
-    width: 100%;
+    width: 33rem;
   }
   &__description {
     font-size: 1.6rem;
     font-weight: 300;
+    line-height: 1.8;
     padding: var(--padding-sm);
     text-align: center;
   }
@@ -37,17 +34,14 @@
 
 @include respond(tablet) {
   .project-screen {
-    width: 64rem;
+    width: 66rem;
     padding: unset;
     margin: 0 auto;
     &__images {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
+      grid-template-columns: repeat(2, minmax(330px, 1fr));
     }
     &__img {
-      max-height: 42rem;
-      margin: 0;
+      width: 33rem;
       &:hover {
         transition: 0.2s ease-in;
         filter: brightness(50%);
@@ -58,9 +52,9 @@
 
 @include respond(desktop) {
   .project-screen {
-    width: 94rem;
+    width: 99rem;
     &__images {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(330px, 1fr));
     }
   }
 }

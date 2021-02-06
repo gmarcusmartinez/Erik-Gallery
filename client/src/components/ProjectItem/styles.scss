@@ -39,13 +39,3 @@
     height: 46rem;
   }
 }
-
-@media (min-height: 800px) {
-  .project-item {
-    height: 80vh;
-    margin-bottom: unset;
-    &__img {
-      height: 70%;
-    }
-  }
-}

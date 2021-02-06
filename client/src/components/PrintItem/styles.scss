@@ -52,13 +52,3 @@
     }
   }
 }
-
-@media (min-height: 800px) {
-  .print-item {
-    height: 80vh;
-    margin-bottom: unset;
-    &__img {
-      height: 70%;
-    }
-  }
-}

@@ -6,15 +6,30 @@ interface ProjectImgProps {
   cb: Function;
 }
 const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
-  const backgroundImage = `url(${s3Url}/${imgUrl})`;
-  const handleToggleLightbox = () => cb(true, backgroundImage);
+  const [spans, setSpans] = React.useState(0);
+  const imageRef = React.useRef<HTMLImageElement | null>(null);
+  const backgroundImage = `${s3Url}/${imgUrl}`;
+  const handleToggleLightbox = () => cb(true, `url(${backgroundImage})`);
+
+  const calcSpans = () => {
+    const height = imageRef.current?.clientHeight;
+    const numberOfSpans = Math.floor(height! / 106);
+    setSpans(numberOfSpans);
+  };
+
+  React.useEffect(() => {
+    imageRef.current?.addEventListener('load', calcSpans);
+  }, []);
 
   return (
-    <div
-      className='project-screen__img'
-      style={{ backgroundImage }}
-      onClick={handleToggleLightbox}
-    />
+    <div onClick={handleToggleLightbox} style={{ gridRowEnd: `span ${spans}` }}>
+      <img
+        ref={imageRef}
+        className='project-screen__img'
+        src={backgroundImage}
+        alt='project'
+      />
+    </div>
   );
 };
 

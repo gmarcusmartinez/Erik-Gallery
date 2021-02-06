@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 interface MenuBarsProps {
   bool: boolean;
@@ -7,10 +7,10 @@ interface MenuBarsProps {
 
 const MenuBars: React.FC<MenuBarsProps> = ({ bool, cb }) => {
   return (
-    <div className="menu-bars" onClick={() => cb(!bool)}>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
-      <div className={`bar ${bool ? "change" : ""}`}></div>
+    <div className='menu-bars' onClick={() => cb(!bool)}>
+      <div className={`bar ${bool ? 'change' : ''}`}></div>
+      <div className={`bar ${bool ? 'change' : ''}`}></div>
+      <div className={`bar ${bool ? 'change' : ''}`}></div>
     </div>
   );
 };

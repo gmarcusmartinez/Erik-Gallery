@@ -7,15 +7,15 @@
   width: 100%;
 }
 .projects-container {
-  justify-content: center;
-  padding: var(--padding-md);
+  margin-top: 1rem;
   width: 100%;
+  justify-content: center;
   @include respond(tablet) {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(2, 1fr);
     padding: unset;
-    width: 64rem;
+    width: 62rem;
   }
   @include respond(desktop) {
     width: 94rem;
