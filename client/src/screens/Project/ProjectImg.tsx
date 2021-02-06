@@ -8,11 +8,15 @@ interface ProjectImgProps {
 const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
   const [spans, setSpans] = React.useState(0);
   const imageRef = React.useRef<HTMLImageElement | null>(null);
-  const handleToggleLightbox = () => cb(true, `url(${s3Url}/${imgUrl})`);
-  const calcSpans = (n: number) => setSpans(Math.ceil(n / 105));
+  const backgroundImage = `${s3Url}/${imgUrl}`;
+  const handleToggleLightbox = () => cb(true, `url(${backgroundImage})`);
+  const calcSpans = (height: number) => setSpans(Math.ceil(height / 105));
 
   React.useEffect(() => {
-    calcSpans(imageRef.current?.clientHeight!);
+    imageRef.current?.addEventListener('load', () =>
+      calcSpans(imageRef.current!.clientHeight)
+    );
+    calcSpans(imageRef.current!.clientHeight);
   }, []);
 
   return (
@@ -20,7 +24,7 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
       <img
         ref={imageRef}
         className='project-screen__img'
-        src={`${s3Url}/${imgUrl}`}
+        src={backgroundImage}
         alt='project'
       />
     </div>
