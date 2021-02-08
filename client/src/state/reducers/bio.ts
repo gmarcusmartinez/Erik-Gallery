@@ -1,22 +1,31 @@
+import { IError } from 'interfaces';
 import { AnyAction } from 'redux';
 import { BioActionTypes } from 'state/types';
 
+interface BioState {
+  items: any[] | [{ text: '' }];
+  loading: boolean;
+  errors: IError[] | null;
+}
+
 const initialState = {
-  _id: null,
-  text: '',
+  items: [{ text: '' }],
   loading: false,
   errors: [],
 };
 
-export const bio = (state = initialState, action: AnyAction) => {
+export const bio = (
+  state: BioState = initialState,
+  action: AnyAction
+): BioState => {
   const { type, payload } = action;
   switch (type) {
     case BioActionTypes.FETCH_BIO_REQUEST:
       return { ...state, loading: true };
     case BioActionTypes.FETCH_BIO_SUCCESS:
-      return { text: payload.text, _id: payload._id, loading: false };
+      return { ...state, items: payload, loading: false };
     case BioActionTypes.FETCH_BIO_FAILURE:
-      return { errors: payload, loading: false };
+      return { ...state, errors: payload, loading: false };
     default:
       return state;
   }

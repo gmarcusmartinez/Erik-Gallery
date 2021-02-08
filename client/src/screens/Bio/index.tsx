@@ -6,7 +6,7 @@ import Spinner from 'components/CommonComponents/Spinner';
 
 const Bio = () => {
   const { fetchBio } = useActions();
-  const { text, loading } = useTypedSelector((state) => state.bio);
+  const { items, loading } = useTypedSelector((state) => state.bio);
 
   React.useEffect(() => {
     fetchBio();
@@ -20,7 +20,7 @@ const Bio = () => {
           <p>ERIK FELFALUSI</p>
           <p>(b. 1998)</p>
           <p style={{ width: '340px', textAlign: 'center', lineHeight: '2.2' }}>
-            {text}
+            {items[0].text}
           </p>
         </div>
       </div>

@@ -4,6 +4,7 @@ import { IPrint, IBackground } from 'interfaces';
 import BackgroundItem from '../ResourceItems/DashBG';
 import PrintItem from '../ResourceItems/DashPrint';
 import ProjectItem from '../ResourceItems/DashProject';
+import BioItem from '../ResourceItems/DashBio';
 
 interface IProps {
   resourceType: string;
@@ -49,5 +50,7 @@ function renderDashItem(resourceType: string, items: any[]) {
       return items.map((item) => <PrintItem key={item._id} print={item} />);
     case 'projects':
       return items.map((item) => <ProjectItem key={item._id} project={item} />);
+    case 'bio':
+      return items.map((item) => <BioItem key={item._id} bio={item} />);
   }
 }

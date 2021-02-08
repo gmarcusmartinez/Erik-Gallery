@@ -22,6 +22,10 @@
     display: none;
     font-size: 1.35rem;
   }
+  &__bio-text {
+    font-size: 1.35rem;
+    letter-spacing: var(--letter-spacing-sm);
+  }
   @include respond(tablet) {
     align-self: center;
     display: grid;
@@ -79,8 +83,4 @@
   &:hover {
     cursor: pointer;
   }
-}
-
-.dash-btn {
-  width: 90%;
 }

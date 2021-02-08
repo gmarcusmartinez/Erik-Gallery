@@ -1,4 +1,5 @@
 export const backgroundHeaders = [{ text: 'Image' }];
+export const bioHeaders = [{ text: '' }];
 
 export const printHeaders = [
   { text: 'Image' },
