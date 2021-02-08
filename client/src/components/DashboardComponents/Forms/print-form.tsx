@@ -3,7 +3,7 @@ import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Text, File, Checkbox } from 'components/CustomInputs';
-import { blankFormState, textInputs } from './text-inputs';
+import { printBlankFormState, printTextInputs } from './text-inputs';
 import Spinner from 'components/CommonComponents/Spinner';
 
 interface IProps {
@@ -16,7 +16,8 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const { errors, loading, selectedItem } = useTypedSelector(
     ({ prints }) => prints
   );
-  const defaultFormState = formTitle === 'Edit' ? selectedItem : blankFormState;
+  const defaultFormState =
+    formTitle === 'Edit' ? selectedItem : printBlankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -45,7 +46,7 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   return (
     <form className='print-form' onSubmit={handleSubmit}>
       <h3 className='print-form__title'>{formTitle} Print</h3>
-      {textInputs.map((t, i) => (
+      {printTextInputs.map((t, i) => (
         <Text
           key={i}
           label={t.label}

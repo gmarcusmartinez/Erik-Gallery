@@ -1,13 +1,16 @@
 import React from 'react';
-import ResourceDelete from 'components/DashboardComponents/ResourceDelete';
-import PrintForm from 'components/DashboardComponents/Forms/PrintForm';
-import BackgroundForm from 'components/DashboardComponents/Forms/BackgroundForm';
+import BackgroundForm from 'components/DashboardComponents/Forms/bg-form';
 import ItemDetal from 'components/ItemDetail';
-import ImageForm from 'components/DashboardComponents/Forms/ImageForm';
-import ProjectForm from 'components/DashboardComponents/Forms/ProjectForm';
+import ImageForm from 'components/DashboardComponents/Forms/image-form';
+import PrintForm from 'components/DashboardComponents/Forms/print-form';
+import ProjectForm from 'components/DashboardComponents/Forms/project-form';
+import ResourceDelete from 'components/DashboardComponents/ResourceDelete';
+import BioForm from 'components/DashboardComponents/Forms/bio-form';
 
 export const renderForm = (component: string) => {
   switch (component) {
+    case 'EDIT_BIO':
+      return <BioForm />;
     case 'DELETE_RESOURCE':
       return <ResourceDelete />;
     case 'ADD_PRINT':

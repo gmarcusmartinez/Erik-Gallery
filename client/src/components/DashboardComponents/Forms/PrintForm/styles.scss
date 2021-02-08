@@ -1,5 +1,0 @@
-.print-form {
-  @include default-form;
-  display: grid;
-  grid-template-rows: repeat(8, 1fr);
-}

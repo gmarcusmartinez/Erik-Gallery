@@ -1,6 +1,6 @@
 import React from 'react';
 import { IError } from 'interfaces';
-import { blankFormState, textInputs } from './text-inputs';
+import { projectBlankFormState, projectTextInputs } from './text-inputs';
 import { Text, File, Checkbox } from 'components/CustomInputs';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
@@ -15,7 +15,8 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
   const { loading, selectedItem, errors } = useTypedSelector(
     ({ projects }) => projects
   );
-  const defaultFormState = formTitle === 'Edit' ? selectedItem : blankFormState;
+  const defaultFormState =
+    formTitle === 'Edit' ? selectedItem : projectBlankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
@@ -41,7 +42,7 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
   return (
     <form className='project-form' onSubmit={handleSubmit}>
       <h3 className='project-form__title'>{formTitle} Project</h3>
-      {textInputs.map((t, i) => (
+      {projectTextInputs.map((t, i) => (
         <Text
           key={i}
           label={t.label}
