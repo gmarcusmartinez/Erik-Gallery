@@ -1,7 +1,6 @@
 import React from 'react';
 import { s3Url } from 'api/url';
 import { IProject } from 'interfaces';
-import ProjectItemAttrs from './attrs';
 import { useHistory } from 'react-router-dom';
 
 interface IProps {
@@ -18,7 +17,9 @@ const ProjectItem: React.FC<IProps> = ({ item }) => {
   return (
     <div className='project-item' onClick={handleRedirect}>
       <div className='project-item__img' style={{ backgroundImage }} />
-      <ProjectItemAttrs item={item} />
+      <div className='project-item-attrs'>
+        <h3>{item.title}</h3>
+      </div>
     </div>
   );
 };

@@ -4,15 +4,15 @@
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
+  height: 10%;
+
   letter-spacing: var(--letter-spacing-md);
   text-transform: uppercase;
   transition: 0.2s ease-in;
-  &__wrapper {
-    width: 80%;
-    margin: 0 auto;
-    h3 {
-      margin: 0.5rem 0;
-    }
+  width: 80%;
+  margin: 0 auto;
+  h3 {
+    margin: 0.5rem 0;
   }
 }
 

@@ -2,5 +2,8 @@
   @include main-layout;
   &__info {
     margin-top: 4rem;
+    @include respond(tablet) {
+      margin-top: 6rem;
+    }
   }
 }

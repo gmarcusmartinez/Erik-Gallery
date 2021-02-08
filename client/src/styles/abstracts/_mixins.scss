@@ -29,7 +29,7 @@
 }
 
 @mixin default-form {
-  height: 48rem;
+  height: 50rem;
   width: 80vw;
   margin: auto;
   &__title {
@@ -62,6 +62,7 @@
     }
   }
   @include respond(tablet) {
+    height: 60rem;
     width: 34rem;
   }
 }

@@ -69,6 +69,8 @@
   }
   @include respond(tablet) {
     &__body {
+      align-self: center;
+      margin-top: unset;
       width: 80vw;
     }
   }

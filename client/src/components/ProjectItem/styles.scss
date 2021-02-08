@@ -6,9 +6,9 @@
   margin: 0 auto 2rem auto;
   position: relative;
   text-align: center;
-  width: 100%;
+  width: 90vw;
   &__img {
-    background-size: contain;
+    background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
     cursor: pointer;
