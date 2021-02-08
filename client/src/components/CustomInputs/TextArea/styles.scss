@@ -16,21 +16,20 @@
     background-color: transparent;
     border: none;
     border: 0.1rem solid var(--color-light-grey);
-    border-radius: 0;
     color: var(--color-dark-grey);
     font-size: 1.6rem;
     font-family: inherit;
     height: 100%;
     letter-spacing: var(--letter-spacing-md);
-    line-height: 1.6;
-    margin-top: 1rem;
+    line-height: 1.8;
+    margin-top: 2rem;
     padding: 1.2rem;
     outline: none;
     resize: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     &:focus {
-      border: 1px solid var(--color-dark-grey);
+      border: 2px solid #000;
     }
     &:focus + label {
       font-weight: bold;

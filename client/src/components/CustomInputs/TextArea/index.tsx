@@ -10,11 +10,12 @@ interface IProps {
 }
 
 const TextArea: React.FC<IProps> = (props) => {
-  const { name, value, error } = props;
+  const { name, value, error, label } = props;
 
   return (
     <div className='text-area-wrapper'>
       <textarea name={name} value={value} onChange={props.onChange} />
+      <label className='text-area-wrapper__label'>{label}</label>
       {error && <div className='input-error'>{error.message}</div>}
     </div>
   );

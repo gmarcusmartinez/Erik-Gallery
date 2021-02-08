@@ -2,7 +2,7 @@ import React from 'react';
 import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import { Text, File, Checkbox } from 'components/CustomInputs';
+import { Text, File, Checkbox, TextArea } from 'components/CustomInputs';
 import { printBlankFormState, printTextInputs } from './text-inputs';
 import Spinner from 'components/CommonComponents/Spinner';
 
@@ -20,8 +20,9 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
     formTitle === 'Edit' ? selectedItem : printBlankFormState;
   const [formData, setFormData] = React.useState(defaultFormState);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
@@ -46,6 +47,13 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   return (
     <form className='print-form' onSubmit={handleSubmit}>
       <h3 className='print-form__title'>{formTitle} Print</h3>
+      <TextArea
+        label='Description'
+        name='description'
+        value={formData.description}
+        onChange={handleChange}
+        error={setError('description')}
+      />
       {printTextInputs.map((t, i) => (
         <Text
           key={i}

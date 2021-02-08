@@ -21,10 +21,15 @@ export const bio = (
   const { type, payload } = action;
   switch (type) {
     case BioActionTypes.FETCH_BIO_REQUEST:
+    case BioActionTypes.UPDATE_BIO_REQUEST:
       return { ...state, loading: true };
+
     case BioActionTypes.FETCH_BIO_SUCCESS:
+    case BioActionTypes.UPDATE_BIO_SUCCESS:
       return { ...state, items: payload, loading: false };
+
     case BioActionTypes.FETCH_BIO_FAILURE:
+    case BioActionTypes.UPDATE_BIO_FAILURE:
       return { ...state, errors: payload, loading: false };
     default:
       return state;

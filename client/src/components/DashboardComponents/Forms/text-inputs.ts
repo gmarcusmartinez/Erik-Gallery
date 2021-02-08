@@ -1,16 +1,3 @@
-export const bioFormBlankState = {
-  text: '',
-};
-
-export const bioTextInputs = [
-  {
-    label: 'Text',
-    name: 'text',
-    value: 'text',
-    errorField: 'text',
-  },
-];
-
 export const printBlankFormState = {
   description: '',
   size: '(35 x 50 cm)',
@@ -22,22 +9,10 @@ export const printBlankFormState = {
 
 export const printTextInputs = [
   {
-    label: 'Description',
-    name: 'description',
-    value: 'description',
-    errorField: 'description',
-  },
-  {
     label: 'Size',
     name: 'size',
     value: 'size',
     errorField: 'size',
-  },
-  {
-    label: 'Price',
-    name: 'price',
-    value: 'price',
-    errorField: 'price',
   },
   {
     label: 'Quantity In Stock',
@@ -46,6 +21,7 @@ export const printTextInputs = [
     errorField: 'quantityInStock',
   },
 ];
+
 export const projectBlankFormState = {
   title: '',
   description: '',

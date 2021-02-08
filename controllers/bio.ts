@@ -14,5 +14,5 @@ export const updateBio = asyncHandler(async (req: Request, res: Response) => {
   const bio = await Bio.findByIdAndUpdate(req.params.id, req.body, opts);
   if (!bio) throw new BadRequestError('Bio Not Found.');
   await bio.save();
-  res.status(200).json(bio);
+  res.status(200).json([bio]);
 });
