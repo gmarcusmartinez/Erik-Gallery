@@ -1,4 +1,5 @@
 export * from './auth';
+export * from './bio';
 export * from './backgrounds';
 export * from './cart';
 export * from './lightbox';

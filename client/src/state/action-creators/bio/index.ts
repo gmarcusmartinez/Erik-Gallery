@@ -1,0 +1,1 @@
+export { fetchBio } from './fetchBio';
