@@ -36,7 +36,3 @@ export const mapQuantityToOptions = (n: number) => {
   for (let i = 1; i <= n; i++) opts.push(i);
   return opts;
 };
-
-export const toTwoDecimals = (num: number) => {
-  return num.toFixed(2);
-};
