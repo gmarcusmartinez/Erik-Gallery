@@ -15,7 +15,7 @@ const BioItem: React.FC<IProps> = ({ bio }) => {
       <div className='bio-item__text'>{bio.text}</div>
       <div
         className='dash-btn'
-        style={{ display: 'block', margin: 'auto' }}
+        style={{ display: 'block', width: '98%', margin: 'auto' }}
         onClick={toggleEdit}
       >
         Edit

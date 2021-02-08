@@ -1,0 +1,46 @@
+.text-area-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &__label {
+    position: absolute;
+    color: var(--color-grey);
+    font-size: 1.2rem;
+    letter-spacing: var(--letter-spacing-md);
+  }
+  .is-required {
+    color: red;
+    font-size: 1.25rem;
+  }
+  textarea {
+    background-color: transparent;
+    border: none;
+    border: 0.1rem solid var(--color-light-grey);
+    border-radius: 0;
+    color: var(--color-dark-grey);
+    font-size: 1.6rem;
+    font-family: inherit;
+    height: 100%;
+    letter-spacing: var(--letter-spacing-md);
+    line-height: 1.6;
+    margin-top: 1rem;
+    padding: 1.2rem;
+    outline: none;
+    resize: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    &:focus {
+      border: 1px solid var(--color-dark-grey);
+    }
+    &:focus + label {
+      font-weight: bold;
+    }
+  }
+  .input-error {
+    color: red;
+    font-size: 1.25rem;
+    letter-spacing: var(--letter-spacing-md);
+    text-align: center;
+    margin-top: 0.25rem;
+  }
+}
