@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import cors from 'cors';
 
 import { authRouter } from './routes/auth';
+import { bioRouter } from './routes/bio';
 import { backgroundRouter } from './routes/backgrounds';
 import { orderRouter } from './routes/orders';
 import { printRouter } from './routes/prints';
@@ -16,18 +17,18 @@ import { NotFoundError } from './errors/not-found-error';
 import { errorHandler } from './middlewares/error-handler';
 
 const app = express();
-app.use(sslRedirect());
+// app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
 
 app.use('/api/auth', authRouter);
-app.use('/api/uploads', uploadRouter);
-
+app.use('/api/bio', bioRouter);
 app.use('/api/backgrounds', backgroundRouter);
 app.use('/api/orders', orderRouter);
 app.use('/api/prints', printRouter);
 app.use('/api/projects', projectRouter);
+app.use('/api/uploads', uploadRouter);
 
 const __dirname = path.resolve();
 
