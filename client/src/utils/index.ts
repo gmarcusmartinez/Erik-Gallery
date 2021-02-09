@@ -30,9 +30,3 @@ const clearItemFromCart = (cartItems: ICartItem[], itemToRemove: ICartItem) =>
 
 export const calculateTotal = (cartItems: ICartItem[]) =>
   cartItems.reduce((acc, curr) => acc + curr.quantity * +curr.price, 0);
-
-export const mapQuantityToOptions = (n: number) => {
-  const opts = [];
-  for (let i = 1; i <= n; i++) opts.push(i);
-  return opts;
-};

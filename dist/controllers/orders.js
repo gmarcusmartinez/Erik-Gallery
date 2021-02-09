@@ -48,7 +48,7 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
             case 0:
                 orderItems = req.body.orderItems;
                 if (orderItems.length <= 0)
-                    throw new bad_request_error_1.BadRequestError("No items in cart");
+                    throw new bad_request_error_1.BadRequestError('No items in cart');
                 orderItemIds = [];
                 orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
                 return [4 /*yield*/, Product_1.Product.find({
@@ -57,7 +57,7 @@ exports.createOrder = async_1.asyncHandler(function (req, res) { return __awaite
                     })];
             case 1:
                 products = _a.sent();
-                soldOutmsg = "One or more products in your cart has recently sold out.";
+                soldOutmsg = 'One or more products in your cart has recently sold out.';
                 if (products.length !== orderItems.length)
                     throw new bad_request_error_1.BadRequestError(soldOutmsg);
                 order = Order_1.Order.build(req.body);
@@ -76,7 +76,7 @@ exports.updateOrder = async_1.asyncHandler(function (req, res) { return __awaite
             case 0:
                 orderItems = req.body.orderItems;
                 if (orderItems.length <= 0)
-                    throw new bad_request_error_1.BadRequestError("No items in cart");
+                    throw new bad_request_error_1.BadRequestError('No items in cart');
                 orderItemIds = [];
                 orderItems.forEach(function (item) { return orderItemIds.push(item._id); });
                 return [4 /*yield*/, Product_1.Product.find({
@@ -85,14 +85,14 @@ exports.updateOrder = async_1.asyncHandler(function (req, res) { return __awaite
                     })];
             case 1:
                 products = _a.sent();
-                soldOutmsg = "One or more products in your cart has recently sold out.";
+                soldOutmsg = 'One or more products in your cart has recently sold out.';
                 if (products.length !== orderItems.length)
                     throw new bad_request_error_1.BadRequestError(soldOutmsg);
                 return [4 /*yield*/, Order_1.Order.findByIdAndUpdate(req.params.id, req.body)];
             case 2:
                 order = _a.sent();
                 if (!order)
-                    throw new bad_request_error_1.BadRequestError("Order not found");
+                    throw new bad_request_error_1.BadRequestError('Order not found');
                 order.save();
                 res.send(order);
                 return [2 /*return*/];
@@ -131,7 +131,7 @@ exports.updateOrderToPaid = async_1.asyncHandler(function (req, res) { return __
             case 1:
                 order = _a.sent();
                 if (!order)
-                    throw new bad_request_error_1.BadRequestError("Order not found");
+                    throw new bad_request_error_1.BadRequestError('Order not found');
                 order.isPaid = true;
                 order.paidAt = new Date(Date.now());
                 order.paymentResult = {
@@ -148,10 +148,3 @@ exports.updateOrderToPaid = async_1.asyncHandler(function (req, res) { return __
         }
     });
 }); });
-// await products.forEach((product) => {
-//   const qty = orderItems.find(
-//     (o: ProductSubDoc) => o._id === product._id.toString()
-//   ).quantity;
-//   product.quantityInStock -= qty;
-//   product.save();
-// });
