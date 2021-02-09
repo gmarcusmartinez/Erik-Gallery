@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.app = void 0;
 var path_1 = __importDefault(require("path"));
+var heroku_ssl_redirect_1 = __importDefault(require("heroku-ssl-redirect"));
 var express_1 = __importDefault(require("express"));
 require("express-async-errors");
 var cookie_session_1 = __importDefault(require("cookie-session"));
@@ -20,7 +21,7 @@ var not_found_error_1 = require("./errors/not-found-error");
 var error_handler_1 = require("./middlewares/error-handler");
 var app = express_1.default();
 exports.app = app;
-// app.use(sslRedirect());
+app.use(heroku_ssl_redirect_1.default());
 app.use(express_1.default.json());
 app.use(cors_1.default());
 app.use(cookie_session_1.default({ signed: false, secure: false }));
