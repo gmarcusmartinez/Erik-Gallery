@@ -38,12 +38,6 @@ export const projectTextInputs = [
     errorField: 'title',
   },
   {
-    label: 'Description',
-    name: 'description',
-    value: 'description',
-    errorField: 'description',
-  },
-  {
     label: 'Medium',
     name: 'medium',
     value: 'medium',

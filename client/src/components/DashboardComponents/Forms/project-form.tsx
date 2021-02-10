@@ -1,7 +1,7 @@
 import React from 'react';
 import { IError } from 'interfaces';
 import { projectBlankFormState, projectTextInputs } from './text-inputs';
-import { Text, File, Checkbox } from 'components/CustomInputs';
+import { Text, File, Checkbox, TextArea } from 'components/CustomInputs';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
 import Spinner from 'components/CommonComponents/Spinner';
@@ -20,8 +20,9 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
   const [formData, setFormData] = React.useState(defaultFormState);
   const [imageData, setImageData] = React.useState<File | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
@@ -52,6 +53,13 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
           error={setError(t.errorField)}
         />
       ))}
+      <TextArea
+        label='Description'
+        name='description'
+        value={formData.description}
+        onChange={handleChange}
+        error={setError('description')}
+      />
       <Checkbox isPublished={formData.isPublished} handleCheck={handleCheck} />
       <File
         onChange={handleFileChange}
