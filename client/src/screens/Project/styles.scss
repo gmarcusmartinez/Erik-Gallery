@@ -37,9 +37,9 @@
     margin: 0 auto;
     &__images {
       display: grid;
-      grid-template-columns: repeat(2, minmax(315px, 1fr));
-      gap: 0.5rem;
-      grid-auto-rows: 102px;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap: 0.2px;
+      grid-auto-rows: 10px;
     }
     &__img {
       width: 315px;
@@ -55,7 +55,7 @@
   .project-screen {
     width: 96rem;
     &__images {
-      grid-template-columns: repeat(3, minmax(315px, 1fr));
+      grid-template-columns: repeat(3, minmax(320px, 1fr));
     }
   }
 }

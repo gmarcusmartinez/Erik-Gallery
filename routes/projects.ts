@@ -46,12 +46,12 @@ router
   .patch(currentUser, requireAuth, isAdmin, projectControllers.addProjectImage);
 
 router
-  .route('/:id/deletePage')
+  .route('/:id/updateProjectImages')
   .put(
     currentUser,
     requireAuth,
     isAdmin,
-    projectControllers.deleteProjectImage
+    projectControllers.updateProjectImages
   );
 
 router

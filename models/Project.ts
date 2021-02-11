@@ -43,6 +43,10 @@ const projectSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  type: {
+    type: String,
+    default: 'project',
+  },
 });
 
 projectSchema.statics.build = (attrs: ProjectAttrs) => {

@@ -3,10 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import Img from './Img';
+import Spinner from 'components/CommonComponents/Spinner';
 
 const ProjectImages: React.FC = () => {
-  const { adminFetchProject, toggleModal } = useActions();
-  const { selectedItem } = useTypedSelector(({ projects }) => projects);
+  const { adminFetchProject, toggleModal, saveImageOrder } = useActions();
+  const { selectedItem, loading } = useTypedSelector(
+    ({ projects }) => projects
+  );
   const history = useHistory();
   const id = history.location.pathname.split('/')[3];
 
@@ -17,6 +20,7 @@ const ProjectImages: React.FC = () => {
     adminFetchProject(id);
   }, [id, adminFetchProject]);
 
+  if (loading) return <Spinner message='Updating Project Images' />;
   return (
     <div className='dashboard-project-images'>
       <div className='dashboard-project-images__container'>
@@ -27,6 +31,12 @@ const ProjectImages: React.FC = () => {
       </div>
       <div className='add-resource-btn' onClick={toggleAddImage}>
         <span>&#43;</span>
+      </div>
+      <div
+        className='image-order-btn'
+        onClick={() => saveImageOrder(id, selectedItem.images)}
+      >
+        Save
       </div>
     </div>
   );

@@ -26,6 +26,10 @@ var projectSchema = new mongoose_1.default.Schema({
         type: Boolean,
         default: false,
     },
+    type: {
+        type: String,
+        default: 'project',
+    },
 });
 projectSchema.statics.build = function (attrs) {
     return new Project(attrs);

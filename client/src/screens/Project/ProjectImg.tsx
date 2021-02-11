@@ -9,13 +9,18 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
   const [spans, setSpans] = React.useState(0);
   const imageRef = React.useRef<HTMLImageElement | null>(null);
   const backgroundImage = `${s3Url}/${imgUrl}`;
-  const calcSpans = (height: number) => setSpans(Math.floor(height / 105));
+
+  const calcSpans = (height: number) => {
+    const gridAutoRows = 10;
+    setSpans(Math.round(height / gridAutoRows));
+  };
   const handleToggleLightbox = () => cb(true, `url(${backgroundImage})`);
 
   React.useEffect(() => {
     imageRef.current?.addEventListener('load', () =>
       calcSpans(imageRef.current!.clientHeight)
     );
+
     calcSpans(imageRef.current!.clientHeight);
   }, []);
 

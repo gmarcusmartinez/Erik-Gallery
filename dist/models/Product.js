@@ -8,7 +8,7 @@ var mongoose_1 = __importDefault(require("mongoose"));
 var ProductType;
 (function (ProductType) {
     ProductType["Print"] = "print";
-    ProductType["Zine"] = "zine";
+    ProductType["Project"] = "project";
 })(ProductType = exports.ProductType || (exports.ProductType = {}));
 var productSchema = new mongoose_1.default.Schema({
     title: {
@@ -68,5 +68,5 @@ productSchema.methods.calculateNet = function () {
     var price = this.price;
     return price - price * vatRate;
 };
-var Product = mongoose_1.default.model("Product", productSchema);
+var Product = mongoose_1.default.model('Product', productSchema);
 exports.Product = Product;

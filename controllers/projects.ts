@@ -66,28 +66,10 @@ export const addProjectImage = asyncHandler(
 export const updateProjectImages = async (req: Request, res: Response) => {
   const project = await Project.findById(req.params.id);
   if (!project) throw new BadRequestError('Project Not Found.');
-
-  project.images = req.body.images;
+  project.images = req.body;
   await project.save();
   res.status(200).json(project);
 };
-
-export const deleteProjectImage = asyncHandler(
-  async (req: Request, res: Response) => {
-    const project = await Project.findById(req.params.id);
-    if (!project) throw new BadRequestError('Project Not Found.');
-
-    const imgStr: string = req.body.imgStr;
-    const removeIndex = project.images.indexOf(imgStr);
-
-    if (removeIndex) project.images.splice(removeIndex, 1);
-    else if (!removeIndex) throw new BadRequestError('Page Not Found.');
-
-    await project.save();
-
-    res.status(200).json(project);
-  }
-);
 
 export const deleteProject = asyncHandler(
   async (req: Request, res: Response) => {

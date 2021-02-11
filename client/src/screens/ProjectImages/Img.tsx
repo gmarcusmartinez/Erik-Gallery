@@ -12,10 +12,10 @@ const Img: React.FC<IProps> = ({ i, imgUrl }) => {
   const { deleteProjectImage, swap } = useActions();
   const backgroundImage = `${s3Url}/${imgUrl}`;
 
-  const gridAutoRows = 105;
-  const calcSpans = (height: number) =>
-    setSpans(Math.floor(height / gridAutoRows));
-
+  const calcSpans = (height: number) => {
+    const gridAutoRows = 10;
+    setSpans(Math.round(height / gridAutoRows));
+  };
   React.useEffect(() => {
     imageRef.current?.addEventListener('load', () =>
       calcSpans(imageRef.current!.clientHeight)

@@ -26,20 +26,21 @@
     margin: 0 auto;
     &__container {
       display: grid;
-      grid-template-columns: repeat(2, minmax(315px, 1fr));
-      gap: 0.5rem;
-      grid-auto-rows: 102px;
+      grid-template-columns: repeat(2, minmax(320px, 1fr));
+      gap: 0.2px;
+      grid-auto-rows: 10px;
       img {
         width: 315px;
       }
     }
   }
 }
+
 @include respond(desktop) {
   .dashboard-project-images {
     width: 96rem;
     &__container {
-      grid-template-columns: repeat(3, minmax(315px, 1fr));
+      grid-template-columns: repeat(3, minmax(320px, 1fr));
     }
   }
 }
@@ -89,4 +90,27 @@
   position: absolute !important;
   top: 0em;
   right: 0rem;
+}
+
+.image-order-btn {
+  background-color: #000;
+  border-radius: 50%;
+  color: var(--color-white);
+  cursor: pointer;
+  height: 6rem;
+  width: 6rem;
+
+  position: fixed;
+  bottom: calc(6rem + 5%);
+  right: 2.5%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-md);
+
+  span {
+    font-size: 3rem;
+  }
 }

@@ -1,8 +1,8 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export enum ProductType {
-  Print = "print",
-  Zine = "zine",
+  Print = 'print',
+  Project = 'project',
 }
 
 export interface ProductSubDoc {
@@ -111,7 +111,7 @@ productSchema.methods.calculateNet = function () {
 };
 
 const Product = mongoose.model<ProductDoc, ProductModel>(
-  "Product",
+  'Product',
   productSchema
 );
 
