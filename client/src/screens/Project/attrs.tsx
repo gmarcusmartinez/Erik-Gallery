@@ -9,11 +9,13 @@ interface IProps {
 }
 
 const ProjectAttrs: React.FC<IProps> = ({ item, toggleLightbox }) => {
-  const { mainImage, medium } = item;
+  const { medium } = item;
 
-  const list = [mainImage, ...item.images].map((imgUrl, i) => (
-    <ProjectImg key={i} imgUrl={imgUrl} cb={toggleLightbox} />
-  ));
+  const list =
+    item.images.length &&
+    item.images.map((imgUrl, i) => (
+      <ProjectImg key={i} imgUrl={imgUrl} cb={toggleLightbox} />
+    ));
   return (
     <>
       <h1>{item.title}</h1>

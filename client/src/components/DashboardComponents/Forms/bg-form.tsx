@@ -30,9 +30,7 @@ const BackgroundForm: React.FC = () => {
         error={setError('image')}
         label={imageData ? 'Image Selected' : 'Choose an Image'}
       />
-      <button type='submit' className='image-form__btn'>
-        Submit
-      </button>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

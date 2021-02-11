@@ -32,9 +32,7 @@ const ImageForm = () => {
         error={setError('image')}
         label={label}
       />
-      <button type='submit' className='image-form__btn'>
-        Submit
-      </button>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

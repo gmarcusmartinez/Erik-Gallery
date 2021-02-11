@@ -6,4 +6,5 @@ export { deleteProject } from './deleteProject';
 export { deleteProjectImage } from './deleteProjectImage';
 export { fetchProject } from './fetchProject';
 export { fetchProjects } from './fetchProjects';
+export { swap } from './swap';
 export { updateProject } from './updateProject';

@@ -17,7 +17,7 @@ import { NotFoundError } from './errors/not-found-error';
 import { errorHandler } from './middlewares/error-handler';
 
 const app = express();
-app.use(sslRedirect());
+// app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));

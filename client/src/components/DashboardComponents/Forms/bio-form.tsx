@@ -31,9 +31,7 @@ const BioForm = () => {
         onChange={handleChange}
         error={setError('text')}
       />
-      <button type='submit' className='bio-form__btn'>
-        Submit
-      </button>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

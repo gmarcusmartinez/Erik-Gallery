@@ -9,7 +9,6 @@ export const fetchProject = (id: string) => async (dispatch: Dispatch) => {
     dispatch({ type: ProjectActionTypes.FETCH_PROJECT_SUCCESS, payload: data });
   } catch (e) {
     const errorResponse = e.response.data.errors;
-
     dispatch({
       type: ProjectActionTypes.FETCH_PROJECT_FAILURE,
       payload: errorResponse,

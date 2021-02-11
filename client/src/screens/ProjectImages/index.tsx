@@ -5,16 +5,13 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import Img from './Img';
 
 const ProjectImages: React.FC = () => {
-  const { deleteProjectImage, adminFetchProject, toggleModal } = useActions();
+  const { adminFetchProject, toggleModal } = useActions();
   const { selectedItem } = useTypedSelector(({ projects }) => projects);
   const history = useHistory();
   const id = history.location.pathname.split('/')[3];
 
   const toggleAddImage = async () =>
     toggleModal(true, 'ADD_PROJECT_IMG', selectedItem);
-
-  const handleDeletePage = (imgStr: string) =>
-    deleteProjectImage(selectedItem._id, imgStr);
 
   React.useEffect(() => {
     adminFetchProject(id);
@@ -24,8 +21,8 @@ const ProjectImages: React.FC = () => {
     <div className='dashboard-project-images'>
       <div className='dashboard-project-images__container'>
         {selectedItem &&
-          selectedItem.images.map((imgStr: string) => (
-            <Img key={imgStr} cb={handleDeletePage} imgStr={imgStr} />
+          selectedItem.images.map((imgUrl: string, i: number) => (
+            <Img key={i} imgUrl={imgUrl} i={i} />
           ))}
       </div>
       <div className='add-resource-btn' onClick={toggleAddImage}>

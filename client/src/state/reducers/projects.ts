@@ -2,12 +2,12 @@ import { AnyAction } from 'redux';
 import { ProjectActionTypes } from 'state/types';
 
 const initialState = {
-  loading: false,
-  items: [],
-  page: 1,
-  pages: null,
-  selectedItem: null,
   errors: null,
+  items: [],
+  loading: false,
+  page: 1,
+  pages: 0,
+  selectedItem: { images: [] },
 };
 
 export const projects = (state = initialState, action: AnyAction) => {
@@ -16,7 +16,7 @@ export const projects = (state = initialState, action: AnyAction) => {
     case ProjectActionTypes.CREATE_PROJECT_SUCCESS:
       return {
         ...state,
-        items: [payload, ...state.items],
+        items: [...state.items, payload],
         loading: false,
         errors: null,
       };
@@ -31,14 +31,24 @@ export const projects = (state = initialState, action: AnyAction) => {
       };
 
     case ProjectActionTypes.ADD_PROJECT_IMG_REQUEST:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECT_REQUEST:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECTS_REQUEST:
     case ProjectActionTypes.CREATE_PROJECT_REQUEST:
+    case ProjectActionTypes.DELETE_PROJECT_REQUEST:
     case ProjectActionTypes.FETCH_PROJECT_REQUEST:
-    case ProjectActionTypes.FETCH_PROJECTS_REQUEST:
     case ProjectActionTypes.UPDATE_PROJECT_REQUEST:
       return { ...state, loading: true };
 
+    case ProjectActionTypes.ADD_PROJECT_IMG_FAILURE:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECT_FAILURE:
+    case ProjectActionTypes.ADMIN_FETCH_PROJECTS_FAILURE:
+    case ProjectActionTypes.CREATE_PROJECT_FAILURE:
+    case ProjectActionTypes.DELETE_PROJECT_FAILURE:
+    case ProjectActionTypes.FETCH_PROJECT_FAILURE:
+    case ProjectActionTypes.UPDATE_PROJECT_FAILURE:
+      return { ...state, errors: payload, loading: false };
+
     case ProjectActionTypes.ADD_PROJECT_IMG_SUCCESS:
-    case ProjectActionTypes.DELETE_PROJECT_PAGE_SUCCESS:
       return { ...state, selectedItem: payload, loading: false };
 
     case ProjectActionTypes.FETCH_PROJECT_SUCCESS:
@@ -58,16 +68,33 @@ export const projects = (state = initialState, action: AnyAction) => {
     case ProjectActionTypes.ADMIN_FETCH_PROJECT_SUCCESS:
       return { ...state, selectedItem: payload, loading: false, errors: null };
 
-    case ProjectActionTypes.ADD_PROJECT_IMG_FAILURE:
-    case ProjectActionTypes.ADMIN_FETCH_PROJECT_FAILURE:
-    case ProjectActionTypes.ADMIN_FETCH_PROJECTS_FAILURE:
-    case ProjectActionTypes.CREATE_PROJECT_FAILURE:
-    case ProjectActionTypes.DELETE_PROJECT_FAILURE:
-    case ProjectActionTypes.FETCH_PROJECT_FAILURE:
-    case ProjectActionTypes.UPDATE_PROJECT_FAILURE:
-      return { ...state, errors: payload, loading: false };
+    case ProjectActionTypes.DELETE_PROJECT_IMAGE:
+      const updatedItem = state.selectedItem;
+      const { images } = state.selectedItem;
+      updatedItem.images = images!.filter((i: string) => i !== payload);
+      return { ...state, selectedItem: updatedItem };
+
+    case ProjectActionTypes.SWAP_PROJECT_IMAGE:
+      const { direction, i } = payload;
+      const { images: imgs } = state.selectedItem;
+      const targetIndex = direction === 'left' ? i - 1 : i + 1;
+      if (targetIndex < 0 || targetIndex > imgs.length - 1) return state;
+      [imgs[i], imgs[targetIndex]] = [imgs[targetIndex], imgs[i]];
+
+      const item = state.selectedItem;
+      item.images = imgs;
+      return { ...state, selectedItem: item };
 
     default:
       return state;
   }
 };
+
+// interface ProjectsState {
+//   errors: IError[] | null;
+//   loading: boolean;
+//   items: IProject[] | [];
+//   page: number;
+//   pages: number;
+//   selectedItem: IProject | null;
+// }

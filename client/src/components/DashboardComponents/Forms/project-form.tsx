@@ -66,9 +66,7 @@ const ProjectForm: React.FC<IProps> = ({ formTitle }) => {
         error={setError('image')}
         label={imageData ? 'Image Selected' : 'Choose an Image'}
       />
-      <button type='submit' className='project-form__btn'>
-        Submit
-      </button>
+      <button type='submit'>Submit</button>
     </form>
   );
 };

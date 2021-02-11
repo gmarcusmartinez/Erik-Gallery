@@ -14,6 +14,7 @@ const Gallery: React.FC<IProps> = ({ match }) => {
   const page = +match.params.page || 1;
   const { fetchProjects } = useActions();
   const { pages } = useTypedSelector((state) => state.projects);
+
   React.useEffect(() => {
     fetchProjects(page);
   }, [page, fetchProjects]);
