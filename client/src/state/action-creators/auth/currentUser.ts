@@ -1,11 +1,11 @@
 import auth from 'api/auth';
-import { IUser } from 'interfaces';
+import { IAdmin } from 'interfaces';
 import { Dispatch } from 'redux';
 import { AuthActionTypes } from 'state';
 
 export interface GetCurrentUserAction {
   type: AuthActionTypes.GET_CURRENT_USER;
-  payload: IUser | null;
+  payload: IAdmin | null;
 }
 
 export const getCurrentUser = () => async (dispatch: Dispatch) => {

@@ -1,26 +1,33 @@
 .resource-delete {
-  color: var(--color-grey);
-  margin: 2rem auto;
+  color: var(--color-black);
+  margin: 0 auto;
   text-align: center;
   height: 100%;
-  width: 34rem;
-  margin-top: 6rem;
+  width: 33rem;
 
   &__title {
     letter-spacing: var(--letter-spacing-md);
-    margin-bottom: var(--margin-md);
+    margin-bottom: var(--margin-sm);
+    font-size: 1.5rem;
+    text-transform: uppercase;
   }
   &__image {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 55%;
-    margin-bottom: 2rem;
+    width: 90%;
   }
   &__btn {
-    @include checkout-step-page-btn;
-    margin-top: 0;
+    height: 4rem;
+    border: 0.1rem solid black;
+    font-size: 1.4rem;
+    letter-spacing: var(--letter-spacing-md);
+    line-height: 4rem;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    width: 30rem;
+    margin: 1rem auto;
     &:active {
       transform: translateY(2px);
     }

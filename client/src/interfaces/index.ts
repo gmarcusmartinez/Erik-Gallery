@@ -3,10 +3,11 @@ export interface IAdmin {
   email: string;
   role: 'admin';
 }
-export interface IUser {
+export interface IBackground {
   _id: string;
-  email: string;
-  role: string;
+  active: boolean;
+  mainImage: string;
+  type: string;
 }
 
 export interface IError {
@@ -14,12 +15,20 @@ export interface IError {
   field?: string;
 }
 
-export interface IBackground {
+export interface IPrint {
   _id: string;
-  active: boolean;
+  description: string;
+  isPublished: boolean;
   mainImage: string;
-  type: string;
+  quantityInStock: number;
+  type: 'print';
+  size: string;
+
+  price: number;
+  netPrice: number;
+  vatPrice: number;
 }
+
 export interface IProject {
   _id: string;
   title: string;
@@ -29,48 +38,3 @@ export interface IProject {
   images: [string] | [];
   isPublished: boolean;
 }
-
-export interface IProduct {
-  _id: string;
-  mainImage: string;
-  quantityInStock: number;
-  type: string;
-
-  title?: string;
-  description?: string;
-  size?: string;
-  isPublished: boolean;
-
-  price: number;
-  netPrice: number;
-  vatPrice: number;
-}
-export interface IOrder {
-  id: string;
-
-  orderItems: ICartItem[];
-
-  paymentMethod: string;
-  vatPrice: number;
-  shippingPrice: number;
-  totalPrice: number;
-
-  isDelivered: boolean;
-  isPaid: boolean;
-  paidAt: Date;
-  paymentResult: {
-    id: string;
-    status: string;
-    update_time: string;
-    email_address: string;
-  };
-  createdAt: Date;
-}
-
-export interface IPrint extends IProduct {}
-
-export interface ICartItem extends IProduct {
-  quantity: number;
-}
-
-export interface IOrder {}

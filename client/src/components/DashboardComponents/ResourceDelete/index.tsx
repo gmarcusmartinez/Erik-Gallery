@@ -30,9 +30,6 @@ const ResourceDelete: React.FC = () => {
   const imageUrl = `${s3Url}/${data?.mainImage}`;
   return (
     <div className='resource-delete'>
-      <h3 className='resource-delete__title'>
-        Are you sure you want to delete this {data?.type}?
-      </h3>
       <img className='resource-delete__image' src={imageUrl} alt='resource' />
       <div
         className='resource-delete__btn'

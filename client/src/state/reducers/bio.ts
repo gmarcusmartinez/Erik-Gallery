@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import { BioActionTypes } from 'state/types';
 
 interface BioState {
-  items: any[] | [{ text: '' }];
+  items: any[] | [{ _id: 'default'; text: '' }];
   loading: boolean;
   errors: IError[] | null;
 }

@@ -1,5 +1,6 @@
 import { AnyAction } from 'redux';
 import { ProjectActionTypes } from 'state/types';
+import { deleteImage, swap } from 'utils/projects';
 
 const initialState = {
   errors: null,
@@ -37,7 +38,7 @@ export const projects = (state = initialState, action: AnyAction) => {
     case ProjectActionTypes.DELETE_PROJECT_REQUEST:
     case ProjectActionTypes.FETCH_PROJECT_REQUEST:
     case ProjectActionTypes.UPDATE_PROJECT_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, errors: null, loading: true };
 
     case ProjectActionTypes.ADD_PROJECT_IMG_FAILURE:
     case ProjectActionTypes.ADMIN_FETCH_PROJECT_FAILURE:
@@ -69,21 +70,15 @@ export const projects = (state = initialState, action: AnyAction) => {
       return { ...state, selectedItem: payload, loading: false, errors: null };
 
     case ProjectActionTypes.DELETE_PROJECT_IMAGE:
-      const updatedItem = state.selectedItem;
-      const { images } = state.selectedItem;
-      updatedItem.images = images!.filter((i: string) => i !== payload);
-      return { ...state, selectedItem: updatedItem };
+      const newItem = state.selectedItem;
+      const images = deleteImage(payload, newItem.images);
+      return { ...state, selectedItem: { ...newItem, images } };
 
     case ProjectActionTypes.SWAP_PROJECT_IMAGE:
-      const { direction, i } = payload;
-      const { images: imgs } = state.selectedItem;
-      const targetIndex = direction === 'left' ? i - 1 : i + 1;
-      if (targetIndex < 0 || targetIndex > imgs.length - 1) return state;
-      [imgs[i], imgs[targetIndex]] = [imgs[targetIndex], imgs[i]];
-
       const item = state.selectedItem;
-      item.images = imgs;
-      return { ...state, selectedItem: item };
+      const { direction, i } = payload;
+      const imgs = swap(direction, i, item);
+      return { ...state, selectedItem: { ...item, images: imgs } };
 
     default:
       return state;
