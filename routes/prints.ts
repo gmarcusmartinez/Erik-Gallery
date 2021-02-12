@@ -1,23 +1,21 @@
-import { Router } from "express";
-import * as printControllers from "../controllers/prints";
-import { currentUser } from "../middlewares/current-user";
-import { isAdmin } from "../middlewares/is-admin";
-import { requireAuth } from "../middlewares/require-auth";
-import { validateRequest } from "../middlewares/validate-request";
-import { createPrintValidation } from "../validation/print";
-import { advancedResults } from "../middlewares/advanced-results";
-import { Product, ProductType } from "../models/Product";
+import { Router } from 'express';
+import * as printControllers from '../controllers/prints';
+import { currentUser } from '../middlewares/current-user';
+import { isAdmin } from '../middlewares/is-admin';
+import { requireAuth } from '../middlewares/require-auth';
+import { validateRequest } from '../middlewares/validate-request';
+import { createPrintValidation } from '../validation/print';
+import { advancedResults } from '../middlewares/advanced-results';
+import { Print } from '../models/Print';
 
 const router = Router();
 
-router
-  .route("/")
-  .get(advancedResults(Product, ProductType.Print), printControllers.getPrints);
+router.route('/').get(advancedResults(Print), printControllers.getPrints);
 
-router.route("/:id").get(printControllers.getPrint);
+router.route('/:id').get(printControllers.getPrint);
 
 router
-  .route("/")
+  .route('/')
   .post(
     currentUser,
     requireAuth,
@@ -28,11 +26,11 @@ router
   );
 
 router
-  .route("/admin")
+  .route('/admin')
   .put(currentUser, requireAuth, isAdmin, printControllers.adminGetPrints);
 
 router
-  .route("/:id")
+  .route('/:id')
   .put(
     currentUser,
     requireAuth,
@@ -43,7 +41,7 @@ router
   );
 
 router
-  .route("/:id")
+  .route('/:id')
   .delete(currentUser, requireAuth, isAdmin, printControllers.deletePrint);
 
 export { router as printRouter };

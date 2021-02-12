@@ -27,8 +27,8 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
 
-  const handleCheck = (bool: boolean) =>
-    setFormData({ ...formData, isPublished: !bool });
+  const handleCheck = () =>
+    setFormData({ ...formData, isPublished: !formData.isPublished });
 
   const handleRequest = (formTitle: string) =>
     formTitle === 'Edit'
@@ -64,11 +64,11 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
           error={setError(t.errorField)}
         />
       ))}
-      <Checkbox isPublished={formData.isPublished} handleCheck={handleCheck} />
+      <Checkbox isPublished={formData.isPublished} onChange={handleCheck} />
       <File
         onChange={handleFileChange}
         error={setError('image')}
-        label={imageData ? 'Image Selected' : 'Choose an Image'}
+        selected={imageData ? true : false}
       />
       <button type='submit'>Submit</button>
     </form>

@@ -15,6 +15,6 @@ export interface IProjectForm {
   title: string;
   description: string;
   medium: string;
-  mainImage: string;
+  mainImage: File;
   isPublished: boolean;
 }

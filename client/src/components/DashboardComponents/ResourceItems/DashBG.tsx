@@ -19,7 +19,7 @@ const BackgroundItem: React.FC<IProps> = ({ bg }) => {
   return (
     <div className='dash-item' style={{ gridTemplateColumns }}>
       <div className='dash-item__img' style={{ backgroundImage }}>
-        <div className={pubClassName}></div>
+        <div className={pubClassName} />
         <div className='mobile-dash__btns'>
           <div className='mobile-dash__btn' onClick={handleSetActive}>
             Set Active

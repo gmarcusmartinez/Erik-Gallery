@@ -1,5 +1,5 @@
 import React, { ChangeEvent } from 'react';
-import { IError } from '../../../interfaces';
+import { IError } from 'interfaces';
 
 interface IProps {
   label: string;

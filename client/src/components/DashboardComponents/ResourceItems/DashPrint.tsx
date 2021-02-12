@@ -24,14 +24,10 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
     <>
       <div className='dash-item' style={{ gridTemplateColumns }}>
         <div className='dash-item__img' style={{ backgroundImage }}>
-          <div className={pubClassName}></div>
+          <div className={pubClassName} />
           <div className='mobile-dash__btns'>
-            <div className='mobile-dash__btn' onClick={toggleEdit}>
-              Edit
-            </div>
-            <div className='mobile-dash__btn' onClick={toggleDelete}>
-              Delete
-            </div>
+            <div onClick={toggleEdit}>Edit</div>
+            <div onClick={toggleDelete}>Delete</div>
           </div>
         </div>
         <div className='dash-item__text'>{print.description}</div>
@@ -44,7 +40,7 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
           &#10060;
         </div>
       </div>
-      <hr className='dash-item__border'></hr>
+      <hr className='dash-item__border' />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { renderForm } from './ModalActions';
 
-const Modal: React.FC = () => {
+const Modal = () => {
   const { toggleModal } = useActions();
   const { displayModal, component } = useTypedSelector((state) => state.modal);
   const handleCloseModal = () => toggleModal(false, null);

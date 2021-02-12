@@ -7,7 +7,6 @@ import Spinner from 'components/CommonComponents/Spinner';
 
 const ImageForm = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);
-  const label = imageData ? 'Image Selected' : 'Choose an Image';
   const { addProjectImage } = useActions();
   const { errors, loading, selectedItem } = useTypedSelector(
     ({ projects }) => projects
@@ -26,11 +25,11 @@ const ImageForm = () => {
   if (loading) return <Spinner message='Uploading Image BB' />;
   return (
     <form className='image-form' onSubmit={handleSubmit}>
-      <h3 className='image-form__title'>Add Image</h3>
+      <h3>Add Image</h3>
       <File
         onChange={handleFileChange}
         error={setError('image')}
-        label={label}
+        selected={imageData ? true : false}
       />
       <button type='submit'>Submit</button>
     </form>

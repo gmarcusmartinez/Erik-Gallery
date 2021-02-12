@@ -8,7 +8,6 @@ export const deleteProject = (id: string) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: ProjectActionTypes.DELETE_PROJECT_REQUEST });
     await projects.delete(`/${id}`);
-
     dispatch({ type: DELETE_PROJECT_SUCCESS, payload: id });
   } catch (e) {
     const errorResponse = e;

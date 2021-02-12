@@ -1,5 +1,4 @@
 import React from 'react';
-import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { File } from 'components/CustomInputs';
@@ -9,6 +8,7 @@ const BackgroundForm: React.FC = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);
   const { createBackground } = useActions();
   const { loading, errors } = useTypedSelector((state) => state.backgrounds);
+  const setError = (s: string) => errors?.find(({ field }) => field === s);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
@@ -18,9 +18,6 @@ const BackgroundForm: React.FC = () => {
     createBackground(imageData);
   };
 
-  const setError = (field: string) =>
-    errors ? errors.find((err: IError) => err.field === field) : null;
-
   if (loading) return <Spinner message='Uploading Background BB' />;
   return (
     <form className='image-form' onSubmit={handleSubmit}>
@@ -28,7 +25,7 @@ const BackgroundForm: React.FC = () => {
       <File
         onChange={handleFileChange}
         error={setError('image')}
-        label={imageData ? 'Image Selected' : 'Choose an Image'}
+        selected={imageData ? true : false}
       />
       <button type='submit'>Submit</button>
     </form>

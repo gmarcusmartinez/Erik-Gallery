@@ -2,27 +2,18 @@ import projects from 'api/projects';
 import { Dispatch } from 'redux';
 import { ProjectActionTypes } from 'state';
 
+const { UPDATE_IMAGES_FAILURE, UPDATE_IMAGES_SUCCESS } = ProjectActionTypes;
+
 export const saveImageOrder = (id: string, images: string[]) => async (
   dispatch: Dispatch
 ) => {
-  const config = { headers: { 'Content-Type': 'application/json' } };
-
   try {
-    dispatch({ type: ProjectActionTypes.SAVE_IMAGE_ORDER_REQUEST });
-    const { data } = await projects.put(
-      `/${id}/updateProjectImages`,
-      images,
-      config
-    );
-    dispatch({
-      type: ProjectActionTypes.SAVE_IMAGE_ORDER_SUCCESS,
-      payload: data,
-    });
+    dispatch({ type: ProjectActionTypes.UPDATE_IMAGES_REQUEST });
+    const config = { headers: { 'Content-Type': 'application/json' } };
+    const { data } = await projects.put(`/${id}/updateImages`, images, config);
+    dispatch({ type: UPDATE_IMAGES_SUCCESS, payload: data });
   } catch (e) {
     const errorResponse = e.response.data.errors;
-    dispatch({
-      type: ProjectActionTypes.SAVE_IMAGE_ORDER_FAILURE,
-      payload: errorResponse,
-    });
+    dispatch({ type: UPDATE_IMAGES_FAILURE, payload: errorResponse });
   }
 };

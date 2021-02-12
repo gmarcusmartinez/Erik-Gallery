@@ -4,11 +4,12 @@ import { IError } from 'interfaces';
 interface IProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   error: IError | null | undefined;
-  label: string;
+  selected: boolean;
 }
 
-const CustomFileInput: React.FC<IProps> = ({ onChange, error, label }) => {
-  const labelClass = label === 'Image Selected' ? 'success' : '';
+const CustomFileInput: React.FC<IProps> = ({ onChange, error, selected }) => {
+  const labelClass = selected ? 'success' : '';
+  const label = selected ? 'Image Selected' : 'Choose File';
   return (
     <div className='custom-file-input-wrapper'>
       <input

@@ -16,6 +16,7 @@ router.route('/:id').get(projectControllers.getProject);
 router
   .route('/admin')
   .put(currentUser, requireAuth, isAdmin, projectControllers.adminGetProjects);
+
 router
   .route('/:id/admin')
   .put(currentUser, requireAuth, isAdmin, projectControllers.adminGetProject);
@@ -46,7 +47,7 @@ router
   .patch(currentUser, requireAuth, isAdmin, projectControllers.addProjectImage);
 
 router
-  .route('/:id/updateProjectImages')
+  .route('/:id/updateImages')
   .put(
     currentUser,
     requireAuth,

@@ -1,7 +1,6 @@
-import { ProductType } from 'aws-sdk/clients/servicecatalog';
 import { NextFunction } from 'express';
 
-export const advancedResults = (model: any, type?: ProductType) => async (
+export const advancedResults = (model: any) => async (
   req: any,
   res: any,
   next: NextFunction
@@ -22,22 +21,9 @@ export const advancedResults = (model: any, type?: ProductType) => async (
   const page = Number(req.query.page) || 1;
   const skip = limit * (page - 1);
 
-  let count;
-  let data;
-
-  if (type) {
-    count = await model.countDocuments({ type, isPublished: true });
-    data = await model
-      .find({ type, isPublished: true })
-      .limit(limit)
-      .skip(skip);
-  } else {
-    count = await model.countDocuments({ isPublished: true });
-    data = await model.find({ isPublished: true }).limit(limit).skip(skip);
-  }
-
+  const count = await model.countDocuments({ isPublished: true });
+  const data = await model.find({ isPublished: true }).limit(limit).skip(skip);
   const pages = Math.ceil(count / limit);
-
   res.advancedResults = { page, pages, data };
 
   next();

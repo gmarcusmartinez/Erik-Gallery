@@ -37,7 +37,7 @@ export const projects = (state = initialState, action: AnyAction) => {
     case ProjectActionTypes.CREATE_PROJECT_REQUEST:
     case ProjectActionTypes.DELETE_PROJECT_REQUEST:
     case ProjectActionTypes.FETCH_PROJECT_REQUEST:
-    case ProjectActionTypes.SAVE_IMAGE_ORDER_REQUEST:
+    case ProjectActionTypes.UPDATE_IMAGES_REQUEST:
     case ProjectActionTypes.UPDATE_PROJECT_REQUEST:
       return { ...state, errors: null, loading: true };
 
@@ -47,7 +47,7 @@ export const projects = (state = initialState, action: AnyAction) => {
     case ProjectActionTypes.CREATE_PROJECT_FAILURE:
     case ProjectActionTypes.DELETE_PROJECT_FAILURE:
     case ProjectActionTypes.FETCH_PROJECT_FAILURE:
-    case ProjectActionTypes.SAVE_IMAGE_ORDER_FAILURE:
+    case ProjectActionTypes.UPDATE_IMAGES_FAILURE:
     case ProjectActionTypes.UPDATE_PROJECT_FAILURE:
       return { ...state, errors: payload, loading: false };
 
@@ -69,7 +69,7 @@ export const projects = (state = initialState, action: AnyAction) => {
       return { ...state, items: payload, loading: false };
 
     case ProjectActionTypes.ADMIN_FETCH_PROJECT_SUCCESS:
-    case ProjectActionTypes.SAVE_IMAGE_ORDER_SUCCESS:
+    case ProjectActionTypes.UPDATE_IMAGES_SUCCESS:
       return { ...state, selectedItem: payload, loading: false, errors: null };
 
     case ProjectActionTypes.DELETE_PROJECT_IMAGE:

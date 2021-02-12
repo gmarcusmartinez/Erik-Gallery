@@ -9,59 +9,40 @@ interface IProps {
 }
 
 const ProjectItem: React.FC<IProps> = ({ project }) => {
-  const { toggleModal, adminFetchProject } = useActions();
+  const { isPublished, title, _id } = project;
+  const { toggleModal } = useActions();
+  const history = useHistory();
+
   const toggleDelete = () => toggleModal(true, 'DELETE_RESOURCE', project);
+  const toggleEdit = () => toggleModal(true, 'EDIT_PROJECT', project);
 
-  const toggleEdit = async (formType: string) => {
-    const projectToUpdate = await adminFetchProject(project._id);
-    toggleModal(true, formType, projectToUpdate);
-    return;
-  };
-
+  const redirect = () => history.push(`/dashboard/project/${_id}`);
   const backgroundImage = `url(${s3Url}/${project.mainImage})`;
   const gridTemplateColumns = '15% 25% 40% 10% 10%';
-  const pubClassName = `isPub ${
-    project.isPublished ? 'pub-true' : 'pub-false'
-  }`;
-
-  const history = useHistory();
-  const handleRedirect = () =>
-    history.push(`/dashboard/project/${project._id}`);
-
-  const handleToggleEdit = () => toggleEdit('EDIT_PROJECT');
 
   return (
     <>
       <div className='dash-item' style={{ gridTemplateColumns }}>
         <div className='dash-item__img' style={{ backgroundImage }}>
-          <div className={pubClassName}></div>
+          <div className={`isPub ${isPublished ? 'pub-true' : 'pub-false'}`} />
           <div className='mobile-dash__btns'>
-            <div className='mobile-dash__btn' onClick={handleRedirect}>
-              Images
-            </div>
-            <div className='mobile-dash__btn' onClick={handleToggleEdit}>
-              Edit
-            </div>
-            <div className='mobile-dash__btn' onClick={toggleDelete}>
-              &#10060;
-            </div>
+            <div onClick={redirect}>Images</div>
+            <div onClick={toggleEdit}>Edit</div>
+            <div onClick={toggleDelete}>&#10060;</div>
           </div>
         </div>
-        <div
-          className='dash-item__text project-redirect'
-          onClick={handleRedirect}
-        >
-          {project.title}
+        <div className='dash-item__text pr' onClick={redirect}>
+          {title}
         </div>
         <div className='dash-item__text'>{project.medium}</div>
-        <div className='dash-btn' onClick={handleToggleEdit}>
+        <div className='dash-btn' onClick={toggleEdit}>
           Edit
         </div>
         <div className='dash-btn' onClick={toggleDelete}>
           &#10060;
         </div>
       </div>
-      <hr className='dash-item__border'></hr>
+      <hr className='dash-item__border' />
     </>
   );
 };
