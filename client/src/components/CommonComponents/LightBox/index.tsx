@@ -12,7 +12,7 @@ const Lightbox = () => {
   );
   const last = images.length - 1;
   const prev = () => setCurrent(current === 0 ? last - 1 : current - 1);
-  const next = () => setCurrent(current === last - 1 ? 0 : current + 1);
+  const next = () => setCurrent(current === last ? 0 : current + 1);
   const handleCloseLightbox = () => toggleLightbox(false, [], current);
 
   React.useEffect(() => {
