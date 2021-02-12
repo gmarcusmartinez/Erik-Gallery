@@ -6,17 +6,16 @@ import { renderForm } from './ModalActions';
 
 const Modal: React.FC = () => {
   const { toggleModal } = useActions();
-  const { displayModal, component, darkmode } = useTypedSelector(
-    (state) => state.modal
-  );
-
-  const className = `modal ${displayModal ? 'open' : 'closed'} ${
-    darkmode ? 'darkmode' : ''
-  }`;
+  const { displayModal, component } = useTypedSelector((state) => state.modal);
+  const handleCloseModal = () => toggleModal(false, null);
 
   return ReactDOM.createPortal(
-    <div className={className}>
-      {renderModalCloseBtn(displayModal, toggleModal)}
+    <div className={`modal ${displayModal ? 'open' : 'closed'}`}>
+      <div className='modal__close-btn' onClick={handleCloseModal}>
+        <div className={`modal__bar ${displayModal ? 'cross' : ''}`}></div>
+        <div className={`modal__bar ${displayModal ? 'cross' : ''}`}></div>
+        <div className={`modal__bar ${displayModal ? 'cross' : ''}`}></div>
+      </div>
       <div className='modal__body'>{renderForm(component)}</div>
     </div>,
     document.querySelector('#modal')!
@@ -24,11 +23,3 @@ const Modal: React.FC = () => {
 };
 
 export default Modal;
-
-export const renderModalCloseBtn = (bool: boolean, cb: Function) => (
-  <div className='modal__close-btn' onClick={() => cb(false)}>
-    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
-    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
-    <div className={`modal__bar ${bool ? 'cross' : ''}`}></div>
-  </div>
-);

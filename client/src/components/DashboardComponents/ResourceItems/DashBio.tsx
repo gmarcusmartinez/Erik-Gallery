@@ -1,8 +1,9 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
+import { IBio } from 'interfaces';
 
 interface IProps {
-  bio: any;
+  bio: IBio;
 }
 
 const BioItem: React.FC<IProps> = ({ bio }) => {

@@ -2,11 +2,13 @@ import React from 'react';
 import MainLayout from 'layouts/MainLayout';
 import { useActions } from 'hooks/use-actions';
 
-const Logout: React.FC = () => {
+const Logout = () => {
   const { logout } = useActions();
+
   React.useEffect(() => {
     logout();
   }, [logout]);
+
   return (
     <MainLayout>
       <div className='logout-screen'>

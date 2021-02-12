@@ -9,6 +9,8 @@ import BioForm from 'components/DashboardComponents/Forms/bio-form';
 
 export const renderForm = (component: string) => {
   switch (component) {
+    case 'ADD_BG':
+      return <BackgroundForm />;
     case 'EDIT_BIO':
       return <BioForm />;
     case 'DELETE_RESOURCE':
@@ -17,8 +19,6 @@ export const renderForm = (component: string) => {
       return <PrintForm formTitle='Add' />;
     case 'EDIT_PRINT':
       return <PrintForm formTitle='Edit' />;
-    case 'ADD_BG':
-      return <BackgroundForm />;
     case 'ADD_PROJECT':
       return <ProjectForm formTitle='Add' />;
     case 'EDIT_PROJECT':

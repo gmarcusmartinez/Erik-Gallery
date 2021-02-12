@@ -4,11 +4,10 @@ import { ModalActionTypes } from 'state';
 export const toggleModal = (
   bool: boolean,
   component: string | null,
-  data?: any,
-  darkmode?: boolean
+  data?: any
 ) => (dispatch: Dispatch) => {
   dispatch({
     type: ModalActionTypes.TOGGLE_MODAL,
-    payload: { bool, component, data, darkmode },
+    payload: { bool, component, data },
   });
 };

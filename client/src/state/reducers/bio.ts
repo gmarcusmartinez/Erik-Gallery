@@ -1,15 +1,15 @@
-import { IError } from 'interfaces';
+import { IBio, IError } from 'interfaces';
 import { AnyAction } from 'redux';
 import { BioActionTypes } from 'state/types';
 
 interface BioState {
-  items: any[] | [{ _id: 'default'; text: '' }];
+  items: IBio[];
   loading: boolean;
   errors: IError[] | null;
 }
 
 const initialState = {
-  items: [{ text: '' }],
+  items: [{ text: '', _id: 'default' }],
   loading: false,
   errors: [],
 };

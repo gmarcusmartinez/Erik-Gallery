@@ -2,9 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { s3Url } from 'api/url';
+import { IProject } from 'interfaces';
 
 interface IProps {
-  project: any;
+  project: IProject;
 }
 
 const ProjectItem: React.FC<IProps> = ({ project }) => {

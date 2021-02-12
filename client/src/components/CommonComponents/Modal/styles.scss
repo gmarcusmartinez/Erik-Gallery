@@ -25,18 +25,12 @@
     transition: all 0.3s;
     transform: translateX(-100%);
   }
-  &.darkmode {
-    background-color: rgba(0, 0, 0, 0.9);
-    .modal__bar {
-      background-color: var(--color-white);
-    }
-  }
 
   &__close-btn {
     cursor: pointer;
     position: absolute;
-    right: 2.5%;
-    top: 2.5%;
+    right: 5%;
+    top: 5%;
     z-index: 2;
 
     animation: fadein 1s;

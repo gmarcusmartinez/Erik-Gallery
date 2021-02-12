@@ -1,8 +1,9 @@
 import bio from 'api/bio';
+import { IBioForm } from 'interfaces/forms';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, BioActionTypes } from 'state';
 
-export const updateBio = (formData: any, id: string) => async (
+export const updateBio = (formData: IBioForm, id: string) => async (
   dispatch: Dispatch
 ) => {
   try {

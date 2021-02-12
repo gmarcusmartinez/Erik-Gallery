@@ -6,6 +6,7 @@ export const toggleNav = (bool: boolean) => (dispatch: Dispatch) => {
 };
 
 export const closeAll = () => (dispatch: Dispatch) => {
+  window.scroll({ top: 0, left: 0, behavior: 'smooth' });
   const modalPayload = { displayModal: false, component: '', data: null };
   dispatch({ type: ModalActionTypes.TOGGLE_MODAL, payload: modalPayload });
   dispatch({ type: NavActionTypes.TOGGLE_NAV, payload: false });

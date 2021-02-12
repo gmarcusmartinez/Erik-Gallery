@@ -4,16 +4,15 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 
 const ItemDetail = () => {
   const { data } = useTypedSelector(({ modal }) => modal);
-  const { description, title, mainImage } = data!;
+  const { description, size, mainImage } = data!;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
 
   return (
     <div className='item-detail'>
       <div className='item-detail__img' style={{ backgroundImage }} />
       <div className='item-detail__info'>
-        {description && <p>{description}</p>}
-        {title && <p>{title}</p>}
-        <p>{data.size ? data.size : null}</p>
+        <p>{description}</p>
+        <p>{size}</p>
         <p className='item-detail__placeholder'>
           If intrested in purchasing email:
           <a href='mailto: erik.felfalusi@gmail.com<'>

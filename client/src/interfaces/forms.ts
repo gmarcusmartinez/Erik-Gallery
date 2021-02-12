@@ -6,3 +6,15 @@ export interface IPrintForm {
   isPublished: boolean;
   mainImage: string;
 }
+
+export interface IBioForm {
+  text: string;
+}
+
+export interface IProjectForm {
+  title: string;
+  description: string;
+  medium: string;
+  mainImage: string;
+  isPublished: boolean;
+}

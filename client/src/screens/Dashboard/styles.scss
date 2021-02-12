@@ -9,7 +9,7 @@
 
   &__header {
     display: flex;
-    height: 5rem;
+    height: 10vh;
     width: 100%;
   }
   &__title {
@@ -23,13 +23,11 @@
   }
   &__sidenav {
     position: absolute;
-    top: 5rem;
+    top: 10vh;
 
     background-color: rgba(255, 255, 255, 0.9);
     display: flex;
-    height: 100%;
-    min-height: 90vh;
-
+    height: 80vh;
     z-index: 1;
   }
 
@@ -44,6 +42,8 @@
 
   &__sidenav__links {
     width: 100%;
+    display: grid;
+    grid-template-rows: repeat(3, 17vh) 29vh;
   }
 
   &__sidenav__link {
@@ -51,8 +51,8 @@
     cursor: pointer;
     text-align: center;
     font-size: 1.4rem;
-    height: 12rem;
-    line-height: 12rem;
+    height: 100%;
+    line-height: 17vh;
     letter-spacing: var(--letter-spacing-lg);
     text-transform: uppercase;
     &:active,

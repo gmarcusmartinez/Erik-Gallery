@@ -21,7 +21,7 @@ const Dashboard: React.FC = () => {
   const { items: projects } = useTypedSelector((state) => state.projects);
 
   const sidenavClass = sidenavOpen ? 'sidenav-open' : 'sidenav-closed';
-  const sidenavLinks = headers.fetchResourceLinks.map((l, i) => (
+  const sidenavLinks = headers.resourceLinks.map((l, i) => (
     <div
       key={i}
       className='dashboard__sidenav__link'

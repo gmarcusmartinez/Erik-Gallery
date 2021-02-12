@@ -9,6 +9,10 @@ export interface IBackground {
   mainImage: string;
   type: string;
 }
+export interface IBio {
+  _id: string;
+  text: string;
+}
 
 export interface IError {
   message: string;
@@ -38,3 +42,5 @@ export interface IProject {
   images: [string] | [];
   isPublished: boolean;
 }
+
+export type ResourceType = IPrint | IProject | IBio | IBackground;

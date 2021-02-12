@@ -5,22 +5,16 @@
   height: 100%;
   width: 33rem;
 
-  &__title {
-    letter-spacing: var(--letter-spacing-md);
-    margin-bottom: var(--margin-sm);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-  }
-  &__image {
+  img {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-
     width: 90%;
   }
-  &__btn {
-    height: 4rem;
+  div {
     border: 0.1rem solid black;
+    cursor: pointer;
+    height: 4rem;
     font-size: 1.4rem;
     letter-spacing: var(--letter-spacing-md);
     line-height: 4rem;

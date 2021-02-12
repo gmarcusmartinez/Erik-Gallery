@@ -1,6 +1,6 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
-import { IPrint, IBackground } from 'interfaces';
+import { IPrint, IBackground, IBio } from 'interfaces';
 import BackgroundItem from '../ResourceItems/DashBG';
 import PrintItem from '../ResourceItems/DashPrint';
 import ProjectItem from '../ResourceItems/DashProject';
@@ -10,7 +10,7 @@ interface IProps {
   resourceType: string;
   formName: string | null;
   headers: { text: string }[];
-  items: IPrint[] | IBackground[] | any;
+  items: IPrint[] | IBackground[] | IBackground[] | IBio[];
   gridTemplateColumns: string;
 }
 

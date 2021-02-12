@@ -33,7 +33,7 @@ const AdminLogin: React.FC = () => {
     <MainLayout>
       <div className='admin-screen'>
         <form className='admin-form' onSubmit={handleSubmit}>
-          <h2 className='admin-form__title'>Admin</h2>
+          <h2>Admin</h2>
           <div className='input-error'>{invalidCredentialsError}</div>
           <Text
             label='Email'
@@ -53,9 +53,7 @@ const AdminLogin: React.FC = () => {
             onChange={handleChange}
             error={setError('password')}
           />
-          <button type='submit' className='admin-form__btn'>
-            Submit
-          </button>
+          <button type='submit'>Submit</button>
         </form>
       </div>
     </MainLayout>

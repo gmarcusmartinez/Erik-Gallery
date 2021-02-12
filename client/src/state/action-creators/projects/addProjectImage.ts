@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, ProjectActionTypes } from 'state';
 
-export const addProjectImage = (id: string, imageData: any) => async (
+export const addProjectImage = (id: string, imageData: File | null) => async (
   dispatch: Dispatch
 ) => {
   if (!imageData) {

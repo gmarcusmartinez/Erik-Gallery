@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import Links from 'components/Navigation/links';
-import MenuBars from './MenuBars';
 
 const Navigation: React.FC = () => {
   const { toggleNav } = useActions();
@@ -16,7 +15,11 @@ const Navigation: React.FC = () => {
 
   return (
     <div className='header'>
-      <MenuBars bool={isOpen} cb={toggleNav} />
+      <div className='menu-bars' onClick={() => toggleNav(!isOpen)}>
+        <div className={`bar ${isOpen ? 'change' : ''}`} />
+        <div className={`bar ${isOpen ? 'change' : ''}`} />
+        <div className={`bar ${isOpen ? 'change' : ''}`} />
+      </div>
       <Link to='/' className='header__title'>
         <span onClick={handleClick}>Erik Felfalusi</span>
       </Link>

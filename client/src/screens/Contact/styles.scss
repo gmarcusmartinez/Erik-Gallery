@@ -1,3 +1,9 @@
 .contact-screen {
   @include main-layout;
+  &__info {
+    p {
+      text-align: center;
+      width: 330px;
+    }
+  }
 }

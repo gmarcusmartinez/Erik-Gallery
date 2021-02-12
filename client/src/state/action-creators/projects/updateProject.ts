@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { IProjectForm } from 'interfaces/forms';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, ProjectActionTypes } from 'state';
 
 export const updateProject = (
-  formData: any,
+  formData: IProjectForm,
   id: string,
   imageData: { type: string } | null
 ) => async (dispatch: Dispatch) => {

@@ -19,7 +19,7 @@ const Bio = () => {
         <div className='bio-screen__info'>
           <p>ERIK FELFALUSI</p>
           <p>(b. 1998)</p>
-          <p style={{ width: '340px', textAlign: 'center', lineHeight: '2.2' }}>
+          <p style={{ width: '330px', textAlign: 'center', lineHeight: '2.2' }}>
             {items[0].text}
           </p>
         </div>

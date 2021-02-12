@@ -1,19 +1,19 @@
-import React from "react";
-import MainLayout from "../../layouts/MainLayout";
+import React from 'react';
+import MainLayout from '../../layouts/MainLayout';
 
 const Contact = () => {
   return (
     <MainLayout>
-      <div className="contact-screen">
-        <div className="contact-screen__info">
+      <div className='contact-screen'>
+        <div className='contact-screen__info'>
           <p>
             Personal Email:
-            <a href="mailto: erik.felfalusi@gmail.com<">
+            <a href='mailto: erik.felfalusi@gmail.com<'>
               erik.felfalusi@gmail.com
             </a>
           </p>
           <p>
-            <a href="mailto: hereticsx555@gmail.com">
+            <a href='mailto: hereticsx555@gmail.com'>
               Booking Email: hereticsx555@gmail.com
             </a>
           </p>
@@ -21,9 +21,9 @@ const Contact = () => {
           <p>
             Social:
             <a
-              href="https://www.instagram.com/1000bodies/"
-              rel="noopener noreferrer"
-              target="_blank"
+              href='https://www.instagram.com/1000bodies/'
+              rel='noopener noreferrer'
+              target='_blank'
             >
               Instagram
             </a>

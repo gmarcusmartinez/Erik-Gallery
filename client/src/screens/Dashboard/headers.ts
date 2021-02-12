@@ -14,7 +14,7 @@ export const projectHeaders = [
   { text: 'Medium' },
 ];
 
-export const fetchResourceLinks = [
+export const resourceLinks = [
   { text: 'Manage Backgrounds', value: 'backgrounds' },
   { text: 'Manage Prints', value: 'prints' },
   { text: 'Manage Projects', value: 'projects' },
