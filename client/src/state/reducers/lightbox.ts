@@ -3,11 +3,13 @@ import { LightboxActionTypes } from 'state/types';
 
 interface LightboxState {
   display: boolean;
-  backgroundImage: string;
+  images: string[];
+  index: number;
 }
 const initialState = {
   display: false,
-  backgroundImage: '',
+  images: [],
+  index: 0,
 };
 
 export const lightbox = (
@@ -18,7 +20,11 @@ export const lightbox = (
 
   switch (type) {
     case LightboxActionTypes.SET_DISPLAY_LIGHTBOX:
-      return { display: payload.bool, backgroundImage: payload.image };
+      return {
+        display: payload.bool,
+        images: payload.images,
+        index: payload.index,
+      };
     default:
       return state;
   }

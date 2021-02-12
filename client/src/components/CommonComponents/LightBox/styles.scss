@@ -17,6 +17,7 @@
     transition: all 0.3s;
     transform: translateX(0);
     animation: fadein 1s;
+    flex-direction: column;
   }
   &.lb-closed {
     transition: all 0.3s;
@@ -30,9 +31,25 @@
 
     height: 75vh;
     width: 90vw;
-    margin: auto;
+    margin: 0 auto;
   }
-
+  &__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 6rem;
+    div {
+      filter: brightness(50%);
+      color: #fff;
+      cursor: pointer;
+      font-size: 4.2rem;
+      width: 10rem;
+      &:hover {
+        filter: brightness(100%);
+      }
+    }
+  }
   &__close-btn {
     cursor: pointer;
     position: absolute;
@@ -85,7 +102,6 @@
     &__image {
       height: 75vh;
       width: 1000px;
-      margin: auto;
     }
   }
 }

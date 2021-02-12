@@ -14,18 +14,16 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
     const gridAutoRows = 10;
     setSpans(Math.round(height / gridAutoRows));
   };
-  const handleToggleLightbox = () => cb(true, `url(${backgroundImage})`);
 
   React.useEffect(() => {
     imageRef.current?.addEventListener('load', () =>
       calcSpans(imageRef.current!.clientHeight)
     );
-
     calcSpans(imageRef.current!.clientHeight);
   }, []);
 
   return (
-    <div onClick={handleToggleLightbox} style={{ gridRowEnd: `span ${spans}` }}>
+    <div onClick={() => cb()} style={{ gridRowEnd: `span ${spans}` }}>
       <img
         ref={imageRef}
         className='project-screen__img'
