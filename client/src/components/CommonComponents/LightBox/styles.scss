@@ -1,18 +1,15 @@
 .lightbox {
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.9);
-
+  display: flex;
   height: 100vh;
+  justify-content: center;
   width: 100vw;
+  z-index: 6;
 
   position: fixed;
   top: 0;
   left: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 6;
-
   &.lb-open {
     transition: all 0.3s;
     transform: translateX(0);
@@ -23,15 +20,18 @@
     transition: all 0.3s;
     transform: translateX(-100%);
   }
-
+  &__images {
+    display: none;
+  }
   &__image {
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    height: 75vh;
+    height: 60vh;
     width: 90vw;
     margin: 0 auto;
+    animation: image-fade-in ease-in 0.6s;
   }
   &__btns {
     display: flex;
@@ -39,7 +39,7 @@
     align-items: center;
     text-align: center;
     height: 6rem;
-    div {
+    i {
       filter: brightness(50%);
       color: #fff;
       cursor: pointer;
@@ -56,34 +56,33 @@
     top: 4%;
     right: 4%;
     z-index: 2;
-
     animation: fadein 1s;
-  }
-  &__bar {
-    width: 3rem;
-    height: 0.2rem;
-    background-color: var(--color-white);
-    margin: 0.8rem 0;
-
-    transition: 0.25s;
-    transition-delay: 0.5s;
-
-    &:nth-of-type(1) {
-      transform: rotate(-90deg) translate(-7px, 0px);
-    }
-    &:nth-of-type(3) {
-      width: 2rem;
-      transform: translate(4px, -8px);
-    }
-    &:nth-of-type(1).cross {
-      transform: rotate(-45deg) translate(-7px, 8px);
-    }
-    &:nth-of-type(2) {
-      opacity: 0;
-    }
-    &:nth-of-type(3).cross {
+    div {
       width: 3rem;
-      transform: rotate(45deg) translate(-7px, -8px);
+      height: 0.2rem;
+      background-color: var(--color-white);
+      margin: 0.8rem 0;
+
+      transition: 0.25s;
+      transition-delay: 0.5s;
+
+      &:nth-of-type(1) {
+        transform: rotate(-90deg) translate(-7px, 0px);
+      }
+      &:nth-of-type(3) {
+        width: 2rem;
+        transform: translate(4px, -8px);
+      }
+      &:nth-of-type(1).cross {
+        transform: rotate(-45deg) translate(-7px, 8px);
+      }
+      &:nth-of-type(2) {
+        opacity: 0;
+      }
+      &:nth-of-type(3).cross {
+        width: 3rem;
+        transform: rotate(45deg) translate(-7px, -8px);
+      }
     }
   }
 }
@@ -94,6 +93,22 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes image-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@include respond(tablet) {
+  .lightbox {
+    &__image {
+      height: 70vh;
+    }
   }
 }
 
