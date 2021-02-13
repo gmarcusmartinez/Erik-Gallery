@@ -50,7 +50,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deletePrint = exports.updatePrint = exports.createPrint = exports.getPrint = exports.adminGetPrints = exports.getPrints = void 0;
 var bad_request_error_1 = require("../errors/bad-request-error");
 var async_1 = require("../middlewares/async");
-var Product_1 = require("../models/Product");
+var Print_1 = require("../models/Print");
 exports.getPrints = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
         res.status(200).json(res.advancedResults);
@@ -61,7 +61,7 @@ exports.adminGetPrints = async_1.asyncHandler(function (req, res) { return __awa
     var prints;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.find({ type: Product_1.ProductType.Print })];
+            case 0: return [4 /*yield*/, Print_1.Print.find({})];
             case 1:
                 prints = _a.sent();
                 res.send(prints);
@@ -73,11 +73,11 @@ exports.getPrint = async_1.asyncHandler(function (req, res) { return __awaiter(v
     var print;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
+            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
             case 1:
                 print = _a.sent();
                 if (!print)
-                    throw new bad_request_error_1.BadRequestError("Print not found.");
+                    throw new bad_request_error_1.BadRequestError('Print not found.');
                 res.status(200).json(print);
                 return [2 /*return*/];
         }
@@ -88,9 +88,7 @@ exports.createPrint = async_1.asyncHandler(function (req, res) { return __awaite
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                print = Product_1.Product.build(__assign(__assign({}, req.body), { type: Product_1.ProductType.Print }));
-                print.vatPrice = print.calculateVat();
-                print.netPrice = print.calculateNet();
+                print = Print_1.Print.build(__assign({}, req.body));
                 return [4 /*yield*/, print.save()];
             case 1:
                 _a.sent();
@@ -105,13 +103,11 @@ exports.updatePrint = async_1.asyncHandler(function (req, res) { return __awaite
         switch (_a.label) {
             case 0:
                 opts = { new: true, runValidators: true };
-                return [4 /*yield*/, Product_1.Product.findByIdAndUpdate(req.params.id, req.body, opts)];
+                return [4 /*yield*/, Print_1.Print.findByIdAndUpdate(req.params.id, req.body, opts)];
             case 1:
                 print = _a.sent();
                 if (!print)
-                    throw new bad_request_error_1.BadRequestError("Print Not Found.");
-                print.vatPrice = print.calculateVat();
-                print.netPrice = print.calculateNet();
+                    throw new bad_request_error_1.BadRequestError('Print Not Found.');
                 return [4 /*yield*/, print.save()];
             case 2:
                 _a.sent();
@@ -124,11 +120,11 @@ exports.deletePrint = async_1.asyncHandler(function (req, res) { return __awaite
     var print;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, Product_1.Product.findById(req.params.id)];
+            case 0: return [4 /*yield*/, Print_1.Print.findById(req.params.id)];
             case 1:
                 print = _a.sent();
                 if (!print)
-                    throw new bad_request_error_1.BadRequestError("Print not found.");
+                    throw new bad_request_error_1.BadRequestError('Print not found.');
                 print.remove();
                 res.status(200).json(print);
                 return [2 /*return*/];

@@ -7,7 +7,7 @@ export interface IBackground {
   _id: string;
   active: boolean;
   mainImage: string;
-  type: string;
+  type: 'background';
 }
 export interface IBio {
   _id: string;
@@ -23,14 +23,10 @@ export interface IPrint {
   _id: string;
   description: string;
   isPublished: boolean;
+  isAvailable: boolean;
   mainImage: string;
-  quantityInStock: number;
   type: 'print';
   size: string;
-
-  price: number;
-  netPrice: number;
-  vatPrice: number;
 }
 
 export interface IProject {
@@ -41,6 +37,7 @@ export interface IProject {
   mainImage: string;
   images: [string] | [];
   isPublished: boolean;
+  type: 'project';
 }
 
 export type ResourceType = IPrint | IProject | IBio | IBackground;

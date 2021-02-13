@@ -18,8 +18,8 @@ const ProjectForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleCheck = () =>
-    setFormData({ ...formData, isPublished: !formData.isPublished });
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setFormData({ ...formData, [e.target.name]: !e.target.value });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
@@ -55,7 +55,12 @@ const ProjectForm = () => {
         onChange={handleChange}
         error={setError('description')}
       />
-      <Checkbox isPublished={formData.isPublished} onChange={handleCheck} />
+      <Checkbox
+        onChange={handleCheck}
+        label='Published'
+        name='isPublished'
+        bool={formData.isPublished}
+      />
       <File
         onChange={handleFileChange}
         error={setError('image')}

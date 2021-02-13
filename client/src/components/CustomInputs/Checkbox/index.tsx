@@ -1,14 +1,16 @@
-import React, { ChangeEvent } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 
 interface IProps {
-  isPublished: boolean;
+  bool: boolean;
+  label: string;
+  name: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-const Checkbox: React.FC<IProps> = ({ isPublished, onChange }) => {
+const Checkbox: FC<IProps> = ({ bool, onChange, label, name }) => {
   return (
     <label className='custom-checkbox'>
-      Published
-      <input type='checkbox' checked={isPublished} onChange={onChange} />
+      {label}
+      <input type='checkbox' checked={bool} onChange={onChange} name={name} />
       <span className='checkmark'></span>
     </label>
   );

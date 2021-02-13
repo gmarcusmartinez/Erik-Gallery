@@ -49,7 +49,7 @@ router
     .route('/:id')
     .patch(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, projectControllers.addProjectImage);
 router
-    .route('/:id/updateProjectImages')
+    .route('/:id/updateImages')
     .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, projectControllers.updateProjectImages);
 router
     .route('/:id')

@@ -1,10 +1,9 @@
 export const printBlankFormState = {
   description: '',
   size: '(35 x 50 cm)',
-  price: '0.00',
   quantityInStock: 0,
   isPublished: false,
-  mainImage: null,
+  isAvailable: false,
 };
 
 export const printTextInputs = [
@@ -13,12 +12,6 @@ export const printTextInputs = [
     name: 'size',
     value: 'size',
     errorField: 'size',
-  },
-  {
-    label: 'Quantity In Stock',
-    name: 'quantityInStock',
-    value: 'quantityInStock',
-    errorField: 'quantityInStock',
   },
 ];
 

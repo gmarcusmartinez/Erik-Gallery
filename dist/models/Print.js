@@ -10,7 +10,7 @@ var printSchema = new mongoose_1.default.Schema({
         type: String,
         required: true,
     },
-    image: {
+    mainImage: {
         type: String,
         required: true,
     },
@@ -18,17 +18,21 @@ var printSchema = new mongoose_1.default.Schema({
         type: String,
         required: true,
     },
-    price: {
+    type: {
         type: String,
-        required: true,
+        default: 'print',
     },
-    inStock: {
+    isAvailable: {
         type: Boolean,
-        required: true,
+        default: false,
+    },
+    isPublished: {
+        type: Boolean,
+        default: false,
     },
 });
 printSchema.statics.build = function (attrs) {
     return new Print(attrs);
 };
-var Print = mongoose_1.default.model("Print", printSchema);
+var Print = mongoose_1.default.model('Print', printSchema);
 exports.Print = Print;

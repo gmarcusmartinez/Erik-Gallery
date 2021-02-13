@@ -27,8 +27,8 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;
 
-  const handleCheck = () =>
-    setFormData({ ...formData, isPublished: !formData.isPublished });
+  const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setFormData({ ...formData, [e.target.name]: e.target.checked });
 
   const handleRequest = (formTitle: string) =>
     formTitle === 'Edit'
@@ -64,7 +64,18 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
           error={setError(t.errorField)}
         />
       ))}
-      <Checkbox isPublished={formData.isPublished} onChange={handleCheck} />
+      <Checkbox
+        onChange={handleCheck}
+        label='Published'
+        name='isPublished'
+        bool={formData.isPublished}
+      />
+      <Checkbox
+        onChange={handleCheck}
+        label='Available'
+        name='isAvailable'
+        bool={formData.isAvailable}
+      />
       <File
         onChange={handleFileChange}
         error={setError('image')}

@@ -134,7 +134,7 @@ exports.updateProject = async_1.asyncHandler(function (req, res) { return __awai
     });
 }); });
 exports.addProjectImage = async_1.asyncHandler(function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var project, image;
+    var project;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, Project_1.Project.findById(req.params.id)];
@@ -142,8 +142,7 @@ exports.addProjectImage = async_1.asyncHandler(function (req, res) { return __aw
                 project = _a.sent();
                 if (!project)
                     throw new bad_request_error_1.BadRequestError('Project Not Found.');
-                image = req.body.image;
-                project.images.push(image);
+                project.images.push(req.body);
                 return [4 /*yield*/, project.save()];
             case 2:
                 _a.sent();

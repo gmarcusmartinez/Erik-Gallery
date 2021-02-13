@@ -28,22 +28,20 @@ var require_auth_1 = require("../middlewares/require-auth");
 var validate_request_1 = require("../middlewares/validate-request");
 var print_1 = require("../validation/print");
 var advanced_results_1 = require("../middlewares/advanced-results");
-var Product_1 = require("../models/Product");
+var Print_1 = require("../models/Print");
 var router = express_1.Router();
 exports.printRouter = router;
+router.route('/').get(advanced_results_1.advancedResults(Print_1.Print), printControllers.getPrints);
+router.route('/:id').get(printControllers.getPrint);
 router
-    .route("/")
-    .get(advanced_results_1.advancedResults(Product_1.Product, Product_1.ProductType.Print), printControllers.getPrints);
-router.route("/:id").get(printControllers.getPrint);
-router
-    .route("/")
+    .route('/')
     .post(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.createPrint);
 router
-    .route("/admin")
+    .route('/admin')
     .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, printControllers.adminGetPrints);
 router
-    .route("/:id")
+    .route('/:id')
     .put(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, print_1.createPrintValidation, validate_request_1.validateRequest, printControllers.updatePrint);
 router
-    .route("/:id")
+    .route('/:id')
     .delete(current_user_1.currentUser, require_auth_1.requireAuth, is_admin_1.isAdmin, printControllers.deletePrint);

@@ -48,7 +48,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.advancedResults = void 0;
-exports.advancedResults = function (model, type) { return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
+exports.advancedResults = function (model) { return function (req, res, next) { return __awaiter(void 0, void 0, void 0, function () {
     var query, requestQuery, removeFields, queryStr, limit, page, skip, count, data, pages;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -62,25 +62,12 @@ exports.advancedResults = function (model, type) { return function (req, res, ne
                 limit = 6;
                 page = Number(req.query.page) || 1;
                 skip = limit * (page - 1);
-                if (!type) return [3 /*break*/, 3];
-                return [4 /*yield*/, model.countDocuments({ type: type, isPublished: true })];
+                return [4 /*yield*/, model.countDocuments({ isPublished: true })];
             case 1:
                 count = _a.sent();
-                return [4 /*yield*/, model
-                        .find({ type: type, isPublished: true })
-                        .limit(limit)
-                        .skip(skip)];
+                return [4 /*yield*/, model.find({ isPublished: true }).limit(limit).skip(skip)];
             case 2:
                 data = _a.sent();
-                return [3 /*break*/, 6];
-            case 3: return [4 /*yield*/, model.countDocuments({ isPublished: true })];
-            case 4:
-                count = _a.sent();
-                return [4 /*yield*/, model.find({ isPublished: true }).limit(limit).skip(skip)];
-            case 5:
-                data = _a.sent();
-                _a.label = 6;
-            case 6:
                 pages = Math.ceil(count / limit);
                 res.advancedResults = { page: page, pages: pages, data: data };
                 next();
