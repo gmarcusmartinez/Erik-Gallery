@@ -4,7 +4,7 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import Links from 'components/Navigation/links';
 
-const Navigation: React.FC = () => {
+const Navigation = () => {
   const { toggleNav } = useActions();
   const { isOpen } = useTypedSelector((state) => state.nav);
 

@@ -3,7 +3,7 @@ import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Text, File, Checkbox, TextArea } from 'components/CustomInputs';
-import { printBlankFormState, printTextInputs } from './text-inputs';
+import { printBlankFormState } from './text-inputs';
 import Spinner from 'components/CommonComponents/Spinner';
 
 interface IProps {
@@ -54,28 +54,27 @@ const PrintForm: React.FC<IProps> = ({ formTitle }) => {
         onChange={handleChange}
         error={setError('description')}
       />
-      {printTextInputs.map((t, i) => (
-        <Text
-          key={i}
-          label={t.label}
-          name={t.name}
-          value={formData[t.value]}
-          onChange={handleChange}
-          error={setError(t.errorField)}
+      <Text
+        label='Size'
+        name='size'
+        value={formData.size}
+        onChange={handleChange}
+        error={setError('size')}
+      />
+      <div className='checkboxes'>
+        <Checkbox
+          onChange={handleCheck}
+          label='Published'
+          name='isPublished'
+          bool={formData.isPublished}
         />
-      ))}
-      <Checkbox
-        onChange={handleCheck}
-        label='Published'
-        name='isPublished'
-        bool={formData.isPublished}
-      />
-      <Checkbox
-        onChange={handleCheck}
-        label='Available'
-        name='isAvailable'
-        bool={formData.isAvailable}
-      />
+        <Checkbox
+          onChange={handleCheck}
+          label='Available'
+          name='isAvailable'
+          bool={formData.isAvailable}
+        />
+      </div>
       <File
         onChange={handleFileChange}
         error={setError('image')}

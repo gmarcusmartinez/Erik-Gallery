@@ -55,14 +55,15 @@
     &:active {
       transform: translateY(3px);
     }
+    transition: 0.2s ease-in;
     &:hover {
-      border: 0.1rem solid var(--color-dark-grey);
-      background-color: var(--color-dark-grey);
+      border: 0.1rem solid black;
+      background-color: black;
       color: var(--color-white);
     }
   }
   @include respond(tablet) {
-    height: 58rem;
+    height: 52rem;
     width: 34rem;
   }
 }

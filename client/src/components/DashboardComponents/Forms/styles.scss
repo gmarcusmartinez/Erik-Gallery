@@ -6,12 +6,16 @@
 .project-form {
   @include default-form;
   display: grid;
-  grid-template-rows: 8% 15% 15% 30% 12% 8% 12%;
+  grid-template-rows: 8% 15% 15% 30% 12% 10% 10%;
 }
 .print-form {
   @include default-form;
   display: grid;
-  grid-template-rows: 8% 30% 15% 12% 12% 12% 11%;
+  grid-template-rows: 10% 30% 15% 15%6rem 6rem;
+  .checkboxes {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 .image-form {
   @include default-form;

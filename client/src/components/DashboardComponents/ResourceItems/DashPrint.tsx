@@ -19,7 +19,7 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
   const backgroundImage = `url(${s3Url}/${print.mainImage})`;
   const gridTemplateColumns = '15% 35% 20% 10% 10% 10%';
   const pubClassName = `isPub ${print.isPublished ? 'pub-true' : 'pub-false'}`;
-  const available = print.isAvailable ? '√' : '-';
+  const availableClassName = `isA ${print.isAvailable ? 'a-true' : 'a-false'}`;
   return (
     <>
       <div className='dash-item' style={{ gridTemplateColumns }}>
@@ -32,7 +32,7 @@ const PrintItem: React.FC<IProps> = ({ print }) => {
         </div>
         <div className='dash-item__text'>{print.description}</div>
         <div className='dash-item__text'>{print.size}</div>
-        <div className='dash-item__text'>{available}</div>
+        <div className={availableClassName} />
         <div className='dash-btn' onClick={toggleEdit}>
           Edit
         </div>

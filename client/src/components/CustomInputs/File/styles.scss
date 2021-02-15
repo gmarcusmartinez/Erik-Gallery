@@ -1,9 +1,18 @@
 .custom-file-input-wrapper {
+  border: 0.1rem solid var(--color-light-grey);
+  color: var(--color-grey);
   display: flex;
   align-self: center;
   flex-direction: column;
   justify-content: center;
   height: 4rem;
+
+  transition: 0.2s ease-in;
+  &:hover {
+    background-color: black;
+    border: 0.1rem solid black;
+    color: #fff;
+  }
 }
 .custom-file-input {
   cursor: pointer;
@@ -15,15 +24,16 @@
   &:active {
     transform: translateY(-2px);
   }
+
   @include respond(tablet) {
     width: 34rem;
   }
 }
 .file-input-label {
-  color: var(--color-dark-grey);
-  font-size: 1.5em;
-  font-weight: 300;
-  letter-spacing: var(--letter-spacing-md);
+  font-size: 1.4em;
+  letter-spacing: var(--letter-spacing-lg);
+  text-align: center;
+  text-transform: uppercase;
   &.success {
     color: #4bb543;
   }

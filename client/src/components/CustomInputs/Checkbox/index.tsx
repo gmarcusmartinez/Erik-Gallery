@@ -8,11 +8,13 @@ interface IProps {
 }
 const Checkbox: FC<IProps> = ({ bool, onChange, label, name }) => {
   return (
-    <label className='custom-checkbox'>
-      {label}
-      <input type='checkbox' checked={bool} onChange={onChange} name={name} />
-      <span className='checkmark'></span>
-    </label>
+    <>
+      <label className='custom-checkbox'>
+        {label}
+        <input type='checkbox' checked={bool} onChange={onChange} name={name} />
+        <span className='checkmark' />
+      </label>
+    </>
   );
 };
 
