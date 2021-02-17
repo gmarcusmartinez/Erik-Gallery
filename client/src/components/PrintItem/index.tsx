@@ -2,15 +2,15 @@ import React from 'react';
 import { IPrint } from 'interfaces';
 import { s3Url } from 'api/url';
 import { useActions } from 'hooks/use-actions';
-import ItemAttrs from './ItemAttrs';
 
 interface IProps {
   item: IPrint;
 }
 
 const PrintItem: React.FC<IProps> = ({ item }) => {
-  const { mainImage } = item;
+  const { mainImage, isAvailable } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
+  const className = `print-item__img ${isAvailable ? '' : 'sold-out'}`;
   const { toggleModal } = useActions();
 
   const handleToggleModal = (
@@ -21,8 +21,15 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
   };
   return (
     <div className='print-item' onClick={handleToggleModal}>
-      <div className='print-item__img' style={{ backgroundImage }} />
-      <ItemAttrs item={item} />
+      <div className={className} style={{ backgroundImage }} />
+      <div className='print-item__sold'>{`${isAvailable ? '' : 'sold'}`}</div>
+      <div className='item-attrs'>
+        <div className='item-attrs__wrapper'>
+          <p>{item.description}</p>
+          <p>{item.size}</p>
+          <div className='item-attrs__btn'>View Print</div>
+        </div>
+      </div>
     </div>
   );
 };

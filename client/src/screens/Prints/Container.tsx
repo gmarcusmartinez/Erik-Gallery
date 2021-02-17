@@ -10,8 +10,8 @@ const PrintsContainer = () => {
     <div className='prints-container'>
       {loading ? (
         <>
-          {[...Array(6)].map(() => (
-            <div className='loading-print-card'>
+          {[...Array(6)].map((_, i) => (
+            <div key={i} className='loading-print-card'>
               <div className='loading-print-card__img shine'></div>
               <div className='loading-print-card__details shine'></div>
               <div className='loading-print-card__size shine'></div>

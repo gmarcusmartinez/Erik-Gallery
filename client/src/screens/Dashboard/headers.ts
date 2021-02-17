@@ -5,7 +5,7 @@ export const printHeaders = [
   { text: 'Image' },
   { text: 'Description' },
   { text: 'Size' },
-  { text: 'Available' },
+  { text: 'In Stock' },
 ];
 
 export const projectHeaders = [

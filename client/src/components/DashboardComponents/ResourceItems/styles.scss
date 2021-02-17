@@ -78,6 +78,22 @@
     left: 20%;
   }
 }
+.isA {
+  display: none;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-self: center;
+  justify-self: center;
+  &.a-true {
+    background-color: hsla(103, 60%, 63%, 0.8);
+  }
+  &.a-false {
+    background-color: rgba(204, 204, 204, 0.9);
+  }
+  @include respond(tablet) {
+    display: block;
+  }
+}
 
 .pr {
   &:hover {

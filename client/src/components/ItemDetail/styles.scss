@@ -15,7 +15,6 @@
   }
   &__info {
     font-size: 1.4rem;
-    font-weight: 300;
     height: 30vh;
     margin: 0 auto;
     width: 100%;
@@ -45,6 +44,15 @@
       text-decoration: none;
       text-transform: lowercase;
     }
+  }
+  &__sold {
+    color: var(--color-dark-grey);
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: var(--letter-spacing-md);
+    margin-top: 1rem;
+    text-align: center;
+    text-transform: uppercase;
   }
   @include respond(tablet) {
     margin: 0 auto;
