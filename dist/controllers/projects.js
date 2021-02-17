@@ -142,7 +142,7 @@ exports.addProjectImage = async_1.asyncHandler(function (req, res) { return __aw
                 project = _a.sent();
                 if (!project)
                     throw new bad_request_error_1.BadRequestError('Project Not Found.');
-                project.images.push(req.body);
+                project.images.push(req.body.image);
                 return [4 /*yield*/, project.save()];
             case 2:
                 _a.sent();

@@ -55,7 +55,7 @@ export const addProjectImage = asyncHandler(
     const project = await Project.findById(req.params.id);
     if (!project) throw new BadRequestError('Project Not Found.');
 
-    project.images.push(req.body);
+    project.images.push(req.body.image);
     await project.save();
 
     res.status(200).json(project);

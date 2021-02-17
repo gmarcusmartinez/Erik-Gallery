@@ -16,11 +16,12 @@ export const addProjectImage = (id: string, imageData: File | null) => async (
 
   try {
     dispatch({ type: ProjectActionTypes.ADD_PROJECT_IMG_REQUEST });
-    const headers = { headers: { ContentType: imageData.type } };
+
     const uploadConfig = await axios.get('/api/uploads');
+    const headers = { headers: { ContentType: imageData.type } };
     await axios.put(uploadConfig.data.url, imageData, headers);
 
-    const body = uploadConfig.data.key;
+    const body = { image: uploadConfig.data.key };
     const config = { headers: { 'Content-Type': 'application/json' } };
     const { data } = await axios.patch(`/api/projects/${id}`, body, config);
 
@@ -29,6 +30,7 @@ export const addProjectImage = (id: string, imageData: File | null) => async (
   } catch (err) {
     const errors = err.response.data.errors || err.message;
     dispatch({ type: ADD_PROJECT_IMG_FAILURE, payload: errors });
+    dispatch({ type: TOGGLE_MODAL, payload: { displayModal: false } });
     return;
   }
 };
