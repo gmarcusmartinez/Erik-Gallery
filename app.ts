@@ -1,5 +1,5 @@
 import path from 'path';
-// import sslRedirect from 'heroku-ssl-redirect';
+import sslRedirect from 'heroku-ssl-redirect';
 import express from 'express';
 import 'express-async-errors';
 import cookieSession from 'cookie-session';
@@ -15,7 +15,7 @@ import { projectRouter } from './routes/projects';
 import { uploadRouter } from './routes/upload';
 
 const app = express();
-// app.use(sslRedirect());
+app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
