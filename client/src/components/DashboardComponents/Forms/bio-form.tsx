@@ -8,6 +8,7 @@ import Spinner from 'components/CommonComponents/Spinner';
 const BioForm = () => {
   const { errors, loading, items } = useTypedSelector(({ bio }) => bio);
   const [formData, setFormData] = React.useState({ text: items[0].text });
+
   const { updateBio } = useActions();
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

@@ -19,7 +19,7 @@ const ProjectForm = () => {
   ) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleCheck = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setFormData({ ...formData, [e.target.name]: !e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.checked });
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     e.target.files ? setImageData(e.target.files[0]) : null;

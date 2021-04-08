@@ -20,7 +20,7 @@ export const createPrint = (
     const ContentType = imageData.type;
     const headers = { headers: { ContentType } };
     await axios.put(uploadConfig.data.url, imageData, headers);
-
+    console.log(imageData);
     const config = { headers: { 'Content-Type': 'application/json' } };
     const requestBody = { ...formData, mainImage: uploadConfig.data.key };
     const { data } = await axios.post('/api/prints', requestBody, config);
