@@ -1,6 +1,6 @@
 export const guestLinks = [
   { to: '/gallery', text: 'gallery' },
-  { to: '/prints/1', text: 'print work' },
+  { to: '/prints/1', text: 'prints' },
   { to: '/bio', text: 'bio' },
   { to: '/contact', text: 'contact' },
 ];

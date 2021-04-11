@@ -4,7 +4,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { MainLayout } from 'layouts/MainLayout';
 import { Spinner } from 'components/CommonComponents/Spinner';
 
-export const BioScreen = () => {
+const Bio = () => {
   const { fetchBio } = useActions();
   const { items, loading } = useTypedSelector((state) => state.bio);
 
@@ -27,3 +27,4 @@ export const BioScreen = () => {
     </MainLayout>
   );
 };
+export default Bio;

@@ -10,7 +10,7 @@ interface MatchParams {
 }
 interface IProps extends RouteComponentProps<MatchParams> {}
 
-export const PrintsScreen: React.FC<IProps> = ({ match }) => {
+const Prints: React.FC<IProps> = ({ match }) => {
   const page = +match.params.page || 1;
   const { fetchPrints } = useActions();
   const { pages } = useTypedSelector((state) => state.prints);
@@ -26,3 +26,5 @@ export const PrintsScreen: React.FC<IProps> = ({ match }) => {
     </div>
   );
 };
+
+export default Prints;

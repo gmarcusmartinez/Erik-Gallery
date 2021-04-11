@@ -1,11 +1,11 @@
 import React from 'react';
 import * as headers from './headers';
-import Section from 'components/DashboardComponents/Section';
-import SideNavTrigger from './SideNavTrigger';
+import { Section } from 'components/DashboardComponents/Section';
+import { SideNavTrigger } from './SideNavTrigger';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
 
-const Dashboard: React.FC = () => {
+export const Dashboard = () => {
   const [sidenavOpen, setSideNavOpen] = React.useState(true);
   const [resourceType, setResourceType] = React.useState('');
   const {
@@ -96,5 +96,3 @@ const Dashboard: React.FC = () => {
     </div>
   );
 };
-
-export default Dashboard;

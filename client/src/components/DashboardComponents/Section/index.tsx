@@ -14,11 +14,14 @@ interface IProps {
   gridTemplateColumns: string;
 }
 
-const Section: React.FC<IProps> = (props) => {
+export const Section: React.FC<IProps> = (props) => {
   const { toggleModal } = useActions();
   const renderAddForm = () => toggleModal(true, props.formName, null);
   const list = renderDashItem(props.resourceType, props.items);
   const gridTemplateColumns = props.gridTemplateColumns;
+
+  const renderHeaders = (headers: { text: string }[]) =>
+    headers.map((h, i) => <div key={i}>{h.text}</div>);
 
   return (
     <div className='resources'>
@@ -36,11 +39,6 @@ const Section: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-export default Section;
-
-const renderHeaders = (headers: { text: string }[]) =>
-  headers.map((h, i) => <div key={i}>{h.text}</div>);
 
 function renderDashItem(resourceType: string, items: any[]) {
   switch (resourceType) {

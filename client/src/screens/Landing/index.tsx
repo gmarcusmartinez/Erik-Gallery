@@ -1,6 +1,7 @@
 import React from 'react';
 import { MainLayout } from 'layouts/MainLayout';
 
-export const LandingScreen = () => {
+const Landing = () => {
   return <MainLayout></MainLayout>;
 };
+export default Landing;

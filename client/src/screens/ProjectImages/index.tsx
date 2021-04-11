@@ -5,7 +5,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import Img from './Img';
 import { Spinner } from 'components/CommonComponents/Spinner';
 
-const ProjectImages: React.FC = () => {
+export const ProjectImages = () => {
   const { adminFetchProject, toggleModal, saveImageOrder } = useActions();
   const { selectedItem, loading } = useTypedSelector(
     ({ projects }) => projects
@@ -41,4 +41,3 @@ const ProjectImages: React.FC = () => {
     </div>
   );
 };
-export default ProjectImages;
