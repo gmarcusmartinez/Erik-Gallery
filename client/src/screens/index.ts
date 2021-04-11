@@ -1,11 +1,11 @@
-export { default as BioScreen } from './Bio';
+export { BioScreen } from './Bio';
 export { default as ContactScreen } from './Contact';
 export { default as Dashboard } from './Dashboard';
-export { default as GalleryScreen } from './Gallery';
-export { default as LandingScreen } from './Landing';
-export { default as LoginScreen } from './Login';
-export { default as LogoutScreen } from './Logout';
-export { default as NotFoundScreen } from './NotFound';
+export { GalleryScreen } from './Gallery';
+export { LandingScreen } from './Landing';
+export { LoginScreen } from './Login';
+export { LogoutScreen } from './Logout';
+export { NotFoundScreen } from './NotFound';
 export { default as ProjectImages } from './ProjectImages';
-export { default as PrintsScreen } from './Prints';
+export { PrintsScreen } from './Prints';
 export { default as ProjectScreen } from './Project';

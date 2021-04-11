@@ -3,7 +3,7 @@ import { IProject } from 'interfaces';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import ProjectItem from 'components/ProjectItem';
 
-const ProjectsContainer = () => {
+export const ProjectsContainer = () => {
   const { loading, items } = useTypedSelector((state) => state.projects);
   return (
     <div className='projects-container'>
@@ -23,5 +23,3 @@ const ProjectsContainer = () => {
     </div>
   );
 };
-
-export default ProjectsContainer;

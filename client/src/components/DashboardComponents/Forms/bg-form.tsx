@@ -2,7 +2,7 @@ import React from 'react';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { File } from 'components/CustomInputs';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const BackgroundForm: React.FC = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);

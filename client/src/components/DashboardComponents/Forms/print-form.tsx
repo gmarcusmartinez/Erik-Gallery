@@ -4,7 +4,7 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { Text, File, Checkbox, TextArea } from 'components/CustomInputs';
 import { printBlankFormState } from './text-inputs';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 interface IProps {
   formTitle: string;

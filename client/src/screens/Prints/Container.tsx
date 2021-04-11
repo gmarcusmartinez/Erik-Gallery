@@ -1,28 +1,18 @@
 import React from 'react';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IPrint } from 'interfaces';
-import PrintItem from 'components/PrintItem';
+import { PrintItem } from 'components/PrintItem';
+import { LoadingCard } from 'components/CommonComponents/LoadingCard';
 
-const PrintsContainer = () => {
+export const PrintsContainer = () => {
   const { loading, items } = useTypedSelector((state) => state.prints);
+
+  const cards = [...Array(6)].map((_, i) => <LoadingCard i={i} />);
+  const prints = items.map((p: IPrint) => <PrintItem key={p._id} item={p} />);
 
   return (
     <div className='prints-container'>
-      {loading ? (
-        <>
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className='loading-print-card'>
-              <div className='loading-print-card__img shine'></div>
-              <div className='loading-print-card__details shine'></div>
-              <div className='loading-print-card__size shine'></div>
-            </div>
-          ))}
-        </>
-      ) : (
-        items.map((p: IPrint) => <PrintItem key={p._id} item={p} />)
-      )}
+      {loading ? <>{cards}</> : <>{prints}</>}
     </div>
   );
 };
-
-export default PrintsContainer;

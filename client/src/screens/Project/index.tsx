@@ -2,8 +2,8 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import ProjectAttrs from './attrs';
-import Spinner from 'components/CommonComponents/Spinner';
+import { ProjectAttrs } from './attrs';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const Project = () => {
   const { fetchProject } = useActions();

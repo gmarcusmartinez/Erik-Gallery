@@ -3,7 +3,7 @@ import { IError } from 'interfaces';
 import { File } from 'components/CustomInputs';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const ImageForm = () => {
   const [imageData, setImageData] = React.useState<File | null>(null);

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import MainLayout from 'layouts/MainLayout';
-import Spinner from 'components/CommonComponents/Spinner';
+import { MainLayout } from 'layouts/MainLayout';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
-const Bio = () => {
+export const BioScreen = () => {
   const { fetchBio } = useActions();
   const { items, loading } = useTypedSelector((state) => state.bio);
 
@@ -12,7 +12,7 @@ const Bio = () => {
     fetchBio();
   }, [fetchBio]);
 
-  if (loading) return <Spinner message='' />;
+  if (loading) return <Spinner />;
   return (
     <MainLayout>
       <div className='bio-screen'>
@@ -27,4 +27,3 @@ const Bio = () => {
     </MainLayout>
   );
 };
-export default Bio;

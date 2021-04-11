@@ -3,7 +3,7 @@ import { IError } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { TextArea } from 'components/CustomInputs';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const BioForm = () => {
   const { errors, loading, items } = useTypedSelector(({ bio }) => bio);

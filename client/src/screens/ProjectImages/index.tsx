@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import Img from './Img';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const ProjectImages: React.FC = () => {
   const { adminFetchProject, toggleModal, saveImageOrder } = useActions();

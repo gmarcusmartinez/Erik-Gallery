@@ -3,11 +3,7 @@ import { IPrint } from 'interfaces';
 import { s3Url } from 'api/url';
 import { useActions } from 'hooks/use-actions';
 
-interface IProps {
-  item: IPrint;
-}
-
-const PrintItem: React.FC<IProps> = ({ item }) => {
+export const PrintItem = ({ item }: { item: IPrint }) => {
   const { mainImage, isAvailable } = item;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
   const className = `print-item__img ${isAvailable ? '' : 'sold-out'}`;
@@ -33,5 +29,3 @@ const PrintItem: React.FC<IProps> = ({ item }) => {
     </div>
   );
 };
-
-export default PrintItem;

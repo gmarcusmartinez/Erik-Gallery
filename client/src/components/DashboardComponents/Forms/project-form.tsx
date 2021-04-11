@@ -4,7 +4,7 @@ import { projectBlankFormState, projectTextInputs } from './text-inputs';
 import { Text, File, Checkbox, TextArea } from 'components/CustomInputs';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { useActions } from 'hooks/use-actions';
-import Spinner from 'components/CommonComponents/Spinner';
+import { Spinner } from 'components/CommonComponents/Spinner';
 
 const ProjectForm = () => {
   const { createProject, updateProject } = useActions();

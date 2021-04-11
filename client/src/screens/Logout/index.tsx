@@ -1,8 +1,8 @@
 import React from 'react';
-import MainLayout from 'layouts/MainLayout';
+import { MainLayout } from 'layouts/MainLayout';
 import { useActions } from 'hooks/use-actions';
 
-const Logout = () => {
+export const LogoutScreen = () => {
   const { logout } = useActions();
 
   React.useEffect(() => {
@@ -19,5 +19,3 @@ const Logout = () => {
     </MainLayout>
   );
 };
-
-export default Logout;

@@ -4,11 +4,7 @@ import { useActions } from 'hooks/use-actions';
 import Lightbox from 'components/CommonComponents/LightBox';
 import ProjectImg from './ProjectImg';
 
-interface IProps {
-  item: IProject;
-}
-
-const ProjectAttrs: React.FC<IProps> = ({ item }) => {
+export const ProjectAttrs = ({ item }: { item: IProject }) => {
   const { medium, images, description, title } = item;
   const { toggleLightbox } = useActions();
 
@@ -29,5 +25,3 @@ const ProjectAttrs: React.FC<IProps> = ({ item }) => {
     </>
   );
 };
-
-export default ProjectAttrs;

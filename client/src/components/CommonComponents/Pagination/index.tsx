@@ -5,7 +5,8 @@ interface IProps {
   root: string;
   pages: number;
 }
-const Pagination: React.FC<IProps> = ({ root, pages }) => {
+
+export const Pagination: React.FC<IProps> = ({ root, pages }) => {
   const pageNumbers: number[] = [];
   const history = useHistory();
   const active = +history.location.pathname.split('/')[2];
@@ -27,4 +28,3 @@ const Pagination: React.FC<IProps> = ({ root, pages }) => {
     </div>
   );
 };
-export default Pagination;

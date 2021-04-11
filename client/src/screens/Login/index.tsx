@@ -3,22 +3,21 @@ import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 import { IError } from 'interfaces';
 import { Text } from 'components/CustomInputs';
-import MainLayout from 'layouts/MainLayout';
+import { MainLayout } from 'layouts/MainLayout';
 
-const AdminLogin: React.FC = () => {
+export const LoginScreen: React.FC = () => {
   const { login } = useActions();
   const { errors } = useTypedSelector((state) => state.auth);
-
   const [formData, setFormData] = React.useState({ email: '', password: '' });
   const { email, password } = formData;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormData({ email: '', password: '' });
-    await login(formData);
+    login(formData);
   };
 
   const setError = (field: string) =>
@@ -59,4 +58,3 @@ const AdminLogin: React.FC = () => {
     </MainLayout>
   );
 };
-export default AdminLogin;

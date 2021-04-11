@@ -3,7 +3,7 @@ import { s3Url } from 'api/url';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
-const MainLayout: React.FC = ({ children }) => {
+export const MainLayout: React.FC = ({ children }) => {
   const { fetchBackgrounds } = useActions();
   const activeBackground = useTypedSelector(({ backgrounds: { items } }) =>
     items.find((b) => b.active === true)
@@ -24,4 +24,3 @@ const MainLayout: React.FC = ({ children }) => {
     </div>
   );
 };
-export default MainLayout;

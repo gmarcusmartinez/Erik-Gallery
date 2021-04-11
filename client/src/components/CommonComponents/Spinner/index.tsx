@@ -1,16 +1,10 @@
-import React from "react";
+import React from 'react';
 
-interface IProps {
-  message: string;
-}
-
-const Spinner: React.FC<IProps> = ({ message }) => {
+export const Spinner = ({ message }: { message?: string }) => {
   return (
-    <div className="spinner-overlay">
-      <div className="spinner-message">{message}</div>
-      <div className="spinner-container "></div>
+    <div className='spinner-overlay'>
+      {message && <div className='spinner-message'>{message}</div>}
+      <div className='spinner-container '></div>
     </div>
   );
 };
-
-export default Spinner;
