@@ -22,7 +22,7 @@ export const GalleryScreen: React.FC<IProps> = ({ match }) => {
   return (
     <div className='gallery-screen'>
       <ProjectsContainer />
-      <Pagination root='prints' pages={pages} />
+      <Pagination root='projects' pages={pages} />
     </div>
   );
 };

@@ -15,7 +15,7 @@
     height: 85%;
     width: 100%;
     &.sold-out {
-      filter: brightness(20%);
+      filter: brightness(60%);
     }
   }
   &__sold {
@@ -57,10 +57,14 @@
           transform: translateY(2.8rem);
         }
         &__btn {
-          color: rgba(0, 0, 0, 0.8);
+          color: var(--color-white);
           border: 0.1rem solid var(--color-white);
           transition: 0.4s background-color ease-in-out;
-          background-color: var(--color-white);
+          background-color: transparent;
+          &:hover {
+            background-color: var(--color-white);
+            color: rgba(0, 0, 0, 0.9);
+          }
         }
       }
     }

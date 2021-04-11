@@ -5,7 +5,7 @@ import { IError } from 'interfaces';
 import { Text } from 'components/CustomInputs';
 import { MainLayout } from 'layouts/MainLayout';
 
-export const LoginScreen: React.FC = () => {
+const Login = () => {
   const { login } = useActions();
   const { errors } = useTypedSelector((state) => state.auth);
   const [formData, setFormData] = React.useState({ email: '', password: '' });
@@ -58,3 +58,5 @@ export const LoginScreen: React.FC = () => {
     </MainLayout>
   );
 };
+
+export default Login;

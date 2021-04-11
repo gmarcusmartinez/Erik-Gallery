@@ -55,13 +55,13 @@
     top: 0;
     left: 0;
     opacity: 0;
+    padding: var(--padding-md);
     width: 100%;
     &__wrapper {
       height: min-content;
       color: var(--color-white);
-      padding: var(--padding-md);
       transition: 0.2s ease-in;
-      transform: translateY(0);
+      margin-top: 20%;
       p {
         margin: 0.5rem 0;
       }

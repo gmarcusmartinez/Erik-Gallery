@@ -7,7 +7,7 @@ import { LoadingCard } from 'components/CommonComponents/LoadingCard';
 export const PrintsContainer = () => {
   const { loading, items } = useTypedSelector((state) => state.prints);
 
-  const cards = [...Array(6)].map((_, i) => <LoadingCard i={i} />);
+  const cards = [...Array(6)].map((_, i) => <LoadingCard key={i} i={i} />);
   const prints = items.map((p: IPrint) => <PrintItem key={p._id} item={p} />);
 
   return (

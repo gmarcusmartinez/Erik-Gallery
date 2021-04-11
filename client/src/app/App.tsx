@@ -31,7 +31,6 @@ const App: React.FC = () => {
           <Suspense fallback={<div></div>}>
             <Route exact path='/' component={screens.LandingScreen} />
             <Route exact path='/bio' component={screens.BioScreen} />
-
             <Route path='/contact' component={screens.ContactScreen} />
             <Route exact path='/gallery' component={screens.GalleryScreen} />
             <Route path='/login' component={screens.LoginScreen} />

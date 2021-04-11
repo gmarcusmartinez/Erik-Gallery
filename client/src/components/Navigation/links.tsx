@@ -7,7 +7,7 @@ import { useTypedSelector } from 'hooks/use-typed-selector';
 import { guestLinks, adminLinks } from './helpers';
 import setScrollLock from 'utils/set-scroll-lock';
 
-const Links = () => {
+export const Links = () => {
   const { closeAll } = useActions();
   const { currentUser } = useTypedSelector(({ auth }) => auth);
   const { isOpen } = useTypedSelector(({ nav }) => nav);
@@ -35,5 +35,3 @@ const Links = () => {
     </ul>
   );
 };
-
-export default Links;

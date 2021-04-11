@@ -1,18 +1,18 @@
 .project-item {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   font-weight: 300;
-  height: 75vh;
+  height: 80vh;
   margin: 0 auto 2rem auto;
   position: relative;
   text-align: center;
-  width: 90vw;
+  width: 33rem;
   &__img {
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    cursor: pointer;
-    height: 90%;
+    height: 85%;
     width: 100%;
   }
 }
@@ -22,16 +22,34 @@
     height: 54rem;
     width: 100%;
     margin: 0 auto;
-
     &__img {
-      height: 46rem;
+      height: 48rem;
       width: 100%;
-      background-size: cover;
     }
   }
 }
 @include respond(desktop) {
   .project-item {
-    height: 46rem;
+    height: 44rem;
+    &:hover {
+      .project-item__img {
+        transition: 0.2s ease-in;
+        filter: brightness(20%);
+      }
+      & .project-item-attrs {
+        cursor: pointer;
+        opacity: 1;
+        &__btn {
+          color: var(--color-white);
+          border: 0.1rem solid var(--color-white);
+          transition: 0.4s background-color ease-in-out;
+          background-color: transparent;
+          &:hover {
+            background-color: var(--color-white);
+            color: rgba(0, 0, 0, 0.9);
+          }
+        }
+      }
+    }
   }
 }

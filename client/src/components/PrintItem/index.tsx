@@ -21,9 +21,9 @@ export const PrintItem = ({ item }: { item: IPrint }) => {
       <div className='print-item__sold'>{`${isAvailable ? '' : 'sold'}`}</div>
       <div className='item-attrs'>
         <div className='item-attrs__wrapper'>
-          <p>{item.description}</p>
+          <p style={{ fontWeight: 700 }}>{item.description}</p>
           <p>{item.size}</p>
-          <div className='item-attrs__btn'>View Print</div>
+          <div className='item-attrs__btn'>View</div>
         </div>
       </div>
     </div>

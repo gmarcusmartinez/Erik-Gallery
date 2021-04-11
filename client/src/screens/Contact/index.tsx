@@ -1,7 +1,7 @@
 import React from 'react';
 import { MainLayout } from 'layouts/MainLayout';
 
-export const ContactScreen = () => {
+const Contact = () => {
   return (
     <MainLayout>
       <div className='contact-screen'>
@@ -33,3 +33,5 @@ export const ContactScreen = () => {
     </MainLayout>
   );
 };
+
+export default Contact;

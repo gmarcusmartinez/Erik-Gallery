@@ -9,12 +9,14 @@
     margin: var(--margin-sm) 0;
     letter-spacing: var(--letter-spacing-md);
     font-size: 2.2rem;
+    text-align: center;
   }
   &__images {
     display: flex;
     flex-direction: column;
   }
   &__img {
+    cursor: pointer;
     width: 33rem;
   }
   &__description {
@@ -22,7 +24,7 @@
     font-weight: 300;
     line-height: 1.8;
     padding: var(--padding-sm);
-    text-align: start;
+    text-align: center;
   }
   &__medium {
     font-size: 1.6rem;
@@ -35,6 +37,9 @@
     width: 64rem;
     padding: unset;
     margin: 0 auto;
+    &__description {
+      text-align: start;
+    }
     &__images {
       display: grid;
       grid-template-columns: repeat(2, minmax(320px, 1fr));
@@ -45,7 +50,7 @@
       width: 315px;
       &:hover {
         transition: 0.2s ease-in;
-        filter: brightness(50%);
+        filter: brightness(80%);
       }
     }
   }

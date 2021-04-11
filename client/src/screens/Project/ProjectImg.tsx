@@ -5,8 +5,10 @@ interface ProjectImgProps {
   imgUrl: string;
   cb: Function;
 }
-const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
+export const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
   const [spans, setSpans] = React.useState(0);
+  const [imgLoaded, setImgLoaded] = React.useState(false);
+
   const imageRef = React.useRef<HTMLImageElement | null>(null);
   const backgroundImage = `${s3Url}/${imgUrl}`;
 
@@ -16,9 +18,10 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
   };
 
   React.useEffect(() => {
-    imageRef.current?.addEventListener('load', () =>
-      calcSpans(imageRef.current!.clientHeight)
-    );
+    imageRef.current!.addEventListener('load', () => {
+      calcSpans(imageRef.current!.clientHeight);
+      setImgLoaded(true);
+    });
     calcSpans(imageRef.current!.clientHeight);
   }, []);
 
@@ -33,5 +36,3 @@ const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
     </div>
   );
 };
-
-export default ProjectImg;

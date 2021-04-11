@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useActions } from 'hooks/use-actions';
 import { useTypedSelector } from 'hooks/use-typed-selector';
-import Links from 'components/Navigation/links';
+import { Links } from 'components/Navigation/links';
+import X from '../../assets/x.png';
 
 const Navigation = () => {
   const { toggleNav } = useActions();
@@ -15,13 +16,12 @@ const Navigation = () => {
 
   return (
     <div className='header'>
-      <div className='menu-bars' onClick={() => toggleNav(!isOpen)}>
-        <div className={`bar ${isOpen ? 'change' : ''}`} />
-        <div className={`bar ${isOpen ? 'change' : ''}`} />
-        <div className={`bar ${isOpen ? 'change' : ''}`} />
-      </div>
+      <img src={X} alt='X' onClick={() => toggleNav(!isOpen)} />
       <Link to='/' className='header__title'>
-        <span onClick={handleClick}>Erik Felfalusi</span>
+        <span onClick={handleClick} style={{ fontWeight: 700 }}>
+          Erik
+          <span className='blurred-text'>Felfalusi</span>
+        </span>
       </Link>
       {isOpen && <Links />}
     </div>
