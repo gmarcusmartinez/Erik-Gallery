@@ -2,12 +2,14 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { IPrintForm } from 'interfaces/forms';
 import { ModalActionTypes, PrintActionTypes } from 'state';
+import { UpdatePrintAction } from 'state/actions/prints';
+import { ModalAction } from 'state/actions/modal';
 
 export const updatePrint = (
   formData: IPrintForm,
   id: string,
   imageData: { type: string } | null
-) => async (dispatch: Dispatch) => {
+) => async (dispatch: Dispatch<UpdatePrintAction | ModalAction>) => {
   try {
     const config = { headers: { 'Content-Type': 'application/json' } };
 

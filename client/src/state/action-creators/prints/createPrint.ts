@@ -2,11 +2,13 @@ import axios from 'axios';
 import { IPrintForm } from 'interfaces/forms';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, PrintActionTypes } from 'state';
+import { CreatePrintAction } from 'state/actions/prints';
+import { ModalAction } from 'state/actions/modal';
 
 export const createPrint = (
   formData: IPrintForm,
   imageData: { type: string } | null
-) => async (dispatch: Dispatch) => {
+) => async (dispatch: Dispatch<CreatePrintAction | ModalAction>) => {
   if (!imageData) {
     const errors = [{ message: 'Please select an image', field: 'image' }];
     dispatch({ type: PrintActionTypes.CREATE_PRINT_FAILURE, payload: errors });

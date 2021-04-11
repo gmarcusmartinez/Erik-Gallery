@@ -15,7 +15,7 @@ import { projectRouter } from './routes/projects';
 import { uploadRouter } from './routes/upload';
 
 const app = express();
-app.use(sslRedirect());
+// app.use(sslRedirect());
 app.use(express.json());
 app.use(cors());
 app.use(cookieSession({ signed: false, secure: false }));
