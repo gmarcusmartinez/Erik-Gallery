@@ -43,8 +43,8 @@
     &__images {
       display: grid;
       grid-template-columns: repeat(2, minmax(320px, 1fr));
-      gap: 0.2px;
-      grid-auto-rows: 10px;
+      gap: 0.1px;
+      grid-auto-rows: 5px;
     }
     &__img {
       width: 315px;

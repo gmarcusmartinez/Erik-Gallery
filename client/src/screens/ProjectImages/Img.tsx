@@ -16,6 +16,7 @@ const Img: React.FC<IProps> = ({ i, imgUrl }) => {
     const gridAutoRows = 10;
     setSpans(Math.round(height / gridAutoRows));
   };
+
   React.useEffect(() => {
     imageRef.current?.addEventListener('load', () =>
       calcSpans(imageRef.current!.clientHeight)

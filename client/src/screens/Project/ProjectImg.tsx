@@ -1,38 +1,45 @@
 import React from 'react';
 import { s3Url } from 'api/url';
 
-interface ProjectImgProps {
-  imgUrl: string;
-  cb: Function;
-}
-export const ProjectImg: React.FC<ProjectImgProps> = ({ imgUrl, cb }) => {
-  const [spans, setSpans] = React.useState(0);
-  const [imgLoaded, setImgLoaded] = React.useState(false);
+class ProjectImg extends React.Component<
+  { imgUrl: string; cb: Function },
+  { spans: number }
+> {
+  imageRef: any;
 
-  const imageRef = React.useRef<HTMLImageElement | null>(null);
-  const backgroundImage = `${s3Url}/${imgUrl}`;
+  constructor(props: any) {
+    super(props);
+    this.imageRef = React.createRef();
+    this.state = { spans: 0 };
+  }
 
-  const calcSpans = (height: number) => {
-    const gridAutoRows = 10;
-    setSpans(Math.round(height / gridAutoRows));
+  setSpans = () => {
+    const height = this.imageRef.current.clientHeight;
+    const gridAutoRows = 5;
+    const spans = Math.ceil(height / gridAutoRows);
+    this.setState({ spans });
   };
 
-  React.useEffect(() => {
-    imageRef.current!.addEventListener('load', () => {
-      calcSpans(imageRef.current!.clientHeight);
-      setImgLoaded(true);
+  componentDidMount() {
+    this.imageRef.current.addEventListener('load', () => {
+      this.setSpans();
     });
-    calcSpans(imageRef.current!.clientHeight);
-  }, []);
+  }
 
-  return (
-    <div onClick={() => cb()} style={{ gridRowEnd: `span ${spans}` }}>
-      <img
-        ref={imageRef}
-        className='project-screen__img'
-        src={backgroundImage}
-        alt='project'
-      />
-    </div>
-  );
-};
+  render() {
+    const { imgUrl, cb } = this.props;
+    const style = { gridRowEnd: `span ${this.state.spans}` };
+    return (
+      <div onClick={() => cb()} style={style}>
+        <img
+          ref={this.imageRef}
+          className='project-screen__img'
+          src={`${s3Url}/${imgUrl}`}
+          alt='project'
+        />
+      </div>
+    );
+  }
+}
+
+export default ProjectImg;

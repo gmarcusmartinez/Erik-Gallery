@@ -2,7 +2,7 @@ import React from 'react';
 import { IProject } from 'interfaces';
 import { useActions } from 'hooks/use-actions';
 import Lightbox from 'components/CommonComponents/LightBox';
-import { ProjectImg } from './ProjectImg';
+import ProjectImg from './ProjectImg';
 
 export const ProjectAttrs = ({ item }: { item: IProject }) => {
   const { medium, images, description, title } = item;
