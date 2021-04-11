@@ -1,6 +1,6 @@
 import React from 'react';
 import BackgroundForm from 'components/DashboardComponents/Forms/bg-form';
-import ItemDetal from 'components/ItemDetail';
+import { ItemDetail } from 'components/ItemDetail';
 import ImageForm from 'components/DashboardComponents/Forms/image-form';
 import PrintForm from 'components/DashboardComponents/Forms/print-form';
 import ProjectForm from 'components/DashboardComponents/Forms/project-form';
@@ -23,7 +23,7 @@ export const renderForm = (component: string) => {
     case 'EDIT_PROJECT':
       return <ProjectForm />;
     case 'VIEW_ITEM':
-      return <ItemDetal />;
+      return <ItemDetail />;
     case 'ADD_PROJECT_IMG':
       return <ImageForm />;
     default:

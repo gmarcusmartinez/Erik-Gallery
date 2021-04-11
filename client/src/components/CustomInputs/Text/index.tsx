@@ -12,7 +12,7 @@ interface IProps {
   required?: boolean;
 }
 
-const CustomInput: React.FC<IProps> = (props) => {
+export const Text: React.FC<IProps> = (props) => {
   const { required, className, type, name, value } = props;
   const isRequired = required ? <span className='is-required'>*</span> : null;
   const inputClassName = className ? className : 'text-input';
@@ -33,5 +33,3 @@ const CustomInput: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-export default CustomInput;

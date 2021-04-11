@@ -7,7 +7,11 @@ interface IProps {
   selected: boolean;
 }
 
-const CustomFileInput: React.FC<IProps> = ({ onChange, error, selected }) => {
+export const CustomFileInput: React.FC<IProps> = ({
+  onChange,
+  error,
+  selected,
+}) => {
   const labelClass = selected ? 'success' : '';
   const label = selected ? 'Image Selected' : 'Choose File';
   return (
@@ -25,5 +29,3 @@ const CustomFileInput: React.FC<IProps> = ({ onChange, error, selected }) => {
     </div>
   );
 };
-
-export default CustomFileInput;

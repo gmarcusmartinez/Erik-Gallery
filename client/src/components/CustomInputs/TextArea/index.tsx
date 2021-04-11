@@ -9,7 +9,7 @@ interface IProps {
   error?: IError | null | undefined;
 }
 
-const TextArea: React.FC<IProps> = (props) => {
+export const TextArea: React.FC<IProps> = (props) => {
   const { name, value, error, label } = props;
 
   return (
@@ -20,5 +20,3 @@ const TextArea: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-export default TextArea;

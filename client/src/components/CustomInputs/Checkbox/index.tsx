@@ -6,7 +6,7 @@ interface IProps {
   name: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-const Checkbox: FC<IProps> = ({ bool, onChange, label, name }) => {
+export const Checkbox: FC<IProps> = ({ bool, onChange, label, name }) => {
   return (
     <>
       <label className='custom-checkbox'>
@@ -17,5 +17,3 @@ const Checkbox: FC<IProps> = ({ bool, onChange, label, name }) => {
     </>
   );
 };
-
-export default Checkbox;

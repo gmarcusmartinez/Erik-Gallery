@@ -2,7 +2,7 @@ import React from 'react';
 import { s3Url } from 'api/url';
 import { useTypedSelector } from 'hooks/use-typed-selector';
 
-const ItemDetail = () => {
+export const ItemDetail = () => {
   const { data } = useTypedSelector(({ modal }) => modal);
   const { description, size, mainImage, isAvailable } = data!;
   const backgroundImage = `url(${s3Url}/${mainImage})`;
@@ -27,5 +27,3 @@ const ItemDetail = () => {
     </div>
   );
 };
-
-export default ItemDetail;

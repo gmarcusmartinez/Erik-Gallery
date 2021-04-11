@@ -1,4 +1,4 @@
-export { default as Checkbox } from './Checkbox';
-export { default as File } from './File';
-export { default as Text } from './Text';
-export { default as TextArea } from './TextArea';
+export { Checkbox } from './Checkbox';
+export { CustomFileInput as File } from './File';
+export { Text } from './Text';
+export { TextArea } from './TextArea';

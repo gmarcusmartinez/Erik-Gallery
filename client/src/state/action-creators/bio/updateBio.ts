@@ -2,9 +2,11 @@ import bio from 'api/bio';
 import { IBioForm } from 'interfaces/forms';
 import { Dispatch } from 'redux';
 import { ModalActionTypes, BioActionTypes } from 'state';
+import { UpdateBioAction } from 'state/actions/bio';
+import { ModalAction } from 'state/actions/modal';
 
 export const updateBio = (formData: IBioForm, id: string) => async (
-  dispatch: Dispatch
+  dispatch: Dispatch<UpdateBioAction | ModalAction>
 ) => {
   try {
     const config = { headers: { 'Content-Type': 'application/json' } };

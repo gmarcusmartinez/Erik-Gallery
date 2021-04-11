@@ -48,7 +48,7 @@
     &:hover {
       .print-item__img {
         transition: 0.2s ease-in;
-        filter: brightness(20%);
+        filter: brightness(20%) blur(3px);
       }
       & .item-attrs {
         cursor: pointer;
