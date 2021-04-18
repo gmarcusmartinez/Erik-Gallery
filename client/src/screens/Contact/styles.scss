@@ -1,9 +1,14 @@
 .contact-screen {
   @include main-layout;
+  display: flex;
+  justify-content: center;
   &__info {
-    p {
-      text-align: center;
-      width: 330px;
+    height: min-content;
+    width: min-content;
+    p,
+    a {
+      font-size: 1.6rem;
+      width: 260px;
     }
   }
 }

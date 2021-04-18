@@ -4,8 +4,7 @@ import { IProject } from 'interfaces';
 import { useHistory } from 'react-router-dom';
 
 export const ProjectItem = ({ item }: { item: IProject }) => {
-  const { mainImage } = item;
-  const backgroundImage = `url(${s3Url}/${mainImage})`;
+  const backgroundImage = `url(${s3Url}/${item.mainImage})`;
   const histroy = useHistory();
   const handleRedirect = () => histroy.push(`project/${item._id}`);
 

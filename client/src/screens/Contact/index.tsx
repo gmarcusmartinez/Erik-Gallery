@@ -7,21 +7,21 @@ const Contact = () => {
       <div className='contact-screen'>
         <div className='contact-screen__info'>
           <p>
-            Personal Email:
+            <span style={{ fontWeight: 700, marginRight: '10px' }}>Email:</span>
             <a href='mailto: erik.felfalusi@gmail.com<'>
               erik.felfalusi@gmail.com
             </a>
           </p>
           <p>
-            <a href='mailto: hereticsx555@gmail.com'>
-              Booking Email: hereticsx555@gmail.com
-            </a>
+            <span style={{ fontWeight: 700, marginRight: '10px' }}>Phone:</span>
+            + 00 152 26970474
           </p>
-          <p>Phone:+407 42233365</p>
           <p>
-            Social:
+            <span style={{ fontWeight: 700, marginRight: '10px' }}>
+              Social:
+            </span>
             <a
-              href='https://www.instagram.com/1000bodies/'
+              href=' https://www.instagram.com/bigwallsmallbricks/'
               rel='noopener noreferrer'
               target='_blank'
             >

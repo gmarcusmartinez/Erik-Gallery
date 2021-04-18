@@ -25,3 +25,10 @@
     align-self: center;
   }
 }
+
+.file-size-error {
+  margin: 0 calc(50% - 9rem);
+  color: red;
+  font-size: 1.6rem;
+  width: 9rem;
+}
